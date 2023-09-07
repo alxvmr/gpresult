@@ -1,0 +1,46 @@
+.table{
+    width: 100%;
+    color: black;
+    text-align: center;
+    word-break: break-word;
+}
+
+.section{
+    border-style: solid;
+    border-width: 1px;
+    border-color: gray;
+}
+
+.section_title{
+    padding-left: 10px;
+    background-color: #FFEBDC;
+    border-style: solid;
+    border-width: 1px;
+    margin-bottom: 2px;
+    border-color: gray;
+}
+
+.section_title_span{
+    color: blue;
+}
+
+.secsection{
+    margin-left: 30px;
+    background-color: #FAF9F7;
+    border-style: solid;
+    border-color: gray;
+    border-width: 1px;
+    margin-block-start: 2px;
+}
+
+.tablein{
+    width: 100%;
+    color: black;
+    margin-left: 30px;
+    word-break: break-word;
+}
+
+.trin{
+    text-align: left;
+    vertical-align: top;
+}

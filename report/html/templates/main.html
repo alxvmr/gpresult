@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/usr/lib/python3/site-packages/gpoa/report/html/styles/style.css">
+    <title>GPResult</title>
+</head>
+<body>
+    <script src="/usr/lib/python3/site-packages/gpoa/report/html/scripts/script.js"></script>
+    <!--  -->
+    <table class="table" border="1">
+        <tr>
+            <td style="background-color: #A0BACB;">
+                {% if info["is_machine"] == 'True' %}
+                    Group Policy Results (<b>for computer</b>)
+                {% else %}
+                    Group Policy Results (<b>for user</b>)
+                {% endif %}
+            </td>
+        </tr>
+        <tr>
+            <td align="left" style="padding-left: 20 px">
+                <table style="width: 100%">
+                    {% if info["type"] == "report_user"%}
+                        <tr>
+                            <td>
+                                <b>User name:</b>
+                            </td>
+                            <td>
+                                {{ info["user_name"] }}
+                            </td>
+                        </tr>
+                    {% endif %}
+                    <tr>
+                        <td>
+                            <b>Computer name:</b>
+                        </td>
+                        <td>
+                            {{ info["computer_name"] }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <b>Domain:</b>
+                        </td>
+                        <td>
+                            {{ info["domain"] }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <br><br>
+                            TimeStamp: {{ info["timestamp"] }}
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+    <!--  -->
+    <!-- <div class="section"> -->
+
+        {% set headers = ({"warnings":"Warnings", "errors":"Errors", "gpos":"GPOs", "summary":"Summary"}) %}
+
+        {% for k, v in info.items() %}
+            {% if v is iterable and (v is not string and v is not mapping) %}
+                <div class="section">
+                    {% set id = k ~ "_div" %}
+                    <div id={{id}} class="section_title" onclick="show_hide(id)">
+                        <span class="section_title_span" tabindex="0">
+                            {{ headers[k] }}
+                        </span>
+                    </div>
+
+                    {% set id = k ~ "_container" %}
+                    <div id={{id}} class="container" style="display: none;">
+                        <div class="secsection">
+                            {% if v |length != 0%}
+                                <!-- create table -->
+                                {% if v[0]["type"] == "error" %}
+                                    Errors:
+                                    <table class="tablein">
+                                        <tr class="trin">
+                                            <td> <b> </b> </td>
+                                            <td> <b>Text</b> </td>
+                                            <td> <b>Additionaly</b> </td>
+                                        </tr>
+                                        {% for e in v%}
+                                            <tr class="trin"></tr>
+                                                <td>
+                                                    <svg width="15" height="15" viewBox="0 0 15 15">
+                                                        <image x="0" y="0" width="15" height="15" xlink:href="/usr/lib/python3/site-packages/gpoa/report/html/imgs/error.jpg"/>
+                                                    </svg>
+                                                </td>
+                                                <td>{{ e["text"] }}</td>
+                                                <td>{{ e["info"] }}</td>
+                                            </tr>
+                                        {% endfor %}
+                                    </table>
+                                {% elif v[0]["type"]=="warning"%}
+                                    Warnings:
+                                    <table class="tablein">
+                                        <tr class="trin">
+                                            <td> <b> </b> </td>
+                                            <td> <b>Text</b> </td>
+                                            <td> <b>Additionaly</b> </td>
+                                        </tr>
+                                        {% for w in v%}
+                                            <tr class="trin"></tr>
+                                                <td>
+                                                    <svg width="15" height="15" viewBox="0 0 15 15">
+                                                        <image x="0" y="0" width="15" height="15" xlink:href="/usr/lib/python3/site-packages/gpoa/report/html/imgs/warning.jpg"/>
+                                                    </svg>
+                                                </td>
+                                                <td>{{ w["text"] }}</td>
+                                                <td>{{ w["info"] }}</td>
+                                            </tr>
+                                        {% endfor %}
+                                    </table>
+                                {% elif v[0]["type"]=="gpo"%}
+                                    Received Group Policy objects:
+                                    <table class="tablein">
+                                        <tr class="trin">
+                                            <td> <b>Name</b> </td>
+                                            <td> <b>UUID</b> </td>
+                                            <td> <b>file_sys_path</b> </td>
+                                        </tr>
+
+                                        {% for gpo in v%}
+                                            <tr class="trin"></tr>
+                                                <td>{{gpo["name_gpo"]}}</td>
+                                                <td>{{gpo["uuid"]}}</td>
+                                                <td>{{gpo["path"]}}</td>
+                                            </tr>
+                                        {% endfor %}
+                                    </table>
+                                {% endif %}
+                            {% else %}
+                                No data.
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            {% elif v is mapping%}
+                {% if v["type"] == "summary"%}
+                    <div class="section">
+                        {% set id = v["type"] ~ "_div" %}
+                        <div id={{id}} class="section_title" onclick="show_hide(id)">
+                            <span class="section_title_span" tabindex="0">
+                                {{ headers[v["type"]] }}
+                            </span>
+                        </div>
+
+                        {% set id = v["type"] ~ "_container" %}
+                        <div id={{id}} class="container" style="display: none;">
+                            <div class="secsection">
+                                {% for k1, v1 in v.items()%}
+                                    {% if k1 == "errors" or k1 == "warnings"%}
+                                        <div class="section">
+                                            {% set id = k1 ~ "_div" %}
+                                            <div id={{id}} class="section_title" onclick="show_hide(id)">
+                                                <span class="section_title_span" tabindex="0">
+                                                    {{ headers[k1] }}
+                                                </span>
+                                            </div>
+
+                                            {% set id = k1 ~ "_container" %}
+                                            <div id={{id}} class="container" style="display: none;">
+                                                <div class="secsection">
+                                            <!-- отрисовка ошибок и предупреждений -->
+                                                    {% if v1 |length != 0%}
+                                                        <table class="tablein">
+                                                            <tr class="trin">
+                                                                <td> <b> </b> </td>
+                                                                <td> <b>Text</b> </td>
+                                                                <td> <b>Additionaly</b> </td>
+                                                            </tr>
+                                                            {% for e in v1%}
+                                                                <tr class="trin"></tr>
+                                                                    <td>
+                                                                        {% if k1 == "errors" %}
+                                                                        <svg width="15" height="15" viewBox="0 0 15 15">
+                                                                            <image x="0" y="0" width="15" height="15" xlink:href="/usr/lib/python3/site-packages/gpoa/report/html/imgs/error.jpg"/>
+                                                                        </svg>
+                                                                        {% elif k1 == "warnings" %}
+                                                                            <svg width="15" height="15" viewBox="0 0 15 15">
+                                                                                <image x="0" y="0" width="15" height="15" xlink:href="/usr/lib/python3/site-packages/gpoa/report/html/imgs/warning.jpg"/>
+                                                                            </svg>
+                                                                        {% endif %}
+                                                                    </td>
+                                                                    <td>{{ e["text"] }}</td>
+                                                                    <td>{{ e["info"] }}</td>
+                                                                </tr>
+                                                            {% endfor %}
+                                                        </table>
+                                                    {% else %}
+                                                        No data.
+                                                    {% endif %}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    {% endif %}
+
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+            {% endif %}
+        {% endfor %}
+</body>
+</html>

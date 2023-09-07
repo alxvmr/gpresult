@@ -1,0 +1,875 @@
+#
+# GPOA - GPO Applier for Linux
+#
+# Copyright (C) 2019-2020 BaseALT Ltd.
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+#domain "gpoa"
+
+msgid ""
+msgstr ""
+"Project-Id-Version: 0.8.0\n"
+"Report-Msgid-Bugs-To: samba@lists.altlinux.org\n"
+"PO-Revision-Date: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain;charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ru\n"
+
+msgid "Don't start plugins"
+msgstr "Не запускать модули"
+
+# Info
+msgid "Got GPO list for username"
+msgstr "Получен список GPO для пользователя"
+
+msgid "Got GPO"
+msgstr "Получен объект групповой политики"
+
+msgid "Unknown info code"
+msgstr "Неизвестный код информационного сообщения"
+
+msgid "Working with control"
+msgstr "Применение настроек control"
+
+msgid "Working with systemd"
+msgstr "Работа с systemd"
+
+msgid "Unable to work with systemd unit"
+msgstr "Невозможно создать оъект для unit systemd"
+
+msgid "Starting systemd unit"
+msgstr "Запуск unit systemd"
+
+msgid "Firefox policy"
+msgstr "Политика Firefox"
+
+msgid "Chromium policy"
+msgstr "Политика Chromium"
+
+msgid "Set user property to"
+msgstr "Установка свойств  для пользователя"
+
+# Error
+msgid "Insufficient permissions to run gpupdate"
+msgstr "Недостаточно прав для запуска gpupdate"
+
+msgid "gpupdate will not be started"
+msgstr "gpupdate не будет запущен"
+
+msgid "Backend execution error"
+msgstr "Ошибка бэкэнда"
+
+msgid "Error occurred while running frontend manager"
+msgstr "Ошибка фронтенда"
+
+msgid "Error running GPOA for computer"
+msgstr "Ошибка запуска GPOA для машины"
+
+msgid "Error running GPOA for user"
+msgstr "Ошибка запуска GPOA для пользователя"
+
+msgid "Unable to initialize Samba backend"
+msgstr "Невозможно инициализировать бэкэнд Samba"
+
+msgid "Unable to initialize no-domain backend"
+msgstr "Невозможно инициализировать бэкэнд-заглушку"
+
+msgid "Error running ADP"
+msgstr "Ошибка во время работы ADP"
+
+msgid "Unable to determine DC hostname"
+msgstr "Невозможно определить имя контроллера домена"
+
+msgid "Error occured while running applier with user privileges"
+msgstr "Ошибка во время работы applier в контексте пользователя"
+
+msgid "Unable to initialize backend"
+msgstr "Невозможно инициализировать бэкэнд"
+
+msgid "Not sufficient privileges to run machine appliers"
+msgstr "Недостаточно прав для запуска appliers для машины"
+
+msgid "Kerberos ticket check failed"
+msgstr "Проверка билета Kerberos закончилась неудачно"
+
+msgid "Unable to retrieve domain name via CLDAP query"
+msgstr "Не удалось определить имя домена AD через запрос к LDAP"
+
+msgid "Error getting SID using wbinfo, will use SID from cache"
+msgstr "Не удалось определить SID с использованием утилиты wbinfo, будет использоваться фиктивный/кэшированный SID"
+
+msgid "Unable to get GPO list for user from AD DC"
+msgstr "Не удалось получить список групповых политик для пользователя от контроллера домена AD"
+
+msgid "Error getting XDG_DESKTOP_DIR"
+msgstr "Не удалось получить значение XDG_DESKTOP_DIR"
+
+msgid "Error occured while running user applier in administrator context"
+msgstr "Ошибка выполнения applier в контексте администратора"
+
+msgid "Error occured while running user applier in user context (with dropped privileges)"
+msgstr "Ошибка работы пользовательского applier в пользовательском контексте (со сбросом привилегий процесса)"
+
+msgid "No reply from oddjobd GPOA runner via D-Bus for current user"
+msgstr "Не получен ответ от oddjobd для текущего пользователя"
+
+msgid "No reply from oddjobd GPOA runner via D-Bus for computer"
+msgstr "Не получен ответ от oddjobd для компьютера"
+
+msgid "No reply from oddjobd GPOA runner via D-Bus for user"
+msgstr "Не получен ответ от oddjobd для пользователя"
+
+msgid "Error occured while running machine applier"
+msgstr "Ошибка во время работы applier для машины"
+
+msgid "Error occured while initializing user applier"
+msgstr "Ошибка инициализации пользовательского applier"
+
+msgid "Error merging machine GPT"
+msgstr "Ошибка слияния машинной групповой политики"
+
+msgid "Error merging user GPT"
+msgstr "Ошибка слияния пользовательской групповой политики"
+
+msgid "Error merging machine part of GPT"
+msgstr "Ошибка слияния машинной части групповой политики"
+
+msgid "Error merging user part of GPT"
+msgstr "Ошибка слияния пользовательской части групповой политики"
+
+msgid "Unknown error code"
+msgstr "Неизвестный код ошибки"
+
+msgid "Unable to work with control"
+msgstr "Не удалось применить настройки control"
+
+msgid "Control applier for machine will not be started"
+msgstr "Приминение Control для машины не удалось"
+
+msgid "Error getting control"
+msgstr "Ошибка установки control"
+
+msgid "Is not in possible values for control"
+msgstr "Не входит в возможные значения для control"
+
+msgid "Unable to set"
+msgstr "Невозможно установить"
+
+msgid "Unable to generate file"
+msgstr "Невозможно создать файл"
+
+msgid "Failed applying unit"
+msgstr "Не удалось применить настройки"
+
+msgid "Unable to start systemd unit"
+msgstr "Невозможно запустить systemd unit"
+
+msgid "Unable to cache specified URI"
+msgstr "Невозможно кэшировать указанный URI"
+
+msgid "Unable to cache specified URI for machine"
+msgstr "Невозможно кэшировать указанный URI для компьютера"
+
+msgid "Error recompiling global GSettings schemas"
+msgstr "Ошибка перекомпиляции глобальных GSettings schemas"
+
+msgid "Error update configuration dconf"
+msgstr "Ошибка обновления конфигурации dconf"
+
+msgid "Unable to cache specified URI for user"
+msgstr "Невозможно кэшировать указанный URI для пользователя"
+
+msgid "Error during attempt to read Chromium preferences for user"
+msgstr "Ошибка при попытке прочитать настройки Chromium для пользователя"
+
+msgid "Fail for applying shortcut to file with %"
+msgstr "Не удалось применить ярлык к файлу с %"
+
+msgid "Fail for applying shortcut to not absolute path"
+msgstr "Не удалось применить ярлык к не абсолютному пути"
+
+msgid "Error running pkcon_runner sync for machine"
+msgstr "Ошибка при запуске pkcon_runner синхронно для компьютера"
+
+msgid "Package install error"
+msgstr "Ошибка установки пакета"
+
+msgid "Package remove error"
+msgstr "Ошибка удаления пакета"
+
+msgid "Error running pkcon_runner sync for user"
+msgstr "Ошибка при запуске pkcon_runner синхронно для пользователя"
+
+msgid "Error running pkcon_runner async for machine"
+msgstr "Ошибка при запуске pkcon_runner асинхронно для компьютера"
+
+msgid "Error running pkcon_runner async for user"
+msgstr "Ошибка при запуске pkcon_runner асинхронно для пользователя"
+
+msgid "Error merging user GPT (from machine GPO)"
+msgstr "Ошибка слияния пользовательской групповой политики (машинная часть)"
+
+msgid "Error cleaning directory for machine"
+msgstr "Ошибка очистки каталога для машины"
+
+msgid "Error cleaning directory for user"
+msgstr "Ошибка очистки каталога для пользователя"
+
+# Error_end
+
+# Debug
+msgid "The GPOA process was started for user"
+msgstr "Произведён запуск GPOA для обновления политик пользователя"
+
+msgid "Username is not specified - will use username of the current process"
+msgstr "Имя пользователя не указано - будет использовано имя владельца процесса"
+
+msgid "Initializing plugin manager"
+msgstr "Инициализация плагинов"
+
+msgid "ADP plugin initialized"
+msgstr "Инициализирован плагин ADP"
+
+msgid "Running ADP plugin"
+msgstr "Запущен плагин ADP"
+
+msgid "Starting GPOA for user via D-Bus"
+msgstr "Запускается GPOA для пользователя обращением к oddjobd через D-Bus"
+
+msgid "Cache directory determined"
+msgstr "Определена директория кэша Samba"
+
+msgid "Initializing local backend without domain"
+msgstr "Инициализация бэкэнда-заглушки"
+
+msgid "Initializing Samba backend for domain"
+msgstr "Инициализация бэкэнда Samba"
+
+msgid "Group Policy target set for update"
+msgstr "Групповые политики будут обновлены для указанной цели"
+
+msgid "Starting GPOA for computer via D-Bus"
+msgstr "Запускается GPOA для компьютера обращением к oddjobd через D-Bus"
+
+msgid "Got exit code"
+msgstr "Получен код возврата из утилиты"
+
+msgid "Starting GPOA via D-Bus"
+msgstr "Запускается GPOA обращением к oddjobd через D-Bus"
+
+msgid "Starting GPOA via command invocation"
+msgstr "GPOA запускается с помощью прямого вызова приложения"
+
+msgid "Username for frontend is determined"
+msgstr "Определено имя пользователя для фронтенда"
+
+msgid "Applying computer part of settings"
+msgstr "Применение настроек для машины"
+
+msgid "Kerberos ticket check succeed"
+msgstr "Проверка билета Kerberos прошла успешно"
+
+msgid "Found AD domain via CLDAP query"
+msgstr "Имя домена Active Directory успешно определено при запросе к LDAP"
+
+msgid "Setting info"
+msgstr "Установка вспомогательной переменной"
+
+msgid "Initializing cache"
+msgstr "Инициализация кэша"
+
+msgid "Set operational SID"
+msgstr "Установка рабочего SID"
+
+msgid "Got PReg entry"
+msgstr "Получен ключ реестра"
+
+msgid "Looking for preference in user part of GPT"
+msgstr "Поиск настроек в пользовательской части GPT"
+
+msgid "Looking for preference in machine part of GPT"
+msgstr "Поиск настроек в машинной части GPT"
+
+msgid "Re-caching Local Policy"
+msgstr "Обновление кэша локальной политики"
+
+msgid "Adding HKCU entry"
+msgstr "Слияние ключа в пользовательскую (HKCU) часть реестра"
+
+msgid "Skipping HKLM branch deletion key"
+msgstr "Пропускаем специальный ключ удаления ветви реестра HKLM"
+
+msgid "Reading and merging machine preference"
+msgstr "Вычитывание и слияние машинных настроек"
+
+msgid "Reading and merging user preference"
+msgstr "Вычитывание и слияние пользовательских настроек"
+
+msgid "Found SYSVOL entry"
+msgstr "Найден путь SYSVOL"
+
+msgid "Trying to load PReg from .pol file"
+msgstr "Пробуем загрузить ключи реестра из .pol файла"
+
+msgid "Finished reading PReg from .pol file"
+msgstr "Вычитаны ключи реестра из .pol файла"
+
+msgid "Determined length of PReg file"
+msgstr "Определена длина .pol файла"
+
+msgid "Merging machine settings from PReg file"
+msgstr "Слияние машинных настроек из .pol файла"
+
+msgid "Merging machine (user part) settings from PReg file"
+msgstr "Слияние пользовательской части машинных настроек из .pol файла"
+
+msgid "Loading PReg from XML"
+msgstr "Загружаем ключи реестра из XML"
+
+msgid "Setting process permissions"
+msgstr "Установка прав процесса"
+
+msgid "Samba DC setting is overriden by user setting"
+msgstr "Используется указанный пользователем контроллер домена AD"
+
+msgid "Saving information about drive mapping"
+msgstr "Сохранение информации о привязках дисков"
+
+msgid "Saving information about printer"
+msgstr "Сохранение информации о принтерах"
+
+msgid "Saving information about link"
+msgstr "Сохранение информации о ярлычках"
+
+msgid "Saving information about folder"
+msgstr "Сохранение информации о папках"
+
+msgid "No value cached for object"
+msgstr "Отсутствует кэшированное значение для объекта"
+
+msgid "Key is already present in cache, will update the value"
+msgstr "Ключ уже существует, его значение будет обновлено"
+
+msgid "GPO update started"
+msgstr "Начато обновление GPO"
+
+msgid "GPO update finished"
+msgstr "Завершено обновление GPO"
+
+msgid "Retrieving list of GPOs to replicate from AD DC"
+msgstr "Получение списка GPO для репликации с контроллера домена AD"
+
+msgid "Establishing connection with AD DC"
+msgstr "Установка соединения с контроллером домена AD"
+
+msgid "Started GPO replication from AD DC"
+msgstr "Начата репликация GPO от контроллера домена AD"
+
+msgid "Finished GPO replication from AD DC"
+msgstr "Завершена репликация GPO от контроллера домена AD"
+
+msgid "Skipping HKCU branch deletion key"
+msgstr "Пропускаем специальный ключ удаления ветви реестра HKCU"
+
+msgid "Read domain name from configuration file"
+msgstr "Имя контроллера домена для репликации прочитано из файла конфигурации"
+
+msgid "Saving information about environment variables"
+msgstr "Сохранение информации о переменных окружения"
+
+msgid "Unknown debug code"
+msgstr "Неизвестный отладочный код"
+
+msgid "Running Control applier for machine"
+msgstr "Начато применение Control для машины"
+
+msgid "Setting control"
+msgstr "Установка control"
+
+msgid "Deny_All setting found"
+msgstr "Deny_All настройка найдена"
+
+msgid "Deny_All setting for user"
+msgstr "Deny_All настройка для пользователя"
+
+msgid "Deny_All setting not found"
+msgstr "Deny_All настройка не найдена"
+
+msgid "Deny_All setting not found for user"
+msgstr "Deny_All настройка не найдена для пользователя"
+
+msgid "Running Polkit applier for machine"
+msgstr "Начато применение настроек Polkit для машины"
+
+msgid "Running Polkit applier for user in administrator context"
+msgstr "Начато применение настроек Polkit пользователя в контексте администратора"
+
+msgid "Polkit applier for machine will not be started"
+msgstr "Polkit для машины не запускается"
+
+msgid "Polkit applier for user in administrator context will not be started"
+msgstr "Polkit для пользователя в контексте администратора не запускается"
+
+msgid "Generated file"
+msgstr "Созданный файл"
+
+msgid "Running systemd applier for machine"
+msgstr "Начато применение настроек systemd для машины"
+
+msgid "Running systemd applier for machine will not be started"
+msgstr "Применение настроек systemd для машины не удалось"
+
+msgid "Running GSettings applier for machine"
+msgstr "Запуск применение настроек GSettings для машины"
+
+msgid "GSettings applier for machine will not be started"
+msgstr "Применение настроек GSettings для машины не удалось"
+
+msgid "Removing GSettings policy file from previous run"
+msgstr "Удаление файла политики GSettings от предыдущего запуска"
+
+msgid "Mapping Windows policies to GSettings policies"
+msgstr "Сопоставление политик Windows с политиками GSettings"
+
+msgid "GSettings windows policies mapping not enabled"
+msgstr "Сопоставление политик Windows GSettings не включено"
+
+msgid "Applying user setting"
+msgstr "Применение пользовательских настроек"
+
+msgid "Found GSettings windows mapping"
+msgstr "Найдены соответствия настроек windows-GSettings"
+
+msgid "Running GSettings applier for user in user context"
+msgstr "Запуск применение настроек GSettings в контексте пользователя"
+
+msgid "GSettings applier for user in user context will not be started"
+msgstr "GSettings в контексте пользователя не запускается"
+
+msgid "Applying machine setting"
+msgstr "Применение настроек машины"
+
+msgid "Path not resolved as UNC URI"
+msgstr "Путь не разрешен"
+
+msgid "Getting cached file for URI"
+msgstr "Получение кешированного файла для URI"
+
+msgid "Wrote Firefox preferences to"
+msgstr "Настройки Firefox записаны в"
+
+msgid "Found Firefox profile in"
+msgstr "Найден профиль Firefox в"
+
+msgid "Running Firefox applier for machine"
+msgstr "Запуск применение настроек Firefox для машины"
+
+msgid "Firefox applier for machine will not be started"
+msgstr "Применение настроек Firefox для компьютера не запускается"
+
+msgid "Running Chromium applier for machine"
+msgstr "Запуск применение настроек Chromium для машины"
+
+msgid "Chromium applier for machine will not be started"
+msgstr "Применение настроек Chromium для компьютера не запускается"
+
+msgid "Wrote Chromium preferences to"
+msgstr "Настройки Chromium записаны в"
+
+msgid "Running Shortcut applier for machine"
+msgstr "Запуск применение ярлыков для машины"
+
+msgid "Shortcut applier for machine will not be started"
+msgstr "Применение ярлыков для компьютера не запускается"
+
+msgid "No shortcuts to process for"
+msgstr "Нет ярлыков для обработки"
+
+msgid "Running Shortcut applier for user in user context"
+msgstr "Запуск применение ярлыков  в контексте пользователя"
+
+msgid "Shortcut applier for user in user context will not be started"
+msgstr "Применение ярлыков в контексте пользователя не запускается"
+
+msgid "Running Shortcut applier for user in administrator context"
+msgstr "Запуск применение ярлыков в контексте администратора"
+
+msgid "Shortcut applier for user in administrator context will not be started"
+msgstr "Применение ярлыков в контексте администратора не запускается"
+
+msgid "Try to expand path for shortcut"
+msgstr "Попытка расширить путь для ярлыка"
+
+msgid "Applying shortcut file to"
+msgstr "Применение ярлыка к файлу"
+
+msgid "Running Folder applier for machine"
+msgstr "Запуск применение папок для машины"
+
+msgid "Folder applier for machine will not be started"
+msgstr "Применение папок для машины не запускается"
+
+msgid "Folder creation skipped for machine"
+msgstr "Создание папки для машины пропущено"
+
+msgid "Folder creation skipped for user"
+msgstr "Создание папки для пользователя пропущено"
+
+msgid "Running Folder applier for user in user context"
+msgstr "Запуск применение папок для пользователя в контексте пользователя"
+
+msgid "Folder applier for user in user context will not be started"
+msgstr "Применение папок для пользователя в контексте пользователя не запускается"
+
+msgid "Running CUPS applier for machine"
+msgstr "Запуск применение настроек CUPS для машины"
+
+msgid "CUPS applier for machine will not be started"
+msgstr "Применение настроек CUPS для машины не запускается"
+
+msgid "Running CUPS applier for user in administrator context"
+msgstr "Запуск применение настроек CUPS для пользователя в контексте администратора"
+
+msgid "CUPS applier for user in administrator context will not be started"
+msgstr "Применение настроек CUPS для пользователя в контексте администратора не запускается"
+
+msgid "Running Firewall applier for machine"
+msgstr "Запуск применение настроек Firewall для машины"
+
+msgid "Firewall is enabled"
+msgstr "Firewall включен"
+
+msgid "Firewall is disabled, settings will be reset"
+msgstr "Firewall отключен, настройки будут сброшены"
+
+msgid "Firewall applier will not be started"
+msgstr "Применение настроек Firewall не запускается"
+
+msgid "Running NTP applier for machine"
+msgstr "Запуск применение настроек NTP для машины"
+
+msgid "NTP server is configured to"
+msgstr "Сервер NTP настроен на"
+
+msgid "Starting Chrony daemon"
+msgstr "Запуск демона Chrony"
+
+msgid "Setting reference NTP server to"
+msgstr "Установка эталонного сервера NTP на"
+
+msgid "Stopping Chrony daemon"
+msgstr "Остановка демона Chrony"
+
+msgid "Configuring NTP server..."
+msgstr "Настройка NTP-сервера ..."
+
+msgid "NTP server is enabled"
+msgstr "Сервер NTP включен"
+
+msgid "NTP server is disabled"
+msgstr "NTP сервер отключен"
+
+msgid "NTP server is not configured"
+msgstr "NTP сервер не настроен"
+
+msgid "NTP client is enabled"
+msgstr "Клиент NTP включен"
+
+msgid "NTP client is disabled"
+msgstr "Клиент NTP отключен"
+
+msgid "NTP client is not configured"
+msgstr "NTP клиент не настроен"
+
+msgid "NTP applier for machine will not be started"
+msgstr "Применение настроек NTP для машины не запускается"
+
+msgid "Running Envvar applier for machine"
+msgstr "Запуск применение настроек Envvar для машины"
+
+msgid "Envvar applier for machine will not be started"
+msgstr "Применение настроек Envvar для машины не запускается"
+
+msgid "Running Envvar applier for user in user context"
+msgstr "Запуск применение настроек Envvar для пользователя в контексте пользователя"
+
+msgid "Envvar applier for user in user context will not be started"
+msgstr "Применение настроек Envvar для пользователя в контексте пользователя не запускается"
+
+msgid "Running Package applier for machine"
+msgstr "Запуск установки пакетов для машины"
+
+msgid "Package applier for machine will not be started"
+msgstr "Применение установки пакетов для машины не запускается"
+
+msgid "Running Package applier for user in administrator context"
+msgstr "Запуск установки пакетов для пользователя в контексте администратора"
+
+msgid "Package applier for user in administrator context will not be started"
+msgstr "Применение установки пакетов для пользователя в контексте администратора не запускается"
+
+msgid "Running pkcon_runner to install and remove packages"
+msgstr "Запуск pkcon_runner для установки и удаления пакетов"
+
+msgid "Run apt-get update"
+msgstr "Запускаем apt-get update"
+
+msgid "Error run apt-get update"
+msgstr "Ошибка запуска apt-get update"
+
+msgid "Run user context applier with dropped privileges"
+msgstr "Запуск из контекста пользователя с удаленными привилегиями"
+
+msgid "Run forked process with droped privileges"
+msgstr "Запустить разветвленный процесс с удаленными привилегиями"
+
+msgid "Found connection by org.freedesktop.DBus.GetConnectionUnixProcessID"
+msgstr "Найдено соединение org.freedesktop.DBus.GetConnectionUnixProcessID"
+
+msgid "Kill dbus-daemon and dconf-service in user context"
+msgstr "Остановка dbus-daemon и dconf-service в контексте пользователя"
+
+msgid "Running CIFS applier for user in administrator context"
+msgstr "Запуск применение настроек CIFS для пользователя в контексте администратора"
+
+msgid "CIFS applier for user in administrator context will not be started"
+msgstr "Применение настроек CIFS для пользователя в контексте администратора не запускается"
+
+msgid "Installing the package"
+msgstr "Установка пакета"
+
+msgid "Removing a package"
+msgstr "Удаление пакета"
+
+msgid "Failed to found gsettings for machine"
+msgstr "Не удалось найти настройки gsettings для машины"
+
+msgid "Failed to found user gsettings"
+msgstr "Не удалось найти настройки gsettings пользователя"
+
+msgid "Configure user Group Policy loopback processing mode"
+msgstr "Настройка режима обработки замыкания пользовательской групповой политики"
+
+msgid "Saving information about script"
+msgstr "Сохранение информации о скрипте"
+
+msgid "No machine scripts directory to clean up"
+msgstr "Нет каталога машинных скриптов для очистки"
+
+msgid "No user scripts directory to clean up"
+msgstr "Нет каталога пользовательских скриптов для очистки"
+
+msgid "Prepare Scripts applier for machine"
+msgstr "Подготовка к применению машинных скриптов"
+
+msgid "Scripts applier for machine will not be started"
+msgstr "Применение машинных скриптов не запускается"
+
+msgid "Prepare Scripts applier for user in user context"
+msgstr "Подготовка к применению скриптов пользователя в его контексте"
+
+msgid "Scripts applier for user in user context will not be started"
+msgstr "Применение скриптов пользователя в его контексте не запускается"
+
+msgid "Clean machine scripts directory"
+msgstr "Очистка каталога машинных скриптов"
+
+msgid "Clean user scripts directory"
+msgstr "Очистка каталога пользовательских скриптов"
+
+msgid "Saving information about file"
+msgstr "Сохранение информации о файле"
+
+msgid "Failed to return file path"
+msgstr "Не удалось вернуть путь к файлу"
+
+msgid "Failed to create file"
+msgstr "Не удалось создать файл"
+
+msgid "Failed to delete file"
+msgstr "Не удалось удалить файл"
+
+msgid "Failed to update file"
+msgstr "Не удалось обновить файл"
+
+msgid "Running File copy applier for machine"
+msgstr "Запуск применение настроек копирования файлов для машины"
+
+msgid "Running File copy applier for machine will not be started"
+msgstr "Применение настроек копирования файлов для машины не будет запущено"
+
+msgid "Running File copy applier for user in administrator context"
+msgstr "Запуск применение настроек копирования файлов для пользователя в контексте администратора"
+
+msgid "Running File copy applier for user in administrator context will not be started"
+msgstr "Применение настроек копирования файлов для пользователя в контексте администратора не будет запущено"
+
+msgid "Running ini applier for machine"
+msgstr "Запуск применение настроек ini файлов для машины"
+
+msgid "Running ini applier for machine will not be started"
+msgstr "Применение настроек ini файлов для машины не будет запущено"
+
+msgid "Running ini applier for user in administrator context"
+msgstr "Запуск применение настроек ini файлов для пользователя в контексте администратора"
+
+msgid "Running ini applier for user in administrator context will not be started"
+msgstr "Применение настроек ini файлов для пользователя в контексте администратора не будет запущено"
+
+msgid "Ini-file path not recognized"
+msgstr "Путь к ini-файлу не распознан"
+
+msgid "Ini-file is not readable"
+msgstr "Ini-файл не читается"
+
+msgid "Saving information about ini-file"
+msgstr "Сохранение информации об ini-файле"
+
+msgid "Dictionary key generation failed"
+msgstr "Формирования ключа словаря не удалось"
+
+msgid "Running CIFS applier for machine"
+msgstr "Запуск применение настроек CIFS для машины"
+
+msgid "CIFS applier for machine will not be started"
+msgstr "Применение настроек CIFS для машины не будет запущено"
+
+msgid "Saving information about network shares"
+msgstr "Сохранение информации о сетевых ресурсах"
+
+msgid "Running networkshare applier for machine"
+msgstr "Запуск применение настроек сетевых каталогов для машины"
+
+msgid "Running networkshare applier for machine will not be starte"
+msgstr "Применение настроек сетевых каталогов для машины не будет запущено"
+
+msgid "Apply network share data action failed"
+msgstr "Не удалось применить действие с данными общего сетевого ресурса"
+
+msgid "Running yandex_browser_applier for machine"
+msgstr "Запуск yandex_browser_applier для машины"
+
+msgid "Yandex_browser_applier for machine will not be started"
+msgstr "Yandex_browser_applier для машины не запустится"
+
+msgid "Wrote YandexBrowser preferences to"
+msgstr "Запись настройки Яндекс Браузера в"
+
+msgid "Running networkshare applier for user"
+msgstr "Запуск применение настроек сетевых каталогов для пользователя"
+
+msgid "Copying a file"
+msgstr "Копирование файла"
+
+msgid "Running networkshare applier for user will not be started"
+msgstr "Применение настроек сетевых каталогов для пользователя не будет запущено"
+
+msgid "Updating a file"
+msgstr "Обновление файла"
+
+msgid "Applying settings for network share"
+msgstr "Применение настроек для сетевой папки"
+
+msgid "Deleting a file"
+msgstr "Удаление файла"
+
+msgid "Running GPOA by root for user"
+msgstr "Запуск GPOA от root для пользователя"
+
+msgid "The GPOA process was started for computer"
+msgstr "Процесс GPOA запущен для компьютера"
+
+msgid "Running networkshare applier for machine will not be started"
+msgstr "Применение настроек сетевых каталогов для машины не будет запущено"
+
+msgid "Failed to create a symlink to the network drives mountpoint"
+msgstr "Не удалось создать ссылку на точку монтирования сетевых дисков пользователя"
+
+msgid "Failed to create a symlink to the system network drives mountpoint"
+msgstr "Не удалось создать ссылку на точку монтирования системных сетевых дисков"
+
+msgid "Failed to create a symlink to the hidden network drives mountpoint"
+msgstr "Не удалось создать ссылку на точку монтирования скрытых сетевых дисков пользователя"
+
+msgid "Failed to create a symlink to the hidden system network drives mountpoint"
+msgstr "Не удалось создать ссылку на точку монтирования скрытых системных сетевых дисков"
+
+# Debug_end
+
+# Warning
+msgid "Unable to perform gpupdate for non-existent user, will update machine settings"
+msgstr "Невозможно запустить gpupdate для несуществующего пользователя, будут обновлены настройки машины"
+
+msgid "Current permissions does not allow to perform gpupdate for designated user. Will update current user settings"
+msgstr "Текущий уровень привилегий не позволяет выполнить gpupdate для указанного пользователя. Будут обновлены настройки текущего пользователя."
+
+msgid "oddjobd is inaccessible"
+msgstr "oddjobd недоступен"
+
+msgid "No SYSVOL entry assigned to GPO"
+msgstr "Объект групповой политики не имеет привязанного пути на SYSVOL"
+
+
+msgid "ADP package is not installed - plugin will not be initialized"
+msgstr "Пакет ADP не установлен, плагин не будет инициализирован"
+
+msgid "Unknown warning code"
+msgstr "Неизвестный код предупреждения"
+
+msgid "Unable to resolve GSettings parameter"
+msgstr "Не удалось установить параметр GSettings"
+
+msgid "No home directory exists for user"
+msgstr "Для пользователя не существует домашнего каталога"
+
+msgid "User's shortcut not placed to home directory"
+msgstr "Ярлык пользователя не помещен в домашний каталог"
+
+msgid "CUPS is not installed: no printer settings will be deployed"
+msgstr "CUPS не установлен: настройки принтера не будут развернуты"
+
+msgid "Unsupported NTP server type"
+msgstr "Неподдерживаемый тип сервера NTP"
+
+msgid "Failed to read the list of files"
+msgstr "Не удалось прочитать список файлов"
+
+msgid "Failed to caching the file"
+msgstr "Не удалось кэшировать файл"
+
+msgid "Could not create a valid list of keys"
+msgstr "Не удалось создать допустимый список ключей"
+
+msgid "Failed to copy file"
+msgstr "Не удалось скопировать файл"
+
+# Fatal
+msgid "Unable to refresh GPO list"
+msgstr "Невозможно обновить список объектов групповых политик"
+
+msgid "Error getting GPTs for machine"
+msgstr "Не удалось получить GPT для машины"
+
+msgid "Error getting GPTs for user"
+msgstr "Не удалось получить GPT для пользователя"
+
+msgid "Unknown fatal code"
+msgstr "Неизвестный код фатальной ошибки"
+
+# get_message
+msgid "Unknown message type, no message assigned"
+msgstr "Неизвестный тип сообщения"
+
