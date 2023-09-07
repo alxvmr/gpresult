@@ -140,7 +140,6 @@ class ReportUser(Report):
         self._computer_name = name
 
     def set_gpo(self, gpo):
-        ipdb.set_trace()
         self.gpos = gpo
 
     def set_warning(self, w):

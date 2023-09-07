@@ -12,7 +12,6 @@ entity = None
 
 def create_entity(data):
     if str(data["is_machine"]) == "True":
-        print(f"\n{data['is_machine']}\n")
         return ReportComputer(data["username"])
     return ReportUser(data["username"])
 
