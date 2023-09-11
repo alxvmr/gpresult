@@ -35,7 +35,6 @@ def backend_factory(dc, username, is_machine, no_domain = False):
     back = None
     config = GPConfig()
 
-    ipdb.set_trace()
     if config.get_backend() == 'samba' and not no_domain:
         if not dc:
             dc = config.get_dc()

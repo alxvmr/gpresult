@@ -58,7 +58,6 @@ class GPConfig:
         '''
         Fetch Domain Controller from configuration file.
         '''
-        ipdb.set_trace()
         if 'samba' in self.full_config:
             if 'dc' in self.full_config['samba']:
                 return self.full_config['samba']['dc']

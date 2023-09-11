@@ -144,7 +144,6 @@ class gpoa_controller:
             if is_root():
                 back = None
                 try:
-                    ipdb.set_trace()
                     back = backend_factory(dc, self.username, self.is_machine, nodomain)
                 except Exception as exc:
                     logdata = dict({'msg': str(exc)})
