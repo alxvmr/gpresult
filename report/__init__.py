@@ -7,6 +7,8 @@ from .gpo import GPO
 from .event import Error, Warning
 from .rep import ReportComputer, ReportUser
 
+import ipdb
+
 entity = None
 
 
@@ -52,16 +54,14 @@ def save_to_html(full_path, dict_info=None):
     with open(full_path, 'w') as file:
         file.write(render_page)
 
-def save_report(path="/home/DOMAIN.ALT/alxvmr2/Рабочий стол", name="gpresult"):
+def save_report(path="~/work"):
     global entity
-    report = entity.get_info_dict()
 
-    # if not name:
-    #     name = "gpresult_" + str(datetime.now()).replace(' ', '_')
+    report = entity.get_info_dict()
+    name = "gpresult_" + str(datetime.now()).replace(' ', '_')
 
     full_path_json = os.path.join(path, f"{name}.json")
     full_path_html = os.path.join(path, f"{name}.html")
     
-
     save_to_json(full_path_json, report)
     save_to_html(full_path_html, report)

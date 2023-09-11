@@ -24,6 +24,7 @@ from .exceptions import PluginInitError
 from util.logging import slogm
 from messages import message_with_code
 
+
 class adp:
     def __init__(self):
         if not is_rpm_installed('adp'):

@@ -23,6 +23,8 @@ from .nodomain_backend import nodomain_backend
 from util.logging import log
 from util.config import GPConfig
 
+import ipdb
+
 def backend_factory(dc, username, is_machine, no_domain = False):
     '''
     Return one of backend objects. Please note that backends must
@@ -33,6 +35,7 @@ def backend_factory(dc, username, is_machine, no_domain = False):
     back = None
     config = GPConfig()
 
+    ipdb.set_trace()
     if config.get_backend() == 'samba' and not no_domain:
         if not dc:
             dc = config.get_dc()

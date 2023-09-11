@@ -42,6 +42,8 @@ from util.logging import log
 from util.exceptions import geterr
 from util.signals import signal_handler
 
+import ipdb
+
 def parse_arguments():
     arguments = argparse.ArgumentParser(description='Generate configuration out of parsed policies')
     arguments.add_argument('user',
@@ -67,6 +69,10 @@ def parse_arguments():
         type=int,
         default=4,
         help='Set logging verbosity level')
+    arguments.add_argument('--result',
+        type=str,
+        default='~/work',
+        help='Set the path for saving graphical results')
     return arguments.parse_args()
 
 class gpoa_controller:
@@ -138,6 +144,7 @@ class gpoa_controller:
             if is_root():
                 back = None
                 try:
+                    ipdb.set_trace()
                     back = backend_factory(dc, self.username, self.is_machine, nodomain)
                 except Exception as exc:
                     logdata = dict({'msg': str(exc)})
@@ -184,13 +191,17 @@ class gpoa_controller:
             pm = plugin_manager()
             pm.run()
 
+    def save_report(self):
+        save_report(path=self.__args.result)
+
+
 def main():
     controller = gpoa_controller()
     controller.run()
+    controller.save_report()
 
 if __name__ == "__main__":
     default_handler = signal.getsignal(signal.SIGINT)
     signal.signal(signal.SIGINT, signal_handler)
     main()
-    save_report()
 
