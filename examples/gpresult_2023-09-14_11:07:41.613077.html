@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/usr/lib/python3/site-packages/gpoa/report/html/styles/style.css">
+    <title>GPResult</title>
+</head>
+<body>
+    <script src="/usr/lib/python3/site-packages/gpoa/report/html/scripts/script.js"></script>
+    <!--  -->
+    <table class="table" border="1">
+        <tr>
+            <td style="background-color: #A0BACB;">
+                
+                    Group Policy Results (<b>for user</b>)
+                
+            </td>
+        </tr>
+        <tr>
+            <td align="left" style="padding-left: 20 px">
+                <table style="width: 100%">
+                    
+                        <tr>
+                            <td>
+                                <b>User name:</b>
+                            </td>
+                            <td>
+                                alxvmr2
+                            </td>
+                        </tr>
+                    
+                    <tr>
+                        <td>
+                            <b>Computer name:</b>
+                        </td>
+                        <td>
+                            TEST-ALXVMR$
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <b>Domain:</b>
+                        </td>
+                        <td>
+                            domain.alt
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <br><br>
+                            TimeStamp: 2023-09-14 11:07:35.025738
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+    <!--  -->
+    <!-- <div class="section"> -->
+
+        
+
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+                
+                    <div class="section">
+                        
+                        <div id=summary_div class="section_title" onclick="show_hide(id)">
+                            <span class="section_title_span" tabindex="0">
+                                Summary
+                            </span>
+                        </div>
+
+                        
+                        <div id=summary_container class="container" style="display: none;">
+                            <div class="secsection">
+                                
+                                    
+                                        <div class="section">
+                                            
+                                            <div id=errors_div class="section_title" onclick="show_hide(id)">
+                                                <span class="section_title_span" tabindex="0">
+                                                    Errors
+                                                </span>
+                                            </div>
+
+                                            
+                                            <div id=errors_container class="container" style="display: none;">
+                                                <div class="secsection">
+                                            <!-- отрисовка ошибок и предупреждений -->
+                                                    
+                                                        No data.
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                    
+
+                                
+                                    
+                                        <div class="section">
+                                            
+                                            <div id=warnings_div class="section_title" onclick="show_hide(id)">
+                                                <span class="section_title_span" tabindex="0">
+                                                    Warnings
+                                                </span>
+                                            </div>
+
+                                            
+                                            <div id=warnings_container class="container" style="display: none;">
+                                                <div class="secsection">
+                                            <!-- отрисовка ошибок и предупреждений -->
+                                                    
+                                                        <table class="tablein">
+                                                            <tr class="trin">
+                                                                <td> <b> </b> </td>
+                                                                <td> <b>Text</b> </td>
+                                                                <td> <b>Additionaly</b> </td>
+                                                            </tr>
+                                                            
+                                                                <tr class="trin"></tr>
+                                                                    <td>
+                                                                        
+                                                                            <svg width="15" height="15" viewBox="0 0 15 15">
+                                                                                <image x="0" y="0" width="15" height="15" xlink:href="/usr/lib/python3/site-packages/gpoa/report/html/imgs/warning.jpg"/>
+                                                                            </svg>
+                                                                        
+                                                                    </td>
+                                                                    <td>Пакет ADP не установлен, плагин не будет инициализирован</td>
+                                                                    <td>None</td>
+                                                                </tr>
+                                                            
+                                                        </table>
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                    
+
+                                
+                                    
+
+                                
+                            </div>
+                        </div>
+                    </div>
+                
+            
+        
+            
+                <div class="section">
+                    
+                    <div id=gpos_div class="section_title" onclick="show_hide(id)">
+                        <span class="section_title_span" tabindex="0">
+                            GPOs
+                        </span>
+                    </div>
+
+                    
+                    <div id=gpos_container class="container" style="display: none;">
+                        <div class="secsection">
+                            
+                                <!-- create table -->
+                                
+                                    Received Group Policy objects:
+                                    <table class="tablein">
+                                        <tr class="trin">
+                                            <td> <b>Name</b> </td>
+                                            <td> <b>UUID</b> </td>
+                                            <td> <b>file_sys_path</b> </td>
+                                        </tr>
+
+                                        
+                                            <tr class="trin"></tr>
+                                                <td>Local Policy</td>
+                                                <td>Local Policy</td>
+                                                <td>None</td>
+                                            </tr>
+                                        
+                                            <tr class="trin"></tr>
+                                                <td>Power policy</td>
+                                                <td>{2BD6C16E-B9F8-43AF-AD4D-D8BA793F32CD}</td>
+                                                <td>\\domain.alt\SysVol\domain.alt\Policies\{2BD6C16E-B9F8-43AF-AD4D-D8BA793F32CD}</td>
+                                            </tr>
+                                        
+                                            <tr class="trin"></tr>
+                                                <td>Password policy</td>
+                                                <td>{4BBEBC8F-8809-4900-934F-1D7AF89AE4F0}</td>
+                                                <td>\\domain.alt\SysVol\domain.alt\Policies\{4BBEBC8F-8809-4900-934F-1D7AF89AE4F0}</td>
+                                            </tr>
+                                        
+                                            <tr class="trin"></tr>
+                                                <td>AA GPO Copy</td>
+                                                <td>{93186AB2-FE91-4047-A516-16D7DFF137CC}</td>
+                                                <td>\\domain.alt\sysvol\domain.alt\Policies\{93186AB2-FE91-4047-A516-16D7DFF137CC}</td>
+                                            </tr>
+                                        
+                                            <tr class="trin"></tr>
+                                                <td>GP_alxvv</td>
+                                                <td>{4BF4F005-7077-4B46-9BD4-739E741E2C92}</td>
+                                                <td>\\domain.alt\sysvol\domain.alt\Policies\{4BF4F005-7077-4B46-9BD4-739E741E2C92}</td>
+                                            </tr>
+                                        
+                                    </table>
+                                
+                            
+                        </div>
+                    </div>
+                </div>
+            
+        
+</body>
+</html>
