@@ -25,6 +25,8 @@ from pathlib import Path
 from .samba import smbopts
 import ast
 
+import ipdb
+
 
 def get_machine_name():
     '''

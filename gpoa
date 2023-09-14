@@ -71,7 +71,7 @@ def parse_arguments():
         help='Set logging verbosity level')
     arguments.add_argument('--result',
         type=str,
-        default='~/work',
+        default='~/wolk',
         help='Set the path for saving graphical results')
     return arguments.parse_args()
 

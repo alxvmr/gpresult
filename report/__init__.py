@@ -7,7 +7,6 @@ from .gpo import GPO
 from .event import Error, Warning
 from .rep import ReportComputer, ReportUser
 
-import ipdb
 
 entity = None
 
