@@ -35,6 +35,8 @@ from .applier_frontend import (
 from util.logging import log
 from util.util import is_machine_name
 
+import ipdb
+
 class firefox_applier(applier_frontend):
     __module_name = 'FirefoxApplier'
     __module_experimental = False
@@ -124,6 +126,8 @@ class firefox_applier(applier_frontend):
         Write policies.json to Firefox installdir.
         '''
         self.create_dict(self.firefox_keys)
+        #print(self.policies_json)
+        #ipdb.set_trace()
         destfile = os.path.join(self.__firefox_installdir1, 'policies.json')
 
         os.makedirs(self.__firefox_installdir1, exist_ok=True)

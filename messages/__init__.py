@@ -360,7 +360,7 @@ def message_with_code(code):
     retstr = '[' + code[0:1] + code[1:].rjust(5, '0') + ']| ' + gettext.gettext(get_message(code))
     
     if code[0] == "W":
-        reporting(code, data=None, mess=retstr)
+       reporting(code, data=None, mess=retstr)
 
     return retstr
 

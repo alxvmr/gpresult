@@ -1,4 +1,5 @@
 from datetime import datetime
+import ipdb
 
 
 class Report():
@@ -11,6 +12,7 @@ class Report():
         self._gpos = []
         self._gpos_applied = []
         self._gpos_not_applied = []
+        self._policies = []
         self._timestamp = str(datetime.now())
     
     @property
@@ -33,6 +35,10 @@ class Report():
     def timestamp(self):
         return self._timestamp
     
+    @property
+    def policies(self):
+        return self._policies
+    
     @domain.setter
     def domain(self, d):
         self._domain = d
@@ -52,6 +58,10 @@ class Report():
     def errors(self, e):
         self._errors.append(e)
 
+    @policies.setter
+    def policies(self, p):
+        self._policies.append(p)
+
     @property
     def is_machine(self):
         return self._is_machine
@@ -65,6 +75,9 @@ class Report():
     def get_errors_dict(self):
         return [e.get_info_dict() for e in self.errors]
     
+    def get_pols_dict(self):
+        return [p.get_info_dict() for p in self.policies]
+    
     def get_info_dict(self):
         return {
             "timestamp": self.timestamp,
@@ -76,6 +89,7 @@ class Report():
                 "type":"summary"
             },
             "gpos": self.get_gpos_dict(),
+            "pols" : self.get_pols_dict()
         }
 
 

@@ -6,6 +6,9 @@ from datetime import datetime
 from .gpo import GPO
 from .event import Error, Warning
 from .rep import ReportComputer, ReportUser
+from .pol import Policy
+
+import ipdb
 
 
 entity = None
@@ -32,6 +35,9 @@ def reporting(message_code, data, mess):
         elif message_code == "D19":
             if data["varname"] == 'machine_name':
                 entity.computer_name = data["value"]
+        elif message_code == "D91": # firefox
+            # p = Policy(data["destfile"], "firefox")
+            entity.policies = Policy(data["destfile"], "firefox")
         elif message_code[0] == "W":
             entity.set_warning(Warning(mess, data))
         elif message_code[0] == "E":
