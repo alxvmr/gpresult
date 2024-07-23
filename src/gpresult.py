@@ -1,3 +1,10 @@
+##
+# @file   gpresult.py
+# @author Maria Alexeeva <alxvmr@altlinux.com>
+# The main module that performs argument 
+# parsing with the string command. It calls the other modules.
+#/
+
 import argparse
 from gpr_get_policies import get_policies
 from gpr_show import formatted_show
@@ -5,9 +12,6 @@ import socket
 
 import gettext
 
-'''
-TODO: Добавить определение языка системы
-'''
 gettext.bindtextdomain("gpresult", "/locales")
 gettext.textdomain("gpresult")
 t = gettext.translation("gpresult", localedir="locales", languages=['ru_RU'])
