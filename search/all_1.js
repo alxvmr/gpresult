@@ -6,5 +6,6 @@ var searchData=
   ['get_5fpolicies_3',['get_policies',['../gpr__get__policies_8py.html#a2addf535b48a6dde263bd5e7308bb417',1,'gpr_get_policies']]],
   ['get_5fuid_5ffrom_5fname_4',['get_uid_from_name',['../gpr__get__policies_8py.html#a96e5494792fd7a2cdabb5d59bd8ade40',1,'gpr_get_policies']]],
   ['gpr_5fget_5fpolicies_2epy_5',['gpr_get_policies.py',['../gpr__get__policies_8py.html',1,'']]],
-  ['gpr_5fshow_2epy_6',['gpr_show.py',['../gpr__show_8py.html',1,'']]]
+  ['gpr_5fshow_2epy_6',['gpr_show.py',['../gpr__show_8py.html',1,'']]],
+  ['gpresult_2epy_7',['gpresult.py',['../gpresult_8py.html',1,'']]]
 ];
