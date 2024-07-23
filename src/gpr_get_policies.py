@@ -6,7 +6,6 @@
 # This file provides functions to read policies 
 # from the binary file /etc/dconf/db/<policy_name>
 #
-# @bug     No know bugs.
 #/
 import gi
 import pwd
@@ -23,7 +22,7 @@ PATH_DB = "/etc/dconf/db/policy"
 
 ## @brief   Defining uid by username.
 #  @param   name User or machine name.
-#  @todo    Remove getpwnam from get_uid_from_name.
+#  @todo    Replace getpwnam.
 #  @return	User uid.
 def get_uid_from_name(name):
     pw = pwd.getpwnam(name)
