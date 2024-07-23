@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-07-22 14:32+0400\n"
+"POT-Creation-Date: 2024-07-23 19:21+0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,18 +17,19 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: gpresult.py:18
+#: ../../../src/gpresult.py:22
 msgid "Information about applied policies"
 msgstr "Информация о примененных политиках"
 
-#: gpresult.py:21
+#: ../../../src/gpresult.py:25
 msgid "Output format"
 msgstr "Формат вывода"
 
-#: gpresult.py:24
+#: ../../../src/gpresult.py:28
 msgid "Get information about applied policies for a user"
-msgstr "Получить информацию о примененных политиках для указанного пользователя"
+msgstr ""
+"Получить информацию о примененных политиках для указанного пользователя"
 
-#: gpresult.py:27
+#: ../../../src/gpresult.py:31
 msgid "Get information about applied machine policies"
-msgstr "Получение информации о примененных машинных политиках"
+msgstr "Получить информацию о примененных машинных политиках"
