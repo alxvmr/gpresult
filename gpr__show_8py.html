@@ -112,8 +112,8 @@ Functions</h2></td></tr>
 <tr class="memitem:a93eae36bdcd0f8648ba5cd99b2982e75" id="r_a93eae36bdcd0f8648ba5cd99b2982e75"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gpr__show_8py.html#a93eae36bdcd0f8648ba5cd99b2982e75">gpr_show.header_gen</a> (type, name)</td></tr>
 <tr class="memdesc:a93eae36bdcd0f8648ba5cd99b2982e75"><td class="mdescLeft">&#160;</td><td class="mdescRight">Composing an output header.  <br /></td></tr>
 <tr class="separator:a93eae36bdcd0f8648ba5cd99b2982e75"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad83cd2130e8dd02613f730e4f249a1ca" id="r_ad83cd2130e8dd02613f730e4f249a1ca"><td class="memItemLeft" align="right" valign="top"><a id="ad83cd2130e8dd02613f730e4f249a1ca" name="ad83cd2130e8dd02613f730e4f249a1ca"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>gpr_show.formatted_show</b> (policies, type, name)</td></tr>
+<tr class="memitem:ad83cd2130e8dd02613f730e4f249a1ca" id="r_ad83cd2130e8dd02613f730e4f249a1ca"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gpr__show_8py.html#ad83cd2130e8dd02613f730e4f249a1ca">gpr_show.formatted_show</a> (policies, type, name)</td></tr>
+<tr class="memdesc:ad83cd2130e8dd02613f730e4f249a1ca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Formatted output as a table.  <br /></td></tr>
 <tr class="separator:ad83cd2130e8dd02613f730e4f249a1ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
@@ -130,6 +130,64 @@ Variables</h2></td></tr>
 <dl class="section author"><dt>Author</dt><dd>Maria Alexeeva <a href="#" onclick="location.href='mai'+'lto:'+'alx'+'vm'+'r@a'+'lt'+'lin'+'ux'+'.co'+'m'; return false;">alxvm<span class="obfuscator">.nosp@m.</span>r@al<span class="obfuscator">.nosp@m.</span>tlinu<span class="obfuscator">.nosp@m.</span>x.co<span class="obfuscator">.nosp@m.</span>m</a> </dd></dl>
 <p>Module for displaying the result of a readout (from the prt_get_policies.py module) / </p>
 </div><h2 class="groupheader">Function Documentation</h2>
+<a id="ad83cd2130e8dd02613f730e4f249a1ca" name="ad83cd2130e8dd02613f730e4f249a1ca"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad83cd2130e8dd02613f730e4f249a1ca">&#9670;&#160;</a></span>formatted_show()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">gpr_show.formatted_show </td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>policies</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>type</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>name</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Formatted output as a table. </p>
+<dl class="section note"><dt>Note</dt><dd>The output contains 2 columns - the policy key and the value. The output width is the length of the longest line + 3 empty characters for each of the columns. </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">policies</td><td>A dictionary of lists containing policy keys and values. @type type Object type is machine or user. </td></tr>
+    <tr><td class="paramname">name</td><td>Object Name. <div class="fragment"><div class="line">Список примененных политик для машины host-1.domain.test:</div>
+<div class="line"> </div>
+<div class="line">/Software/BaseALT/Policies/Control/ssh-gssapi-auth                    <span class="stringliteral">&#39;enabled&#39;</span>                                                                                                   </div>
+<div class="line">/Software/BaseALT/Policies/Control/system-policy                      <span class="stringliteral">&#39;gpupdate&#39;</span>                                                                                                  </div>
+<div class="line">/Software/BaseALT/Policies/Control/sshd-gssapi-auth                   <span class="stringliteral">&#39;enabled&#39;</span>                                                                                                   </div>
+<div class="line">/Software/BaseALT/Policies/Control/sshd-allow-groups                  <span class="stringliteral">&#39;enabled&#39;</span>                                                                                                   </div>
+<div class="line">/Software/BaseALT/Policies/SystemdUnits/sshd.service                  1                                                                                                           </div>
+<div class="line">/Software/BaseALT/Policies/Control/sshd-allow-groups-list             <span class="stringliteral">&#39;remote&#39;</span>                                                                                                    </div>
+<div class="line">/Software/BaseALT/Policies/ReadQueue/Machine/0                        <span class="stringliteral">&quot;(&#39;Local Policy&#39;, &#39;/var/cache/gpupdate/local-policy&#39;, None)&quot;</span>                                                </div>
+<div class="line">/Software/BaseALT/Policies/SystemdUnits/gpupdate.service              1                                                                                                           </div>
+<div class="line">/Software/BaseALT/Policies/ReadQueue/Machine/1                        <span class="stringliteral">&quot;(&#39;qwe1&#39;, &#39;/var/cache/samba/gpo_cache/DOMAIN.TEST/POLICIES/{506A92C2-9C84-40CD-A950-FFEE42A9B0A5}&#39;, 131074)&quot;</span></div>
+<div class="line">/Software/BaseALT/Policies/SystemdUnits/oddjobd.service               1                                                                                                           </div>
+<div class="line">/SOFTWARE/Policies/Microsoft/WindowsFirewall/FirewallRules/OpenSSH    <span class="stringliteral">&#39;v2.20|Action=Allow|Active=TRUE|Dir=In|Protocol=6|LPort=22|Name=Open SSH port|Desc=Open SSH port|&#39;</span></div>
+</div><!-- fragment --> </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Formatted printing of the policies. </dd></dl>
+
+</div>
+</div>
 <a id="a93eae36bdcd0f8648ba5cd99b2982e75" name="a93eae36bdcd0f8648ba5cd99b2982e75"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a93eae36bdcd0f8648ba5cd99b2982e75">&#9670;&#160;</a></span>header_gen()</h2>
 
