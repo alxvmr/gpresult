@@ -1,30 +1,27 @@
 var indexSectionsWithContent =
 {
-  0: "glpt",
+  0: "fghlpt",
   1: "g",
-  2: "g",
-  3: "g",
-  4: "p",
-  5: "lt"
+  2: "fgh",
+  3: "p",
+  4: "lt"
 };
 
 var indexSectionNames =
 {
   0: "all",
-  1: "namespaces",
-  2: "files",
-  3: "functions",
-  4: "variables",
-  5: "pages"
+  1: "files",
+  2: "functions",
+  3: "variables",
+  4: "pages"
 };
 
 var indexSectionLabels =
 {
   0: "All",
-  1: "Namespaces",
-  2: "Files",
-  3: "Functions",
-  4: "Variables",
-  5: "Pages"
+  1: "Files",
+  2: "Functions",
+  3: "Variables",
+  4: "Pages"
 };
 
