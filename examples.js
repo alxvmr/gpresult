@@ -1,4 +1,4 @@
 var examples =
 [
-    [ "example/formatted_show.md", "example_2formatted_show_8md-example.html", null ]
+    [ "example/formatted_show", "example_2formatted_show-example.html", null ]
 ];
