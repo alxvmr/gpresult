@@ -28,7 +28,8 @@ var NAVTREE =
     [ "Todo List", "todo.html", null ],
     [ "Files", "files.html", [
       [ "File List", "files.html", "files_dup" ]
-    ] ]
+    ] ],
+    [ "Examples", "examples.html", "examples" ]
   ] ]
 ];
 
