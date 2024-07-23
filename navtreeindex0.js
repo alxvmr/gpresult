@@ -1,7 +1,7 @@
 var NAVTREEINDEX0 =
 {
 "dir_68267d1309a1af8e8297ef4c3efbcdba.html":[1,0,0],
-"example_2formatted_show-example.html":[2,0],
+"example_2formatted_show_8txt-example.html":[2,0],
 "examples.html":[2],
 "files.html":[1,0],
 "gpr__get__policies_8py.html":[1,0,0,0],
