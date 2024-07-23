@@ -1,0 +1,13 @@
+Список примененных политик для машины host-1.domain.test:
+
+/Software/BaseALT/Policies/Control/ssh-gssapi-auth                    'enabled'                                                                                                   
+/Software/BaseALT/Policies/Control/system-policy                      'gpupdate'                                                                                                  
+/Software/BaseALT/Policies/Control/sshd-gssapi-auth                   'enabled'                                                                                                   
+/Software/BaseALT/Policies/Control/sshd-allow-groups                  'enabled'                                                                                                   
+/Software/BaseALT/Policies/SystemdUnits/sshd.service                  1                                                                                                           
+/Software/BaseALT/Policies/Control/sshd-allow-groups-list             'remote'                                                                                                    
+/Software/BaseALT/Policies/ReadQueue/Machine/0                        "('Local Policy', '/var/cache/gpupdate/local-policy', None)"                                                
+/Software/BaseALT/Policies/SystemdUnits/gpupdate.service              1                                                                                                           
+/Software/BaseALT/Policies/ReadQueue/Machine/1                        "('qwe1', '/var/cache/samba/gpo_cache/DOMAIN.TEST/POLICIES/{506A92C2-9C84-40CD-A950-FFEE42A9B0A5}', 131074)"
+/Software/BaseALT/Policies/SystemdUnits/oddjobd.service               1                                                                                                           
+/SOFTWARE/Policies/Microsoft/WindowsFirewall/FirewallRules/OpenSSH    'v2.20|Action=Allow|Active=TRUE|Dir=In|Protocol=6|LPort=22|Name=Open SSH port|Desc=Open SSH port|'

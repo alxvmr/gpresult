@@ -1,11 +1,14 @@
-'''
-Модуль для отображения результата вычитывания
-'''
+##
+# @file   gpr_show.py
+# @author Maria Alexeeva <alxvmr@altlinux.com>
+# @brief  Output format of applied policies.
+# 
+# Module for displaying the result of
+# a readout (from the prt_get_policies.py module)
+#/
 import gettext
 
-'''
-TODO: Добавить определение языка системы
-'''
+#  @todo    Add a definition of the system language.
 gettext.bindtextdomain("gpr_show", "/locales")
 gettext.textdomain("gpr_show")
 t = gettext.translation("gpr_show", localedir="locales", languages=['ru_RU'])
@@ -13,9 +16,11 @@ t.install()
 _ = t.gettext
 
 
-'''
-TODO: Добавить в заголовок тип вывода (без пустых ключей, ...)
-'''
+## @brief   Composing an output header.
+#  @param   type Object type is machine or user.
+#  @param   name Object Name.
+#  @todo    Add an output type to the header (no empty keys, etc.)
+#  @return  Header for displaying the list of applied policies.
 def header_gen(type, name):
     s = _("\nA list of applied policies for the ")
     if type == 'user':
@@ -24,6 +29,17 @@ def header_gen(type, name):
         s += _("machine {}:\n\n").format(name)
     return s
 
+## @brief   Formatted output as a table.
+#  @note    The output contains 2 columns - 
+#           the policy key and the value. 
+#           The output width is the length of 
+#           the longest line + 3 empty characters 
+#           for each of the columns:
+#  @include example/formatted_show
+#  @param   policies A dictionary of lists containing policy keys and values.
+#  @type    type Object type is machine or user.
+#  @param   name Object Name.
+#  @return  Formatted printing of the policies.
 def formatted_show(policies, type, name):
     keys = policies['keys']
     values = policies['values']
