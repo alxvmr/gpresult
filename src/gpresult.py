@@ -21,7 +21,7 @@ _ = t.gettext
 def parse_cli_arguments():
     argparser = argparse.ArgumentParser(description=_("Information about applied policies"))
     argparser.add_argument('-t', '--type',
-                           choices=['all'],
+                           choices=['verbose', 'formatted'],
                            help = _("Output format"))
     argparser.add_argument('-u', '--user',
                            type=str,
@@ -34,12 +34,17 @@ def parse_cli_arguments():
 
 def main():
     args = parse_cli_arguments()
-    if args.type == 'all':
-        if args.user:
-            policies = get_policies(args.user)
+    if args.user:
+        policies = get_policies(args.user)
+        if args.type == 'verbose':
+            pass
+        elif args.type == 'formatted':
             formatted_show(policies, 'user', args.user)
-        elif args.machine:
-            policies = get_policies()
+    elif args.machine:
+        policies = get_policies()
+        if args.type == 'verbose':
+            pass
+        elif args.type == 'formatted':
             formatted_show(policies, 'machine', socket.gethostname())
         
 
