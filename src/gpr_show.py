@@ -35,9 +35,9 @@ def header_gen(type, name):
 #           The output width is the length of 
 #           the longest line + 3 empty characters 
 #           for each of the columns:
-#  @include example/formatted_show
+#  @include formatted_show.txt
 #  @param   policies A dictionary of lists containing policy keys and values.
-#  @type    type Object type is machine or user.
+#  @param   type Object type is machine or user.
 #  @param   name Object Name.
 #  @return  Formatted printing of the policies.
 def formatted_show(policies, type, name):
