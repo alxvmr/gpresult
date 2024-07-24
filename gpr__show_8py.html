@@ -115,6 +115,9 @@ Functions</h2></td></tr>
 <tr class="memitem:ad83cd2130e8dd02613f730e4f249a1ca" id="r_ad83cd2130e8dd02613f730e4f249a1ca"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gpr__show_8py.html#ad83cd2130e8dd02613f730e4f249a1ca">gpr_show.formatted_show</a> (policies, type, name)</td></tr>
 <tr class="memdesc:ad83cd2130e8dd02613f730e4f249a1ca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Formatted output as a table.  <br /></td></tr>
 <tr class="separator:ad83cd2130e8dd02613f730e4f249a1ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a34a36132c5735419713b68e4c3e6c19b" id="r_a34a36132c5735419713b68e4c3e6c19b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gpr__show_8py.html#a34a36132c5735419713b68e4c3e6c19b">gpr_show.verbose_show</a> (policies)</td></tr>
+<tr class="memdesc:a34a36132c5735419713b68e4c3e6c19b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Output without formatting.  <br /></td></tr>
+<tr class="separator:a34a36132c5735419713b68e4c3e6c19b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
@@ -225,6 +228,39 @@ Variables</h2></td></tr>
 </dl>
 <dl class="todo"><dt><b><a class="el" href="todo.html#_todo000002">Todo:</a></b></dt><dd>Add an output type to the header (no empty keys, etc.) </dd></dl>
 <dl class="section return"><dt>Returns</dt><dd>Header for displaying the list of applied policies. </dd></dl>
+
+</div>
+</div>
+<a id="a34a36132c5735419713b68e4c3e6c19b" name="a34a36132c5735419713b68e4c3e6c19b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a34a36132c5735419713b68e4c3e6c19b">&#9670;&#160;</a></span>verbose_show()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">gpr_show.verbose_show </td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>policies</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Output without formatting. </p>
+<dl class="section note"><dt>Note</dt><dd>The output format is space-separated elements. This solution is provided for comfortable use of the grep command. Example output: <div class="fragment"><div class="line">/Software/BaseALT/Policies/Control/ssh-gssapi-auth <span class="stringliteral">&#39;enabled&#39;</span></div>
+<div class="line">/Software/BaseALT/Policies/Control/system-policy <span class="stringliteral">&#39;gpupdate&#39;</span></div>
+<div class="line">/Software/BaseALT/Policies/Control/sshd-gssapi-auth <span class="stringliteral">&#39;enabled&#39;</span></div>
+<div class="line">/Software/BaseALT/Policies/Control/sshd-allow-groups <span class="stringliteral">&#39;enabled&#39;</span></div>
+<div class="line">/Software/BaseALT/Policies/SystemdUnits/sshd.service 1</div>
+</div><!-- fragment --> </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">policies</td><td>A dictionary of lists containing policy keys and values. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Printing of the policies. </dd></dl>
 
 </div>
 </div>
