@@ -35,17 +35,18 @@ def parse_cli_arguments():
 def main():
     args = parse_cli_arguments()
     if args.user:
+        obj = 'user'
+        name = args.user
         policies = get_policies(args.user)
-        if args.type == 'verbose':
-            verbose_show(policies)
-        elif args.type == 'formatted':
-            formatted_show(policies, 'user', args.user)
-    elif args.machine:
+    else:
+        obj = 'machine'
+        name = socket.gethostname()
         policies = get_policies()
-        if args.type == 'verbose':
-            verbose_show(policies)
-        elif args.type == 'formatted':
-            formatted_show(policies, 'machine', socket.gethostname())
+    
+    if args.type == 'verbose':
+        verbose_show(policies)
+    elif args.type == 'formatted':
+        formatted_show(policies, obj, name)
         
 
 if __name__ == "__main__":
