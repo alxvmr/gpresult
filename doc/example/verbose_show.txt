@@ -1,0 +1,5 @@
+/Software/BaseALT/Policies/Control/ssh-gssapi-auth 'enabled'
+/Software/BaseALT/Policies/Control/system-policy 'gpupdate'
+/Software/BaseALT/Policies/Control/sshd-gssapi-auth 'enabled'
+/Software/BaseALT/Policies/Control/sshd-allow-groups 'enabled'
+/Software/BaseALT/Policies/SystemdUnits/sshd.service 1

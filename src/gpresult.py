@@ -7,7 +7,7 @@
 
 import argparse
 from gpr_get_policies import get_policies
-from gpr_show import formatted_show
+from gpr_show import formatted_show, verbose_show
 import socket
 
 import gettext
@@ -37,13 +37,13 @@ def main():
     if args.user:
         policies = get_policies(args.user)
         if args.type == 'verbose':
-            pass
+            verbose_show(policies)
         elif args.type == 'formatted':
             formatted_show(policies, 'user', args.user)
     elif args.machine:
         policies = get_policies()
         if args.type == 'verbose':
-            pass
+            verbose_show(policies)
         elif args.type == 'formatted':
             formatted_show(policies, 'machine', socket.gethostname())
         

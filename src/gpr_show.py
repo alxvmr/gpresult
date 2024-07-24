@@ -58,7 +58,25 @@ def formatted_show(policies, type, name):
                 max_v = l
     max_n += 3
 
+    output += "{:^{max_n}s} {:^{max_v}s}\n".format(_("Policy keys:"), _("Values of policy keys:"), max_n=max_n, max_v=max_v)
     for n, v in zip(keys, values):
         output += "{:{max_n}s} {:{max_v}s}\n".format(str(n), str(v), max_n=max_n, max_v=max_v)
     
+    print(output)
+
+## @brief   Output without formatting.
+#  @note    The output format is space-separated elements. 
+#           This solution is provided for comfortable use
+#           of the grep command.
+#           Example output:
+#  @include verbose_show.txt
+#  @param   policies A dictionary of lists containing policy keys and values.
+#  @return  Printing of the policies.
+def verbose_show(policies):
+    keys = policies['keys']
+    values = policies['values']
+    output = ""
+
+    for n, v in zip(keys, values):
+        output += "{} {}\n".format(str(n), str(v))
     print(output)
