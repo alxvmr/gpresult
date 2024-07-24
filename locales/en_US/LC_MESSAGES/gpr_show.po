@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-07-24 12:37+0400\n"
+"POT-Creation-Date: 2024-07-24 13:46+0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -40,3 +40,11 @@ msgid ""
 msgstr ""
 "machine {}:\n"
 "\n"
+
+#: src/gpr_show.py:61
+msgid "Policy keys:"
+msgstr "Policy keys:"
+
+#: src/gpr_show.py:61
+msgid "Values of policy keys:"
+msgstr ""
