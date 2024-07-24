@@ -45,8 +45,8 @@ def formatted_show(policies, type, name):
     values = policies['values']
     output = header_gen(type, name)
 
-    max_n = -1
-    max_v = -1
+    max_n = 0
+    max_v = 0
     for n, v in zip(keys, values):
         if n:
           l = len(n)
@@ -57,10 +57,11 @@ def formatted_show(policies, type, name):
             if l > max_v:
                 max_v = l
     max_n += 3
-
-    output += "{:^{max_n}s} {:^{max_v}s}\n".format(_("Policy keys:"), _("Values of policy keys:"), max_n=max_n, max_v=max_v)
-    for n, v in zip(keys, values):
-        output += "{:{max_n}s} {:{max_v}s}\n".format(str(n), str(v), max_n=max_n, max_v=max_v)
+    
+    if max_n > 0 and max_v > 0:
+        output += "{:^{max_n}s} {:^{max_v}s}\n".format(_("Policy keys:"), _("Values of policy keys:"), max_n=max_n, max_v=max_v)
+        for n, v in zip(keys, values):
+            output += "{:{max_n}s} {:{max_v}s}\n".format(str(n), str(v), max_n=max_n, max_v=max_v)
     
     print(output)
 
