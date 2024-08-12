@@ -7,8 +7,9 @@
 
 import argparse
 from gpr_get_policies import get_policies
-from gpr_show import formatted_show, verbose_show
+from gpr_show import show
 import socket
+import os
 
 import gettext
 
@@ -21,10 +22,10 @@ _ = t.gettext
 def parse_cli_arguments():
     argparser = argparse.ArgumentParser(description=_("Information about applied policies"))
     argparser.add_argument('-t', '--type',
-                           choices=['verbose', 'formatted'],
+                           choices=['verbose', 'standart'],
                            help = _("Output format"))
     argparser.add_argument('-u', '--user',
-                           type=str,
+                           action='store_true',
                            help=_('Get information about applied policies for a user'))
     argparser.add_argument('-m', '--machine',
                            action='store_true',
@@ -36,17 +37,14 @@ def main():
     args = parse_cli_arguments()
     if args.user:
         obj = 'user'
-        name = args.user
-        policies = get_policies(args.user)
+        name = os.getlogin()
+        policies = get_policies(name)
     else:
         obj = 'machine'
         name = socket.gethostname()
         policies = get_policies()
     
-    if args.type == 'verbose':
-        verbose_show(policies)
-    elif args.type == 'formatted':
-        formatted_show(policies, obj, name)
+    show(obj, name, args.type)
         
 
 if __name__ == "__main__":
