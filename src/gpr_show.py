@@ -7,6 +7,7 @@
 # a readout (from the prt_get_policies.py module)
 #/
 import gettext
+import gpr_sytem
 
 #  @todo    Add a definition of the system language.
 gettext.bindtextdomain("gpr_show", "../locales")
@@ -16,18 +17,94 @@ t.install()
 _ = t.gettext
 
 
-## @brief   Composing an output header.
-#  @param   type Object type is machine or user.
-#  @param   name Object Name.
-#  @todo    Add an output type to the header (no empty keys, etc.)
-#  @return  Header for displaying the list of applied policies.
-def header_gen(type, name):
-    s = _("\nA list of applied policies for the ")
+def dict_to_formatted_output(data, offset):
+    max_n = 0
+    max_v = 0
+    output = ""
+
+    for n, v in data.items():
+        if n:
+          l = len(n)
+          if l > max_n:
+              max_n = l
+        if v:
+            l = len(str(v))
+            if l > max_v:
+                max_v = l
+    max_n += 3
+
+    if max_n > 0 and max_v > 0:
+        for n, v in data.items():
+            output += " " * offset + "{:{max_n}s} {:{max_v}s}\n".format(str(n), str(v), max_n=max_n, max_v=max_v)
+
+    return output
+
+
+def header_gen():
+    timest = gpr_sytem.get_timestamp()
+    s = _("\nCreated on {}").format(timest)
+    return {"body": s,
+            "type": "str"
+            }
+
+
+def rsop_gen(type, name):
+    header = _("The resulting set of policies for the ")
     if type == 'user':
-        s += _("user {}:\n\n").format(name)
+        header += _("user {}:").format(name)
     elif type == 'machine':
-        s += _("machine {}:\n\n").format(name)
-    return s
+        header += _("machine {}:").format(name)
+
+    sys_info = gpr_sytem.os_conf()
+    sys_info.update(gpr_sytem.get_user_home_dir())
+
+    return {"header": header,
+            "body": [{"body": sys_info,
+                     "type": "format"
+                     }],
+            "type": "section"
+            }
+
+
+def user_settings_gen():
+    header = _("USER SETTINGS")
+
+    return {"header": header,
+            "body": [],
+            "type": "section"
+            }
+
+
+def gen(obj_type, name, output_type):
+    data = []
+    if output_type == "standart":
+        data.extend([
+            header_gen(),
+            rsop_gen(obj_type, name),
+            user_settings_gen()
+        ])
+    return data
+
+
+def show_helper(data, offset):
+    for elem in data:
+        if elem["type"] == "section":
+            # отрисовка заголовка секции
+            print("\n" + offset * " " + elem["header"])
+            print(offset * " " + len(elem["header"]) * "-" + "\n")
+            show_helper(elem["body"], offset + 4)
+        if elem["type"] == "format":
+            print(dict_to_formatted_output(elem["body"], offset))
+        if elem["type"] == "str":
+            print(elem["body"] + "\n")
+
+
+def show(obj_type, name, output_type="standart"):
+    data = gen(obj_type, name, output_type)
+    offset = 0
+    show_helper(data, offset)
+    
+
 
 ## @brief   Formatted output as a table.
 #  @note    The output contains 2 columns - 
@@ -43,7 +120,7 @@ def header_gen(type, name):
 def formatted_show(policies, type, name):
     keys = policies['keys']
     values = policies['values']
-    output = header_gen(type, name)
+    output = header_gen()
 
     max_n = 0
     max_v = 0
