@@ -13,9 +13,9 @@ import os
 
 import gettext
 
-gettext.bindtextdomain("gpresult", "../locales")
+gettext.bindtextdomain("gpresult", "locales")
 gettext.textdomain("gpresult")
-t = gettext.translation("gpresult", localedir="../locales", languages=['ru_RU'])
+t = gettext.translation("gpresult", localedir="locales", languages=['ru_RU'])
 t.install()
 _ = t.gettext
 
@@ -38,13 +38,13 @@ def main():
     if args.user:
         obj = 'user'
         name = os.getlogin()
-        policies = get_policies(name)
+        policies = get_policies(name=name, type=args.type)
     else:
         obj = 'machine'
         name = socket.gethostname()
-        policies = get_policies()
+        policies = get_policies(type=args.type)
     
-    show(obj, name, args.type)
+    show(policies, obj, name, args.type)
         
 
 if __name__ == "__main__":
