@@ -20,12 +20,12 @@ def get_timestamp():
 
 def os_conf():
     os_id, os_version, os_name = distro.linux_distribution()
-    return {_("OS Configuration:"): os_id,
-            _("OS Version:"): f"{os_version} ({os_name})"}
+    return [[_("OS Configuration:"), os_id],
+            [_("OS Version:"), f"{os_version} ({os_name})"]]
 
 def get_user_home_dir():
     home_dir = os.path.expanduser("~")
-    return {_("Local Profile:"): home_dir}
+    return [_("Local Profile:"), home_dir]
 
 ## @brief   Defining uid by username.
 #  @param   name User or machine name.

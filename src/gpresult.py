@@ -22,7 +22,7 @@ _ = t.gettext
 def parse_cli_arguments():
     argparser = argparse.ArgumentParser(description=_("Information about applied policies"))
     argparser.add_argument('-t', '--type',
-                           choices=['verbose', 'standart'],
+                           choices=['verbose', 'standart', 'with_keys'],
                            help = _("Output format"))
     argparser.add_argument('-u', '--user',
                            action='store_true',

@@ -19,23 +19,17 @@ _ = t.gettext
 
 def dict_to_formatted_output(data, offset):
     max_n = 0
-    max_v = 0
     output = ""
 
-    for n, v in data.items():
-        if n:
-          l = len(n)
-          if l > max_n:
+    for i in range(len(data)):
+        l = len(data[i][0])
+        if l > max_n:
               max_n = l
-        if v:
-            l = len(str(v))
-            if l > max_v:
-                max_v = l
     max_n += 3
 
-    if max_n > 0 and max_v > 0:
-        for n, v in data.items():
-            output += " " * offset + "{:{max_n}s} {:{max_v}s}\n".format(str(n), str(v), max_n=max_n, max_v=max_v)
+    if max_n > 0:
+        for i in range(len(data)):
+            output += " " * offset + "{:{max_n}s} {:s}\n".format(str(data[i][0]), str(data[i][1]), max_n=max_n)
 
     return output
 
@@ -56,7 +50,7 @@ def rsop_gen(type, name):
         header += _("machine {}:").format(name)
 
     sys_info = gpr_system.os_conf()
-    sys_info.update(gpr_system.get_user_home_dir())
+    sys_info.append(gpr_system.get_user_home_dir())
 
     return {"header": header,
             "body": [{"body": sys_info,
@@ -68,16 +62,26 @@ def rsop_gen(type, name):
 
 def policies_gen(policies, type):
     header = _("Applied Group Policy Objects")
+    body = []
 
     if type == 'standart':
         policies_name = list(policies.keys())
+        body.append({"body": policies_name,
+                     "type": 'list'
+                    })
+    elif type == "with_keys":
+        for policy_name, value in policies.items():
+            body.append({"header": policy_name,
+                         "body":[{"body": value,
+                                  "type": 'format'
+                                }],
+                         "type": 'subsection'})
 
-        return {"header": header,
-                "body": [{"body": policies_name,
-                          "type": 'list'
-                          }],
-                "type": 'section'
-                }
+
+    return {"header": header,
+        "body": body,
+        "type": 'section'
+        }
 
 
 def user_settings_gen(policies, output_type='standart'):
@@ -93,7 +97,7 @@ def user_settings_gen(policies, output_type='standart'):
 
 def gen(policies, obj_type, name, output_type):
     data = []
-    if output_type == "standart":
+    if output_type == "standart" or output_type == "with_keys":
         data.extend([
             header_gen(),
             rsop_gen(obj_type, name),
@@ -109,10 +113,11 @@ def print_list(l, offset):
 
 def show_helper(data, offset):
     for elem in data:
-        if elem["type"] == "section":
+        if elem["type"] == "section" or elem["type"] == "subsection":
             # отрисовка заголовка секции
             print("\n" + offset * " " + elem["header"])
-            print(offset * " " + len(elem["header"]) * "-")
+            if elem["type"] == "section":
+                print(offset * " " + len(elem["header"]) * "-")
             show_helper(elem["body"], offset + 4)
         if elem["type"] == "format":
             print(dict_to_formatted_output(elem["body"], offset))

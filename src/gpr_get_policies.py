@@ -8,7 +8,6 @@
 #
 #/
 import gi
-import gettext
 
 gi.require_version("Gvdb", "1.0")
 gi.require_version("GLib", "2.0")
@@ -45,7 +44,7 @@ def get_policies(name=None, type='standart'):
         uid = gpr_system.get_uid_from_name(name)
     path = get_path_to_policy(uid)
 
-    if type == 'standart': # or output the policy name with keys and values ...
+    if type == 'standart' or type == "with_keys": # or output the policy name with keys and values ...
         policies = get_applied_policy_names(path)
     return policies
 
