@@ -7,7 +7,7 @@
 # a readout (from the prt_get_policies.py module)
 #/
 import gettext
-import gpr_sytem
+import gpr_system
 
 #  @todo    Add a definition of the system language.
 gettext.bindtextdomain("gpr_show", "../locales")
@@ -41,7 +41,7 @@ def dict_to_formatted_output(data, offset):
 
 
 def header_gen():
-    timest = gpr_sytem.get_timestamp()
+    timest = gpr_system.get_timestamp()
     s = _("\nCreated on {}").format(timest)
     return {"body": s,
             "type": "str"
@@ -55,8 +55,8 @@ def rsop_gen(type, name):
     elif type == 'machine':
         header += _("machine {}:").format(name)
 
-    sys_info = gpr_sytem.os_conf()
-    sys_info.update(gpr_sytem.get_user_home_dir())
+    sys_info = gpr_system.os_conf()
+    sys_info.update(gpr_system.get_user_home_dir())
 
     return {"header": header,
             "body": [{"body": sys_info,
