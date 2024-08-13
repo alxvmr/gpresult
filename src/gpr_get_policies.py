@@ -19,13 +19,6 @@ from gi.repository import GLib
 import gpr_system
 import ast
 
-#  @todo    Add a definition of the system language.
-gettext.bindtextdomain("gpr_get_policies", "locales")
-gettext.textdomain("gpr_get_policies")
-t = gettext.translation("gpr_get_policies", localedir="../locales", languages=['ru_RU'])
-t.install()
-_ = t.gettext
-
 ## @brief   The path to concatenate with uid to 
 #           retrieve a specific policy database
 PATH_DB = "/etc/dconf/db/policy"
