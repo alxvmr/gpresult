@@ -112,7 +112,7 @@ def show_helper(data, offset):
         if elem["type"] == "section":
             # отрисовка заголовка секции
             print("\n" + offset * " " + elem["header"])
-            print(offset * " " + len(elem["header"]) * "-" + "\n")
+            print(offset * " " + len(elem["header"]) * "-")
             show_helper(elem["body"], offset + 4)
         if elem["type"] == "format":
             print(dict_to_formatted_output(elem["body"], offset))
