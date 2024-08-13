@@ -40,6 +40,13 @@ def dict_to_formatted_output(data, offset):
 
     return output
 
+def get_verbose_output(data):
+    s = ""
+    for i in range(len(data)):
+        s += f"{data[i][0]} {data[i][1]}\n"
+
+    return s
+
 
 def header_gen():
     timest = gpr_system.get_timestamp()
@@ -83,8 +90,10 @@ def policies_gen(policies, type):
                                   "type": 'format'
                                 }],
                          "type": 'subsection'})
-
-
+    elif type == "verbose":
+        for policy_name, value in policies.items():
+            return {"body": value, "type": 'verbose'}
+            
     return {"header": header,
         "body": body,
         "type": 'section'
@@ -92,8 +101,10 @@ def policies_gen(policies, type):
 
 
 def user_settings_gen(policies, output_type='standart'):
+    if output_type == 'verbose':
+        return policies_gen(policies, output_type)
+    
     header = _("USER SETTINGS")
-
     policies = policies_gen(policies, output_type)
 
     return {"header": header,
@@ -108,6 +119,11 @@ def gen(policies, obj_type, name, output_type):
         data.extend([
             header_gen(),
             rsop_gen(obj_type, name),
+            user_settings_gen(policies, output_type)
+        ])
+    elif output_type == "verbose":
+        data.extend([
+            header_gen(),
             user_settings_gen(policies, output_type)
         ])
     return data
@@ -128,6 +144,8 @@ def show_helper(data, offset):
             show_helper(elem["body"], offset + 4)
         if elem["type"] == "format":
             print(dict_to_formatted_output(elem["body"], offset))
+        if elem["type"] == 'verbose':
+            print(get_verbose_output(elem["body"]))
         if elem["type"] == "str":
             print(elem["body"] + "\n")
         if elem["type"] == "list":
