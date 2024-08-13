@@ -8,24 +8,14 @@
 #
 #/
 import gi
-import pwd
-import logging, gettext
+import gettext
 
 gi.require_version("Gvdb", "1.0")
 gi.require_version("GLib", "2.0")
 
 from gi.repository import Gvdb
 from gi.repository import GLib
-
-logger = logging.getLogger(__name__)
-logger.setLevel(logging.ERROR)
-formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
-console_handler = logging.StreamHandler()
-console_handler.setFormatter(formatter)
-logger.addHandler(console_handler)
-file_handler = logging.FileHandler('../logs/gpr_get_policies.log')
-file_handler.setFormatter(formatter)
-logger.addHandler(file_handler)
+import gpr_system
 
 #  @todo    Add a definition of the system language.
 gettext.bindtextdomain("gpr_get_policies", "../locales")
@@ -37,19 +27,6 @@ _ = t.gettext
 ## @brief   The path to concatenate with uid to 
 #           retrieve a specific policy database
 PATH_DB = "/etc/dconf/db/policy"
-
-## @brief   Defining uid by username.
-#  @param   name User or machine name.
-#  @todo    Replace getpwnam.
-#  @return	User uid.
-def get_uid_from_name(name):
-    try:
-        pw = pwd.getpwnam(name)
-    except KeyError as e:
-        logger.error(_("An entry for the name {} could not be found. The user or machine name may be incorrect.").format(name))
-        exit()
-    uid = pw.pw_uid
-    return uid
 
 ## @brief   Creating a path to user/machine policy.
 #  @param   uid User uid.
@@ -69,7 +46,7 @@ def get_path_to_policy(uid=None):
 def get_policies(name=None):
     uid = None
     if name:
-        uid = get_uid_from_name(name)
+        uid = gpr_system.get_uid_from_name(name)
     path = get_path_to_policy(uid)
     policies = get_non_empty_keys_policies(path)
     return policies
