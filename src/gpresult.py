@@ -15,7 +15,7 @@ import gettext
 
 gettext.bindtextdomain("gpresult", "locales")
 gettext.textdomain("gpresult")
-t = gettext.translation("gpresult", localedir="locales", languages=['ru_RU'])
+t = gettext.translation("gpresult", localedir="../locales", languages=['ru_RU'])
 t.install()
 _ = t.gettext
 

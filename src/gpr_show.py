@@ -12,7 +12,7 @@ import gpr_system
 #  @todo    Add a definition of the system language.
 gettext.bindtextdomain("gpr_show", "locales")
 gettext.textdomain("gpr_show")
-t = gettext.translation("gpr_show", localedir="locales", languages=['ru_RU'])
+t = gettext.translation("gpr_show", localedir="../locales", languages=['ru_RU'])
 t.install()
 _ = t.gettext
 

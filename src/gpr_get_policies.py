@@ -22,7 +22,7 @@ import ast
 #  @todo    Add a definition of the system language.
 gettext.bindtextdomain("gpr_get_policies", "locales")
 gettext.textdomain("gpr_get_policies")
-t = gettext.translation("gpr_get_policies", localedir="locales", languages=['ru_RU'])
+t = gettext.translation("gpr_get_policies", localedir="../locales", languages=['ru_RU'])
 t.install()
 _ = t.gettext
 
