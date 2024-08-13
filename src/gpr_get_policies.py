@@ -65,7 +65,7 @@ def get_applied_policy_names(path):
                 value_of_key_policy = value_of_key_policy.get_string()
 
             if ('policy_name' in meta) and (meta['policy_name'] != ''):
-                applied_policy_with_keys.setdefault(meta['policy_name'], []).append([k, value_of_key_policy])
+                applied_policy_with_keys.setdefault(meta['policy_name'], []).append([k, value_of_key_policy, meta])
 
     return applied_policy_with_keys
 

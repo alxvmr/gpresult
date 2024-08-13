@@ -8,6 +8,7 @@
 #/
 import gettext
 import gpr_system
+import ast
 
 #  @todo    Add a definition of the system language.
 gettext.bindtextdomain("gpr_show", "locales")
@@ -29,7 +30,13 @@ def dict_to_formatted_output(data, offset):
 
     if max_n > 0:
         for i in range(len(data)):
-            output += " " * offset + "{:{max_n}s} {:s}\n".format(str(data[i][0]), str(data[i][1]), max_n=max_n)
+            if len(data[i]) > 2 and type(data[i][2]) == dict and data[i][2]["is_list"]:
+                data_list = ast.literal_eval(data[i][1])
+                output += " " * offset + "{:{max_n}s} {:s}\n".format(str(data[i][0]), str(data_list[0]), max_n=max_n)
+                for i in range (1, len(data_list)):
+                    output += " " * offset + "{:{max_n}s} {:s}\n".format(" ", str(data_list[i]), max_n=max_n)
+            else:
+                output += " " * offset + "{:{max_n}s} {:s}\n".format(str(data[i][0]), str(data[i][1]), max_n=max_n)
 
     return output
 
