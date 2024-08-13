@@ -10,9 +10,9 @@ import gettext
 import gpr_system
 
 #  @todo    Add a definition of the system language.
-gettext.bindtextdomain("gpr_show", "../locales")
+gettext.bindtextdomain("gpr_show", "locales")
 gettext.textdomain("gpr_show")
-t = gettext.translation("gpr_show", localedir="../locales", languages=['ru_RU'])
+t = gettext.translation("gpr_show", localedir="locales", languages=['ru_RU'])
 t.install()
 _ = t.gettext
 
@@ -66,24 +66,45 @@ def rsop_gen(type, name):
             }
 
 
-def user_settings_gen():
+def policies_gen(policies, type):
+    header = _("Applied Group Policy Objects")
+
+    if type == 'standart':
+        policies_name = list(policies.keys())
+
+        return {"header": header,
+                "body": [{"body": policies_name,
+                          "type": 'list'
+                          }],
+                "type": 'section'
+                }
+
+
+def user_settings_gen(policies, output_type='standart'):
     header = _("USER SETTINGS")
 
+    policies = policies_gen(policies, output_type)
+
     return {"header": header,
-            "body": [],
+            "body": [policies],
             "type": "section"
             }
 
 
-def gen(obj_type, name, output_type):
+def gen(policies, obj_type, name, output_type):
     data = []
     if output_type == "standart":
         data.extend([
             header_gen(),
             rsop_gen(obj_type, name),
-            user_settings_gen()
+            user_settings_gen(policies, output_type)
         ])
     return data
+
+
+def print_list(l, offset):
+    for e in l:
+        print(" " * offset + e)
 
 
 def show_helper(data, offset):
@@ -97,10 +118,12 @@ def show_helper(data, offset):
             print(dict_to_formatted_output(elem["body"], offset))
         if elem["type"] == "str":
             print(elem["body"] + "\n")
+        if elem["type"] == "list":
+            print_list(elem["body"], offset)
 
 
-def show(obj_type, name, output_type="standart"):
-    data = gen(obj_type, name, output_type)
+def show(policies, obj_type, name, output_type="standart"):
+    data = gen(policies, obj_type, name, output_type)
     offset = 0
     show_helper(data, offset)
     
