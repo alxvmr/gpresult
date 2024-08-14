@@ -70,14 +70,14 @@ def header_gen():
 def rsop_gen(type, name):
     header = _("The resulting set of policies for the ")
 
+    sys_info = gpr_system.os_conf()
+
     if type == 'user':
         header += _("user {}:").format(name)
+        sys_info.append(gpr_system.get_user_home_dir())
 
     elif type == 'machine':
         header += _("machine {}:").format(name)
-
-    sys_info = gpr_system.os_conf()
-    sys_info.append(gpr_system.get_user_home_dir())
 
     return {"header": header,
             "body": [{"body": sys_info,
