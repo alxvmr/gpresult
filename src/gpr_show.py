@@ -6,14 +6,18 @@
 # Module for displaying the result of
 # a readout (from the prt_get_policies.py module)
 #/
-import gettext
 import gpr_system
 import ast
 
-#  @todo    Add a definition of the system language.
+import gettext, locale
+
+loc = locale.getlocale()[0]
+if loc not in ['ru_RU', 'en_US']:
+    loc = 'en_US'
+
 gettext.bindtextdomain("gpr_show", "locales")
 gettext.textdomain("gpr_show")
-t = gettext.translation("gpr_show", localedir="../locales", languages=['ru_RU'])
+t = gettext.translation("gpr_show", localedir="../locales", languages=[loc])
 t.install()
 _ = t.gettext
 

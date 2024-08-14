@@ -5,13 +5,19 @@ import distro
 import datetime
 import os
 import pwd
-import gettext
+
+import gettext, locale
+
+loc = locale.getlocale()[0]
+if loc not in ['ru_RU', 'en_US']:
+    loc = 'en_US'
 
 gettext.bindtextdomain("gpr_system", "locales")
 gettext.textdomain("gpr_system")
-t = gettext.translation("gpr_system", localedir="../locales", languages=['ru_RU'])
+t = gettext.translation("gpr_system", localedir="../locales", languages=[loc])
 t.install()
 _ = t.gettext
+
 
 def get_timestamp():
     now = datetime.datetime.now()
