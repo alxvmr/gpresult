@@ -18,15 +18,18 @@ _ = t.gettext
 
 
 def parse_cli_arguments():
-    argparser = argparse.ArgumentParser(description=_("Information about applied policies"))
+    argparser = argparse.ArgumentParser(description=_("Information about applied policies"), formatter_class=argparse.RawTextHelpFormatter)
 
     argparser.add_argument('-t', '--type',
-                           choices=['verbose', 'standart', 'with_keys'],
-                           help = _("Output format"))
+                           choices=['verbose', 'standard', 'with_keys'],
+                           help = _("Output format. Choose one of the following options:\n"\
+                                    "* verbose: display of policy keys and values\n"\
+                                    "* standard: standard output including environment information; outputs only the names of applied policies\n"\
+                                    "* with_keys: is similar to the standard output, in addition, the applied keys and policy values are also output"))
     
     argparser.add_argument('-u', '--user',
                            action='store_true',
-                           help=_('Get information about applied policies for a user'))
+                           help=_('Get information about applied policies for a current user'))
     
     argparser.add_argument('-m', '--machine',
                            action='store_true',
