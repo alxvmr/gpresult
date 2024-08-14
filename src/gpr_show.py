@@ -91,8 +91,11 @@ def policies_gen(policies, type):
                                 }],
                          "type": 'subsection'})
     elif type == "verbose":
+        body = []
         for policy_name, value in policies.items():
-            return {"body": value, "type": 'verbose'}
+            for e in value:
+                body.append(e)
+        return {"body": body, "type": 'verbose'}
             
     return {"header": header,
         "body": body,
