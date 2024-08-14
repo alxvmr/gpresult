@@ -1,3 +1,4 @@
+#! /usr/bin/env python3
 import argparse
 from gpr_get_policies import get_policies
 from gpr_show import show
@@ -29,11 +30,11 @@ def parse_cli_arguments():
     
     argparser.add_argument('-u', '--user',
                            action='store_true',
-                           help=_('Get information about applied policies for a current user'))
+                           help=_('Get information about applied policies for the current user'))
     
     argparser.add_argument('-m', '--machine',
                            action='store_true',
-                           help=_('Get information about applied machine policies'))
+                           help=_('Get information about applied policies for the current machine'))
     
     return argparser.parse_args()
 
