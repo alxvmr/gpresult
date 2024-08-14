@@ -38,7 +38,7 @@ def dict_to_formatted_output(data, offset):
             else:
                 output += " " * offset + "{:{max_n}s} {:s}\n".format(str(data[i][0]), str(data[i][1]), max_n=max_n)
 
-    return output
+    return output[:-1]
 
 def get_verbose_output(data):
     s = ""
