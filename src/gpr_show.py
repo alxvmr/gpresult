@@ -91,7 +91,7 @@ def policies_gen(policies, type):
     header = _("Applied Group Policy Objects")
     body = []
 
-    if type == 'standart':
+    if type == 'standard':
         policies_name = list(policies.keys())
         body.append({"body": policies_name,
                      "type": 'list'
@@ -121,7 +121,7 @@ def policies_gen(policies, type):
         }
 
 
-def user_settings_gen(policies, output_type='standart'):
+def user_settings_gen(policies, output_type='standard'):
     if output_type == 'verbose':
         return policies_gen(policies, output_type)
     
@@ -137,7 +137,7 @@ def user_settings_gen(policies, output_type='standart'):
 def gen(policies, obj_type, name, output_type):
     data = []
 
-    if output_type == "standart" or output_type == "with_keys":
+    if output_type == "standard" or output_type == "with_keys":
         data.extend([
             header_gen(),
             rsop_gen(obj_type, name),
@@ -176,7 +176,7 @@ def show_helper(data, offset):
             print(get_list_output(elem["body"], offset))
 
 
-def show(policies, obj_type, name, output_type="standart"):
+def show(policies, obj_type, name, output_type="standard"):
     data = gen(policies, obj_type, name, output_type)
     offset = 0
 

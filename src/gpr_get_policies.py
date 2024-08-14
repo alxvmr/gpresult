@@ -10,7 +10,7 @@ import gpr_system
 import ast
 
 
-def get_policies(name=None, type='standart'):
+def get_policies(name=None, type='standard'):
     uid = None
     policies = None
 
@@ -18,7 +18,7 @@ def get_policies(name=None, type='standart'):
         uid = gpr_system.get_uid_from_name(name)
     path = gpr_system.get_path_to_policy(uid)
 
-    if type == 'standart' or type == "with_keys" or type == "verbose":
+    if type == 'standard' or type == "with_keys" or type == "verbose":
         policies = get_applied_policy_names(path)
 
     return policies
