@@ -111,6 +111,8 @@ def policies_gen(policies, type):
             for e in value:
                 body.append(e)
 
+        body.sort(key = lambda x: x[0])
+
         return {"body": body, "type": 'verbose'}
             
     return {"header": header,
