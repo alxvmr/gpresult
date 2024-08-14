@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-08-13 14:59+0400\n"
+"POT-Creation-Date: 2024-08-14 13:15+0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,18 +17,30 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/gpresult.py:23
+#: src/gpresult.py:21
 msgid "Information about applied policies"
 msgstr "Information about applied policies"
 
-#: src/gpresult.py:26
-msgid "Output format"
-msgstr "Output format"
-
-#: src/gpresult.py:29
-msgid "Get information about applied policies for a user"
-msgstr "Get information about applied policies for a user"
+#: src/gpresult.py:25
+msgid ""
+"Output format. Choose one of the following options:\n"
+"* verbose: display of policy keys and values\n"
+"* standard: standard output including environment information; outputs only "
+"the names of applied policies\n"
+"* with_keys: is similar to the standard output, in addition, the applied "
+"keys and policy values are also output"
+msgstr ""
 
 #: src/gpresult.py:32
+msgid "Get information about applied policies for a current user"
+msgstr ""
+
+#: src/gpresult.py:36
 msgid "Get information about applied machine policies"
 msgstr "Get information about applied machine policies"
+
+#~ msgid "Output format"
+#~ msgstr "Output format"
+
+#~ msgid "Get information about applied policies for a user"
+#~ msgstr "Get information about applied policies for a user"
