@@ -107,7 +107,7 @@ def policies_gen(policies, type):
             
     elif type == "verbose":
         body = []
-        for policy_name, value in policies.items():
+        for value in policies.values():
             for e in value:
                 body.append(e)
 
