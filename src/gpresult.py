@@ -13,7 +13,7 @@ if loc not in ['ru_RU', 'en_US']:
 
 gettext.bindtextdomain("gpresult", "locales")
 gettext.textdomain("gpresult")
-t = gettext.translation("gpresult", localedir="locales", languages=[loc])
+t = gettext.translation("gpresult", localedir="/usr/lib/python3/site-packages/gpresult/locales", languages=[loc])
 t.install()
 _ = t.gettext
 
@@ -31,14 +31,16 @@ def parse_cli_arguments():
     argparser.add_argument('-id', '--id',
                            action='store_true',
                            help=_("Add policy ID output for policies\n"\
-                                  "* For the verbose output type, the option does not apply"))
+                                  "* For the <verbose> output type the option does not apply"))
     
     argparser.add_argument("-polid", "--policy_id",
-                           help="Information about policy keys and values by ID",
+                           help=_("Information about policy keys and values by ID\n"\
+                                  "* For the <with_keys> output type the option does not apply"),
                            type=str)
     
     argparser.add_argument("-poln", "--policy_name",
-                           help="Information about policy keys and values by name",
+                           help=_("Information about policy keys and values by name\n"\
+                                  "* For the <with_keys> output type the option does not apply"),
                            type=str)
     
     argparser.add_argument('-u', '--user',

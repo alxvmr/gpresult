@@ -11,7 +11,7 @@ if loc not in ['ru_RU', 'en_US']:
 
 gettext.bindtextdomain("gpr_system", "locales")
 gettext.textdomain("gpr_system")
-t = gettext.translation("gpr_system", localedir="locales", languages=[loc])
+t = gettext.translation("gpr_system", localedir="/usr/lib/python3/site-packages/gpresult/locales", languages=[loc])
 t.install()
 _ = t.gettext
 

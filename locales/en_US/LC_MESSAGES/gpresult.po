@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-08-15 13:47+0400\n"
+"POT-Creation-Date: 2024-08-15 16:48+0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -34,18 +34,43 @@ msgstr ""
 #: src/gpresult.py:33
 msgid ""
 "Add policy ID output for policies\n"
-"* For the verbose output type, the option does not apply"
+"* For the <verbose> output type the option does not apply"
 msgstr ""
 "Add policy ID output for policies\n"
-"* For the verbose output type, the option does not apply"
+"* For the <verbose> output type the option does not apply"
 
-#: src/gpresult.py:38
-msgid "Get information about applied policies for the current user"
+#: src/gpresult.py:37
+msgid ""
+"Information about policy keys and values by ID\n"
+"* For the <with_keys> output type the option does not apply"
 msgstr ""
+"Information about policy keys and values by ID\n"
+"* For the <with_keys> output type the option does not apply"
 
 #: src/gpresult.py:42
+msgid ""
+"Information about policy keys and values by name\n"
+"* For the <with_keys> output type the option does not apply"
+msgstr ""
+"Information about policy keys and values by name\n"
+"* For the <with_keys> output type the option does not apply"
+
+#: src/gpresult.py:48
+msgid "Get information about applied policies for the current user"
+msgstr ""
+"Get information about applied policies for the current user"
+
+#: src/gpresult.py:52
 msgid "Get information about applied policies for the current machine"
 msgstr ""
+"Get information about applied policies for the current machine"
+
+#~ msgid ""
+#~ "Add policy ID output for policies\n"
+#~ "* For the verbose output type, the option does not apply"
+#~ msgstr ""
+#~ "Add policy ID output for policies\n"
+#~ "* For the verbose output type, the option does not apply"
 
 #~ msgid "Get information about applied machine policies"
 #~ msgstr "Get information about applied machine policies"
