@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-08-15 13:47+0400\n"
+"POT-Creation-Date: 2024-08-15 16:48+0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -40,18 +40,41 @@ msgstr ""
 #: src/gpresult.py:33
 msgid ""
 "Add policy ID output for policies\n"
-"* For the verbose output type, the option does not apply"
+"* For the <verbose> output type the option does not apply"
 msgstr ""
-"Добавить вывод идентификатора политики\n"
-"* Для типа вывода verbose данная опция не применяется"
+"Добавить вывод ID политики\n"
+"* Не применяется в комбинации с форматом вывода <verbose>"
 
-#: src/gpresult.py:38
+#: src/gpresult.py:37
+msgid ""
+"Information about policy keys and values by ID\n"
+"* For the <with_keys> output type the option does not apply"
+msgstr ""
+"Получить информацию о ключах и значениях политики по ID\n"
+"* Не применяется в комбинации с форматом вывода <with_keys>"
+
+#: src/gpresult.py:42
+msgid ""
+"Information about policy keys and values by name\n"
+"* For the <with_keys> output type the option does not apply"
+msgstr ""
+"Получить информацию о ключах и значениях политики по ее отображаемому имени\n"
+"* Не применяется в комбинации с форматом вывода <with_keys>"
+
+#: src/gpresult.py:48
 msgid "Get information about applied policies for the current user"
 msgstr "Получить информацию о примененных политиках для текущего пользователя"
 
-#: src/gpresult.py:42
+#: src/gpresult.py:52
 msgid "Get information about applied policies for the current machine"
 msgstr "Получить информацию о примененных политиках для текущей машины"
+
+#~ msgid ""
+#~ "Add policy ID output for policies\n"
+#~ "* For the verbose output type, the option does not apply"
+#~ msgstr ""
+#~ "Добавить вывод идентификатора политики\n"
+#~ "* Для типа вывода verbose данная опция не применяется"
 
 #~ msgid "Output format"
 #~ msgstr "Формат вывода"

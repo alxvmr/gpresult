@@ -31,14 +31,16 @@ def parse_cli_arguments():
     argparser.add_argument('-id', '--id',
                            action='store_true',
                            help=_("Add policy ID output for policies\n"\
-                                  "* For the verbose output type, the option does not apply"))
+                                  "* For the <verbose> output type the option does not apply"))
     
     argparser.add_argument("-polid", "--policy_id",
-                           help="Information about policy keys and values by ID",
+                           help=_("Information about policy keys and values by ID\n"\
+                                  "* For the <with_keys> output type the option does not apply"),
                            type=str)
     
     argparser.add_argument("-poln", "--policy_name",
-                           help="Information about policy keys and values by name",
+                           help=_("Information about policy keys and values by name\n"\
+                                  "* For the <with_keys> output type the option does not apply"),
                            type=str)
     
     argparser.add_argument('-u', '--user',

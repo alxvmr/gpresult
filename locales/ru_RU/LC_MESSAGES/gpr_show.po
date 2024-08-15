@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-08-15 13:47+0400\n"
+"POT-Creation-Date: 2024-08-15 16:44+0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -41,7 +41,7 @@ msgstr "машины {}:"
 msgid "Applied Group Policy Objects"
 msgstr "Примененные Объекты Групповой Политики"
 
-#: src/gpr_show.py:142
+#: src/gpr_show.py:154
 msgid "USER SETTINGS"
 msgstr "ПОЛЬЗОВАТЕЛЬСКИЕ НАСТРОЙКИ"
 
