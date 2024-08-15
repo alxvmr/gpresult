@@ -9,7 +9,7 @@ if loc not in ['ru_RU', 'en_US']:
 
 gettext.bindtextdomain("gpr_show", "locales")
 gettext.textdomain("gpr_show")
-t = gettext.translation("gpr_show", localedir="../locales", languages=[loc])
+t = gettext.translation("gpr_show", localedir="locales", languages=[loc])
 t.install()
 _ = t.gettext
 

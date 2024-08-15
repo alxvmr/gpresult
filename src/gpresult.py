@@ -13,7 +13,7 @@ if loc not in ['ru_RU', 'en_US']:
 
 gettext.bindtextdomain("gpresult", "locales")
 gettext.textdomain("gpresult")
-t = gettext.translation("gpresult", localedir="../locales", languages=[loc])
+t = gettext.translation("gpresult", localedir="locales", languages=[loc])
 t.install()
 _ = t.gettext
 
