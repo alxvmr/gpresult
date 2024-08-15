@@ -92,22 +92,36 @@ def policies_gen(policies, type):
     body = []
 
     if type == 'standard':
-        policies_name = list(policies.keys())
-        body.append({"body": policies_name,
-                     "type": 'list'
-                    })
+        if policies[1]:
+            policies_name_with_id = [[pol, policies[1][pol]] for pol in policies[0]]
+            body.append({"body": policies_name_with_id,
+                         "type": 'format'
+                         })
+        else:
+            policies_name = list(policies[0].keys())
+            body.append({"body": policies_name,
+                         "type": 'list'
+                        })
         
     elif type == "with_keys":
-        for policy_name, value in policies.items():
-            body.append({"header": policy_name,
-                         "body":[{"body": value,
-                                  "type": 'format'
-                                }],
-                         "type": 'subsection'})
+        if policies[1]:
+            for policy_name, value in policies[0].items():
+                body.append({"header": f"{policy_name} {policies[1][policy_name]}\n",
+                             "body":[{"body": value,
+                                      "type": 'format'
+                                    }],
+                             "type": 'subsection'})
+        else:
+            for policy_name, value in policies[0].items():
+                body.append({"header": policy_name,
+                             "body":[{"body": value,
+                                      "type": 'format'
+                                    }],
+                             "type": 'subsection'})
             
     elif type == "verbose":
         body = []
-        for value in policies.values():
+        for value in policies[0].values():
             for e in value:
                 body.append(e)
 

@@ -28,6 +28,11 @@ def parse_cli_arguments():
                                     "* standard: standard output including environment information; outputs only the names of applied policies\n"\
                                     "* with_keys: is similar to the standard output, in addition, the applied keys and policy values are also output"))
     
+    argparser.add_argument('-id', '--id',
+                           action='store_true',
+                           help=_("Add policy ID output for policies\n"\
+                                  "* For the verbose output type, the option does not apply"))
+    
     argparser.add_argument('-u', '--user',
                            action='store_true',
                            help=_('Get information about applied policies for the current user'))
@@ -44,12 +49,12 @@ def main():
     if args.user:
         obj = 'user'
         name = os.getlogin()
-        policies = get_policies(name=name, type=args.type)
+        policies = get_policies(name=name, type=args.type, with_id=args.id)
 
     else:
         obj = 'machine'
         name = socket.gethostname()
-        policies = get_policies(type=args.type)
+        policies = get_policies(type=args.type, with_id=args.id)
     
     show(policies, obj, name, args.type)
 
