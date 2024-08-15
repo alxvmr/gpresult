@@ -119,7 +119,7 @@ def policies_gen(policies, type, is_cmd):
                                 })
             
         elif type == "with_keys":
-            if policies[0] and policies[1]:
+            if policies[1]:
                 for policy_name, value in policies[0].items():
                     if policy_name in policies[1].keys():
                         body.append({"header": f"{policy_name} {policies[1][policy_name]}\n",
@@ -127,6 +127,13 @@ def policies_gen(policies, type, is_cmd):
                                             "type": 'format'
                                             }],
                                     "type": 'subsection'})
+            elif policies[0]:
+                for policy_name, value in policies[0].items():
+                    body.append({"header": policy_name,
+                                 "body":[{"body": value,
+                                          "type": 'format'
+                                        }],
+                                 "type": 'subsection'})
                 
         elif type == "verbose":
             if policies[0]:
