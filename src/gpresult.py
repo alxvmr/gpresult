@@ -33,6 +33,14 @@ def parse_cli_arguments():
                            help=_("Add policy ID output for policies\n"\
                                   "* For the verbose output type, the option does not apply"))
     
+    argparser.add_argument("-polid", "--policy_id",
+                           help="Information about policy keys and values by ID",
+                           type=str)
+    
+    argparser.add_argument("-poln", "--policy_name",
+                           help="Information about policy keys and values by name",
+                           type=str)
+    
     argparser.add_argument('-u', '--user',
                            action='store_true',
                            help=_('Get information about applied policies for the current user'))
@@ -46,17 +54,34 @@ def parse_cli_arguments():
 def main():
     args = parse_cli_arguments()
 
+    obj = None
+    name = None
+    name_uid = None
+
     if args.user:
         obj = 'user'
-        name = os.getlogin()
-        policies = get_policies(name=name, type=args.type, with_id=args.id)
+        name = name_uid = os.getlogin()
 
     else:
         obj = 'machine'
         name = socket.gethostname()
-        policies = get_policies(type=args.type, with_id=args.id)
-    
-    show(policies, obj, name, args.type)
+
+    if args.policy_id or args.policy_name:
+        if args.type in ['verbose', 'standard']:
+            if args.policy_id:
+                policies = get_policies(name=name_uid, type=args.type, with_id=args.id, cmd="id", cmd_name=args.policy_id)
+                show(policies, obj, name, args.type, True)
+            elif args.policy_name:
+                policies = get_policies(name=name_uid, type=args.type, with_id=args.id, cmd="name", cmd_name=args.policy_name)
+                show(policies, obj, name, args.type, True)
+        else:
+            pass # TODO: To infer an invalid output format for this option
+    else:
+        if args.id and args.type == 'verbose':
+            pass # TODO: To infer an invalid output format for this option
+        else:
+            policies = get_policies(name=name_uid, type=args.type, with_id=args.id)
+            show(policies, obj, name, args.type, False)
 
 
 if __name__ == "__main__":

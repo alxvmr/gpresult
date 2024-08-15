@@ -87,47 +87,56 @@ def rsop_gen(type, name):
             }
 
 
-def policies_gen(policies, type):
+def policies_gen(policies, type, is_cmd):
     header = _("Applied Group Policy Objects")
     body = []
 
-    if type == 'standard':
-        if policies[1]:
-            policies_name_with_id = [[pol, policies[1][pol]] for pol in policies[0]]
-            body.append({"body": policies_name_with_id,
-                         "type": 'format'
-                         })
-        else:
-            policies_name = list(policies[0].keys())
-            body.append({"body": policies_name,
-                         "type": 'list'
-                        })
+    if is_cmd:
+        if policies[0]:
+            for e in policies[0]:
+                body.append([e[0], e[1]])
+
+            body.sort(key = lambda x: x[0])
+
+        if type == 'standard':
+            return {"body": body, "type": 'format'}
+        elif type == 'verbose':
+            return {"body": body, "type": 'verbose'}
         
-    elif type == "with_keys":
-        if policies[1]:
-            for policy_name, value in policies[0].items():
-                body.append({"header": f"{policy_name} {policies[1][policy_name]}\n",
-                             "body":[{"body": value,
-                                      "type": 'format'
-                                    }],
-                             "type": 'subsection'})
-        else:
-            for policy_name, value in policies[0].items():
-                body.append({"header": policy_name,
-                             "body":[{"body": value,
-                                      "type": 'format'
-                                    }],
-                             "type": 'subsection'})
+    else:
+        if type == 'standard':
+            if policies[1] and policies[0]:
+                policies_name_with_id = [[pol, policies[1][pol]] for pol in policies[0]]
+                body.append({"body": policies_name_with_id,
+                             "type": 'format'
+                             })
+    
+            else:
+                if policies[0]:
+                    policies_name = list(policies[0].keys())
+                    body.append({"body": policies_name,
+                                "type": 'list'
+                                })
             
-    elif type == "verbose":
-        body = []
-        for value in policies[0].values():
-            for e in value:
-                body.append(e)
+        elif type == "with_keys":
+            if policies[0] and policies[1]:
+                for policy_name, value in policies[0].items():
+                    if policy_name in policies[1].keys():
+                        body.append({"header": f"{policy_name} {policies[1][policy_name]}\n",
+                                    "body":[{"body": value,
+                                            "type": 'format'
+                                            }],
+                                    "type": 'subsection'})
+                
+        elif type == "verbose":
+            if policies[0]:
+                for value in policies[0].values():
+                    for e in value:
+                        body.append(e)
 
-        body.sort(key = lambda x: x[0])
-
-        return {"body": body, "type": 'verbose'}
+                body.sort(key = lambda x: x[0])
+    
+            return {"body": body, "type": 'verbose'}
             
     return {"header": header,
         "body": body,
@@ -135,12 +144,15 @@ def policies_gen(policies, type):
         }
 
 
-def user_settings_gen(policies, output_type='standard'):
+def user_settings_gen(policies, output_type='standard', is_cmd=False):
+    if is_cmd:
+        return policies_gen(policies, output_type, is_cmd)
+
     if output_type == 'verbose':
-        return policies_gen(policies, output_type)
+        return policies_gen(policies, output_type, False)
     
     header = _("USER SETTINGS")
-    policies = policies_gen(policies, output_type)
+    policies = policies_gen(policies, output_type, False)
 
     return {"header": header,
             "body": [policies],
@@ -148,20 +160,26 @@ def user_settings_gen(policies, output_type='standard'):
             }
 
 
-def gen(policies, obj_type, name, output_type):
+def gen(policies, obj_type, name, output_type, is_cmd):
     data = []
 
-    if output_type == "standard" or output_type == "with_keys":
+    if is_cmd:
+        data.extend([
+            header_gen(),
+            user_settings_gen(policies, output_type, is_cmd)
+        ])
+
+    elif output_type == "standard" or output_type == "with_keys":
         data.extend([
             header_gen(),
             rsop_gen(obj_type, name),
-            user_settings_gen(policies, output_type)
+            user_settings_gen(policies, output_type, False)
         ])
 
     elif output_type == "verbose":
         data.extend([
             header_gen(),
-            user_settings_gen(policies, output_type)
+            user_settings_gen(policies, output_type, False)
         ])
 
     return data
@@ -190,8 +208,8 @@ def show_helper(data, offset):
             print(get_list_output(elem["body"], offset))
 
 
-def show(policies, obj_type, name, output_type="standard"):
-    data = gen(policies, obj_type, name, output_type)
+def show(policies, obj_type, name, output_type="standard", is_cmd=False):
+    data = gen(policies, obj_type, name, output_type, is_cmd)
     offset = 0
 
     show_helper(data, offset)

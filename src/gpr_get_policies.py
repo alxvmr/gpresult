@@ -10,7 +10,7 @@ import gpr_system
 import ast
 
 
-def get_policies(name=None, type='standard', with_id=False):
+def get_policies(name=None, type='standard', with_id=False, cmd=None, cmd_name=None):
     uid = None
     policies = None
     policies_id = None
@@ -20,11 +20,37 @@ def get_policies(name=None, type='standard', with_id=False):
     path = gpr_system.get_path_to_policy(uid)
 
     if type == 'standard' or type == "with_keys" or type == "verbose":
-        policies = get_applied_policy_names(path)
+        if cmd == "id":
+            policies = get_applied_policy_with_keys_by_id(path, cmd_name)
+        elif cmd == "name":
+            policies = get_applied_policy_with_keys_by_name(path, cmd_name)
+        else:
+            policies = get_applied_policy_names(path)
     if with_id:
         policies_id = get_policy_name_with_id(path)
 
     return (policies, policies_id)
+
+
+def get_applied_policy_with_keys_by_id(path, id):
+    applied_policy_with_names = get_applied_policy_names(path)
+    name_with_id = get_policy_name_with_id(path)
+
+    policy_name = [key for key, val in name_with_id.items() if val == id] # Is it possible to get multiple display_name for a policy id ?...
+
+    if policy_name and policy_name[0] in applied_policy_with_names.keys():
+        return applied_policy_with_names[policy_name[0]]
+    
+    return None
+
+
+def get_applied_policy_with_keys_by_name(path, cmd_name):
+    applied_policy_with_names = get_applied_policy_names(path)
+
+    if cmd_name in applied_policy_with_names.keys():
+        return applied_policy_with_names[cmd_name]
+    
+    return None
 
 
 def get_applied_policy_names(path):
