@@ -25,7 +25,7 @@ def get_policies(name=None, type='standard', with_id=False, cmd=None, cmd_name=N
         elif cmd == "name":
             policies = get_applied_policy_with_keys_by_name(path, cmd_name)
         else:
-            policies = get_applied_policy_names(path)
+            policies = get_applied_policy_names_with_keys(path)
     if with_id:
         policies_id = get_policy_name_with_id(path)
 
@@ -33,27 +33,27 @@ def get_policies(name=None, type='standard', with_id=False, cmd=None, cmd_name=N
 
 
 def get_applied_policy_with_keys_by_id(path, id):
-    applied_policy_with_names = get_applied_policy_names(path)
+    applied_policy_with_names = get_applied_policy_names_with_keys(path)
     name_with_id = get_policy_name_with_id(path)
 
     policy_name = [key for key, val in name_with_id.items() if val == id] # Is it possible to get multiple display_name for a policy id ?...
 
     if policy_name and policy_name[0] in applied_policy_with_names.keys():
         return applied_policy_with_names[policy_name[0]]
-    
+
     return None
 
 
 def get_applied_policy_with_keys_by_name(path, cmd_name):
-    applied_policy_with_names = get_applied_policy_names(path)
+    applied_policy_with_names = get_applied_policy_names_with_keys(path)
 
     if cmd_name in applied_policy_with_names.keys():
         return applied_policy_with_names[cmd_name]
-    
+
     return None
 
 
-def get_applied_policy_names(path):
+def get_applied_policy_names_with_keys(path):
     policies = get_all_policies(path)
     applied_policy_with_keys = {}
 
@@ -61,7 +61,7 @@ def get_applied_policy_names(path):
         if (k[:7] == '/Source') and (v != None):
             if v.get_type().equal(GLib.VariantType.new("s")):
                 meta = ast.literal_eval(v.get_string())
-                
+
             software = k[7:]
             index_software = policies['keys'].index(software)
             value_of_key_policy = policies['values'][index_software]
@@ -86,7 +86,7 @@ def get_policy_name_with_id(path):
                 policy_path_name_id.setdefault(k[:-12], {}).update({k[-12:]: v.get_string()})
             elif k[-4:] == 'name' and v.get_type().equal(GLib.VariantType.new("s")):
                 policy_path_name_id.setdefault(k[:-4], {}).update({k[-4:]: v.get_string()})
-    
+
     for path, d in policy_path_name_id.items():
         name = None
         id = None
@@ -96,9 +96,9 @@ def get_policy_name_with_id(path):
                 name = v
             else:
                 id = v
-        
+
         policy_name_id[name] = id
-    
+
     return policy_name_id
 
 
@@ -118,6 +118,6 @@ def get_all_policies(path):
 
         return {"keys": key_list,
                 "values": value_list}
-    
+
     return {"keys": [],
             "values": []}

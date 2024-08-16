@@ -31,10 +31,10 @@ def get_lists_formatted_output(data, offset):
             if len(data[i]) > 2 and type(data[i][2]) == dict and data[i][2]["is_list"]:
                 data_list = ast.literal_eval(data[i][1])
                 output += " " * offset + "{:{max_n}s} {:s}\n".format(str(data[i][0]), str(data_list[0]), max_n=max_n)
-                
+
                 for i in range (1, len(data_list)):
                     output += " " * offset + "{:{max_n}s} {:s}\n".format(" ", str(data_list[i]), max_n=max_n)
-            
+
             else:
                 output += " " * offset + "{:{max_n}s} {:s}\n".format(str(data[i][0]), str(data[i][1]), max_n=max_n)
 
@@ -102,7 +102,7 @@ def policies_gen(policies, type, is_cmd):
             return {"body": body, "type": 'format'}
         elif type == 'verbose':
             return {"body": body, "type": 'verbose'}
-        
+
     else:
         if type == 'standard':
             if policies[1] and policies[0]:
@@ -110,14 +110,14 @@ def policies_gen(policies, type, is_cmd):
                 body.append({"body": policies_name_with_id,
                              "type": 'format'
                              })
-    
+
             else:
                 if policies[0]:
                     policies_name = list(policies[0].keys())
                     body.append({"body": policies_name,
                                 "type": 'list'
                                 })
-            
+
         elif type == "with_keys":
             if policies[1]:
                 for policy_name, value in policies[0].items():
@@ -134,7 +134,7 @@ def policies_gen(policies, type, is_cmd):
                                           "type": 'format'
                                         }],
                                  "type": 'subsection'})
-                
+
         elif type == "verbose":
             if policies[0]:
                 for value in policies[0].values():
@@ -142,9 +142,9 @@ def policies_gen(policies, type, is_cmd):
                         body.append(e)
 
                 body.sort(key = lambda x: x[0])
-    
+
             return {"body": body, "type": 'verbose'}
-            
+
     return {"header": header,
         "body": body,
         "type": 'section'
@@ -157,7 +157,7 @@ def user_settings_gen(policies, output_type='standard', is_cmd=False):
 
     if output_type == 'verbose':
         return policies_gen(policies, output_type, False)
-    
+
     header = _("USER SETTINGS")
     policies = policies_gen(policies, output_type, False)
 

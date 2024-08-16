@@ -51,5 +51,5 @@ def get_uid_from_name(name):
 def get_path_to_policy(uid=None):
     if uid:
         return PATH_DB + str(uid)
-    
+
     return PATH_DB

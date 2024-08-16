@@ -27,31 +27,32 @@ def parse_cli_arguments():
                                     "* verbose: display of policy keys and values\n"\
                                     "* standard: standard output including environment information; outputs only the names of applied policies\n"\
                                     "* with_keys: is similar to the standard output, in addition, the applied keys and policy values are also output"))
-    
+
     argparser.add_argument('-id', '--id',
                            action='store_true',
                            help=_("Add policy ID output for policies\n"\
                                   "* For the <verbose> output type the option does not apply"))
-    
+
     argparser.add_argument("-polid", "--policy_id",
                            help=_("Information about policy keys and values by ID\n"\
                                   "* For the <with_keys> output type the option does not apply"),
                            type=str)
-    
+
     argparser.add_argument("-poln", "--policy_name",
                            help=_("Information about policy keys and values by name\n"\
                                   "* For the <with_keys> output type the option does not apply"),
                            type=str)
-    
+
     argparser.add_argument('-u', '--user',
                            action='store_true',
                            help=_('Get information about applied policies for the current user'))
-    
+
     argparser.add_argument('-m', '--machine',
                            action='store_true',
                            help=_('Get information about applied policies for the current machine'))
-    
+
     return argparser.parse_args()
+
 
 def main():
     args = parse_cli_arguments()
