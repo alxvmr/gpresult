@@ -151,14 +151,18 @@ def policies_gen(policies, type, is_cmd):
         }
 
 
-def user_settings_gen(policies, output_type='standard', is_cmd=False):
+def user_settings_gen(obj_type, policies, output_type='standard', is_cmd=False):
     if is_cmd:
         return policies_gen(policies, output_type, is_cmd)
 
     if output_type == 'verbose':
         return policies_gen(policies, output_type, False)
 
-    header = _("USER SETTINGS")
+    if obj_type == "user":
+        header = _("USER SETTINGS")
+    else:
+        header = _("MACHINE SETTINGS")
+        
     policies = policies_gen(policies, output_type, False)
 
     return {"header": header,
@@ -173,20 +177,20 @@ def gen(policies, obj_type, name, output_type, is_cmd):
     if is_cmd:
         data.extend([
             header_gen(),
-            user_settings_gen(policies, output_type, is_cmd)
+            user_settings_gen(obj_type, policies, output_type, is_cmd)
         ])
 
     elif output_type == "standard" or output_type == "with_keys":
         data.extend([
             header_gen(),
             rsop_gen(obj_type, name),
-            user_settings_gen(policies, output_type, False)
+            user_settings_gen(obj_type, policies, output_type, False)
         ])
 
     elif output_type == "verbose":
         data.extend([
             header_gen(),
-            user_settings_gen(policies, output_type, False)
+            user_settings_gen(obj_type, policies, output_type, False)
         ])
 
     return data
