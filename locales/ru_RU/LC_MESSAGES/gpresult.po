@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-08-15 16:48+0400\n"
+"POT-Creation-Date: 2024-08-16 16:42+0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,11 +17,11 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/gpresult.py:22
+#: src/gpresult.py:21
 msgid "Information about applied policies"
 msgstr "Информация о примененных политиках"
 
-#: src/gpresult.py:26
+#: src/gpresult.py:25
 msgid ""
 "Output format. Choose one of the following options:\n"
 "* verbose: display of policy keys and values\n"
@@ -37,7 +37,7 @@ msgstr ""
 "* with_keys: структура вывода аналогична standard; дополнительно включает "
 "информацию о ключах и значениях примененных политик"
 
-#: src/gpresult.py:33
+#: src/gpresult.py:32
 msgid ""
 "Add policy ID output for policies\n"
 "* For the <verbose> output type the option does not apply"
@@ -45,7 +45,7 @@ msgstr ""
 "Добавить вывод ID политики\n"
 "* Не применяется в комбинации с форматом вывода <verbose>"
 
-#: src/gpresult.py:37
+#: src/gpresult.py:36
 msgid ""
 "Information about policy keys and values by ID\n"
 "* For the <with_keys> output type the option does not apply"
@@ -53,7 +53,7 @@ msgstr ""
 "Получить информацию о ключах и значениях политики по ID\n"
 "* Не применяется в комбинации с форматом вывода <with_keys>"
 
-#: src/gpresult.py:42
+#: src/gpresult.py:41
 msgid ""
 "Information about policy keys and values by name\n"
 "* For the <with_keys> output type the option does not apply"
@@ -61,11 +61,11 @@ msgstr ""
 "Получить информацию о ключах и значениях политики по ее отображаемому имени\n"
 "* Не применяется в комбинации с форматом вывода <with_keys>"
 
-#: src/gpresult.py:48
+#: src/gpresult.py:47
 msgid "Get information about applied policies for the current user"
 msgstr "Получить информацию о примененных политиках для текущего пользователя"
 
-#: src/gpresult.py:52
+#: src/gpresult.py:51
 msgid "Get information about applied policies for the current machine"
 msgstr "Получить информацию о примененных политиках для текущей машины"
 
