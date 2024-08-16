@@ -50,6 +50,15 @@ def parse_cli_arguments():
     argparser.add_argument('-m', '--machine',
                            action='store_true',
                            help=_('Get information about applied policies for the current machine'))
+    
+    argparser.add_argument('-html', '--html',
+                           action='store_true',
+                           help=_('Create html'))
+    
+    argparser.add_argument('-sp', '--save_path',
+                           action='store_true',
+                           default=os.path.expanduser('~'),
+                           help=_('Save path for html'))
 
     return argparser.parse_args()
 
@@ -60,6 +69,11 @@ def main():
     obj = None
     name = None
     name_uid = None
+
+    args.type = "standard"
+    args.id = True
+    args.user = True
+    args.html = True
 
     if args.user:
         obj = 'user'
@@ -73,10 +87,10 @@ def main():
         if args.type in ['verbose', 'standard']:
             if args.policy_id:
                 policies = get_policies(name=name_uid, type=args.type, with_id=args.id, cmd="id", cmd_name=args.policy_id)
-                show(policies, obj, name, args.type, True)
+                show(policies, obj, name, args.type, True, html=args.html, save_path=args.save_path)
             elif args.policy_name:
                 policies = get_policies(name=name_uid, type=args.type, with_id=args.id, cmd="name", cmd_name=args.policy_name)
-                show(policies, obj, name, args.type, True)
+                show(policies, obj, name, args.type, True, html=args.html, save_path=args.save_path)
         else:
             pass # TODO: To infer an invalid output format for this option
     else:
@@ -84,7 +98,7 @@ def main():
             pass # TODO: To infer an invalid output format for this option
         else:
             policies = get_policies(name=name_uid, type=args.type, with_id=args.id)
-            show(policies, obj, name, args.type, False)
+            show(policies, obj, name, args.type, False, html=args.html, save_path=args.save_path)
 
 
 if __name__ == "__main__":

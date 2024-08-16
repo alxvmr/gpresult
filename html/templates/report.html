@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/home/DOMAIN.TEST/administrator/Develop/gpresult/html/styles/style.css">
+    <script src="/home/DOMAIN.TEST/administrator/Develop/gpresult/html/scripts/scripts.js"></script>
+    <title>GPResult</title>
+</head>
+<body>
+    {%- macro random_int(len) -%}
+        {%- for _ in range(len) -%}
+            {{ range(10) | random }}
+        {%- endfor -%}
+    {%- endmacro -%}
+
+    {{info}}
+    {% for elem in info recursive %}
+        {% if elem["type"] == "section" or elem["type"] == "subsection" %}
+            <div class="section">
+                {% set id = random_int(10) ~ "section" %}
+                <div id={{id}} class="section_title" onclick="show_hide(id)">
+                    <span class="section_title_span" tabindex="0">
+                        {{ elem["header"] }}
+                    </span>
+                </div>
+
+                {% set id = random_int(10) ~ "section" %}
+                <div id={{id}} class="container" style="display: none;">
+                    <div class="secsection">
+                        {{ loop(elem["body"]) }}
+                    </div>
+                </div>
+
+            </div>
+
+            {% elif elem["type"] == "format" %}
+                Formatted text is here!!!
+
+        {% endif %}
+    {% endfor %}
+</body>
+</html>

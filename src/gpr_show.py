@@ -1,7 +1,10 @@
 import gpr_system
 import ast
+from datetime import datetime
+import os
 
 import gettext, locale
+from jinja2 import Environment, FileSystemLoader, select_autoescape
 
 loc = locale.getlocale()[0]
 if loc not in ['ru_RU', 'en_US']:
@@ -215,8 +218,23 @@ def show_helper(data, offset):
             print(get_list_output(elem["body"], offset))
 
 
-def show(policies, obj_type, name, output_type="standard", is_cmd=False):
+def show(policies, obj_type, name, output_type="standard", is_cmd=False, html=False, save_path=""):
     data = gen(policies, obj_type, name, output_type, is_cmd)
-    offset = 0
 
-    show_helper(data, offset)
+    if not html:
+        offset = 0
+        show_helper(data, offset)
+    else:
+        env = Environment(
+            loader=FileSystemLoader('/home/DOMAIN.TEST/administrator/Develop/gpresult/html/templates'),
+            autoescape=select_autoescape(['html'])
+        )
+
+        template = env.get_template('report.html')
+        render_page = template.render(info=data)
+
+        name = "gpresult_" + str(datetime.now()).replace(' ', '_')
+        full_path_html = os.path.join(save_path, f"{name}.html")
+
+        with open(full_path_html, 'w') as file:
+            file.write(render_page)
