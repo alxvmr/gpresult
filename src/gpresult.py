@@ -2,7 +2,6 @@
 import argparse
 from gpr_get_policies import get_policies
 from gpr_show import show
-import socket
 import os
 
 import gettext, locale
@@ -70,23 +69,30 @@ def main():
         obj = 'machine'
 
     if args.policy_id or args.policy_name:
+
         if args.type in ['verbose', 'standard']:
             is_cmd = True
+
             if args.policy_id:
                 policies.append(get_policies(name=user_name, type=args.type, with_id=args.id, cmd="id", cmd_name=args.policy_id))
                 policies.append(get_policies(name=None, type=args.type, with_id=args.id, cmd="id", cmd_name=args.policy_id))
+
             elif args.policy_name:
                 policies.append(get_policies(name=user_name, type=args.type, with_id=args.id, cmd="name", cmd_name=args.policy_name))
                 policies.append(get_policies(name=None, type=args.type, with_id=args.id, cmd="name", cmd_name=args.policy_name))
+
         else:
             exit() # TODO: To infer an invalid output format for this option
+
     else:
+
         if args.id and args.type == 'verbose':
             exit() # TODO: To infer an invalid output format for this option
+
         else:
             policies.append(get_policies(name=user_name, type=args.type, with_id=args.id))
             policies.append(get_policies(name=None, type=args.type, with_id=args.id))
-    
+
     show(policies, obj, args.type, is_cmd)
 
 

@@ -147,7 +147,7 @@ def policies_gen(policies, type, is_cmd):
         }
 
 
-def user_settings_gen(obj_type, policies, output_type='standard', is_cmd=False):
+def settings_gen(obj_type, policies, output_type='standard', is_cmd=False):
     if is_cmd:
         return policies_gen(policies, output_type, is_cmd)
 
@@ -176,13 +176,13 @@ def gen(policies, obj_type, output_type, is_cmd):
         if obj_type:
             data.extend([
                 header_gen(),
-                user_settings_gen(obj_type, policies[policy_indx], output_type, is_cmd)
+                settings_gen(obj_type, policies[policy_indx], output_type, is_cmd)
             ])
         else:
             data.extend([
                 header_gen(),
-                user_settings_gen('user', policies[0], output_type, is_cmd),
-                user_settings_gen('machine', policies[1], output_type, is_cmd)
+                settings_gen('user', policies[0], output_type, is_cmd),
+                settings_gen('machine', policies[1], output_type, is_cmd)
             ])
 
     elif output_type == "standard" or output_type == "with_keys":
@@ -190,27 +190,27 @@ def gen(policies, obj_type, output_type, is_cmd):
             data.extend([
                 header_gen(),
                 rsop_gen(obj_type),
-                user_settings_gen(obj_type, policies[policy_indx], output_type, False)
+                settings_gen(obj_type, policies[policy_indx], output_type, False)
             ])
         else:
             data.extend([
                 header_gen(),
                 rsop_gen(obj_type),
-                user_settings_gen('user', policies[0], output_type, False),
-                user_settings_gen('machine', policies[1], output_type, False)
+                settings_gen('user', policies[0], output_type, False),
+                settings_gen('machine', policies[1], output_type, False)
             ])
 
     elif output_type == "verbose":
         if obj_type:
             data.extend([
                 header_gen(),
-                user_settings_gen(obj_type, policies[policy_indx], output_type, False)
+                settings_gen(obj_type, policies[policy_indx], output_type, False)
             ])
         else:
             data.extend([
                 header_gen(),
-                user_settings_gen('user', policies[0], output_type, False),
-                user_settings_gen('machine', policies[1], output_type, False)
+                settings_gen('user', policies[0], output_type, False),
+                settings_gen('machine', policies[1], output_type, False)
             ])
 
     return data
