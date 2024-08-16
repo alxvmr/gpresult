@@ -58,33 +58,36 @@ def main():
     args = parse_cli_arguments()
 
     obj = None
-    name = None
-    name_uid = None
+    is_cmd = False
+    policies = []
+
+    user_name = os.getlogin()
 
     if args.user:
         obj = 'user'
-        name = name_uid = os.getlogin()
 
-    else:
+    elif args.machine:
         obj = 'machine'
-        name = socket.gethostname()
 
     if args.policy_id or args.policy_name:
         if args.type in ['verbose', 'standard']:
+            is_cmd = True
             if args.policy_id:
-                policies = get_policies(name=name_uid, type=args.type, with_id=args.id, cmd="id", cmd_name=args.policy_id)
-                show(policies, obj, name, args.type, True)
+                policies.append(get_policies(name=user_name, type=args.type, with_id=args.id, cmd="id", cmd_name=args.policy_id))
+                policies.append(get_policies(name=None, type=args.type, with_id=args.id, cmd="id", cmd_name=args.policy_id))
             elif args.policy_name:
-                policies = get_policies(name=name_uid, type=args.type, with_id=args.id, cmd="name", cmd_name=args.policy_name)
-                show(policies, obj, name, args.type, True)
+                policies.append(get_policies(name=user_name, type=args.type, with_id=args.id, cmd="name", cmd_name=args.policy_name))
+                policies.append(get_policies(name=None, type=args.type, with_id=args.id, cmd="name", cmd_name=args.policy_name))
         else:
-            pass # TODO: To infer an invalid output format for this option
+            exit() # TODO: To infer an invalid output format for this option
     else:
         if args.id and args.type == 'verbose':
-            pass # TODO: To infer an invalid output format for this option
+            exit() # TODO: To infer an invalid output format for this option
         else:
-            policies = get_policies(name=name_uid, type=args.type, with_id=args.id)
-            show(policies, obj, name, args.type, False)
+            policies.append(get_policies(name=user_name, type=args.type, with_id=args.id))
+            policies.append(get_policies(name=None, type=args.type, with_id=args.id))
+    
+    show(policies, obj, args.type, is_cmd)
 
 
 if __name__ == "__main__":

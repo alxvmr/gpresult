@@ -67,17 +67,13 @@ def header_gen():
             }
 
 
-def rsop_gen(type, name):
-    header = _("The resulting set of policies for the ")
+def rsop_gen(type):
+    header = _("The resulting set of policies")
 
     sys_info = gpr_system.os_conf()
 
     if type == 'user':
-        header += _("user {}:").format(name)
         sys_info.append(gpr_system.get_user_home_dir())
-
-    elif type == 'machine':
-        header += _("machine {}:").format(name)
 
     return {"header": header,
             "body": [{"body": sys_info,
@@ -171,27 +167,51 @@ def user_settings_gen(obj_type, policies, output_type='standard', is_cmd=False):
             }
 
 
-def gen(policies, obj_type, name, output_type, is_cmd):
+def gen(policies, obj_type, output_type, is_cmd):
     data = []
 
+    policy_indx = 0 if obj_type == 'user' else 1
+
     if is_cmd:
-        data.extend([
-            header_gen(),
-            user_settings_gen(obj_type, policies, output_type, is_cmd)
-        ])
+        if obj_type:
+            data.extend([
+                header_gen(),
+                user_settings_gen(obj_type, policies[policy_indx], output_type, is_cmd)
+            ])
+        else:
+            data.extend([
+                header_gen(),
+                user_settings_gen('user', policies[0], output_type, is_cmd),
+                user_settings_gen('machine', policies[1], output_type, is_cmd)
+            ])
 
     elif output_type == "standard" or output_type == "with_keys":
-        data.extend([
-            header_gen(),
-            rsop_gen(obj_type, name),
-            user_settings_gen(obj_type, policies, output_type, False)
-        ])
+        if obj_type:
+            data.extend([
+                header_gen(),
+                rsop_gen(obj_type),
+                user_settings_gen(obj_type, policies[policy_indx], output_type, False)
+            ])
+        else:
+            data.extend([
+                header_gen(),
+                rsop_gen(obj_type),
+                user_settings_gen('user', policies[0], output_type, False),
+                user_settings_gen('machine', policies[1], output_type, False)
+            ])
 
     elif output_type == "verbose":
-        data.extend([
-            header_gen(),
-            user_settings_gen(obj_type, policies, output_type, False)
-        ])
+        if obj_type:
+            data.extend([
+                header_gen(),
+                user_settings_gen(obj_type, policies[policy_indx], output_type, False)
+            ])
+        else:
+            data.extend([
+                header_gen(),
+                user_settings_gen('user', policies[0], output_type, False),
+                user_settings_gen('machine', policies[1], output_type, False)
+            ])
 
     return data
 
@@ -219,8 +239,8 @@ def show_helper(data, offset):
             print(get_list_output(elem["body"], offset))
 
 
-def show(policies, obj_type, name, output_type="standard", is_cmd=False):
-    data = gen(policies, obj_type, name, output_type, is_cmd)
+def show(policies, obj_type, output_type="standard", is_cmd=False):
+    data = gen(policies, obj_type, output_type, is_cmd)
     offset = 0
 
     show_helper(data, offset)
