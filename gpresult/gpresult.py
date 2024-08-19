@@ -1,7 +1,7 @@
 #! /usr/bin/env python3
 import argparse
-from gpr_get_policies import get_policies
-from gpr_show import show
+from . import gpr_get_policies
+from . import gpr_show
 import os
 
 import gettext, locale
@@ -74,12 +74,12 @@ def main():
             is_cmd = True
 
             if args.policy_guid:
-                policies.append(get_policies(name=user_name, type=args.format, with_guid=args.guid, cmd="guid", cmd_name=args.policy_guid))
-                policies.append(get_policies(name=None, type=args.format, with_guid=args.guid, cmd="guid", cmd_name=args.policy_guid))
+                policies.append(gpr_get_policies.get_policies(name=user_name, type=args.format, with_guid=args.guid, cmd="guid", cmd_name=args.policy_guid))
+                policies.append(gpr_get_policies.get_policies(name=None, type=args.format, with_guid=args.guid, cmd="guid", cmd_name=args.policy_guid))
 
             elif args.policy_name:
-                policies.append(get_policies(name=user_name, type=args.format, with_guid=args.guid, cmd="name", cmd_name=args.policy_name))
-                policies.append(get_policies(name=None, type=args.format, with_guid=args.guid, cmd="name", cmd_name=args.policy_name))
+                policies.append(gpr_get_policies.get_policies(name=user_name, type=args.format, with_guid=args.guid, cmd="name", cmd_name=args.policy_name))
+                policies.append(gpr_get_policies.get_policies(name=None, type=args.format, with_guid=args.guid, cmd="name", cmd_name=args.policy_name))
 
         else:
             exit() # TODO: To infer an invalid output format for this option
@@ -90,10 +90,10 @@ def main():
             exit() # TODO: To infer an invalid output format for this option
 
         else:
-            policies.append(get_policies(name=user_name, type=args.format, with_guid=args.guid))
-            policies.append(get_policies(name=None, type=args.format, with_guid=args.guid))
+            policies.append(gpr_get_policies.get_policies(name=user_name, type=args.format, with_guid=args.guid))
+            policies.append(gpr_get_policies.get_policies(name=None, type=args.format, with_guid=args.guid))
 
-    show(policies, obj, args.format, is_cmd)
+    gpr_show.show(policies, obj, args.format, is_cmd)
 
 
 if __name__ == "__main__":

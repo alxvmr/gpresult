@@ -6,7 +6,7 @@ gi.require_version("GLib", "2.0")
 from gi.repository import Gvdb
 from gi.repository import GLib
 
-import gpr_system
+from . import gpr_system
 import ast
 
 
