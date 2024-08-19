@@ -1,7 +1,3 @@
-%add_python3_req_skip gpr_get_policies
-%add_python3_req_skip gpr_show
-%add_python3_req_skip gpr_system
-
 Name: gpresult
 Version: 0.0.1
 Release: alt1
@@ -12,9 +8,9 @@ Group: Other
 Url: https://github.com/alxvmr/gpresult
 BuildArch: noarch
 
-BuildRequires: rpm-build-python3 gettext-tools
+BuildRequires: rpm-build-python3
+BuildRequires: python3(wheel), python3(hatchling)
 Requires: libgvdb-gir
-Requires: python3-module-distro
 
 Source0: %name-%version.tar
 
@@ -25,30 +21,19 @@ The utility allows you to display a list of domain  (GPO) policies that apply to
 %prep
 %setup -q
 
+%build
+%pyproject_build
+
 %install
-mkdir -p \
-	%buildroot%python3_sitelibdir/%{name}/%{name}
-cp -r src/* \
-	%buildroot%python3_sitelibdir/%{name}/%{name}
-
-# Transfering translation
-mkdir -p \
-	%buildroot%python3_sitelibdir/%{name}/
-cp -r locales \
-	%buildroot%python3_sitelibdir/%{name}/
-
-mkdir -p \
-	%buildroot%_bindir/
-
-ln -s %python3_sitelibdir/%{name}/%{name}/gpresult.py \
-	%buildroot%_bindir/gpresult
+%pyproject_install
 
 %files
-%python3_sitelibdir/%{name}/%{name}
+%python3_sitelibdir/%{name}
 %python3_sitelibdir/%{name}/locales
-%_bindir/gpresult
+%python3_sitelibdir/%{name}-%version.dist-info
+%_bindir/%{name}
 
 %changelog
-* Wed Aug 14 2024 Maria Alexeeva <alxvmr@altlinux.org> 0.0.1-alt1
+* Mon Aug 19 2024 Maria Alexeeva <alxvmr@altlinux.org> 0.0.1-alt1
 - First build
 
