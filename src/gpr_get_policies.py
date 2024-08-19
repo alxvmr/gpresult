@@ -70,7 +70,7 @@ def get_applied_policy_names_verbose(path):
                 value_of_key_policy = value_of_key_policy.get_string()
 
             if ('policy_name' in meta) and (meta['policy_name'] != ''):
-                applied_policy_verbose.setdefault(meta['policy_name'], []).append([k, value_of_key_policy, meta])
+                applied_policy_verbose.setdefault(meta['policy_name'], []).append([k[7:], value_of_key_policy, meta])
 
     return applied_policy_verbose
 
