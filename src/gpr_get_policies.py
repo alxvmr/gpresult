@@ -10,33 +10,33 @@ import gpr_system
 import ast
 
 
-def get_policies(name=None, type='standard', with_id=False, cmd=None, cmd_name=None):
+def get_policies(name=None, type='standard', with_guid=False, cmd=None, cmd_name=None):
     uid = None
     policies = None
-    policies_id = None
+    policies_guid = None
 
     if name:
         uid = gpr_system.get_uid_from_name(name)
     path = gpr_system.get_path_to_policy(uid)
 
-    if type == 'standard' or type == "with_keys" or type == "verbose":
-        if cmd == "id":
-            policies = get_applied_policy_with_keys_by_id(path, cmd_name)
+    if type == 'standard' or type == "verbose" or type == "raw":
+        if cmd == "guid":
+            policies = get_applied_policy_verbose_by_guid(path, cmd_name)
         elif cmd == "name":
-            policies = get_applied_policy_with_keys_by_name(path, cmd_name)
+            policies = get_applied_policy_verbose_by_name(path, cmd_name)
         else:
-            policies = get_applied_policy_names_with_keys(path)
-    if with_id:
-        policies_id = get_policy_name_with_id(path)
+            policies = get_applied_policy_names_verbose(path)
+    if with_guid:
+        policies_guid = get_policy_name_with_guid(path)
 
-    return (policies, policies_id)
+    return (policies, policies_guid)
 
 
-def get_applied_policy_with_keys_by_id(path, id):
-    applied_policy_with_names = get_applied_policy_names_with_keys(path)
-    name_with_id = get_policy_name_with_id(path)
+def get_applied_policy_verbose_by_guid(path, guid):
+    applied_policy_with_names = get_applied_policy_names_verbose(path)
+    name_with_guid = get_policy_name_with_guid(path)
 
-    policy_name = [key for key, val in name_with_id.items() if val == id] # Is it possible to get multiple display_name for a policy id ?...
+    policy_name = [key for key, val in name_with_guid.items() if val == guid] # Is it possible to get multiple display_name for a policy guid ?...
 
     if policy_name and policy_name[0] in applied_policy_with_names.keys():
         return applied_policy_with_names[policy_name[0]]
@@ -44,8 +44,8 @@ def get_applied_policy_with_keys_by_id(path, id):
     return None
 
 
-def get_applied_policy_with_keys_by_name(path, cmd_name):
-    applied_policy_with_names = get_applied_policy_names_with_keys(path)
+def get_applied_policy_verbose_by_name(path, cmd_name):
+    applied_policy_with_names = get_applied_policy_names_verbose(path)
 
     if cmd_name in applied_policy_with_names.keys():
         return applied_policy_with_names[cmd_name]
@@ -53,9 +53,9 @@ def get_applied_policy_with_keys_by_name(path, cmd_name):
     return None
 
 
-def get_applied_policy_names_with_keys(path):
+def get_applied_policy_names_verbose(path):
     policies = get_all_policies(path)
-    applied_policy_with_keys = {}
+    applied_policy_verbose = {}
 
     for k, v in zip(policies['keys'][:], policies['values'][:]):
         if (k[:7] == '/Source') and (v != None):
@@ -70,36 +70,36 @@ def get_applied_policy_names_with_keys(path):
                 value_of_key_policy = value_of_key_policy.get_string()
 
             if ('policy_name' in meta) and (meta['policy_name'] != ''):
-                applied_policy_with_keys.setdefault(meta['policy_name'], []).append([k, value_of_key_policy, meta])
+                applied_policy_verbose.setdefault(meta['policy_name'], []).append([k, value_of_key_policy, meta])
 
-    return applied_policy_with_keys
+    return applied_policy_verbose
 
 
-def get_policy_name_with_id(path):
+def get_policy_name_with_guid(path):
     policies = get_all_policies(path)
-    policy_path_name_id = {}
-    policy_name_id = {}
+    policy_path_name_guid = {}
+    policy_name_guid = {}
 
     for k, v in zip(policies['keys'][:], policies['values'][:]):
         if (k.find('GpoPriority') != -1) and (v != None):
             if k[-12:] == 'display_name' and v.get_type().equal(GLib.VariantType.new("s")):
-                policy_path_name_id.setdefault(k[:-12], {}).update({k[-12:]: v.get_string()})
+                policy_path_name_guid.setdefault(k[:-12], {}).update({k[-12:]: v.get_string()})
             elif k[-4:] == 'name' and v.get_type().equal(GLib.VariantType.new("s")):
-                policy_path_name_id.setdefault(k[:-4], {}).update({k[-4:]: v.get_string()})
+                policy_path_name_guid.setdefault(k[:-4], {}).update({k[-4:]: v.get_string()})
 
-    for path, d in policy_path_name_id.items():
+    for path, d in policy_path_name_guid.items():
         name = None
-        id = None
+        guid = None
 
         for k, v in d.items():
             if k == 'display_name':
                 name = v
             else:
-                id = v
+                guid = v
 
-        policy_name_id[name] = id
+        policy_name_guid[name] = guid
 
-    return policy_name_id
+    return policy_name_guid
 
 
 def get_all_policies(path):

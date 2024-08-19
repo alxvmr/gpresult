@@ -41,7 +41,7 @@ def get_lists_formatted_output(data, offset):
     return output[:-1]
 
 
-def get_verbose_output(data):
+def get_raw_output(data):
     s = ""
 
     for i in range(len(data)):
@@ -96,14 +96,14 @@ def policies_gen(policies, type, is_cmd):
 
         if type == 'standard':
             return {"body": body, "type": 'format'}
-        elif type == 'verbose':
-            return {"body": body, "type": 'verbose'}
+        elif type == 'raw':
+            return {"body": body, "type": 'raw'}
 
     else:
         if type == 'standard':
             if policies[1] and policies[0]:
-                policies_name_with_id = [[pol, policies[1][pol]] for pol in policies[0]]
-                body.append({"body": policies_name_with_id,
+                policies_name_with_guid = [[pol, policies[1][pol]] for pol in policies[0]]
+                body.append({"body": policies_name_with_guid,
                              "type": 'format'
                              })
 
@@ -114,7 +114,7 @@ def policies_gen(policies, type, is_cmd):
                                 "type": 'list'
                                 })
 
-        elif type == "with_keys":
+        elif type == "verbose":
             if policies[1]:
                 for policy_name, value in policies[0].items():
                     if policy_name in policies[1].keys():
@@ -131,7 +131,7 @@ def policies_gen(policies, type, is_cmd):
                                         }],
                                  "type": 'subsection'})
 
-        elif type == "verbose":
+        elif type == "raw":
             if policies[0]:
                 for value in policies[0].values():
                     for e in value:
@@ -139,7 +139,7 @@ def policies_gen(policies, type, is_cmd):
 
                 body.sort(key = lambda x: x[0])
 
-            return {"body": body, "type": 'verbose'}
+            return {"body": body, "type": 'raw'}
 
     return {"header": header,
         "body": body,
@@ -151,7 +151,7 @@ def settings_gen(obj_type, policies, output_type='standard', is_cmd=False):
     if is_cmd:
         return policies_gen(policies, output_type, is_cmd)
 
-    if output_type == 'verbose':
+    if output_type == 'raw':
         return policies_gen(policies, output_type, False)
 
     if obj_type == "user":
@@ -185,7 +185,7 @@ def gen(policies, obj_type, output_type, is_cmd):
                 settings_gen('machine', policies[1], output_type, is_cmd)
             ])
 
-    elif output_type == "standard" or output_type == "with_keys":
+    elif output_type == "standard" or output_type == "verbose":
         if obj_type:
             data.extend([
                 header_gen(),
@@ -200,7 +200,7 @@ def gen(policies, obj_type, output_type, is_cmd):
                 settings_gen('machine', policies[1], output_type, False)
             ])
 
-    elif output_type == "verbose":
+    elif output_type == "raw":
         if obj_type:
             data.extend([
                 header_gen(),
@@ -229,8 +229,8 @@ def show_helper(data, offset):
         if elem["type"] == "format":
             print(get_lists_formatted_output(elem["body"], offset))
 
-        if elem["type"] == 'verbose':
-            print(get_verbose_output(elem["body"]))
+        if elem["type"] == 'raw':
+            print(get_raw_output(elem["body"]))
 
         if elem["type"] == "str":
             print(elem["body"] + "\n")

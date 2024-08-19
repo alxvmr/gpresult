@@ -27,7 +27,7 @@ def get_timestamp():
 def os_conf():
     os_id, os_version, os_name = distro.linux_distribution()
 
-    return [[_("OS Configuration:"), os_id],
+    return [[_("Operating system:"), os_id],
             [_("OS Version:"), f"{os_version} ({os_name})"]]
 
 
