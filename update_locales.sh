@@ -2,7 +2,7 @@
 
 dirs=(locales/*)
 dirs=("${dirs[@]/%//LC_MESSAGES/}")
-source_path="src/"
+source_path="gpresult/"
 
 echo "Enter the name <.po> file: "
 read po_file
