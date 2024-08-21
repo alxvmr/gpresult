@@ -27,7 +27,7 @@ def parse_cli_arguments():
                                     "* standard: standard output including environment information; outputs only the names of applied policies\n"\
                                     "* verbose: is similar to the standard output, in addition, the applied keys and policy values are also output"))
 
-    argparser.add_argument("-p", "--policy_guid",
+    argparser.add_argument("-i", "--policy_guid",
                            help=_("Information about policy keys and values by guid\n"\
                                   "* For the <verbose> output type the option does not apply"),
                            type=str)
