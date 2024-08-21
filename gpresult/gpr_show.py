@@ -1,9 +1,7 @@
-#from . 
-import gpr_system
+from . import gpr_system
 import ast
 
 import gettext, locale
-from GPO import GPO
 
 loc = locale.getlocale()[0]
 if loc not in ['ru_RU', 'en_US']:
@@ -11,7 +9,9 @@ if loc not in ['ru_RU', 'en_US']:
 
 gettext.bindtextdomain("gpr_show", "locales")
 gettext.textdomain("gpr_show")
-t = gettext.translation("gpr_show", localedir="/usr/lib/python3/site-packages/gpresult/locales", languages=[loc])
+t = gettext.translation("gpr_show",
+                        localedir="/usr/lib/python3/site-packages/gpresult/locales",
+                        languages=[loc])
 t.install()
 _ = t.gettext
 
@@ -32,11 +32,19 @@ def get_lists_formatted_output(data, offset, is_rec=False):
     if max_n > 0:
         for i in range(len(data)):
             if type(data[i][1]) == list:
-                output += " " * offset + "{:{max_n}s}".format(str(data[i][0]), max_n=max_n) + get_lists_formatted_output(data[i][1], offset+max_n, is_rec=True)
+                output += (
+                    " " * offset 
+                    + "{:{max_n}s}".format(str(data[i][0]), max_n=max_n) 
+                    + get_lists_formatted_output(data[i][1], offset+max_n, is_rec=True)
+                    )
 
             else:
                 out = str(data[i][1])
-                if len(data[i]) == 3 and type(data[i][2]) == dict and data[i][2]["is_list"]:
+
+                if (len(data[i]) == 3 
+                    and type(data[i][2]) == dict 
+                    and data[i][2]["is_list"]):
+
                     values_list = ast.literal_eval(data[i][1])
                     out = get_list_output(values_list, max_n+offset+1)[:-1].lstrip()
                 
@@ -44,10 +52,16 @@ def get_lists_formatted_output(data, offset, is_rec=False):
                     out = "-"
 
                 if is_rec and i == 0:
-                    output += "{:{max_n}s} {:s}\n".format(str(data[i][0]), out, max_n=max_n)
+                    output += "{:{max_n}s} {:s}\n".format(str(data[i][0]),
+                                                          out, max_n=max_n)
 
                 else:
-                    output += " " * offset + "{:{max_n}s} {:s}\n".format(str(data[i][0]), out, max_n=max_n)
+                    output += (
+                        " " * offset 
+                        + "{:{max_n}s} {:s}\n".format(str(data[i][0]), 
+                                                      out, max_n=max_n)
+                        )
+    
     return output
 
 

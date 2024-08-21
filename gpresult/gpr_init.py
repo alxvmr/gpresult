@@ -7,8 +7,9 @@ from gi.repository import Gvdb
 from gi.repository import GLib
 
 import ast
-from GPO import GPO
-from KeyValue import KeyValue
+from .GPO import GPO
+from .KeyValue import KeyValue
+
 
 policy_fields = [
     "correct_path",
@@ -37,7 +38,9 @@ def init_gpos(path, obj):
 
                     if field in policy_fields:
                         keys_gpo = {}
-                        keys_gpo[field] = v.get_string() if v.get_type().equal(GLib.VariantType.new("s")) else None
+                        keys_gpo[field] = (v.get_string() 
+                                           if v.get_type().equal(GLib.VariantType.new("s"))
+                                           else None)
 
                         prefix = "/".join(key_split[:-1])
 
@@ -78,7 +81,8 @@ def init_keys_values(path, obj):
         for k in key_list:
             v = Gvdb.Table.get_value(table, k)
 
-            if v != None and k[:9].lower() == "/software" and k.find('GpoPriority') == -1:
+            if (v != None and k[:9].lower() == "/software" 
+                and k.find('GpoPriority') == -1):
                 # Computing key and value data
 
                 if v.get_type().equal(GLib.VariantType.new("s")):
@@ -105,7 +109,9 @@ def init_keys_values_meta(path, obj):
                 # Computing key and value data
 
                 if v.get_type().equal(GLib.VariantType.new("s")):
-                    KeyValue.set_meta_to_key_value(k[7:], obj, **ast.literal_eval(v.get_string()))
+                    KeyValue.set_meta_to_key_value(
+                        k[7:], obj, **ast.literal_eval(v.get_string())
+                        )
 
                     # TODO: Add deletion of viewed records
                 

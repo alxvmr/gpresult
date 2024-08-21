@@ -1,19 +1,20 @@
 class KeyValue:
-    keys_values = []
+    keys_values = [] # List of all GPO keys and values retrieved from /etc/dconf/db/policy<guid>
 
     def __init__(self, key, value, obj, **kwargs):
-        self.key = key
-        self.value = value
-        self.obj = obj
-        self.policy_name = kwargs.get("policy_name", None)
-        self.type = kwargs.get("type", None)
-        self.reloaded = kwargs.get("reloaded_with_policy_key", None)
-        self.is_list = kwargs.get("is_list", None)
+        self.key = key                                                   # GPO key
+        self.value = value                                               # Key value
+        self.obj = obj                                                   # Which object the pair refers to - the machine or the user
+        self.policy_name = kwargs.get("policy_name", None)               # The name of the GPO to which the pair belongs
+        self.type = kwargs.get("type", None)                             # Value data type
+        self.reloaded = kwargs.get("reloaded_with_policy_key", None)     # Value data type
+        self.is_list = kwargs.get("is_list", None)                       # Whether the value is a list
 
         KeyValue.keys_values.append(self)
 
 
     def get_info_list(self):
+
         return [self.key, self.value, {"type": self.type, "is_list": self.is_list}]
 
     
@@ -39,4 +40,5 @@ class KeyValue:
             for kv in cls.keys_values:
                 if kv.obj == obj:
                     kvs.append(kv)
+                    
             return kvs

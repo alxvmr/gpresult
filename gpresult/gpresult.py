@@ -1,12 +1,5 @@
-#! /usr/bin/env python3
 import argparse
-#from . 
-import gpr_get_policies
-#from . 
-import gpr_show
-import os
-import gpr_system
-import gpr_init
+from . import gpr_get_policies, gpr_show
 
 import gettext, locale
 
@@ -16,13 +9,16 @@ if loc not in ['ru_RU', 'en_US']:
 
 gettext.bindtextdomain("gpresult", "locales")
 gettext.textdomain("gpresult")
-t = gettext.translation("gpresult", localedir="/usr/lib/python3/site-packages/gpresult/locales", languages=[loc])
+t = gettext.translation("gpresult", 
+                        localedir="/usr/lib/python3/site-packages/gpresult/locales", 
+                        languages=[loc])
 t.install()
 _ = t.gettext
 
 
 def parse_cli_arguments():
-    argparser = argparse.ArgumentParser(description=_("Information about applied policies"), formatter_class=argparse.RawTextHelpFormatter)
+    argparser = argparse.ArgumentParser(description=_("Information about applied policies"), 
+                                        formatter_class=argparse.RawTextHelpFormatter)
 
     argparser.add_argument('-f', '--format',
                            choices=['raw', 'standard', 'verbose'],
@@ -55,11 +51,6 @@ def parse_cli_arguments():
 def main():
     args = parse_cli_arguments()
 
-    #args.policy_guid = '{506A92C2-9C84-40CD-A950-FFEE42A9B0A5}'
-    #args.user = True
-    args.format = 'verbose'
-    #args.guid = True
-
     obj = None
     is_cmd = False
     gpos = None
@@ -76,9 +67,14 @@ def main():
             is_cmd = True
 
             if args.policy_guid:
-                gpos = gpr_get_policies.get_policies(obj, cmd="guid", cmd_arg=args.policy_guid)
+                gpos = gpr_get_policies.get_policies(obj, 
+                                                     cmd="guid", 
+                                                     cmd_arg=args.policy_guid)
+
             elif args.policy_name:
-                gpos = gpr_get_policies.get_policies(obj, cmd="name", cmd_arg=args.policy_name)
+                gpos = gpr_get_policies.get_policies(obj, 
+                                                     cmd="name", 
+                                                     cmd_arg=args.policy_name)
 
         else:
             exit() # TODO: To infer an invalid output format for this option

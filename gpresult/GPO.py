@@ -1,13 +1,28 @@
+import gettext, locale
+
+loc = locale.getlocale()[0]
+if loc not in ['ru_RU', 'en_US']:
+    loc = 'en_US'
+
+gettext.bindtextdomain("gpresult", "locales")
+gettext.textdomain("gpresult")
+t = gettext.translation("gpresult", 
+                        localedir="/usr/lib/python3/site-packages/gpresult/locales", 
+                        languages=[loc])
+t.install()
+_ = t.gettext
+
+
 class GPO:
-    gpos = []
+    gpos = [] # List of all GPOs retrieved from /etc/dconf/db/policy<guid>
 
     def __init__(self, obj, **kwargs):
-        self.path = kwargs.get("correct_path", None)
-        self.name = kwargs.get("display_name", None)
-        self.guid = kwargs.get("name", None)
-        self.version = kwargs.get("version", None)
-        self.obj = obj
-        self.keys_values = []
+        self.path = kwargs.get("correct_path", None)  # Sysvol path
+        self.name = kwargs.get("display_name", None)  # Displayed GPO name
+        self.guid = kwargs.get("name", None)          # GUID
+        self.version = kwargs.get("version", None)    # Version
+        self.obj = obj                                # Whether the GPO refers to a machine or user object
+        self.keys_values = []                         # List of keys and values related to GPOs
 
         GPO.set_gpo(self)
 
@@ -19,12 +34,13 @@ class GPO:
 
         return [
             ["GPO", self.name],
-            ["Path", self.path],
-            ["Version", self.version],
+            [_("Path"), self.path],
+            [_("Version"), self.version],
             ["GUID", self.guid],
-            ["Keys and values", kvs]
+            [_("Keys and values"), kvs]
         ]
     
+
     def get_keys_values_lists(self):
         kvs_list = []
 
@@ -79,6 +95,8 @@ class GPO:
             if gpo.name == kv_policy_name and gpo.obj == kv.obj:
                 gpo.keys_values.append(kv)
                 return
+            
+        return False
 
 
     @classmethod
