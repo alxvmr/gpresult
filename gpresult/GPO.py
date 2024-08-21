@@ -64,27 +64,27 @@ class GPO:
 
 
     @classmethod
-    def get_gpo_by_guid(cls, guid, obj=None):
+    def get_gpos_by_guid(cls, guid, obj=None):
+        gpos_res = []
+
         for gpo in cls.gpos:
             if gpo.guid == guid:
-                if obj and gpo.obj == obj:
-                    return gpo
-                elif not obj:
-                    return gpo
+                if (obj and gpo.obj == obj) or not obj:
+                    gpos_res.append(gpo)
                 
-        return None
+        return gpos_res
     
 
     @classmethod
-    def get_gpo_by_name(cls, name, obj=None):
+    def get_gpos_by_name(cls, name, obj=None):
+        gpos_res = []
+
         for gpo in cls.gpos:
             if gpo.name == name:
-                if obj and gpo.obj == obj:
-                    return gpo
-                elif not obj:
-                    return gpo
+                if (obj and gpo.obj == obj) or not obj:
+                    gpos_res.append(gpo)
                 
-        return None
+        return gpos_res
 
 
     @classmethod

@@ -23,9 +23,9 @@ def get_policies(obj=None, cmd=None, cmd_arg=None):
         gpr_init.init_data(path, 'user')
 
     if cmd == "guid":
-        gpos = [GPO.get_gpo_by_guid(cmd_arg, obj)]
+        gpos = GPO.get_gpos_by_guid(cmd_arg, obj)
     elif cmd == "name":
-        gpos = [GPO.get_gpo_by_name(cmd_arg, obj)]
+        gpos = GPO.get_gpos_by_name(cmd_arg, obj)
     else:
         gpos = GPO.get_all_gpos(obj)
 
