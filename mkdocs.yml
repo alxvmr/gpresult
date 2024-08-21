@@ -1,0 +1,26 @@
+site_name: GPResult
+site_url: https://alxvmr.gpresult.github.io/gpresult
+site_author: Maria Alexeeva
+site_description: Documentation of GPResult (ALT Linux)
+
+theme:
+  name: material
+  language: ru
+  locale: ru
+  palette:
+    - primary: custom
+
+extra_css:
+  - stylesheets/extra.css
+
+plugins:
+  - i18n:
+      docs_structure: suffix
+      languages:
+        - locale: ru
+          default: true
+          name: Руский
+          build: true
+        - locale: en
+          name: English
+          build: true
