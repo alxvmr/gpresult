@@ -9,12 +9,14 @@ if loc not in ['ru_RU', 'en_US']:
 
 gettext.bindtextdomain("gpr_show", "locales")
 gettext.textdomain("gpr_show")
-t = gettext.translation("gpr_show", localedir="/usr/lib/python3/site-packages/gpresult/locales", languages=[loc])
+t = gettext.translation("gpr_show",
+                        localedir="/usr/lib/python3/site-packages/gpresult/locales",
+                        languages=[loc])
 t.install()
 _ = t.gettext
 
 
-def get_lists_formatted_output(data, offset):
+def get_lists_formatted_output(data, offset, is_rec=False):
     max_n = 0
     output = ""
 
@@ -26,19 +28,41 @@ def get_lists_formatted_output(data, offset):
 
     max_n += 3
 
+    # TODO: Remove or redo the check. max_n is always greater than 0
     if max_n > 0:
         for i in range(len(data)):
-            if len(data[i]) > 2 and type(data[i][2]) == dict and data[i][2]["is_list"]:
-                data_list = ast.literal_eval(data[i][1])
-                output += " " * offset + "{:{max_n}s} {:s}\n".format(str(data[i][0]), str(data_list[0]), max_n=max_n)
-
-                for i in range (1, len(data_list)):
-                    output += " " * offset + "{:{max_n}s} {:s}\n".format(" ", str(data_list[i]), max_n=max_n)
+            if type(data[i][1]) == list:
+                output += (
+                    " " * offset 
+                    + "{:{max_n}s}".format(str(data[i][0]), max_n=max_n) 
+                    + get_lists_formatted_output(data[i][1], offset+max_n, is_rec=True)
+                    )
 
             else:
-                output += " " * offset + "{:{max_n}s} {:s}\n".format(str(data[i][0]), str(data[i][1]), max_n=max_n)
+                out = str(data[i][1])
 
-    return output[:-1]
+                if (len(data[i]) == 3 
+                    and type(data[i][2]) == dict 
+                    and data[i][2]["is_list"]):
+
+                    values_list = ast.literal_eval(data[i][1])
+                    out = get_list_output(values_list, max_n+offset+1)[:-1].lstrip()
+                
+                if out == "None":
+                    out = "-"
+
+                if is_rec and i == 0:
+                    output += "{:{max_n}s} {:s}\n".format(str(data[i][0]),
+                                                          out, max_n=max_n)
+
+                else:
+                    output += (
+                        " " * offset 
+                        + "{:{max_n}s} {:s}\n".format(str(data[i][0]), 
+                                                      out, max_n=max_n)
+                        )
+    
+    return output
 
 
 def get_raw_output(data):
@@ -83,63 +107,48 @@ def rsop_gen(type):
             }
 
 
-def policies_gen(policies, type, is_cmd):
+def policies_gen(gpos, type, is_cmd):
     header = _("Applied Group Policy Objects")
     body = []
 
-    if is_cmd:
-        if policies[0]:
-            for e in policies[0]:
-                body.append([e[0], e[1]])
+    if type == "raw" or (is_cmd and type == "standard"):
+        render_type = "raw" if type == "raw" else "format"
 
-            body.sort(key = lambda x: x[0])
+        if any(gpos):
+            kvs = []
 
-        if type == 'standard':
-            return {"body": body, "type": 'format'}
-        elif type == 'raw':
-            return {"body": body, "type": 'raw'}
+            for gpo in gpos:
+                kvs.extend(gpo.keys_values)
 
-    else:
-        if type == 'standard':
-            if policies[1] and policies[0]:
-                policies_name_with_guid = [[pol, policies[1][pol]] for pol in policies[0]]
-                body.append({"body": policies_name_with_guid,
-                             "type": 'format'
-                             })
+            kvs.sort(key = lambda x: x.key)
 
-            else:
-                if policies[0]:
-                    policies_name = list(policies[0].keys())
-                    body.append({"body": policies_name,
-                                "type": 'list'
-                                })
+            for kv in kvs:
+                body.append([
+                    kv.key, 
+                    kv.value,
+                ])
 
-        elif type == "verbose":
-            if policies[1]:
-                for policy_name, value in policies[0].items():
-                    if policy_name in policies[1].keys():
-                        body.append({"header": f"{policy_name} {policies[1][policy_name]}\n",
-                                    "body":[{"body": value,
-                                            "type": 'format'
-                                            }],
-                                    "type": 'subsection'})
-            elif policies[0]:
-                for policy_name, value in policies[0].items():
-                    body.append({"header": policy_name,
-                                 "body":[{"body": value,
-                                          "type": 'format'
-                                        }],
-                                 "type": 'subsection'})
+        return {
+            "body": body,
+            "type": render_type,
+        }
+    
+    elif type == "verbose":
+        for gpo in gpos:
+            info = gpo.get_info_list()
+            body.append({
+                "body": info,
+                "type": 'format'})
+            
+    elif type == "standard":
+        names_gpos = []
+        for gpo in gpos:
+            names_gpos.append(gpo.name)
 
-        elif type == "raw":
-            if policies[0]:
-                for value in policies[0].values():
-                    for e in value:
-                        body.append(e)
-
-                body.sort(key = lambda x: x[0])
-
-            return {"body": body, "type": 'raw'}
+        body.append({
+            "body": names_gpos,
+            "type": "list",
+        })
 
     return {"header": header,
         "body": body,
@@ -147,19 +156,25 @@ def policies_gen(policies, type, is_cmd):
         }
 
 
-def settings_gen(obj_type, policies, output_type='standard', is_cmd=False):
-    if is_cmd:
-        return policies_gen(policies, output_type, is_cmd)
+def settings_gen(gpos, obj_type, output_type='standard', is_cmd=False):
+    global filtering_gpo
+    filtering_gpo = gpos
 
-    if output_type == 'raw':
-        return policies_gen(policies, output_type, False)
+    if output_type == 'raw' or (is_cmd and output_type=='standard'):
+        return policies_gen(gpos, output_type, is_cmd)
+    
+    if obj_type:
+        filtering_gpo = []
+        for gpo in gpos:
+            if obj_type == gpo.obj:
+                filtering_gpo.append(gpo)
+    
+    policies = policies_gen(filtering_gpo, output_type, is_cmd)
 
     if obj_type == "user":
         header = _("USER SETTINGS")
-    else:
+    elif obj_type == "machine":
         header = _("MACHINE SETTINGS")
-        
-    policies = policies_gen(policies, output_type, False)
 
     return {"header": header,
             "body": [policies],
@@ -167,64 +182,43 @@ def settings_gen(obj_type, policies, output_type='standard', is_cmd=False):
             }
 
 
-def gen(policies, obj_type, output_type, is_cmd):
+def gen(gpos, obj_type, output_type, is_cmd):
     data = []
 
-    policy_indx = 0 if obj_type == 'user' else 1
+    if output_type == "raw" or (is_cmd and output_type=='standard'):
+        data.extend([
+            header_gen(),
+            settings_gen(gpos, obj_type, output_type, is_cmd)
+        ])
 
-    if is_cmd:
+    elif output_type == "verbose" or output_type == "standard":
+        data.extend([
+            header_gen(),
+            rsop_gen(obj_type),
+        ])
+        
         if obj_type:
-            data.extend([
-                header_gen(),
-                settings_gen(obj_type, policies[policy_indx], output_type, is_cmd)
-            ])
-        else:
-            data.extend([
-                header_gen(),
-                settings_gen('user', policies[0], output_type, is_cmd),
-                settings_gen('machine', policies[1], output_type, is_cmd)
-            ])
+            data.append(settings_gen(gpos, obj_type, output_type, False))
 
-    elif output_type == "standard" or output_type == "verbose":
-        if obj_type:
-            data.extend([
-                header_gen(),
-                rsop_gen(obj_type),
-                settings_gen(obj_type, policies[policy_indx], output_type, False)
-            ])
         else:
-            data.extend([
-                header_gen(),
-                rsop_gen(obj_type),
-                settings_gen('user', policies[0], output_type, False),
-                settings_gen('machine', policies[1], output_type, False)
-            ])
-
-    elif output_type == "raw":
-        if obj_type:
-            data.extend([
-                header_gen(),
-                settings_gen(obj_type, policies[policy_indx], output_type, False)
-            ])
-        else:
-            data.extend([
-                header_gen(),
-                settings_gen('user', policies[0], output_type, False),
-                settings_gen('machine', policies[1], output_type, False)
-            ])
+            data.append(settings_gen(gpos, 'user', output_type, False))
+            data.append(settings_gen(gpos, 'machine', output_type, False))
 
     return data
 
 
 def show_helper(data, offset):
     for elem in data:
-        if elem["type"] == "section" or elem["type"] == "subsection":
+        if elem["type"] == "section":
             print("\n" + offset * " " + elem["header"])
-
-            if elem["type"] == "section":
-                print(offset * " " + len(elem["header"]) * "-")
+            print(offset * " " + len(elem["header"]) * "-")
 
             show_helper(elem["body"], offset + 4)
+        
+        if elem["type"] == 'subsection':
+            print(offset * " " + elem["header"])
+            show_helper(elem["body"], offset + 4)
+            print("\n")
 
         if elem["type"] == "format":
             print(get_lists_formatted_output(elem["body"], offset))
@@ -239,8 +233,8 @@ def show_helper(data, offset):
             print(get_list_output(elem["body"], offset))
 
 
-def show(policies, obj_type, output_type="standard", is_cmd=False):
-    data = gen(policies, obj_type, output_type, is_cmd)
+def show(gpos, obj_type, output_type="standard", is_cmd=False):
+    data = gen(gpos, obj_type, output_type, is_cmd)
     offset = 0
 
     show_helper(data, offset)

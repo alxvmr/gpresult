@@ -1,8 +1,5 @@
-#! /usr/bin/env python3
 import argparse
-from . import gpr_get_policies
-from . import gpr_show
-import os
+from . import gpr_get_policies, gpr_show
 
 import gettext, locale
 
@@ -12,13 +9,16 @@ if loc not in ['ru_RU', 'en_US']:
 
 gettext.bindtextdomain("gpresult", "locales")
 gettext.textdomain("gpresult")
-t = gettext.translation("gpresult", localedir="/usr/lib/python3/site-packages/gpresult/locales", languages=[loc])
+t = gettext.translation("gpresult", 
+                        localedir="/usr/lib/python3/site-packages/gpresult/locales", 
+                        languages=[loc])
 t.install()
 _ = t.gettext
 
 
 def parse_cli_arguments():
-    argparser = argparse.ArgumentParser(description=_("Information about applied policies"), formatter_class=argparse.RawTextHelpFormatter)
+    argparser = argparse.ArgumentParser(description=_("Information about applied policies"), 
+                                        formatter_class=argparse.RawTextHelpFormatter)
 
     argparser.add_argument('-f', '--format',
                            choices=['raw', 'standard', 'verbose'],
@@ -27,12 +27,7 @@ def parse_cli_arguments():
                                     "* standard: standard output including environment information; outputs only the names of applied policies\n"\
                                     "* verbose: is similar to the standard output, in addition, the applied keys and policy values are also output"))
 
-    argparser.add_argument('-i', '--guid',
-                           action='store_true',
-                           help=_("Add policy guid output for policies\n"\
-                                  "* For the <raw> output type the option does not apply"))
-
-    argparser.add_argument("-p", "--policy_guid",
+    argparser.add_argument("-i", "--policy_guid",
                            help=_("Information about policy keys and values by guid\n"\
                                   "* For the <verbose> output type the option does not apply"),
                            type=str)
@@ -55,13 +50,13 @@ def parse_cli_arguments():
 
 def main():
     args = parse_cli_arguments()
+    if not args.format:
+        args.format = "verbose"
 
     obj = None
     is_cmd = False
-    policies = []
-
-    user_name = os.getlogin()
-
+    gpos = None
+    
     if args.user:
         obj = 'user'
 
@@ -74,26 +69,22 @@ def main():
             is_cmd = True
 
             if args.policy_guid:
-                policies.append(gpr_get_policies.get_policies(name=user_name, type=args.format, with_guid=args.guid, cmd="guid", cmd_name=args.policy_guid))
-                policies.append(gpr_get_policies.get_policies(name=None, type=args.format, with_guid=args.guid, cmd="guid", cmd_name=args.policy_guid))
+                gpos = gpr_get_policies.get_policies(obj, 
+                                                     cmd="guid", 
+                                                     cmd_arg=args.policy_guid)
 
             elif args.policy_name:
-                policies.append(gpr_get_policies.get_policies(name=user_name, type=args.format, with_guid=args.guid, cmd="name", cmd_name=args.policy_name))
-                policies.append(gpr_get_policies.get_policies(name=None, type=args.format, with_guid=args.guid, cmd="name", cmd_name=args.policy_name))
+                gpos = gpr_get_policies.get_policies(obj, 
+                                                     cmd="name", 
+                                                     cmd_arg=args.policy_name)
 
         else:
             exit() # TODO: To infer an invalid output format for this option
 
     else:
+        gpos = gpr_get_policies.get_policies(obj)
 
-        if args.guid and args.format == 'raw':
-            exit() # TODO: To infer an invalid output format for this option
-
-        else:
-            policies.append(gpr_get_policies.get_policies(name=user_name, type=args.format, with_guid=args.guid))
-            policies.append(gpr_get_policies.get_policies(name=None, type=args.format, with_guid=args.guid))
-
-    gpr_show.show(policies, obj, args.format, is_cmd)
+    gpr_show.show(gpos, obj, args.format, is_cmd)
 
 
 if __name__ == "__main__":
