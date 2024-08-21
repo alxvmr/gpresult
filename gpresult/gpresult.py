@@ -50,6 +50,8 @@ def parse_cli_arguments():
 
 def main():
     args = parse_cli_arguments()
+    if not args.format:
+        args.format = "verbose"
 
     obj = None
     is_cmd = False
