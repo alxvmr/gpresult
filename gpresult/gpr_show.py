@@ -209,7 +209,7 @@ def gen(gpos, obj_type, output_type, is_cmd):
 def show_helper(data, offset):
     for elem in data:
         if elem["type"] == "section":
-            print("\n" + offset * " " + elem["header"])
+            print(offset * " " + elem["header"])
             print(offset * " " + len(elem["header"]) * "-")
 
             show_helper(elem["body"], offset + 4)
