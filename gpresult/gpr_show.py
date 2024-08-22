@@ -187,7 +187,6 @@ def gen(gpos, obj_type, output_type, is_cmd):
 
     if output_type == "raw" or (is_cmd and output_type=='standard'):
         data.extend([
-            header_gen(),
             settings_gen(gpos, obj_type, output_type, is_cmd)
         ])
 
