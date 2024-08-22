@@ -8,8 +8,6 @@ version = "0.0.1"
 dependencies = [
   "python-gettext",
   "distro",
-  #"rpm-build-python3",
-  #"libgvdb-gir",
 ]
 requires-python = ">=3.8"
 authors = [
