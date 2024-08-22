@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-08-15 16:48+0400\n"
+"POT-Creation-Date: 2024-08-21 12:56+0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,64 +17,77 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/gpresult.py:22
+#: gpresult/gpresult.py:24
 msgid "Information about applied policies"
 msgstr "Информация о примененных политиках"
 
-#: src/gpresult.py:26
+#: gpresult/gpresult.py:29
 msgid ""
 "Output format. Choose one of the following options:\n"
-"* verbose: display of policy keys and values\n"
+"* raw: display of policy keys and values\n"
 "* standard: standard output including environment information; outputs only "
 "the names of applied policies\n"
-"* with_keys: is similar to the standard output, in addition, the applied "
-"keys and policy values are also output"
+"* verbose: is similar to the standard output, in addition, the applied keys "
+"and policy values are also output"
 msgstr ""
 "Формат вывода. Выберите одну из следующих опций:\n"
-"* verbose: показать ключи и значения политик\n"
+"* raw: показать ключи и значения политик\n"
 "* standard: стандартный вывод, включающий информацию об окружении; выводятся "
 "имена примененных политик\n"
-"* with_keys: структура вывода аналогична standard; дополнительно включает "
+"* verbose: структура вывода аналогична standard; дополнительно включает "
 "информацию о ключах и значениях примененных политик"
 
-#: src/gpresult.py:33
+#: gpresult/gpresult.py:35
 msgid ""
-"Add policy ID output for policies\n"
+"Information about policy keys and values by guid\n"
 "* For the <verbose> output type the option does not apply"
 msgstr ""
-"Добавить вывод ID политики\n"
-"* Не применяется в комбинации с форматом вывода <verbose>"
+"Получить информацию о ключах и значениях политики по ее guid\n"
+"* Для формата вывода <verbose> опция не применяется"
 
-#: src/gpresult.py:37
-msgid ""
-"Information about policy keys and values by ID\n"
-"* For the <with_keys> output type the option does not apply"
-msgstr ""
-"Получить информацию о ключах и значениях политики по ID\n"
-"* Не применяется в комбинации с форматом вывода <with_keys>"
-
-#: src/gpresult.py:42
+#: gpresult/gpresult.py:40
 msgid ""
 "Information about policy keys and values by name\n"
-"* For the <with_keys> output type the option does not apply"
+"* For the <verbose> output type the option does not apply"
 msgstr ""
 "Получить информацию о ключах и значениях политики по ее отображаемому имени\n"
-"* Не применяется в комбинации с форматом вывода <with_keys>"
+"* Для формата вывода <verbose> опция не применяется"
 
-#: src/gpresult.py:48
+#: gpresult/gpresult.py:46
 msgid "Get information about applied policies for the current user"
 msgstr "Получить информацию о примененных политиках для текущего пользователя"
 
-#: src/gpresult.py:52
+#: gpresult/gpresult.py:50
 msgid "Get information about applied policies for the current machine"
 msgstr "Получить информацию о примененных политиках для текущей машины"
 
 #~ msgid ""
+#~ "Add policy guid output for policies\n"
+#~ "* For the <raw> output type the option does not apply"
+#~ msgstr ""
+#~ "Дополнительно выводить guid для политик\n"
+#~ "Для формата вывода <raw> опция не применяется"
+
+#~ msgid ""
 #~ "Add policy ID output for policies\n"
-#~ "* For the verbose output type, the option does not apply"
+#~ "* For the <raw> output type the option does not apply"
+#~ msgstr ""
+#~ "Добавить вывод ID политики\n"
+#~ "* Не применяется в комбинации с форматом вывода <raw>"
+
+#~ msgid ""
+#~ "Information about policy keys and values by ID\n"
+#~ "* For the <verbose> output type the option does not apply"
+#~ msgstr ""
+#~ "Получить информацию о ключах и значениях политики по ID\n"
+#~ "* Не применяется в комбинации с форматом вывода <verbose>"
+
+#~ msgid ""
+#~ "Add policy ID output for policies\n"
+#~ "* For the raw output type, the option does not apply"
 #~ msgstr ""
 #~ "Добавить вывод идентификатора политики\n"
-#~ "* Для типа вывода verbose данная опция не применяется"
+#~ "* Для типа вывода raw данная опция не применяется"
 
 #~ msgid "Output format"
 #~ msgstr "Формат вывода"

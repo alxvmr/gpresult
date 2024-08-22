@@ -14,7 +14,6 @@
         {%- endfor -%}
     {%- endmacro -%}
 
-    {{info}}
     {% for elem in info recursive %}
         {% if elem["type"] == "section" or elem["type"] == "subsection" %}
             <div class="section">
@@ -36,7 +35,6 @@
 
             {% elif elem["type"] == "format" %}
                 Formatted text is here!!!
-
         {% endif %}
     {% endfor %}
 </body>

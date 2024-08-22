@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-08-15 16:44+0400\n"
+"POT-Creation-Date: 2024-08-21 12:56+0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/gpr_show.py:63
+#: gpresult/gpr_show.py:88
 msgid ""
 "\n"
 "Created on {}"
@@ -25,25 +25,30 @@ msgstr ""
 "\n"
 "Отчет сформирован {}"
 
-#: src/gpr_show.py:71
-msgid "The resulting set of policies for the "
-msgstr "Полученный набор политик для "
+#: gpresult/gpr_show.py:96
+msgid "The resulting set of policies"
+msgstr "Результирующий набор политик"
 
-#: src/gpr_show.py:76
-msgid "user {}:"
-msgstr "пользователя {}:"
-
-#: src/gpr_show.py:80
-msgid "machine {}:"
-msgstr "машины {}:"
-
-#: src/gpr_show.py:91
+#: gpresult/gpr_show.py:112
 msgid "Applied Group Policy Objects"
 msgstr "Примененные Объекты Групповой Политики"
 
-#: src/gpr_show.py:154
+#: gpresult/gpr_show.py:176
 msgid "USER SETTINGS"
 msgstr "ПОЛЬЗОВАТЕЛЬСКИЕ НАСТРОЙКИ"
+
+#: gpresult/gpr_show.py:178
+msgid "MACHINE SETTINGS"
+msgstr "МАШИННЫЕ НАСТРОЙКИ"
+
+#~ msgid "The resulting set of policies for the "
+#~ msgstr "Полученный набор политик для "
+
+#~ msgid "user {}:"
+#~ msgstr "пользователя {}:"
+
+#~ msgid "machine {}:"
+#~ msgstr "машины {}:"
 
 #~ msgid "Policy keys:"
 #~ msgstr "Ключи политик:"

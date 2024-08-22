@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-07-24 12:40+0400\n"
+"POT-Creation-Date: 2024-08-21 12:59+0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,10 +17,14 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../../../src/gpr_get_policies.py:49
-msgid ""
-"An entry for the name {} could not be found. The user or machine name may be "
-"incorrect."
-msgstr ""
-"An entry for the name {} could not be found. The user or machine name may be "
-"incorrect."
+#: ../../../gpresult/GPO.py:37
+msgid "Path"
+msgstr "Path"
+
+#: ../../../gpresult/GPO.py:38
+msgid "Version"
+msgstr "Version"
+
+#: ../../../gpresult/GPO.py:40
+msgid "Keys and values"
+msgstr "Keys and values"

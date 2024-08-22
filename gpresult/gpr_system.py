@@ -11,7 +11,9 @@ if loc not in ['ru_RU', 'en_US']:
 
 gettext.bindtextdomain("gpr_system", "locales")
 gettext.textdomain("gpr_system")
-t = gettext.translation("gpr_system", localedir="/usr/lib/python3/site-packages/gpresult/locales", languages=[loc])
+t = gettext.translation("gpr_system", 
+                        localedir="/usr/lib/python3/site-packages/gpresult/locales", 
+                        languages=[loc])
 t.install()
 _ = t.gettext
 
@@ -27,7 +29,7 @@ def get_timestamp():
 def os_conf():
     os_id, os_version, os_name = distro.linux_distribution()
 
-    return [[_("OS Configuration:"), os_id],
+    return [[_("Operating system:"), os_id],
             [_("OS Version:"), f"{os_version} ({os_name})"]]
 
 
