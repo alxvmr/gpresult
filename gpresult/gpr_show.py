@@ -71,7 +71,7 @@ def get_raw_output(data):
     for i in range(len(data)):
         s += f"{data[i][0]} {data[i][1]}\n"
 
-    return s
+    return s[:-1]
 
 
 def get_list_output(l, offset):
