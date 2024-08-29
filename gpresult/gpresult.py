@@ -21,11 +21,12 @@ def parse_cli_arguments():
                                         formatter_class=argparse.RawTextHelpFormatter)
 
     argparser.add_argument('-f', '--format',
-                           choices=['raw', 'standard', 'verbose'],
+                           choices=['raw', 'standard', 'verbose', 'list'],
                            help = _("Output format. Choose one of the following options:\n"\
                                     "* raw: display of policy keys and values\n"\
                                     "* standard: standard output including environment information; outputs only the names of applied policies\n"\
-                                    "* verbose: is similar to the standard output, in addition, the applied keys and policy values are also output"))
+                                    "* verbose: is similar to the standard output, in addition, the applied keys and policy values are also output\n"\
+                                    "* list: display group policy names and their id (with formatting)"))
 
     argparser.add_argument("-i", "--policy_guid",
                            help=_("Information about policy keys and values by guid\n"\
@@ -53,7 +54,8 @@ def main():
     if not args.format:
         args.format = "verbose"
 
-    args.format = "raw"
+    #args.format = "standard"
+    #args.user = True
 
     obj = None
     is_cmd = False
