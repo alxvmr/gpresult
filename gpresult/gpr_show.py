@@ -62,7 +62,7 @@ def get_lists_formatted_output(data, offset, is_rec=False):
                                                       out, max_n=max_n)
                         )
     
-    return output
+    return output[:-1]
 
 
 def get_raw_output(data):
@@ -79,7 +79,7 @@ def get_list_output(l, offset):
     for e in l:
         s += " " * offset + e + "\n"
 
-    return s
+    return s[:-1]
 
 
 def header_gen():
@@ -152,7 +152,7 @@ def policies_gen(gpos, type, is_cmd):
 
     return {"header": header,
         "body": body,
-        "type": 'section'
+        "type": 'subsection'
         }
 
 
@@ -209,15 +209,16 @@ def gen(gpos, obj_type, output_type, is_cmd):
 def show_helper(data, offset):
     for elem in data:
         if elem["type"] == "section":
-            print(offset * " " + elem["header"])
+            print("\n" + offset * " " + elem["header"])
             print(offset * " " + len(elem["header"]) * "-")
 
             show_helper(elem["body"], offset + 4)
         
         if elem["type"] == 'subsection':
             print(offset * " " + elem["header"])
+            print(offset * " " + len(elem["header"]) * "-")
+
             show_helper(elem["body"], offset + 4)
-            print("\n")
 
         if elem["type"] == "format":
             print(get_lists_formatted_output(elem["body"], offset))
@@ -226,7 +227,7 @@ def show_helper(data, offset):
             print(get_raw_output(elem["body"]))
 
         if elem["type"] == "str":
-            print(elem["body"] + "\n")
+            print(elem["body"])
 
         if elem["type"] == "list":
             print(get_list_output(elem["body"], offset))
