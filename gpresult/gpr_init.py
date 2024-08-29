@@ -7,8 +7,8 @@ from gi.repository import Gvdb
 from gi.repository import GLib
 
 import ast
-from .GPO import GPO
-from .KeyValue import KeyValue
+from GPO import GPO
+from KeyValue import KeyValue
 
 
 policy_fields = [

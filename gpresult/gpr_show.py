@@ -1,4 +1,4 @@
-from . import gpr_system
+import gpr_system
 import ast
 
 import gettext, locale

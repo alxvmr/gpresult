@@ -1,5 +1,5 @@
 import argparse
-from . import gpr_get_policies, gpr_show
+import gpr_get_policies, gpr_show
 
 import gettext, locale
 
@@ -52,6 +52,8 @@ def main():
     args = parse_cli_arguments()
     if not args.format:
         args.format = "verbose"
+
+    args.format = "raw"
 
     obj = None
     is_cmd = False

@@ -1,5 +1,5 @@
-from .GPO import GPO
-from . import gpr_system, gpr_init
+from GPO import GPO
+import gpr_system, gpr_init
 import os
 
 
