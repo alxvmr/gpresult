@@ -63,14 +63,17 @@ def parse_cli_arguments():
 
     argparser.add_argument('-l', '--list',
                            action=CustomAction,
-                           help=_('Output format: output of GPO names and their GUIDs'))
+                           help=_('Output format: output of GPO names and their GUIDs\n'\
+                                  '* Not applicable with <-i>/<--policy_guid> and <-i>/<--policy_name>'))
 
     argparser.add_argument("-i", "--policy_guid",
-                           help=_("Information about policy keys and values by guid"),
+                           help=_("Information about policy keys and values by guid\n"\
+                                  "* Not applicable with <-l>/<--list>"),
                            type=str)
 
     argparser.add_argument("-n", "--policy_name",
-                           help=_("Information about policy keys and values by name"),
+                           help=_("Information about policy keys and values by name\n"\
+                                  "* Not applicable with <-l>/<--list>"),
                            type=str)
 
     argparser.add_argument('-u', '--user',
