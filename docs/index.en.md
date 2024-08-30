@@ -4,10 +4,9 @@ hide:
 ---
 
 # Summary
+Displays information about the resulting set of group policies for the current user on the current machine.
 
-Displays information about the resulting set of policies for the current user on the current machine.
-
-Information about applied group policies is generated from the data obtained after the last execution of [gpupdate](https://github.com/altlinux/gpupdate). GPResult does not call the gpupdate utility.
+The information about the applied group policies is generated from the data obtained after the last execution of [gpupdate](https://github.com/altlinux/gpupdate). GPResult does not call the gpupdate utility.
 
 ## Syntax
 
