@@ -16,16 +16,47 @@ t.install()
 _ = t.gettext
 
 
+class CustomAction(argparse._StoreTrueAction):
+    def __call__(self, parser, namespace, values=True, option_string=None):
+        self.values = values
+
+        if not 'ordered_args' in namespace:
+            setattr(namespace, 'ordered_args', [])
+
+        previous = namespace.ordered_args
+        previous.append((self.dest, values))
+        setattr(namespace, 'ordered_args', previous)
+
+
+def get_last_selected_option(parser):
+    last_opt = None
+
+    try:
+        selected_opts = parser.ordered_args
+    except AttributeError:
+        return last_opt
+
+    if len(selected_opts):
+        last_opt = selected_opts[-1][0]
+
+    return last_opt
+
+
 def parse_cli_arguments():
     argparser = argparse.ArgumentParser(description=_("Information about applied policies"), 
                                         formatter_class=argparse.RawTextHelpFormatter)
 
-    argparser.add_argument('-f', '--format',
-                           choices=['raw', 'standard', 'verbose'],
-                           help = _("Output format. Choose one of the following options:\n"\
-                                    "* raw: display of policy keys and values\n"\
-                                    "* standard: standard output including environment information; outputs only the names of applied policies\n"\
-                                    "* verbose: is similar to the standard output, in addition, the applied keys and policy values are also output"))
+    argparser.add_argument('-r', '--raw',
+                           action=CustomAction,
+                           help=_('Output format: display of policy keys and values'))
+
+    argparser.add_argument('-s', '--standard',
+                           action=CustomAction,
+                           help=_('Output format: standard output including environment information; outputs only the names of applied policies'))
+
+    argparser.add_argument('-v', '--verbose',
+                           action=CustomAction,
+                           help=_('Output format: is similar to the standard output, in addition, the applied keys and policy values are also output'))
 
     argparser.add_argument("-i", "--policy_guid",
                            help=_("Information about policy keys and values by guid\n"\
@@ -50,8 +81,10 @@ def parse_cli_arguments():
 
 def main():
     args = parse_cli_arguments()
-    if not args.format:
-        args.format = "verbose"
+    output_format = get_last_selected_option(args)
+
+    if not output_format:
+        output_format = "verbose"
 
     obj = None
     is_cmd = False
@@ -65,7 +98,7 @@ def main():
 
     if args.policy_guid or args.policy_name:
 
-        if args.format in ['raw', 'standard']:
+        if output_format in ['raw', 'standard']:
             is_cmd = True
 
             if args.policy_guid:
@@ -84,7 +117,7 @@ def main():
     else:
         gpos = gpr_get_policies.get_policies(obj)
 
-    gpr_show.show(gpos, obj, args.format, is_cmd)
+    gpr_show.show(gpos, obj, output_format, is_cmd)
 
 
 if __name__ == "__main__":
