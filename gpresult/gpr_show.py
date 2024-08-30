@@ -133,6 +133,17 @@ def policies_gen(gpos, type, is_cmd):
             "type": render_type,
         }
     
+    elif type == "list" or type == "list_raw":
+        render_type = "format" if type == "list" else "raw"
+        policy_guid = []
+        for gpo in gpos:
+            policy_guid.append([gpo.name, gpo.guid])
+
+        return {
+            "body": policy_guid,
+            "type": render_type,
+        }
+
     elif type == "verbose":
         for gpo in gpos:
             info = gpo.get_info_list()
@@ -160,7 +171,7 @@ def settings_gen(gpos, obj_type, output_type='standard', is_cmd=False):
     global filtering_gpo
     filtering_gpo = gpos
 
-    if output_type == 'raw' or (is_cmd and output_type=='standard'):
+    if output_type == 'raw' or output_type == 'list' or output_type == 'list_raw' or (is_cmd and output_type=='standard'):
         return policies_gen(gpos, output_type, is_cmd)
     
     if obj_type:
@@ -185,7 +196,7 @@ def settings_gen(gpos, obj_type, output_type='standard', is_cmd=False):
 def gen(gpos, obj_type, output_type, is_cmd):
     data = []
 
-    if output_type == "raw" or (is_cmd and output_type=='standard'):
+    if output_type == "raw" or output_type == 'list' or output_type == 'list_raw' or (is_cmd and output_type=='standard'):
         data.extend([
             settings_gen(gpos, obj_type, output_type, is_cmd)
         ])

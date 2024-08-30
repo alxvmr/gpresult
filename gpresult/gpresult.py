@@ -24,11 +24,11 @@ class CustomAction(argparse._StoreTrueAction):
             setattr(namespace, 'ordered_args', [])
 
         previous = namespace.ordered_args
-        previous.append((self.dest, values))
+        previous.append(self.dest)
         setattr(namespace, 'ordered_args', previous)
 
 
-def get_last_selected_option(parser):
+def get_selected_option(parser):
     last_opt = None
 
     try:
@@ -37,7 +37,10 @@ def get_last_selected_option(parser):
         return last_opt
 
     if len(selected_opts):
-        last_opt = selected_opts[-1][0]
+        if len(set(selected_opts) & {'list', 'raw'}) == 2:
+            last_opt = "list_raw"
+        else:
+            last_opt = selected_opts[-1]
 
     return last_opt
 
@@ -57,6 +60,10 @@ def parse_cli_arguments():
     argparser.add_argument('-v', '--verbose',
                            action=CustomAction,
                            help=_('Output format: is similar to the standard output, in addition, the applied keys and policy values are also output'))
+
+    argparser.add_argument('-l', '--list',
+                           action=CustomAction,
+                           help=_('Output format: output of GPO names and their GUIDs'))
 
     argparser.add_argument("-i", "--policy_guid",
                            help=_("Information about policy keys and values by guid"),
@@ -79,7 +86,8 @@ def parse_cli_arguments():
 
 def main():
     args = parse_cli_arguments()
-    output_format = get_last_selected_option(args)
+
+    output_format = get_selected_option(args)
 
     if not output_format:
         output_format = "verbose"
