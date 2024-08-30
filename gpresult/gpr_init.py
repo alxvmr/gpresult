@@ -10,6 +10,19 @@ import ast
 from .GPO import GPO
 from .KeyValue import KeyValue
 
+import gettext, locale
+
+loc = locale.getlocale()[0]
+if loc not in ['ru_RU', 'en_US']:
+    loc = 'en_US'
+
+gettext.bindtextdomain("gpr_show", "locales")
+gettext.textdomain("gpr_show")
+t = gettext.translation("gpr_show",
+                        localedir="/usr/lib/python3/site-packages/gpresult/locales",
+                        languages=[loc])
+t.install()
+_ = t.gettext
 
 policy_fields = [
     "correct_path",
@@ -19,7 +32,17 @@ policy_fields = [
 ]
 
 def init_gpos(path, obj):
-    is_not_empty, bytes = GLib.file_get_contents(path)
+    try:
+        is_not_empty, bytes = GLib.file_get_contents(path)
+    except GLib.Error as e:
+        if e.matches(GLib.file_error_quark(), GLib.FileError.ACCES):
+            print(_("Permission denied: {}").format(path))
+        elif e.matches(GLib.file_error_quark(), GLib.FileError.NOENT):
+            print(_("No such file: {}").format(path))
+        else:
+            print(e.message)
+        exit()
+
     bytes = GLib.Bytes.new(bytes)
 
     if (is_not_empty):
@@ -70,7 +93,17 @@ def clear_gpo():
             
     
 def init_keys_values(path, obj):
-    is_not_empty, bytes = GLib.file_get_contents(path)
+    try:
+        is_not_empty, bytes = GLib.file_get_contents(path)
+    except GLib.Error as e:
+        if e.matches(GLib.file_error_quark(), GLib.FileError.ACCES):
+            print(_("Permission denied: {}").format(path))
+        elif e.matches(GLib.file_error_quark(), GLib.FileError.NOENT):
+            print(_("No such file: {}").format(path))
+        else:
+            print(e.message)
+        exit()
+
     bytes = GLib.Bytes.new(bytes)
 
     if (is_not_empty):
@@ -94,7 +127,17 @@ def init_keys_values(path, obj):
 
 
 def init_keys_values_meta(path, obj):
-    is_not_empty, bytes = GLib.file_get_contents(path)
+    try:
+        is_not_empty, bytes = GLib.file_get_contents(path)
+    except GLib.Error as e:
+        if e.matches(GLib.file_error_quark(), GLib.FileError.ACCES):
+            print(_("Permission denied: {}").format(path))
+        elif e.matches(GLib.file_error_quark(), GLib.FileError.NOENT):
+            print(_("No such file: {}").format(path))
+        else:
+            print(e.message)
+        exit()
+
     bytes = GLib.Bytes.new(bytes)
 
     if (is_not_empty):
