@@ -59,7 +59,7 @@ def parse_cli_arguments():
 
     argparser.add_argument('-v', '--verbose',
                            action=CustomAction,
-                           help=_('Output format: is similar to the common output, in addition, the applied keys and policy values are also output'))
+                           help=_('Output format (DEFAULT): is similar to the common output, in addition, the applied keys and policy values are also output'))
 
     argparser.add_argument('-l', '--list',
                            action=CustomAction,
