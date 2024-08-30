@@ -62,7 +62,7 @@ def get_lists_formatted_output(data, offset, is_rec=False):
                                                       out, max_n=max_n)
                         )
     
-    return output[:-1]
+    return output
 
 
 def get_raw_output(data):
@@ -207,7 +207,7 @@ def gen(gpos, obj_type, output_type, is_cmd):
 
 
 def show_helper(data, offset):
-    for elem in data:
+    for i, elem in enumerate(data):
         if elem["type"] == "section":
             print("\n" + offset * " " + elem["header"])
             print(offset * " " + len(elem["header"]) * "-")
@@ -221,7 +221,11 @@ def show_helper(data, offset):
             show_helper(elem["body"], offset + 4)
 
         if elem["type"] == "format":
-            print(get_lists_formatted_output(elem["body"], offset))
+            # To have an indentation between formatted lists,
+            # but no top and bottom indentation
+            if i:
+                print("")
+            print(get_lists_formatted_output(elem["body"], offset)[:-1])
 
         if elem["type"] == 'raw':
             print(get_raw_output(elem["body"]))
