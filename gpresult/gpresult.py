@@ -53,13 +53,13 @@ def parse_cli_arguments():
                            action=CustomAction,
                            help=_('Output format: display of policy keys and values'))
 
-    argparser.add_argument('-s', '--standard',
+    argparser.add_argument('-c', '--common',
                            action=CustomAction,
-                           help=_('Output format: standard output including environment information; outputs only the names of applied policies'))
+                           help=_('Output format: common output including environment information; outputs only the names of applied policies'))
 
     argparser.add_argument('-v', '--verbose',
                            action=CustomAction,
-                           help=_('Output format: is similar to the standard output, in addition, the applied keys and policy values are also output'))
+                           help=_('Output format: is similar to the common output, in addition, the applied keys and policy values are also output'))
 
     argparser.add_argument('-l', '--list',
                            action=CustomAction,
@@ -104,7 +104,7 @@ def main():
 
     if args.policy_guid or args.policy_name:
 
-        if output_format in ['raw', 'standard', 'verbose']:
+        if output_format in ['raw', 'common', 'verbose']:
             is_cmd = True
 
             if args.policy_guid:

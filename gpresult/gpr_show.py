@@ -111,7 +111,7 @@ def policies_gen(gpos, type, is_cmd):
     header = _("Applied Group Policy Objects")
     body = []
 
-    if type == "raw" or (is_cmd and type == "standard"):
+    if type == "raw" or (is_cmd and type == "common"):
         render_type = "raw" if type == "raw" else "format"
 
         if any(gpos):
@@ -151,7 +151,7 @@ def policies_gen(gpos, type, is_cmd):
                 "body": info,
                 "type": 'format'})
             
-    elif type == "standard":
+    elif type == "common":
         names_gpos = []
         for gpo in gpos:
             names_gpos.append(gpo.name)
@@ -167,11 +167,11 @@ def policies_gen(gpos, type, is_cmd):
         }
 
 
-def settings_gen(gpos, obj_type, output_type='standard', is_cmd=False):
+def settings_gen(gpos, obj_type, output_type='common', is_cmd=False):
     global filtering_gpo
     filtering_gpo = gpos
 
-    if output_type == 'raw' or output_type == 'list' or output_type == 'list_raw' or (is_cmd and output_type=='standard'):
+    if output_type == 'raw' or output_type == 'list' or output_type == 'list_raw' or (is_cmd and output_type=='common'):
         return policies_gen(gpos, output_type, is_cmd)
     
     if obj_type:
@@ -196,12 +196,12 @@ def settings_gen(gpos, obj_type, output_type='standard', is_cmd=False):
 def gen(gpos, obj_type, output_type, is_cmd):
     data = []
 
-    if output_type == "raw" or output_type == 'list' or output_type == 'list_raw' or (is_cmd and output_type=='standard'):
+    if output_type == "raw" or output_type == 'list' or output_type == 'list_raw' or (is_cmd and output_type=='common'):
         data.extend([
             settings_gen(gpos, obj_type, output_type, is_cmd)
         ])
 
-    elif output_type == "verbose" or output_type == "standard":
+    elif output_type == "verbose" or output_type == "common":
         if not is_cmd:
             data.extend([
                 header_gen(),
@@ -261,7 +261,7 @@ def show_helper(data, offset):
             print(get_list_output(elem["body"], offset))
 
 
-def show(gpos, obj_type, output_type="standard", is_cmd=False):
+def show(gpos, obj_type, output_type="common", is_cmd=False):
     data = gen(gpos, obj_type, output_type, is_cmd)
     offset = 0
 
