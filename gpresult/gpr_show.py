@@ -191,17 +191,30 @@ def gen(gpos, obj_type, output_type, is_cmd):
         ])
 
     elif output_type == "verbose" or output_type == "standard":
-        data.extend([
-            header_gen(),
-            rsop_gen(obj_type),
-        ])
-        
+        if not is_cmd:
+            data.extend([
+                header_gen(),
+                rsop_gen(obj_type),
+            ])
+
         if obj_type:
-            data.append(settings_gen(gpos, obj_type, output_type, False))
+            set_gen = settings_gen(gpos, obj_type, output_type, is_cmd)
+
+            if is_cmd:
+                if len(set_gen["body"]) == 1 and not len(set_gen["body"][0]["body"]):
+                    return data
+
+            data.append(set_gen)
 
         else:
-            data.append(settings_gen(gpos, 'user', output_type, False))
-            data.append(settings_gen(gpos, 'machine', output_type, False))
+            for t in ['user', 'machine']:
+                set_gen = settings_gen(gpos, t, output_type, is_cmd)
+
+                if is_cmd:
+                    if len(set_gen["body"]) == 1 and not len(set_gen["body"][0]["body"]):
+                        continue
+
+                data.append(set_gen)
 
     return data
 

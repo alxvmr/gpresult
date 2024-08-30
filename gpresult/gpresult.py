@@ -59,13 +59,11 @@ def parse_cli_arguments():
                            help=_('Output format: is similar to the standard output, in addition, the applied keys and policy values are also output'))
 
     argparser.add_argument("-i", "--policy_guid",
-                           help=_("Information about policy keys and values by guid\n"\
-                                  "* For the <verbose> output type the option does not apply"),
+                           help=_("Information about policy keys and values by guid"),
                            type=str)
 
     argparser.add_argument("-n", "--policy_name",
-                           help=_("Information about policy keys and values by name\n"\
-                                  "* For the <verbose> output type the option does not apply"),
+                           help=_("Information about policy keys and values by name"),
                            type=str)
 
     argparser.add_argument('-u', '--user',
@@ -98,7 +96,7 @@ def main():
 
     if args.policy_guid or args.policy_name:
 
-        if output_format in ['raw', 'standard']:
+        if output_format in ['raw', 'standard', 'verbose']:
             is_cmd = True
 
             if args.policy_guid:
