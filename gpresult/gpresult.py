@@ -100,6 +100,9 @@ def main():
             is_cmd = True
 
             if args.policy_guid:
+                if args.policy_guid[0] != '{' and args.policy_guid[-1] != '}':
+                    args.policy_guid = '{' + args.policy_guid + '}'
+
                 gpos = gpr_get_policies.get_policies(obj, 
                                                      cmd="guid", 
                                                      cmd_arg=args.policy_guid)
