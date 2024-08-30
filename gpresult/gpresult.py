@@ -28,7 +28,7 @@ class CustomAction(argparse._StoreTrueAction):
         setattr(namespace, 'ordered_args', previous)
 
 
-def get_selected_option(parser):
+def get_selected_option(parser, is_cmd):
     last_opt = None
 
     try:
@@ -37,7 +37,7 @@ def get_selected_option(parser):
         return last_opt
 
     if len(selected_opts):
-        if len(set(selected_opts) & {'list', 'raw'}) == 2:
+        if not is_cmd and len(set(selected_opts) & {'list', 'raw'}) == 2:
             last_opt = "list_raw"
         else:
             last_opt = selected_opts[-1]
@@ -87,7 +87,7 @@ def parse_cli_arguments():
 def main():
     args = parse_cli_arguments()
 
-    output_format = get_selected_option(args)
+    output_format = get_selected_option(args, any([args.policy_name, args.policy_guid]))
 
     if not output_format:
         output_format = "verbose"
