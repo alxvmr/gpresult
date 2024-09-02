@@ -46,7 +46,7 @@ def get_lists_formatted_output(data, offset, is_rec=False):
                     and data[i][2]["is_list"]):
 
                     values_list = ast.literal_eval(data[i][1])
-                    out = get_list_output(values_list, max_n+offset+1)[:-1].lstrip()
+                    out = get_list_output(values_list, max_n+offset+1).lstrip()
                 
                 if out == "None":
                     out = "-"
