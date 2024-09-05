@@ -83,15 +83,6 @@ def init_gpos(path, obj):
                         GPO(obj, **keys_gpo)
 
 
-# Removing unnecessary GPOs. Policies that have no 
-# impact on the applied object will be removed. 
-# That is, GPOs without keys and values
-def clear_gpo():
-    for gpo in GPO.gpos[:]:
-        if not len(gpo.keys_values):
-            GPO.gpos.remove(gpo)
-            
-    
 def init_keys_values(path, obj):
     try:
         is_not_empty, bytes = GLib.file_get_contents(path)
@@ -167,4 +158,3 @@ def init_data(path, obj):
     for kv in KeyValue.get_all_keys_values(obj):
         GPO.set_keys_values(kv)
 
-    clear_gpo()
