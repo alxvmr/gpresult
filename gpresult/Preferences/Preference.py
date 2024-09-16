@@ -45,7 +45,7 @@ class Preference:
 
     def get_info_list(self):
         if self.preference_obj:
-            pref_info = [self.preference_obj.get_info_list(), {'lbr': True, 'is_list': True}]
+            pref_info = [self.preference_obj.get_info_list(), {'is_prefs': True}]
             return pref_info
-            
+
         return None
