@@ -1,3 +1,11 @@
+%add_python3_req_skip gpresult.Preferences.Preferences.Drive
+%add_python3_req_skip gpresult.Preferences.Preferences.EnvVar
+%add_python3_req_skip gpresult.Preferences.Preferences.File
+%add_python3_req_skip gpresult.Preferences.Preferences.Folder
+%add_python3_req_skip gpresult.Preferences.Preferences.Inifile
+%add_python3_req_skip gpresult.Preferences.Preferences.Networkshare
+%add_python3_req_skip gpresult.Preferences.Preferences.Shortcut
+
 Name: gpresult
 Version: 0.0.1
 Release: alt2
