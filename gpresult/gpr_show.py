@@ -16,7 +16,7 @@ t.install()
 _ = t.gettext
 
 
-def get_lists_formatted_output(data, offset, is_rec=False):
+def get_lists_formatted_output(data, offset, is_rec=False, set_offset_pref=False):
     max_n = 0
     output = ""
 
@@ -28,39 +28,55 @@ def get_lists_formatted_output(data, offset, is_rec=False):
 
     max_n += 3
 
-    # TODO: Remove or redo the check. max_n is always greater than 0
-    if max_n > 0:
-        for i in range(len(data)):
-            if type(data[i][1]) == list:
-                output += (
+    for e in data:
+        if type(e[-1]) == list:
+            output += (
                     " " * offset 
-                    + "{:{max_n}s}".format(str(data[i][0]), max_n=max_n) 
-                    + get_lists_formatted_output(data[i][1], offset+max_n, is_rec=True)
+                    + "{:{max_n}s}".format(str(e[0]), max_n=max_n)
+                    + get_lists_formatted_output(e[1], offset+max_n, is_rec=True)
                     )
 
-            else:
-                out = str(data[i][1])
+        elif ( type(e[-1]) == dict
+               and (e[-1].get("is_list", None)
+                    or e[-1].get("is_prefs", None)) ):
+            if e[-1].get("is_list", None):
+                values_list = ast.literal_eval(e[1])
+                out = get_list_output(values_list, max_n+offset+1).lstrip()
+                out = out if out != "None" else "-"
 
-                if (len(data[i]) == 3 
-                    and type(data[i][2]) == dict 
-                    and data[i][2]["is_list"]):
-
-                    values_list = ast.literal_eval(data[i][1])
-                    out = get_list_output(values_list, max_n+offset+1).lstrip()
-                
-                if out == "None":
-                    out = "-"
-
-                if is_rec and i == 0:
-                    output += "{:{max_n}s} {:s}\n".format(str(data[i][0]),
+                if is_rec and data.index(e) == 0:
+                    output += "{:{max_n}s} {:s}\n".format(str(e[0]),
                                                           out, max_n=max_n)
 
                 else:
                     output += (
                         " " * offset 
-                        + "{:{max_n}s} {:s}\n".format(str(data[i][0]), 
+                        + "{:{max_n}s} {:s}\n".format(str(e[0]),
                                                       out, max_n=max_n)
                         )
+
+            elif e[-1].get("is_prefs", None):
+                if data.index(e) > 0:
+                    set_offset_pref=True
+                output += get_lists_formatted_output(e[0],
+                                                    offset,
+                                                    is_rec=True,
+                                                    set_offset_pref=set_offset_pref)
+                if data.index(e) != len(data)-1:
+                    output += "\n"
+        else:
+            out = str(e[1])
+            if (is_rec and data.index(e) == 0) and not set_offset_pref:
+                output += "{:{max_n}s} {:s}\n".format(str(e[0]),
+                                                     out if out != "None" else "-",
+                                                     max_n=max_n)
+            else:
+                output += (
+                    " " * offset
+                    + "{:{max_n}s} {:s}\n".format(str(e[0]),
+                                                out if out != "None" else "-",
+                                                max_n=max_n)
+                    )
     
     return output
 
