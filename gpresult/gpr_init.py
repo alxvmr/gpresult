@@ -9,6 +9,7 @@ from gi.repository import GLib
 import ast
 from .GPO import GPO
 from .KeyValue import KeyValue
+from .Preferences.Preference import Preference
 
 import gettext, locale
 
@@ -30,6 +31,17 @@ policy_fields = [
     "name",
     "version",
 ]
+
+preference_fields = [
+    "Drives",
+    "Environmentvariables",
+    "Files",
+    "Folders",
+    "Inifiles",
+    "Networkshares",
+    "Shortcuts",
+]
+
 
 def init_gpos(path, obj):
     try:
@@ -148,13 +160,52 @@ def init_keys_values_meta(path, obj):
                         )
 
                     # TODO: Add deletion of viewed records
-                
+
+
+def init_preferences(path, obj):
+    try:
+        is_not_empty, bytes = GLib.file_get_contents(path)
+    except GLib.Error as e:
+        if e.matches(GLib.file_error_quark(), GLib.FileError.ACCES):
+            print(_("Permission denied: {}").format(path))
+        elif e.matches(GLib.file_error_quark(), GLib.FileError.NOENT):
+            print(_("No such file: {}").format(path))
+        else:
+            print(e.message)
+        exit()
+
+    bytes = GLib.Bytes.new(bytes)
+
+    if (is_not_empty):
+        table = Gvdb.Table.new_from_bytes(bytes, True)
+
+        key_list = Gvdb.Table.get_names(table)
+
+        for k in key_list:
+            v = Gvdb.Table.get_value(table, k)
+            preference_type = k.split("/")[-1]
+
+            if (v != None and preference_type in preference_fields
+                and k.find('Preferences') != -1):
+                # Computing preference data
+
+                if v.get_type().equal(GLib.VariantType.new("s")):
+                    preference_list = ast.literal_eval(v.get_string())
+
+                    for pref in preference_list:
+                        Preference(obj, preference_type, **pref)
+
 
 def init_data(path, obj):
     init_gpos(path, obj)
     init_keys_values(path, obj)
     init_keys_values_meta(path, obj)
+    init_preferences(path, obj)
 
     for kv in KeyValue.get_all_keys_values(obj):
         GPO.set_keys_values(kv)
 
+    for gpo_name, prefs in Preference.preferences.items():
+        GPO.set_preferences(gpo_name, prefs)
+
+    Preference.clear_preferences()
