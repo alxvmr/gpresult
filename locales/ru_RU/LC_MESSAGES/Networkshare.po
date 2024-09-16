@@ -1,0 +1,54 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-09-16 16:48+0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: Russian\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: gpresult/Preferences/Networkshare.py:17
+msgid "Network share"
+msgstr "Сетевые папки"
+
+#: gpresult/Preferences/Networkshare.py:41
+msgid "Type"
+msgstr "Тип"
+
+#: gpresult/Preferences/Networkshare.py:42
+msgid "Name"
+msgstr "Имя"
+
+#: gpresult/Preferences/Networkshare.py:43
+msgid "Action"
+msgstr "Действие"
+
+#: gpresult/Preferences/Networkshare.py:44
+msgid "Path"
+msgstr "Путь"
+
+#: gpresult/Preferences/Networkshare.py:45
+msgid "All regular"
+msgstr "Модификаторы"
+
+#: gpresult/Preferences/Networkshare.py:46
+msgid "Abe"
+msgstr "Перечисление"
+
+#: gpresult/Preferences/Networkshare.py:47
+msgid "Limit users"
+msgstr "Лимит пользователей"
+
+#: gpresult/Preferences/Networkshare.py:48
+msgid "Comment"
+msgstr "Комментарий"

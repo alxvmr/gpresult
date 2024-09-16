@@ -1,0 +1,62 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-09-16 16:21+0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: English\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: gpresult/Preferences/Drive.py:17
+msgid "Drive"
+msgstr "Drive"
+
+#: gpresult/Preferences/Drive.py:44
+msgid "Type"
+msgstr "Type"
+
+#: gpresult/Preferences/Drive.py:45
+msgid "Password"
+msgstr "Password"
+
+#: gpresult/Preferences/Drive.py:46
+msgid "Direction"
+msgstr "Direction"
+
+#: gpresult/Preferences/Drive.py:47
+msgid "Path"
+msgstr "Path"
+
+#: gpresult/Preferences/Drive.py:48
+msgid "Action"
+msgstr "Action"
+
+#: gpresult/Preferences/Drive.py:49
+msgid "This drive"
+msgstr "This drive"
+
+#: gpresult/Preferences/Drive.py:50
+msgid "All drives"
+msgstr "All drives"
+
+#: gpresult/Preferences/Drive.py:51
+msgid "Label"
+msgstr "Label"
+
+#: gpresult/Preferences/Drive.py:52
+msgid "Persistent"
+msgstr "Persistent"
+
+#: gpresult/Preferences/Drive.py:53
+msgid "Use letter"
+msgstr "Use letter"

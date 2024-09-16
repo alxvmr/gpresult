@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-16 16:07+0400\n"
+"POT-Creation-Date: 2024-09-16 16:47+0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,18 +17,30 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: gpresult/GPO.py:43
+#: gpresult/Preferences/Inifile.py:17
+msgid "Inifile"
+msgstr "Inifile"
+
+#: gpresult/Preferences/Inifile.py:39
+msgid "Type"
+msgstr "Type"
+
+#: gpresult/Preferences/Inifile.py:40
 msgid "Path"
 msgstr "Path"
 
-#: gpresult/GPO.py:44
-msgid "Version"
-msgstr "Version"
+#: gpresult/Preferences/Inifile.py:41
+msgid "Section"
+msgstr "Section"
 
-#: gpresult/GPO.py:46
-msgid "Keys and values"
-msgstr "Keys and values"
+#: gpresult/Preferences/Inifile.py:42
+msgid "Property"
+msgstr "Property"
 
-#: gpresult/GPO.py:47
-msgid "Preferences"
-msgstr "Preferences"
+#: gpresult/Preferences/Inifile.py:43
+msgid "Value"
+msgstr "Value"
+
+#: gpresult/Preferences/Inifile.py:44
+msgid "Action"
+msgstr "Action"

@@ -1,5 +1,20 @@
+import gettext, locale
+
+loc = locale.getlocale()[0]
+if loc not in ['ru_RU', 'en_US']:
+    loc = 'en_US'
+
+gettext.bindtextdomain("Drive", "locales")
+gettext.textdomain("Drive")
+t = gettext.translation("Drive",
+                        localedir="/usr/lib/python3/site-packages/gpresult/locales",
+                        languages=[loc])
+t.install()
+_ = t.gettext
+
+
 class Drive:
-    preference_type = "Drive map"
+    preference_type = _("Drive map")
     drives = {}
 
     def __init__(self, **kwargs):
@@ -26,14 +41,14 @@ class Drive:
     def get_info_list(self):
 
         return [
-            ["Type", Drive.preference_type],
-            ["Password", self.password],
-            ["Direction", self.dir],
-            ["Path", self.path],
-            ["Action", self.action],
-            ["This drive", self.thisDrive],
-            ["All drives", self.allDrives],
-            ["Label", self.label],
-            ["Persistent", self.persistent],
-            ["Use letter", str(self.useLetter)],
+            [_("Type"), Drive.preference_type],
+            [_("Password"), self.password],
+            [_("Direction"), self.dir],
+            [_("Path"), self.path],
+            [_("Action"), self.action],
+            [_("This drive"), self.thisDrive],
+            [_("All drives"), self.allDrives],
+            [_("Label"), self.label],
+            [_("Persistent"), self.persistent],
+            [_("Use letter"), str(self.useLetter)],
         ]

@@ -1,5 +1,20 @@
+import gettext, locale
+
+loc = locale.getlocale()[0]
+if loc not in ['ru_RU', 'en_US']:
+    loc = 'en_US'
+
+gettext.bindtextdomain("EnvVar", "locales")
+gettext.textdomain("EnvVar")
+t = gettext.translation("EnvVar",
+                        localedir="/usr/lib/python3/site-packages/gpresult/locales",
+                        languages=[loc])
+t.install()
+_ = t.gettext
+
+
 class EnvVar:
-    preference_type = "Environment variables"
+    preference_type = _("Environment variables")
     envvars = {}
 
     def __init__(self, **kwargs):
@@ -19,7 +34,7 @@ class EnvVar:
     def get_info_list(self):
 
         return [
-            ["Type", EnvVar.preference_type],
-            ["Value", self.value],
-            ["Action", self.action],
+            [_("Type"), EnvVar.preference_type],
+            [_("Value"), self.value],
+            [_("Action"), self.action],
         ]

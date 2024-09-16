@@ -1,5 +1,20 @@
+import gettext, locale
+
+loc = locale.getlocale()[0]
+if loc not in ['ru_RU', 'en_US']:
+    loc = 'en_US'
+
+gettext.bindtextdomain("Shortcut", "locales")
+gettext.textdomain("Shortcut")
+t = gettext.translation("Shortcut",
+                        localedir="/usr/lib/python3/site-packages/gpresult/locales",
+                        languages=[loc])
+t.install()
+_ = t.gettext
+
+
 class Shortcut:
-    preference_type = "Shortcut"
+    preference_type = _("Shortcut")
     shortcuts = {}
 
     def __init__(self, **kwargs):
@@ -26,15 +41,15 @@ class Shortcut:
     def get_info_list(self):
 
         return [
-            ["Type", Shortcut.preference_type],
-            ["Destination", self.dest],
-            ["Path", self.path],
-            ["Expanded path", self.expanded_path],
-            ["Arguments", self.arguments],
-            ["Name", self.name],
-            ["Action", self.action],
-            ["Changed", self.changed],
-            ["Icon", self.icon],
-            ["Comment", self.comment],
-            ["Perfom action in user context", self.is_in_user_context],
+            [_("Type"), Shortcut.preference_type],
+            [_("Destination"), self.dest],
+            [_("Path"), self.path],
+            [_("Expanded path"), self.expanded_path],
+            [_("Arguments"), self.arguments],
+            [_("Name"), self.name],
+            [_("Action"), self.action],
+            [_("Changed"), self.changed],
+            [_("Icon"), self.icon],
+            [_("Comment"), self.comment],
+            [_("Perfom action in user context"), self.is_in_user_context],
         ]
