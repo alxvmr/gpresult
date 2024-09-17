@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-16 16:55+0400\n"
+"POT-Creation-Date: 2024-09-17 10:54+0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,46 +21,54 @@ msgstr ""
 msgid "Shortcut"
 msgstr "Shortcut"
 
-#: gpresult/Preferences/Shortcut.py:44
+#: gpresult/Preferences/Shortcut.py:46
 msgid "Type"
 msgstr "Type"
 
-#: gpresult/Preferences/Shortcut.py:45
+#: gpresult/Preferences/Shortcut.py:47
 msgid "Destination"
 msgstr "Destination"
 
-#: gpresult/Preferences/Shortcut.py:46
+#: gpresult/Preferences/Shortcut.py:48
 msgid "Path"
 msgstr "Path"
 
-#: gpresult/Preferences/Shortcut.py:47
+#: gpresult/Preferences/Shortcut.py:49
 msgid "Expanded path"
 msgstr "Expanded path"
 
-#: gpresult/Preferences/Shortcut.py:48
+#: gpresult/Preferences/Shortcut.py:50
 msgid "Arguments"
 msgstr "Arguments"
 
-#: gpresult/Preferences/Shortcut.py:49
+#: gpresult/Preferences/Shortcut.py:51
 msgid "Name"
 msgstr "Name"
 
-#: gpresult/Preferences/Shortcut.py:50
+#: gpresult/Preferences/Shortcut.py:52
 msgid "Action"
 msgstr "Action"
 
-#: gpresult/Preferences/Shortcut.py:51
+#: gpresult/Preferences/Shortcut.py:53
 msgid "Changed"
 msgstr "Changed"
 
-#: gpresult/Preferences/Shortcut.py:52
+#: gpresult/Preferences/Shortcut.py:54
 msgid "Icon"
 msgstr "Icon"
 
-#: gpresult/Preferences/Shortcut.py:53
+#: gpresult/Preferences/Shortcut.py:55
 msgid "Comment"
 msgstr "Comment"
 
-#: gpresult/Preferences/Shortcut.py:54
+#: gpresult/Preferences/Shortcut.py:56
 msgid "Perfom action in user context"
 msgstr "Perfom action in user context"
+
+#: gpresult/Preferences/Shortcut.py:57
+msgid "Link type"
+msgstr "Link type"
+
+#: gpresult/Preferences/Shortcut.py:58
+msgid "Desktop file template"
+msgstr "Desktop file template"
