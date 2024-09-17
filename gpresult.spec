@@ -7,7 +7,7 @@
 %add_python3_req_skip gpresult.Preferences.Preferences.Shortcut
 
 Name: gpresult
-Version: 0.0.1
+Version: 0.0.2
 Release: alt2
 
 Summary: Display applied policies
@@ -42,6 +42,10 @@ The utility allows you to display a list of domain  (GPO) policies that apply to
 %_bindir/%name
 
 %changelog
+* Mon Sep 16 2024 Maria Alexeeva <alxvmr@altlinux.org> 0.0.2-alt2
+- Added output containing information about Preference
+- Added analysis of policies that have no keys
+
 * Mon Sep 02 2024 Evgeny Sinelnikov <sin@altlinux.org> 0.0.1-alt2
 - Initial build for Sisyphus
 
