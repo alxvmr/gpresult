@@ -33,7 +33,7 @@ def get_lists_formatted_output(data, offset, is_rec=False, set_offset_pref=False
             output += (
                     " " * offset 
                     + "{:{max_n}s}".format(str(e[0]), max_n=max_n)
-                    + get_lists_formatted_output(e[1], offset+max_n, is_rec=True)
+                    + get_lists_formatted_output(e[1], offset+max_n+1, is_rec=True)
                     )
 
         elif ( type(e[-1]) == dict
@@ -45,7 +45,7 @@ def get_lists_formatted_output(data, offset, is_rec=False, set_offset_pref=False
                 out = out if out != "None" else "-"
 
                 if is_rec and data.index(e) == 0:
-                    output += "{:{max_n}s} {:s}\n".format(str(e[0]),
+                    output += " {:{max_n}s} {:s}\n".format(str(e[0]),
                                                           out, max_n=max_n)
 
                 else:
@@ -67,7 +67,7 @@ def get_lists_formatted_output(data, offset, is_rec=False, set_offset_pref=False
         else:
             out = str(e[1])
             if (is_rec and data.index(e) == 0) and not set_offset_pref:
-                output += "{:{max_n}s} {:s}\n".format(str(e[0]),
+                output += " {:{max_n}s} {:s}\n".format(str(e[0]),
                                                      out if out != "None" else "-",
                                                      max_n=max_n)
             else:
