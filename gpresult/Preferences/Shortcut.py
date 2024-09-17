@@ -28,6 +28,8 @@ class Shortcut:
         self.icon = kwargs.get("icon", None)
         self.comment = kwargs.get("comment", None)
         self.is_in_user_context = kwargs.get("is_in_user_context", None)
+        self.type = kwargs.get("type", None)
+        self.desktop_file_template = kwargs.get("desktop_file_template", None)
         self.policy_name = kwargs.get("policy_name", None)
 
         Shortcut.set_shortcut(self)
@@ -52,4 +54,6 @@ class Shortcut:
             [_("Icon"), self.icon],
             [_("Comment"), self.comment],
             [_("Perfom action in user context"), self.is_in_user_context],
+            [_("Link type"), self.type],
+            [_("Desktop file template"), self.desktop_file_template],
         ]
