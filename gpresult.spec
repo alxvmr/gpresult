@@ -34,12 +34,14 @@ The utility allows you to display a list of domain  (GPO) policies that apply to
 
 %install
 %pyproject_install
+install -Dm0644 completions/%name %buildroot/%_datadir/bash-completion/completions/%name
 
 %files
 %python3_sitelibdir/%name
 %python3_sitelibdir/%name/locales
 %python3_sitelibdir/%name-%version.dist-info
 %_bindir/%name
+%_datadir/bash-completion/completions/%name
 
 %changelog
 * Mon Sep 16 2024 Maria Alexeeva <alxvmr@altlinux.org> 0.0.2-alt2
