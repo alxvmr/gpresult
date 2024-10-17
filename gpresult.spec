@@ -41,9 +41,9 @@ install -Dm0644 completions/%name %buildroot/%_datadir/bash-completion/completio
 %python3_sitelibdir/%name/locales
 %python3_sitelibdir/%name-%version.dist-info
 %_bindir/%name
+%_datadir/bash-completion/completions/%name
 %exclude %python3_sitelibdir/%name/locales/en_US/LC_MESSAGES/*.po
 %exclude %python3_sitelibdir/%name/locales/ru_RU/LC_MESSAGES/*.po
-%_datadir/bash-completion/completions/%name
 
 %changelog
 * Mon Sep 16 2024 Maria Alexeeva <alxvmr@altlinux.org> 0.0.2-alt1
