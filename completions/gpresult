@@ -1,0 +1,27 @@
+_gpresult()
+{
+    local cur prev opts no_value_opts
+    _init_completion || return
+
+    no_value_opts="--help --raw --common --verbose --list --user --machine"
+
+    opts="--help --raw --common --verbose --list --policy_guid --policy_name --user --machine"
+
+    cur=${COMP_WORDS[COMP_CWORD]}
+    prev=${COMP_WORDS[COMP_CWORD-1]}
+
+    case "$prev" in
+        --policy_guid|--policy_name)
+            return
+            ;;
+    esac
+
+    if [[ "$cur" == "-"* ]]; then
+        COMPREPLY=($(compgen -W "$opts" -- "$cur"))
+    else
+        COMPREPLY=($(compgen -W "$no_value_opts" -- "$cur"))
+    fi
+}
+
+complete -F _gpresult gpresult
+
