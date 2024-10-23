@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 import argparse
 from . import gpr_get_policies, gpr_show
 
