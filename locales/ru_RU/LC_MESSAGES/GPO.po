@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-16 16:06+0400\n"
+"POT-Creation-Date: 2024-11-19 14:20+0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,18 +17,29 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: gpresult/GPO.py:43
+#: gpresult/GPO.py:46
 msgid "Path"
 msgstr "Путь"
 
-#: gpresult/GPO.py:44
+#: gpresult/GPO.py:47
 msgid "Version"
 msgstr "Версия"
 
-#: gpresult/GPO.py:46
+#: gpresult/GPO.py:49
 msgid "Keys and values"
 msgstr "Ключи и значения"
 
-#: gpresult/GPO.py:47
-msgid "Preferences"
-msgstr "Настройки"
+#: gpresult/GPO.py:50
+msgid "Current preferences"
+msgstr "Текущие настройки"
+
+#: gpresult/GPO.py:51
+msgid "Previous preferences"
+msgstr "Предыдущие настройки"
+
+#: gpresult/GPO.py:90
+msgid "Previous preferences are the same as current preferences"
+msgstr "Предыдущие настройки совпадают с текущими"
+
+#~ msgid "Preferences"
+#~ msgstr "Настройки"
