@@ -7,7 +7,7 @@
 %add_python3_req_skip gpresult.Preferences.Preferences.Shortcut
 
 Name: gpresult
-Version: 0.0.2
+Version: 0.0.3
 Release: alt1
 
 Summary: Display applied policies
@@ -18,7 +18,7 @@ BuildArch: noarch
 
 BuildRequires: rpm-build-python3
 BuildRequires: python3(wheel), python3(hatchling)
-Requires: libgvdb-gir gpupdate >= 0.11.0
+Requires: libgvdb-gir gpupdate >= 0.12.0
 
 Source0: %name-%version.tar
 
@@ -44,6 +44,9 @@ The utility allows you to display a list of domain  (GPO) policies that apply to
 %exclude %python3_sitelibdir/%name/locales/ru_RU/LC_MESSAGES/*.po
 
 %changelog
+* Tue Nov 19 2024 Maria Alexeeva <alxvmr@altlinux.org> 0.0.3-alt1
+- Added information about previous preferences values
+
 * Mon Sep 16 2024 Maria Alexeeva <alxvmr@altlinux.org> 0.0.2-alt1
 - Added output containing information about Preference
 - Added analysis of policies that have no keys
