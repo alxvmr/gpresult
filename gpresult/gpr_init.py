@@ -186,7 +186,8 @@ def init_preferences(path, obj):
             preference_type = k.split("/")[-1]
 
             if (v != None and preference_type in preference_fields
-                and k.find('Preferences') != -1):
+                and k.find('Preferences') != -1
+                and k.find('Previous') == -1):
                 # Computing preference data
 
                 if v.get_type().equal(GLib.VariantType.new("s")):
