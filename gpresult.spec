@@ -7,7 +7,7 @@
 %add_python3_req_skip gpresult.Preferences.Preferences.Shortcut
 
 Name: gpresult
-Version: 0.0.2
+Version: 0.0.3
 Release: alt1
 
 Summary: Display applied policies
@@ -46,6 +46,10 @@ install -Dm0644 completions/%name %buildroot/%_datadir/bash-completion/completio
 %exclude %python3_sitelibdir/%name/locales/ru_RU/LC_MESSAGES/*.po
 
 %changelog
+* Tue Nov 19 2024 Maria Alexeeva <alxvmr@altlinux.org> 0.0.3-alt1
+- Added information about previous preferences values
+- Added bash completion (thx skachedubov@altlinux.org)
+
 * Mon Sep 16 2024 Maria Alexeeva <alxvmr@altlinux.org> 0.0.2-alt1
 - Added output containing information about Preference
 - Added analysis of policies that have no keys
