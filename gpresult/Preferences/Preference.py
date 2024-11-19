@@ -10,9 +10,10 @@ from .Networkshare import NetworkShare
 class Preference:
     preferences = {}
 
-    def __init__(self, obj, pref_type, **kwargs):
+    def __init__(self, obj, pref_type, is_cur, **kwargs):
         self.obj = obj
         self.type = pref_type
+        self.is_cur = is_cur
         self.policy_name = kwargs.get("policy_name", None)
 
         if pref_type == "Folders":

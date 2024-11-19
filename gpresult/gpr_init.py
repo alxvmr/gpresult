@@ -186,15 +186,18 @@ def init_preferences(path, obj):
             preference_type = k.split("/")[-1]
 
             if (v != None and preference_type in preference_fields
-                and k.find('Preferences') != -1
-                and k.find('Previous') == -1):
-                # Computing preference data
+                and k.find('Preferences') != -1):
+                if k.find('Previous') == -1:
+                    is_cur = True
+                else:
+                    is_cur = False
+                    # Computing preference data
 
                 if v.get_type().equal(GLib.VariantType.new("s")):
                     preference_list = ast.literal_eval(v.get_string())
 
                     for pref in preference_list:
-                        Preference(obj, preference_type, **pref)
+                        Preference(obj, preference_type, is_cur, **pref)
 
 
 def init_data(path, obj):
