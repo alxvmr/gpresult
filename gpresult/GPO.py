@@ -30,13 +30,16 @@ class GPO:
 
     def get_info_list(self):
         kvs = self.get_keys_values_lists()
-        prefs = self.get_preferences_lists()
+        cur_prefs, prev_prefs = self.get_preferences_lists()
 
         if not kvs:
             kvs = None
 
-        if not prefs:
-            prefs = None
+        if not cur_prefs:
+            cur_prefs = None
+
+        if not prev_prefs:
+            prev_prefs = None
 
         return [
             ["GPO", self.name],
@@ -44,7 +47,8 @@ class GPO:
             [_("Version"), self.version],
             ["GUID", self.guid],
             [_("Keys and values"), kvs],
-            [_("Preferences"), prefs],
+            [_("Current preferences"), cur_prefs],
+            [_("Previous preferences"), prev_prefs],
 
         ]
 
@@ -59,12 +63,33 @@ class GPO:
 
 
     def get_preferences_lists(self):
-        prefs_list = []
+        cur_prefs_list = []
+        prev_prefs_list = []
 
         for pref in self.preferences:
-            prefs_list.append(pref.get_info_list())
+            if pref.is_cur:
+                cur_prefs_list.append(pref.get_info_list())
+            else:
+                prev_prefs_list.append(pref.get_info_list())
 
-        return prefs_list
+        comp = True
+        if len(cur_prefs_list) != len(prev_prefs_list):
+            comp = False
+        else:
+            for e in cur_prefs_list:
+                if e not in prev_prefs_list:
+                    comp = False
+                    break
+            if comp:
+                for e in prev_prefs_list:
+                    if e not in cur_prefs_list:
+                        comp = False
+                        break
+
+        if comp:
+            prev_prefs_list = _("Previous preferences are the same as current preferences")
+
+        return [cur_prefs_list, prev_prefs_list]
 
 
     def get_sorted_keys_values(self):
