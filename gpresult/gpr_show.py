@@ -1,5 +1,7 @@
 from . import gpr_system
 import ast
+from prettytable import PrettyTable
+from textwrap import fill
 
 import gettext, locale
 
@@ -16,68 +18,54 @@ t.install()
 _ = t.gettext
 
 
-def get_lists_formatted_output(data, offset, is_rec=False, set_offset_pref=False):
-    max_n = 0
-    output = ""
+def add_offset(table_str, offset):
+    table_split = table_str.split("\n")
 
-    for i in range(len(data)):
-        l = len(data[i][0])
+    for i in range(len(table_split)):
+        table_split[i] = " " * offset + table_split[i]
 
-        if l > max_n:
-              max_n = l
+    return "\n".join(table_split)
 
-    max_n += 3
 
-    for e in data:
-        if type(e[-1]) == list:
-            output += (
-                    " " * offset 
-                    + "{:{max_n}s}".format(str(e[0]), max_n=max_n)
-                    + get_lists_formatted_output(e[1], offset+max_n+1, is_rec=True)
-                    )
-
-        elif ( type(e[-1]) == dict
-               and (e[-1].get("is_list", None)
-                    or e[-1].get("is_prefs", None)) ):
-            if e[-1].get("is_list", None):
-                values_list = ast.literal_eval(e[1])
-                out = get_list_output(values_list, max_n+offset+1).lstrip()
-                out = out if out != "None" else "-"
-
-                if is_rec and data.index(e) == 0:
-                    output += " {:{max_n}s} {:s}\n".format(str(e[0]),
-                                                          out, max_n=max_n)
-
-                else:
-                    output += (
-                        " " * offset 
-                        + "{:{max_n}s} {:s}\n".format(str(e[0]),
-                                                      out, max_n=max_n)
-                        )
-
-            elif e[-1].get("is_prefs", None):
-                if data.index(e) > 0:
-                    set_offset_pref=True
-                output += get_lists_formatted_output(e[0],
-                                                    offset,
-                                                    is_rec=True,
-                                                    set_offset_pref=set_offset_pref)
-                if data.index(e) != len(data)-1:
-                    output += "\n"
-        else:
-            out = str(e[1])
-            if (is_rec and data.index(e) == 0) and not set_offset_pref:
-                output += " {:{max_n}s} {:s}\n".format(str(e[0]),
-                                                     out if out != "None" else "-",
-                                                     max_n=max_n)
-            else:
-                output += (
-                    " " * offset
-                    + "{:{max_n}s} {:s}\n".format(str(e[0]),
-                                                out if out != "None" else "-",
-                                                max_n=max_n)
-                    )
+def get_lists_formatted_output(data, offset, is_rec=False):
+    mytable = PrettyTable()
+    mytable.border = False
+    mytable.header = False
+    mytable.right_padding_width = 3
+    if is_rec:
+        mytable.left_padding_width = 0
     
+    for j, row in enumerate(data):
+        is_last_obj = j == len(data) - 1
+
+        for i in range(len(row)):
+            if type(row[i]) == dict:
+                if row[i].get("is_list", None):
+                    # list to join str output (for KeyValue)
+                    values_list_cur = ast.literal_eval(row[1])
+                    row[1] = "\n".join(values_list_cur)
+                    if row[2] != "-":
+                        values_list_prev = ast.literal_eval(row[2]) # what to be if send None??? - ok
+                        row[2] = "\n".join(values_list_prev)
+
+                del row[i]
+                break
+
+            elif type(row[i]) == list:
+                row[i] = get_lists_formatted_output(row[i], 0, True)
+                if not is_last_obj and is_rec:
+                    row[i] += "\n"
+
+            elif str(row[i]) == "None":
+                row[i] = "-"
+
+        mytable.add_row(row)
+
+    for field in mytable.field_names:
+        mytable.align[field] = "l"
+
+    output = add_offset(mytable.get_string(), offset)
+
     return output
 
 
