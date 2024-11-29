@@ -73,7 +73,12 @@ def get_raw_output(data):
     s = ""
 
     for i in range(len(data)):
-        s += f"{data[i][0]} {data[i][1]}\n"
+        row = []
+        for j in range(len(data[i])):
+            if str(data[i][j]) == "None":
+                data[i][j] = "-"
+            row.append(data[i][j])
+        s += " ".join(row) + "\n"
 
     return s[:-1]
 
@@ -130,6 +135,7 @@ def policies_gen(gpos, type, is_cmd):
                 body.append([
                     kv.key, 
                     kv.value,
+                    kv.mod_previous_value,
                 ])
 
         return {
