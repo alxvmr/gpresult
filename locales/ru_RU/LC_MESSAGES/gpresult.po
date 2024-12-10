@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-08-30 19:04+0400\n"
+"POT-Creation-Date: 2024-12-16 10:43+0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -22,22 +22,25 @@ msgid "Information about applied policies"
 msgstr "Информация о примененных политиках"
 
 #: gpresult/gpresult.py:54
-msgid "Output format: display of policy keys and values"
-msgstr "Формат вывода: отобразить ключи GPO и значения"
+msgid "Output format: display of policy keys, values and previous values"
+msgstr ""
+"Формат вывода: отобразить ключи GPO, текущие и предыдущие значения ключей"
 
 #: gpresult/gpresult.py:58
 msgid ""
-"Output format: common output including environment information; "
-"outputs only the names of applied policies"
+"Output format: common output including environment information; outputs only "
+"the names of applied policies"
 msgstr ""
-"Формат вывода: сжатый вывод, включающий информацию о системе; "
-"отображаются только имена GPO"
+"Формат вывода: сжатый вывод, включающий информацию о системе; отображаются "
+"только имена GPO"
 
 #: gpresult/gpresult.py:62
 msgid ""
-"Output format (DEFAULT): is similar to the common output, in addition, the applied "
-"keys and policy values are also output"
-msgstr "Формат вывода (ПО УМОЛЧАНИЮ): схож с форматом <common>, отображает дополнительную информацию о GPO"
+"Output format (DEFAULT): is similar to the common output, in addition, the "
+"applied keys, policy values  and preferences are also output"
+msgstr ""
+"Формат вывода (ПО УМОЛЧАНИЮ): схож с форматом <common>, отображает "
+"дополнительную информацию о GPO"
 
 #: gpresult/gpresult.py:66
 msgid ""
@@ -47,7 +50,11 @@ msgstr ""
 "Формат вывода: отображаются имена GPO и их GUID\n"
 "* Не применяется с <-i>/<--policy_guid> и <-i>/<--policy_name>"
 
-#: gpresult/gpresult.py:70
+#: gpresult/gpresult.py:71
+msgid "Enable information about the previous GPO key value"
+msgstr "Включение информации о предыдущих значениях ключей GPO"
+
+#: gpresult/gpresult.py:74
 msgid ""
 "Information about policy keys and values by guid\n"
 "* Not applicable with <-l>/<--list>"
@@ -55,7 +62,7 @@ msgstr ""
 "Информация о ключах и значениях политики по GUID\n"
 "* Не применяется с <-l>/<--list>"
 
-#: gpresult/gpresult.py:75
+#: gpresult/gpresult.py:79
 msgid ""
 "Information about policy keys and values by name\n"
 "* Not applicable with <-l>/<--list>"
@@ -63,13 +70,23 @@ msgstr ""
 "Информация о ключах и значениях политики по ее имени\n"
 "* Не применяется с <-l>/<--list>"
 
-#: gpresult/gpresult.py:81
+#: gpresult/gpresult.py:85
 msgid "Get information about applied policies for the current user"
 msgstr "Получить информацию о примененных политиках для текущего пользователя"
 
-#: gpresult/gpresult.py:85
+#: gpresult/gpresult.py:89
 msgid "Get information about applied policies for the current machine"
 msgstr "Получить информацию о примененных политиках для текущей машины"
+
+#~ msgid "Output format: display of policy keys and values"
+#~ msgstr "Формат вывода: отобразить ключи GPO и значения"
+
+#~ msgid ""
+#~ "Output format (DEFAULT): is similar to the common output, in addition, "
+#~ "the applied keys and policy values are also output"
+#~ msgstr ""
+#~ "Формат вывода (ПО УМОЛЧАНИЮ): схож с форматом <common>, отображает "
+#~ "дополнительную информацию о GPO"
 
 #~ msgid ""
 #~ "Output format. Choose one of the following options:\n"

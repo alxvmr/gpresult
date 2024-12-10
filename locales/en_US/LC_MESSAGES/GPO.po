@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-16 16:07+0400\n"
+"POT-Creation-Date: 2024-12-18 14:51+0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -26,9 +26,15 @@ msgid "Version"
 msgstr "Version"
 
 #: gpresult/GPO.py:46
-msgid "Keys and values"
-msgstr "Keys and values"
+msgid "Keys"
+msgstr "Keys"
 
 #: gpresult/GPO.py:47
 msgid "Preferences"
 msgstr "Preferences"
+
+#~ msgid "Keys, values, previous values"
+#~ msgstr "Keys, values, previous values"
+
+#~ msgid "Keys and values"
+#~ msgstr "Keys and values"

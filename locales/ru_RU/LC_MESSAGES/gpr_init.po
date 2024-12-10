@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-08-30 19:05+0400\n"
+"POT-Creation-Date: 2024-12-10 16:39+0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,10 +17,12 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: gpresult/gpr_init.py:39 gpresult/gpr_init.py:100 gpresult/gpr_init.py:134
+#: gpresult/gpr_init.py:51 gpresult/gpr_init.py:103 gpresult/gpr_init.py:137
+#: gpresult/gpr_init.py:170
 msgid "Permission denied: {}"
 msgstr "Отказано в доступе: {}"
 
-#: gpresult/gpr_init.py:41 gpresult/gpr_init.py:102 gpresult/gpr_init.py:136
+#: gpresult/gpr_init.py:53 gpresult/gpr_init.py:105 gpresult/gpr_init.py:139
+#: gpresult/gpr_init.py:172
 msgid "No such file: {}"
 msgstr "Файл не существует: {}"
