@@ -9,13 +9,14 @@ class KeyValue:
         self.type = kwargs.get("type", None)                             # Value data type
         self.reloaded = kwargs.get("reloaded_with_policy_key", None)     # Value data type
         self.is_list = kwargs.get("is_list", None)                       # Whether the value is a list
+        self.mod_previous_value = kwargs.get("mod_previous_value", None) # Previous value
 
         KeyValue.keys_values.append(self)
 
 
     def get_info_list(self):
 
-        return [self.key, self.value, {"type": self.type, "is_list": self.is_list}]
+        return [self.key, self.value, self.mod_previous_value, {"type": self.type, "is_list": self.is_list}]
 
     
     @classmethod
@@ -26,6 +27,7 @@ class KeyValue:
                 kv.type = kwargs.get("type", None)
                 kv.reloaded = kwargs.get("reloaded_with_policy_key", None)
                 kv.is_list = kwargs.get("is_list", None)
+                kv.mod_previous_value = kwargs.get("mod_previous_value", None)
                 return
             
         return False
