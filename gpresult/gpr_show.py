@@ -42,11 +42,30 @@ def get_lists_formatted_output(data, offset, is_rec=False):
             if type(row[i]) == dict:
                 if row[i].get("is_list", None):
                     # list to join str output (for KeyValue)
+
+                    #TODO: add to log
+                    # This is a quick fix for a problem where 
+                    # in the list a string is framed with u0230 
+                    # instead of the normal quote character 
+                    # (see gpupdate PR #207)
+                    try:
+                        ast.literal_eval(row[1])
+                    except SyntaxError:
+                        row[1] = row[1].replace("″", "\'")
+
                     values_list_cur = ast.literal_eval(row[1])
                     row[1] = "\n".join(values_list_cur)
+
                     if row[2] != "-":
+                        #TODO: add to log
+                        try:
+                            ast.literal_eval(row[2])
+                        except SyntaxError:
+                            row[2] = row[2].replace("″", "\'")
+
                         values_list_prev = ast.literal_eval(row[2]) # what to be if send None??? - ok
                         row[2] = "\n".join(values_list_prev)
+
 
                 del row[i]
                 break
