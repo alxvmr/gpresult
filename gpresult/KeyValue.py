@@ -14,9 +14,12 @@ class KeyValue:
         KeyValue.keys_values.append(self)
 
 
-    def get_info_list(self):
+    def get_info_list(self, with_previous=True):
 
-        return [self.key, self.value, self.mod_previous_value, {"type": self.type, "is_list": self.is_list}]
+        if with_previous:
+            return [self.key, self.value, self.mod_previous_value, {"type": self.type, "is_list": self.is_list}]
+        else:
+            return [self.key, self.value, {"type": self.type, "is_list": self.is_list}]
 
     
     @classmethod

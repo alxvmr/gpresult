@@ -65,6 +65,10 @@ def parse_cli_arguments():
                            action=CustomAction,
                            help=_('Output format: output of GPO names and their GUIDs\n'\
                                   '* Not applicable with <-i>/<--policy_guid> and <-i>/<--policy_name>'))
+    
+    argparser.add_argument('-p', '--previous',
+                           action='store_true',
+                           help=_("Enable information about the previous GPO key value"))
 
     argparser.add_argument("-i", "--policy_guid",
                            help=_("Information about policy keys and values by guid\n"\
@@ -129,7 +133,7 @@ def main():
     else:
         gpos = gpr_get_policies.get_policies(obj)
 
-    gpr_show.show(gpos, obj, output_format, is_cmd)
+    gpr_show.show(gpos, obj, output_format, is_cmd, previous=args.previous)
 
 
 if __name__ == "__main__":

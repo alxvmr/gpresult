@@ -28,8 +28,8 @@ class GPO:
         GPO.set_gpo(self)
 
 
-    def get_info_list(self):
-        kvs = self.get_keys_values_lists()
+    def get_info_list(self, with_previous=True):
+        kvs = self.get_keys_values_lists(with_previous)
         prefs = self.get_preferences_lists()
 
         if not kvs:
@@ -43,17 +43,17 @@ class GPO:
             [_("Path"), self.path],
             [_("Version"), self.version],
             ["GUID", self.guid],
-            [_("Keys and values"), kvs],
+            [_("Keys"), kvs],
             [_("Preferences"), prefs],
 
         ]
 
 
-    def get_keys_values_lists(self):
+    def get_keys_values_lists(self, with_previous=True):
         kvs_list = []
 
         for kv in self.get_sorted_keys_values():
-            kvs_list.append(kv.get_info_list())
+            kvs_list.append(kv.get_info_list(with_previous))
 
         return kvs_list
 
