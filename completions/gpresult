@@ -3,9 +3,9 @@ _gpresult()
     local cur prev opts no_value_opts
     _init_completion || return
 
-    no_value_opts="--help --raw --common --verbose --list --user --machine"
+    no_value_opts="--help --raw --common --verbose --list --previous --user --machine"
 
-    opts="--help --raw --common --verbose --list --policy_guid --policy_name --user --machine"
+    opts="--help --raw --common --verbose --list --previous --policy_guid --policy_name --user --machine"
 
     cur=${COMP_WORDS[COMP_CWORD]}
     prev=${COMP_WORDS[COMP_CWORD-1]}
