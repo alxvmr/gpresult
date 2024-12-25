@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-12-16 10:43+0400\n"
+"POT-Creation-Date: 2024-12-26 11:03+0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,16 +17,16 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: gpresult/gpresult.py:49
+#: gpresult/gpresult.py:55
 msgid "Information about applied policies"
 msgstr "Информация о примененных политиках"
 
-#: gpresult/gpresult.py:54
+#: gpresult/gpresult.py:60
 msgid "Output format: display of policy keys, values and previous values"
 msgstr ""
 "Формат вывода: отобразить ключи GPO, текущие и предыдущие значения ключей"
 
-#: gpresult/gpresult.py:58
+#: gpresult/gpresult.py:64
 msgid ""
 "Output format: common output including environment information; outputs only "
 "the names of applied policies"
@@ -34,7 +34,7 @@ msgstr ""
 "Формат вывода: сжатый вывод, включающий информацию о системе; отображаются "
 "только имена GPO"
 
-#: gpresult/gpresult.py:62
+#: gpresult/gpresult.py:68
 msgid ""
 "Output format (DEFAULT): is similar to the common output, in addition, the "
 "applied keys, policy values  and preferences are also output"
@@ -42,7 +42,7 @@ msgstr ""
 "Формат вывода (ПО УМОЛЧАНИЮ): схож с форматом <common>, отображает "
 "дополнительную информацию о GPO"
 
-#: gpresult/gpresult.py:66
+#: gpresult/gpresult.py:72
 msgid ""
 "Output format: output of GPO names and their GUIDs\n"
 "* Not applicable with <-i>/<--policy_guid> and <-i>/<--policy_name>"
@@ -50,11 +50,29 @@ msgstr ""
 "Формат вывода: отображаются имена GPO и их GUID\n"
 "* Не применяется с <-i>/<--policy_guid> и <-i>/<--policy_name>"
 
-#: gpresult/gpresult.py:71
+#: gpresult/gpresult.py:77
 msgid "Enable information about the previous GPO key value"
 msgstr "Включение информации о предыдущих значениях ключей GPO"
 
-#: gpresult/gpresult.py:74
+#: gpresult/gpresult.py:80
+msgid ""
+"Set column widths for outputting internal tables (keys and values, "
+"preferences, ...)\n"
+"* If the specified value is less than or equal to 0, the width of the "
+"columns\n"
+"  will be equal to the maximum length of the row\n"
+"* By default, the column width is equal to the length of the maximum row\n"
+"* If the length of the maximum string is less than the specified value, the "
+"width will not change"
+msgstr ""
+"Задать ширину столбцов для вывода внутренних таблиц (ключи и значения, "
+"настройки, ...)\n"
+"* Если указано значение <= 0, то ширина столбцов\n"
+"  будет равна максимальной длине строки\n"
+"* По умолчанию ширина столбцов равна длине максимальной строки\n"
+"* Если длина максимальной строки меньше заданного значения, то ширина не изменяется"
+
+#: gpresult/gpresult.py:89
 msgid ""
 "Information about policy keys and values by guid\n"
 "* Not applicable with <-l>/<--list>"
@@ -62,7 +80,7 @@ msgstr ""
 "Информация о ключах и значениях политики по GUID\n"
 "* Не применяется с <-l>/<--list>"
 
-#: gpresult/gpresult.py:79
+#: gpresult/gpresult.py:94
 msgid ""
 "Information about policy keys and values by name\n"
 "* Not applicable with <-l>/<--list>"
@@ -70,13 +88,27 @@ msgstr ""
 "Информация о ключах и значениях политики по ее имени\n"
 "* Не применяется с <-l>/<--list>"
 
-#: gpresult/gpresult.py:85
+#: gpresult/gpresult.py:100
 msgid "Get information about applied policies for the current user"
 msgstr "Получить информацию о примененных политиках для текущего пользователя"
 
-#: gpresult/gpresult.py:89
+#: gpresult/gpresult.py:104
 msgid "Get information about applied policies for the current machine"
 msgstr "Получить информацию о примененных политиках для текущей машины"
+
+#~ msgid ""
+#~ "Set column widths for outputting internal tables (keys and values, "
+#~ "preferences, ...)\n"
+#~ "* If the specified value is less than or equal to 0, the width of the "
+#~ "columns\n"
+#~ "  will be equal to the maximum length of the row\n"
+#~ "* By default, the column width is equal to the length of the maximum row"
+#~ msgstr ""
+#~ "Задать ширину столбцов для вывода внутренних таблиц (ключи и значения, "
+#~ "настройки, ...)\n"
+#~ "* Если указано значение <= 0, то ширина столбцов\n"
+#~ "  будет равна максимальной длине строки\n"
+#~ "* По умолчанию ширина столбцов равна длине максимальной строки"
 
 #~ msgid "Output format: display of policy keys and values"
 #~ msgstr "Формат вывода: отобразить ключи GPO и значения"
