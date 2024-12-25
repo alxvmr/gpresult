@@ -152,12 +152,19 @@ def policies_gen(gpos, type, is_cmd, previous):
             kvs.sort(key = lambda x: x.key)
 
             if previous:
-                for kv in kvs:
-                    body.append([
-                        kv.key, 
-                        kv.value,
-                        kv.mod_previous_value,
-                    ])
+                if type != "raw":
+                    for kv in kvs:
+                        body.append([
+                            kv.key, 
+                            kv.value,
+                            kv.mod_previous_value,
+                        ])
+                else:
+                    for kv in kvs:
+                        body.append([
+                            kv.key,
+                            kv.mod_previous_value,
+                        ])
             else:
                 for kv in kvs:
                     body.append([
