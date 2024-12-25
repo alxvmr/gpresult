@@ -45,6 +45,12 @@ def get_selected_option(parser, is_cmd):
     return last_opt
 
 
+def validate_width (w):
+    if w  and w <= 0:
+        return None
+    return w
+
+
 def parse_cli_arguments():
     argparser = argparse.ArgumentParser(description=_("Information about applied policies"), 
                                         formatter_class=argparse.RawTextHelpFormatter)
@@ -69,6 +75,15 @@ def parse_cli_arguments():
     argparser.add_argument('-p', '--previous',
                            action='store_true',
                            help=_("Enable information about the previous GPO key value"))
+
+    argparser.add_argument('-w', '--width',
+                           help=_('Set column widths for outputting internal tables (keys and values, preferences, ...)\n'\
+                                  '* If the specified value is less than or equal to 0, the width of the columns\n'\
+                                  '  will be equal to the maximum length of the row\n'\
+                                  '* By default, the column width is equal to the length of the maximum row\n'\
+                                  '* If the length of the maximum string is less than the specified value, the width will not change'),
+                           default=None,
+                           type=int)
 
     argparser.add_argument("-i", "--policy_guid",
                            help=_("Information about policy keys and values by guid\n"\
@@ -133,7 +148,7 @@ def main():
     else:
         gpos = gpr_get_policies.get_policies(obj)
 
-    gpr_show.show(gpos, obj, output_format, is_cmd, previous=args.previous)
+    gpr_show.show(gpos, obj, output_format, is_cmd, previous=args.previous, width=validate_width(args.width))
 
 
 if __name__ == "__main__":

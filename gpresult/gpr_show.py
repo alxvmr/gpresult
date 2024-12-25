@@ -17,6 +17,7 @@ t = gettext.translation("gpr_show",
 t.install()
 _ = t.gettext
 
+COLUMN_WIDTH = None
 
 def add_offset(table_str, offset):
     table_split = table_str.split("\n")
@@ -77,6 +78,9 @@ def get_lists_formatted_output(data, offset, is_rec=False):
 
             elif str(row[i]) == "None":
                 row[i] = "-"
+
+            elif type(row[i]) == str and COLUMN_WIDTH:
+                row[i] = fill(str(row[i]), COLUMN_WIDTH)
 
         mytable.add_row(row)
 
@@ -305,7 +309,10 @@ def show_helper(data, offset):
             print(get_list_output(elem["body"], offset))
 
 
-def show(gpos, obj_type, output_type="common", is_cmd=False, previous=True):
+def show(gpos, obj_type, output_type="common", is_cmd=False, previous=True, width=None):
+    global COLUMN_WIDTH
+    COLUMN_WIDTH = width
+
     data = gen(gpos, obj_type, output_type, is_cmd, previous)
     offset = 0
 
