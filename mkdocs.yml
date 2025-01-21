@@ -3,6 +3,9 @@ site_url: https://alxvmr.gpresult.github.io/gpresult
 site_author: Maria Alexeeva
 site_description: Documentation of GPResult (ALT Linux)
 
+repo_name: gpresult
+repo_url: https://github.com/alxvmr/gpresult
+
 theme:
   name: material
   language: ru
