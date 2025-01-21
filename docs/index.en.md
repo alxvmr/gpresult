@@ -11,7 +11,7 @@ The information about the applied group policies is generated from the data obta
 ## Syntax
 
 ```
-gpresult [-h] [-r] [-c] [-v] [-l] [-i POLICY_GUID] [-n POLICY_NAME] [-u] [-m]
+gpresult [-h] [-r] [-c] [-v] [-l] [-p] [-w WIDTH] [-i POLICY_GUID] [-n POLICY_NAME] [-u] [-m]
 ```
 
 <div class="warning" style='padding:0.1em; background-color:#CFDFF5; color:#0F174A'>
@@ -28,6 +28,13 @@ Without selecting the output format option, the default output format is <code>-
 </p></span>
 </div>
 
+<div class="warning" style='padding:0.1em; background-color:#CFDFF5; color:#0F174A; margin-top: 10px'>
+<span>
+<p style='margin-left:1em; margin-top:1em'>
+The option <code>-p/--previous</code> applies only in cases where GPO keys are used (with options <code>--verbose</code>, <code>--raw</code> + their variations with other options)
+</p></span>
+</div>
+
 ## Parameters
 
 | Parameter                                                    | Description                                                                                                                                                                               |
@@ -35,8 +42,10 @@ Without selecting the output format option, the default output format is <code>-
 | `-h, --help`                                                 | Get reference information                                                                                                                                                                 |
 |`-r, --raw`| **Output format**: display of keys and values|
 |`-c, --common`| **Output format**: displays system information and group policy names|
-|`-v, --verbose`| **Output format**: Display Group Policy details|
+|`-v, --verbose`| **Output format**: display Group Policy details|
 |`-l, --list`|**Output format**: formatted display of Group Policy names and their GUIDs|
+|`-p, --previous`|**Output format**: include previous GPO key values in the output|
+|`-w, --width`|**Output customization**: sets the output width of the internal tables. By default, the column width is equal to the width of the longest row|
 | `-i POLICY_GUID, --policy_guid POLICY_GUID`                  | Get information about applied keys and policy values by **GUID**                                                                                                                          |
 | `-n POLICY_NAME, --policy_name POLICY_NAME`                  | Get information about applied keys and policy values by **name**                                                                                                                          |
 | `-u, --user`                                                   | Display information for the current **user**                                                                                                                                              |
@@ -47,7 +56,7 @@ Without selecting the output format option, the default output format is <code>-
 - Group Policy GUID can be passed with or without curly braces: `{1BA9EB0C-7B29-49CC-813D-813D-75D8701FC221}` and `1BA9EB0C-7B29-49CC-813D-75D8701FC221`.
 
 ## Examples
-1. To get a complete report of Group Policies applied for a user and machine enter:
+1. To get a report of Group Policies applied for a user and machine enter:
    
     ```
     gpresult -v
