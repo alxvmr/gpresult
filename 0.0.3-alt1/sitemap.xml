@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
     <url>
-        <loc>https://alxvmr.gpresult.github.io/gpresult/0.0.3-alt1/</loc>
+        <loc>https://alxvmr.gpresult.github.io/gpresult/latest/0.0.3-alt1/</loc>
         <lastmod>2025-01-21</lastmod>
         <changefreq>daily</changefreq>
-        <xhtml:link rel="alternate" hreflang="ru" href="https://alxvmr.gpresult.github.io/gpresult/0.0.3-alt1/"/>
-        <xhtml:link rel="alternate" hreflang="en" href="https://alxvmr.gpresult.github.io/gpresult/0.0.3-alt1en/"/>
+        <xhtml:link rel="alternate" hreflang="ru" href="https://alxvmr.gpresult.github.io/gpresult/latest/0.0.3-alt1/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://alxvmr.gpresult.github.io/gpresult/latest/0.0.3-alt1en/"/>
     </url>
     <url>
-        <loc>https://alxvmr.gpresult.github.io/gpresult/0.0.3-alt1/en/</loc>
+        <loc>https://alxvmr.gpresult.github.io/gpresult/latest/0.0.3-alt1/en/</loc>
         <lastmod>2025-01-21</lastmod>
         <changefreq>daily</changefreq>
-        <xhtml:link rel="alternate" hreflang="en" href="https://alxvmr.gpresult.github.io/gpresult/0.0.3-alt1/en/"/>
-        <xhtml:link rel="alternate" hreflang="ru" href="https://alxvmr.gpresult.github.io/gpresult/0.0.3-alt1"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://alxvmr.gpresult.github.io/gpresult/latest/0.0.3-alt1/en/"/>
+        <xhtml:link rel="alternate" hreflang="ru" href="https://alxvmr.gpresult.github.io/gpresult/latest/0.0.3-alt1"/>
     </url>
 </urlset>
