@@ -1,6 +1,6 @@
 # GPResult
 ---
-The **documentation** can be found at this [link](https://alxvmr.github.io/gpresult/).
+The **documentation** can be found at this [link](https://alxvmr.github.io/gpresult/latest/).
 
 ---
 
