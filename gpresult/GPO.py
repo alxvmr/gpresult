@@ -27,6 +27,15 @@ class GPO:
 
         GPO.set_gpo(self)
 
+    # This is needed to use set in the --list output
+    # to remove repetition
+    def __eq__(self, other):
+        if isinstance(other, GPO):
+            return (self.path == other.path and
+                    self.name == other.name and
+                    self.guid == other.guid and
+                    self.version == other.version)
+        return NotImplemented
 
     def get_info_list(self, with_previous=True):
         kvs = self.get_keys_values_lists(with_previous)

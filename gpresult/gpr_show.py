@@ -184,8 +184,17 @@ def policies_gen(gpos, type, is_cmd, previous):
     elif type == "list" or type == "list_raw":
         render_type = "format" if type == "list" else "raw"
         policy_guid = []
+
         for gpo in gpos:
-            policy_guid.append([gpo.name, gpo.guid])
+            fl = True
+            for elem in policy_guid:
+                if (gpo == elem[2]):
+                    fl = False
+                    break
+            if (fl):
+                policy_guid.append([gpo.name, gpo.guid, gpo])
+
+        policy_guid = [row[:2] for row in policy_guid]
 
         return {
             "body": policy_guid,
