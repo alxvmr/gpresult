@@ -5,13 +5,13 @@ _gpresult()
 
     no_value_opts="--help --raw --common --verbose --list --previous --user --machine"
 
-    opts="--help --raw --common --verbose --list --previous --policy_guid --policy_name --user --machine"
+    opts="--help --raw --common --verbose --list --previous --width --policy_guid --policy_name --user --machine"
 
     cur=${COMP_WORDS[COMP_CWORD]}
     prev=${COMP_WORDS[COMP_CWORD-1]}
 
     case "$prev" in
-        --policy_guid|--policy_name)
+        --policy_guid|--policy_name|--width)
             return
             ;;
     esac
