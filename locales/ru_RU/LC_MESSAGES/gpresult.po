@@ -96,6 +96,157 @@ msgstr "Получить информацию о примененных поли
 msgid "Get information about applied policies for the current machine"
 msgstr "Получить информацию о примененных политиках для текущей машины"
 
+#: /usr/lib64/python3.9/argparse.py:296
+msgid "usage: "
+msgstr "Использование: "
+
+#: /usr/lib64/python3.9/argparse.py:861
+msgid ".__call__() not defined"
+msgstr ""
+
+#: /usr/lib64/python3.9/argparse.py:1204
+#, python-format
+msgid "unknown parser %(parser_name)r (choices: %(choices)s)"
+msgstr ""
+
+#: /usr/lib64/python3.9/argparse.py:1264
+#, python-format
+msgid "argument \"-\" with mode %r"
+msgstr ""
+
+#: /usr/lib64/python3.9/argparse.py:1273
+#, python-format
+msgid "can't open '%(filename)s': %(error)s"
+msgstr ""
+
+#: /usr/lib64/python3.9/argparse.py:1482
+#, python-format
+msgid "cannot merge actions - two groups are named %r"
+msgstr ""
+
+#: /usr/lib64/python3.9/argparse.py:1520
+msgid "'required' is an invalid argument for positionals"
+msgstr ""
+
+#: /usr/lib64/python3.9/argparse.py:1542
+#, python-format
+msgid ""
+"invalid option string %(option)r: must start with a character "
+"%(prefix_chars)r"
+msgstr ""
+
+#: /usr/lib64/python3.9/argparse.py:1560
+#, python-format
+msgid "dest= is required for options like %r"
+msgstr ""
+
+#: /usr/lib64/python3.9/argparse.py:1577
+#, python-format
+msgid "invalid conflict_resolution value: %r"
+msgstr ""
+
+#: /usr/lib64/python3.9/argparse.py:1595
+#, python-format
+msgid "conflicting option string: %s"
+msgid_plural "conflicting option strings: %s"
+msgstr[0] ""
+msgstr[1] ""
+
+#: /usr/lib64/python3.9/argparse.py:1661
+msgid "mutually exclusive arguments must be optional"
+msgstr ""
+
+#: /usr/lib64/python3.9/argparse.py:1728
+msgid "positional arguments"
+msgstr "позиционные аргументы"
+
+#: /usr/lib64/python3.9/argparse.py:1729
+msgid "optional arguments"
+msgstr "Необязательные параметры"
+
+#: /usr/lib64/python3.9/argparse.py:1744
+msgid "show this help message and exit"
+msgstr "Показать данную справку и выйти"
+
+#: /usr/lib64/python3.9/argparse.py:1775
+msgid "cannot have multiple subparser arguments"
+msgstr ""
+
+#: /usr/lib64/python3.9/argparse.py:1827 /usr/lib64/python3.9/argparse.py:2338
+#, python-format
+msgid "unrecognized arguments: %s"
+msgstr ""
+
+#: /usr/lib64/python3.9/argparse.py:1928
+#, python-format
+msgid "not allowed with argument %s"
+msgstr ""
+
+#: /usr/lib64/python3.9/argparse.py:1974 /usr/lib64/python3.9/argparse.py:1988
+#, python-format
+msgid "ignored explicit argument %r"
+msgstr ""
+
+#: /usr/lib64/python3.9/argparse.py:2095
+#, python-format
+msgid "the following arguments are required: %s"
+msgstr ""
+
+#: /usr/lib64/python3.9/argparse.py:2110
+#, python-format
+msgid "one of the arguments %s is required"
+msgstr ""
+
+#: /usr/lib64/python3.9/argparse.py:2153
+msgid "expected one argument"
+msgstr ""
+
+#: /usr/lib64/python3.9/argparse.py:2154
+msgid "expected at most one argument"
+msgstr ""
+
+#: /usr/lib64/python3.9/argparse.py:2155
+msgid "expected at least one argument"
+msgstr ""
+
+#: /usr/lib64/python3.9/argparse.py:2159
+#, python-format
+msgid "expected %s argument"
+msgid_plural "expected %s arguments"
+msgstr[0] ""
+msgstr[1] ""
+
+#: /usr/lib64/python3.9/argparse.py:2217
+#, python-format
+msgid "ambiguous option: %(option)s could match %(matches)s"
+msgstr ""
+
+#: /usr/lib64/python3.9/argparse.py:2281
+#, python-format
+msgid "unexpected option string: %s"
+msgstr ""
+
+#: /usr/lib64/python3.9/argparse.py:2478
+#, python-format
+msgid "%r is not callable"
+msgstr ""
+
+#: /usr/lib64/python3.9/argparse.py:2495
+#, python-format
+msgid "invalid %(type)s value: %(value)r"
+msgstr ""
+
+#: /usr/lib64/python3.9/argparse.py:2506
+#, python-format
+msgid "invalid choice: %(value)r (choose from %(choices)s)"
+msgstr ""
+
+#: /usr/lib64/python3.9/argparse.py:2582
+#, python-format
+msgid "%(prog)s: error: %(message)s\n"
+msgstr ""
+
+
 #~ msgid ""
 #~ "Set column widths for outputting internal tables (keys and values, "
 #~ "preferences, ...)\n"
