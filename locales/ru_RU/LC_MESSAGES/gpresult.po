@@ -45,10 +45,10 @@ msgstr ""
 #: gpresult/gpresult.py:72
 msgid ""
 "Output format: output of GPO names and their GUIDs\n"
-"* Not applicable with <-i>/<--policy_guid> and <-i>/<--policy_name>"
+"* Not applicable with <-i>/<--policy_guid> and <-n>/<--policy_name>"
 msgstr ""
 "Формат вывода: отображаются имена GPO и их GUID\n"
-"* Не применяется с <-i>/<--policy_guid> и <-i>/<--policy_name>"
+"* Не применяется с <-i>/<--policy_guid> и <-n>/<--policy_name>"
 
 #: gpresult/gpresult.py:77
 msgid "Enable information about the previous GPO key value"

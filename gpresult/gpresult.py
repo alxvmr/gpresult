@@ -71,7 +71,7 @@ def parse_cli_arguments():
     argparser.add_argument('-l', '--list',
                            action=CustomAction,
                            help=_('Output format: output of GPO names and their GUIDs\n'\
-                                  '* Not applicable with <-i>/<--policy_guid> and <-i>/<--policy_name>'))
+                                  '* Not applicable with <-i>/<--policy_guid> and <-n>/<--policy_name>'))
     
     argparser.add_argument('-p', '--previous',
                            action='store_true',
