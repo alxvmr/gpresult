@@ -67,7 +67,9 @@ def init_gpos(path, obj):
 
             if v != None:
                 # Computing policy data
-                if (k.find('GpoPriority') != -1):
+                if (k.find('GpoPriority') != -1 and
+                    k.find('Previous') == -1):
+
                     key_split = k.split("/")
                     field = key_split[-1]
 
