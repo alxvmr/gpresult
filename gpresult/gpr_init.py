@@ -11,19 +11,10 @@ from .GPO import GPO
 from .KeyValue import KeyValue
 from .Preferences.Preference import Preference
 
-import gettext, locale
-
-loc = locale.getlocale()[0]
-if loc not in ['ru_RU', 'en_US']:
-    loc = 'en_US'
-
-gettext.bindtextdomain("gpr_show", "locales")
-gettext.textdomain("gpr_show")
-t = gettext.translation("gpr_show",
-                        localedir="/usr/lib/python3/site-packages/gpresult/locales",
-                        languages=[loc])
-t.install()
-_ = t.gettext
+import gettext
+gettext.bindtextdomain("gpresult", None)
+gettext.textdomain ("gpresult")
+_ = gettext.gettext
 
 policy_fields = [
     "correct_path",

@@ -8,14 +8,222 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-12-26 11:03+0400\n"
+"POT-Creation-Date: 2024-09-16 16:32+0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: Russian\n"
+"Language: Ruissian\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+
+#: gpresult/Preferences/Drive.py:17
+msgid "Drive map"
+msgstr "Сетевые диски"
+
+#: gpresult/Preferences/Drive.py:44
+msgid "Type"
+msgstr "Тип"
+
+#: gpresult/Preferences/Drive.py:45
+msgid "Password"
+msgstr "Пароль"
+
+#: gpresult/Preferences/Drive.py:46
+msgid "Direction"
+msgstr "Имя диска"
+
+#: gpresult/Preferences/Drive.py:47
+msgid "Path"
+msgstr "Путь"
+
+#: gpresult/Preferences/Drive.py:48
+msgid "Action"
+msgstr "Действие"
+
+#: gpresult/Preferences/Drive.py:49
+msgid "This drive"
+msgstr "Этот диск"
+
+#: gpresult/Preferences/Drive.py:50
+msgid "All drives"
+msgstr "Все диски"
+
+#: gpresult/Preferences/Drive.py:51
+msgid "Label"
+msgstr "Название"
+
+#: gpresult/Preferences/Drive.py:52
+msgid "Persistent"
+msgstr "Переподключиться"
+
+#: gpresult/Preferences/Drive.py:53
+msgid "Use letter"
+msgstr "Использовать"
+
+#: gpresult/Preferences/Drive.py:17
+msgid "Environment variables"
+msgstr "Окружение"
+
+#: gpresult/Preferences/EnvVar.py:38
+msgid "Value"
+msgstr "Значение"
+
+#: gpresult/Preferences/File.py:17
+msgid "File"
+msgstr "Файлы"
+
+#: gpresult/Preferences/File.py:44
+msgid "From path"
+msgstr "Источник файла(ов)"
+
+#: gpresult/Preferences/File.py:45
+msgid "Source"
+msgstr "Источник"
+
+#: gpresult/Preferences/File.py:47
+msgid "Target path"
+msgstr "Место назначения"
+
+#: gpresult/Preferences/File.py:48
+msgid "Read only"
+msgstr "Только для чтения"
+
+#: gpresult/Preferences/File.py:49
+msgid "Archive"
+msgstr "Архивный"
+
+#: gpresult/Preferences/File.py:50
+msgid "Hidden"
+msgstr "Скрытый"
+
+#: gpresult/Preferences/File.py:51
+msgid "Suppress"
+msgstr "Подавление ошибок"
+
+#: gpresult/Preferences/File.py:52
+msgid "Executable"
+msgstr "Исполняемый"
+
+#: gpresult/Preferences/Folder.py:17
+msgid "Folder"
+msgstr "Папки"
+
+#: gpresult/Preferences/Folder.py:43
+msgid "Delete folder"
+msgstr "Удалить папку"
+
+#: gpresult/Preferences/Folder.py:44
+msgid "Delete subfolder"
+msgstr "Рекурсивное удаление"
+
+#: gpresult/Preferences/Folder.py:45
+msgid "Delete files"
+msgstr "Удалить файлы"
+
+#: gpresult/Preferences/Folder.py:46
+msgid "Hidden folder"
+msgstr "Скрытая"
+
+#: gpresult/GPO.py:44
+msgid "Version"
+msgstr "Версия"
+
+#: gpresult/GPO.py:46
+msgid "Keys"
+msgstr "Ключи"
+
+#: gpresult/GPO.py:47
+msgid "Preferences"
+msgstr "Настройки"
+
+#~ msgid "Keys, values, previous values"
+#~ msgstr "Ключи, значения, предыдущие значения"
+
+#~ msgid "Keys and values"
+#~ msgstr "Ключи и значения"
+
+#: gpresult/gpr_init.py:51 gpresult/gpr_init.py:103 gpresult/gpr_init.py:137
+#: gpresult/gpr_init.py:170
+msgid "Permission denied: {}"
+msgstr "Отказано в доступе: {}"
+
+#: gpresult/gpr_init.py:53 gpresult/gpr_init.py:105 gpresult/gpr_init.py:139
+#: gpresult/gpr_init.py:172
+msgid "No such file: {}"
+msgstr "Файл не существует: {}"
+
+#: gpresult/gpr_show.py:120
+msgid ""
+"\n"
+"Created on {}"
+msgstr ""
+"\n"
+"Отчет сформирован {}"
+
+#: gpresult/gpr_show.py:128
+msgid "The resulting set of policies"
+msgstr "Результирующий набор политик"
+
+#: gpresult/gpr_show.py:144
+msgid "Applied Group Policy Objects"
+msgstr "Примененные Объекты Групповой Политики"
+
+#: gpresult/gpr_show.py:234
+msgid "USER SETTINGS"
+msgstr "ПОЛЬЗОВАТЕЛЬСКИЕ НАСТРОЙКИ"
+
+#: gpresult/gpr_show.py:236
+msgid "MACHINE SETTINGS"
+msgstr "МАШИННЫЕ НАСТРОЙКИ"
+
+#~ msgid "The resulting set of policies for the "
+#~ msgstr "Полученный набор политик для "
+
+#~ msgid "user {}:"
+#~ msgstr "пользователя {}:"
+
+#~ msgid "machine {}:"
+#~ msgstr "машины {}:"
+
+#~ msgid "Policy keys:"
+#~ msgstr "Ключи политик:"
+
+#~ msgid "Values of policy keys:"
+#~ msgstr "Значения ключей политик:"
+
+#~ msgid ""
+#~ "\n"
+#~ "A list of applied policies for the "
+#~ msgstr ""
+#~ "\n"
+#~ "Список примененных политик для "
+
+#~ msgid ""
+#~ "user {}:\n"
+#~ "\n"
+#~ msgstr ""
+#~ "пользователя {}:\n"
+#~ "\n"
+
+#~ msgid ""
+#~ "machine {}:\n"
+#~ "\n"
+#~ msgstr ""
+#~ "машины {}:\n"
+#~ "\n"
+
+#: ../../../gpresult/gpr_system.py:32
+msgid "Operating system:"
+msgstr "Операционная система:"
+
+#: ../../../gpresult/gpr_system.py:33
+msgid "OS Version:"
+msgstr "Версия ОС:"
+
+#: ../../../gpresult/gpr_system.py:39
+msgid "Local Profile:"
+msgstr "Локальный профиль:"
 
 #: gpresult/gpresult.py:55
 msgid "Information about applied policies"
@@ -246,92 +454,74 @@ msgstr ""
 msgid "%(prog)s: error: %(message)s\n"
 msgstr ""
 
+#: gpresult/Preferences/Inifile.py:17
+msgid "Inifile"
+msgstr "Ini файлы"
 
-#~ msgid ""
-#~ "Set column widths for outputting internal tables (keys and values, "
-#~ "preferences, ...)\n"
-#~ "* If the specified value is less than or equal to 0, the width of the "
-#~ "columns\n"
-#~ "  will be equal to the maximum length of the row\n"
-#~ "* By default, the column width is equal to the length of the maximum row"
-#~ msgstr ""
-#~ "Задать ширину столбцов для вывода внутренних таблиц (ключи и значения, "
-#~ "настройки, ...)\n"
-#~ "* Если указано значение <= 0, то ширина столбцов\n"
-#~ "  будет равна максимальной длине строки\n"
-#~ "* По умолчанию ширина столбцов равна длине максимальной строки"
+#: gpresult/Preferences/Inifile.py:41
+msgid "Section"
+msgstr "Секция"
 
-#~ msgid "Output format: display of policy keys and values"
-#~ msgstr "Формат вывода: отобразить ключи GPO и значения"
+#: gpresult/Preferences/Inifile.py:42
+msgid "Property"
+msgstr "Свойство"
 
-#~ msgid ""
-#~ "Output format (DEFAULT): is similar to the common output, in addition, "
-#~ "the applied keys and policy values are also output"
-#~ msgstr ""
-#~ "Формат вывода (ПО УМОЛЧАНИЮ): схож с форматом <common>, отображает "
-#~ "дополнительную информацию о GPO"
+#: gpresult/Preferences/Networkshare.py:17
+msgid "Network share"
+msgstr "Сетевые папки"
 
-#~ msgid ""
-#~ "Output format. Choose one of the following options:\n"
-#~ "* raw: display of policy keys and values\n"
-#~ "* standard: standard output including environment information; outputs "
-#~ "only the names of applied policies\n"
-#~ "* verbose: is similar to the standard output, in addition, the applied "
-#~ "keys and policy values are also output"
-#~ msgstr ""
-#~ "Формат вывода. Выберите одну из следующих опций:\n"
-#~ "* raw: показать ключи и значения политик\n"
-#~ "* standard: стандартный вывод, включающий информацию об окружении; "
-#~ "выводятся имена примененных политик\n"
-#~ "* verbose: структура вывода аналогична standard; дополнительно включает "
-#~ "информацию о ключах и значениях примененных политик"
+#: gpresult/Preferences/Networkshare.py:42
+msgid "Name"
+msgstr "Имя"
 
-#~ msgid ""
-#~ "Information about policy keys and values by guid\n"
-#~ "* For the <verbose> output type the option does not apply"
-#~ msgstr ""
-#~ "Получить информацию о ключах и значениях политики по ее guid\n"
-#~ "* Для формата вывода <verbose> опция не применяется"
+#: gpresult/Preferences/Networkshare.py:45
+msgid "All regular"
+msgstr "Модификаторы"
 
-#~ msgid ""
-#~ "Information about policy keys and values by name\n"
-#~ "* For the <verbose> output type the option does not apply"
-#~ msgstr ""
-#~ "Получить информацию о ключах и значениях политики по ее отображаемому "
-#~ "имени\n"
-#~ "* Для формата вывода <verbose> опция не применяется"
+#: gpresult/Preferences/Networkshare.py:46
+msgid "Abe"
+msgstr "Перечисление"
 
-#~ msgid ""
-#~ "Add policy guid output for policies\n"
-#~ "* For the <raw> output type the option does not apply"
-#~ msgstr ""
-#~ "Дополнительно выводить guid для политик\n"
-#~ "Для формата вывода <raw> опция не применяется"
+#: gpresult/Preferences/Networkshare.py:47
+msgid "Limit users"
+msgstr "Лимит пользователей"
 
-#~ msgid ""
-#~ "Add policy ID output for policies\n"
-#~ "* For the <raw> output type the option does not apply"
-#~ msgstr ""
-#~ "Добавить вывод ID политики\n"
-#~ "* Не применяется в комбинации с форматом вывода <raw>"
+#: gpresult/Preferences/Networkshare.py:48
+msgid "Comment"
+msgstr "Комментарий"
 
-#~ msgid ""
-#~ "Information about policy keys and values by ID\n"
-#~ "* For the <verbose> output type the option does not apply"
-#~ msgstr ""
-#~ "Получить информацию о ключах и значениях политики по ID\n"
-#~ "* Не применяется в комбинации с форматом вывода <verbose>"
+#: gpresult/Preferences/Shortcut.py:17
+msgid "Shortcut"
+msgstr "Значки"
 
-#~ msgid ""
-#~ "Add policy ID output for policies\n"
-#~ "* For the raw output type, the option does not apply"
-#~ msgstr ""
-#~ "Добавить вывод идентификатора политики\n"
-#~ "* Для типа вывода raw данная опция не применяется"
+#: gpresult/Preferences/Shortcut.py:47
+msgid "Destination"
+msgstr "Расположение"
 
-#~ msgid "Output format"
-#~ msgstr "Формат вывода"
+#: gpresult/Preferences/Shortcut.py:49
+msgid "Expanded path"
+msgstr "Целевой путь"
 
-#~ msgid "Get information about applied policies for a user"
-#~ msgstr ""
-#~ "Получить информацию о примененных политиках для указанного пользователя"
+#: gpresult/Preferences/Shortcut.py:50
+msgid "Arguments"
+msgstr "Аргументы"
+
+#: gpresult/Preferences/Shortcut.py:53
+msgid "Changed"
+msgstr "Дата изменения"
+
+#: gpresult/Preferences/Shortcut.py:54
+msgid "Icon"
+msgstr "Путь к файлу"
+
+#: gpresult/Preferences/Shortcut.py:56
+msgid "Perfom action in user context"
+msgstr "В контексте пользователя"
+
+#: gpresult/Preferences/Shortcut.py:57
+msgid "Link type"
+msgstr "Тип ссылки"
+
+#: gpresult/Preferences/Shortcut.py:58
+msgid "Desktop file template"
+msgstr "Шаблон файла раб. стола"

@@ -1,16 +1,7 @@
-import gettext, locale
-
-loc = locale.getlocale()[0]
-if loc not in ['ru_RU', 'en_US']:
-    loc = 'en_US'
-
-gettext.bindtextdomain("GPO", "locales")
-gettext.textdomain("GPO")
-t = gettext.translation("GPO",
-                        localedir="/usr/lib/python3/site-packages/gpresult/locales",
-                        languages=[loc])
-t.install()
-_ = t.gettext
+import gettext
+gettext.bindtextdomain("gpresult", None)
+gettext.textdomain ("gpresult")
+_ = gettext.gettext
 
 
 class GPO:

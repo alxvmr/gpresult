@@ -3,19 +3,10 @@ import datetime
 import os
 import pwd
 
-import gettext, locale
-
-loc = locale.getlocale()[0]
-if loc not in ['ru_RU', 'en_US']:
-    loc = 'en_US'
-
-gettext.bindtextdomain("gpr_system", "locales")
-gettext.textdomain("gpr_system")
-t = gettext.translation("gpr_system", 
-                        localedir="/usr/lib/python3/site-packages/gpresult/locales", 
-                        languages=[loc])
-t.install()
-_ = t.gettext
+import gettext
+gettext.bindtextdomain("gpresult", None)
+gettext.textdomain ("gpresult")
+_ = gettext.gettext
 
 PATH_DB = "/etc/dconf/db/policy"
 
