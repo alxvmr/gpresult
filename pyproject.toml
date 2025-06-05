@@ -26,9 +26,11 @@ Repository = "https://github.com/alxvmr/gpresult"
 [project.scripts]
 gpresult = "gpresult.gpresult:main"
 
+[tool.hatch.build.hooks.custom]
+path = "hatch_build.py"
+
 [tool.hatch.build.targets.wheel]
 packages = ["gpresult"]
 
 [tool.hatch.build.targets.wheel.shared-data]
 "completions/gpresult" = "share/bash-completion/completions/gpresult"
-"locales/ru/LC_MESSAGES/gpresult.mo" = "share/locale/ru/LC_MESSAGES/gpresult.mo"
