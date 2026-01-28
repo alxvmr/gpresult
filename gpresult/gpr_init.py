@@ -148,10 +148,12 @@ def init_keys_values_meta(path, obj):
                 # Computing key and value data
 
                 if v.get_type().equal(GLib.VariantType.new("s")):
-                    KeyValue.set_meta_to_key_value(
-                        k[7:], obj, **ast.literal_eval(v.get_string())
-                        )
+                    raw_string = v.get_string()
+                    escaped_string = raw_string.replace('\\', '\\\\')
 
+                    KeyValue.set_meta_to_key_value(
+                        k[7:], obj, **ast.literal_eval(escaped_string)
+                    )
                     # TODO: Add deletion of viewed records
 
 
