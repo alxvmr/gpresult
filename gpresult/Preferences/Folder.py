@@ -16,6 +16,8 @@ class Folder:
         self.delete_files = kwargs.get("delete_files", None)
         self.hidden_folder = kwargs.get("hidden_folder", None)
         self.policy_name = kwargs.get("policy_name", None)
+        self.disabled = kwargs.get("disabled", None)
+        self.remove_policy = kwargs.get("remove_policy", None)
 
         Folder.set_folder(self)
 
@@ -35,4 +37,6 @@ class Folder:
             [_("Delete subfolder"), self.delete_sub_folder],
             [_("Delete files"), self.delete_files],
             [_("Hidden folder"), self.hidden_folder],
+            [_("Disabled"), self.disabled],
+            [_("Remove policy"), self.remove_policy],
         ]

@@ -19,6 +19,8 @@ class File():
         self.suppress = kwargs.get("suppress", None)
         self.executable = kwargs.get("executable", None)
         self.policy_name = kwargs.get("policy_name", None)
+        self.disabled = kwargs.get("disabled", None)
+        self.remove_policy = kwargs.get("remove_policy", None)
 
         File.set_file(self)
 
@@ -41,4 +43,6 @@ class File():
             [_("Hidden"), self.hidden],
             [_("Suppress"), self.suppress],
             [_("Executable"), self.executable],
+            [_("Disabled"), self.disabled],
+            [_("Remove policy"), self.remove_policy],
         ]

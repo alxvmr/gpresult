@@ -13,6 +13,8 @@ class EnvVar:
         self.value = kwargs.get("value", None)
         self.action = kwargs.get("action", None)
         self.policy_name = kwargs.get("policy_name", None)
+        self.disabled = kwargs.get("disabled", None)
+        self.remove_policy = kwargs.get("remove_policy", None)
 
         EnvVar.set_envvar(self)
 
@@ -26,6 +28,9 @@ class EnvVar:
 
         return [
             [_("Type"), EnvVar.preference_type],
+            [_("Name"), self.name],
             [_("Value"), self.value],
             [_("Action"), self.action],
+            [_("Disabled"), self.disabled],
+            [_("Remove policy"), self.remove_policy],
         ]

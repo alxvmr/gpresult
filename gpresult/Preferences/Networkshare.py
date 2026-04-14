@@ -17,6 +17,8 @@ class NetworkShare():
         self.limitUsers = kwargs.get("limitUsers", None)
         self.abe = kwargs.get("abe", None)
         self.policy_name = kwargs.get("policy_name", None)
+        self.disabled = kwargs.get("disabled", None)
+        self.remove_policy = kwargs.get("remove_policy", None)
 
         NetworkShare.set_nshare(self)
 
@@ -37,4 +39,6 @@ class NetworkShare():
             [_("Abe"), self.abe],
             [_("Limit users"), self.limitUsers],
             [_("Comment"), self.comment],
+            [_("Disabled"), self.disabled],
+            [_("Remove policy"), self.remove_policy],
         ]

@@ -15,6 +15,8 @@ class Inifile:
         self.value = kwargs.get("value", None)
         self.action = kwargs.get("action", None)
         self.policy_name = kwargs.get("policy_name", None)
+        self.disabled = kwargs.get("disabled", None)
+        self.remove_policy = kwargs.get("remove_policy", None)
 
         Inifile.set_inifile(self)
 
@@ -33,4 +35,6 @@ class Inifile:
             [_("Property"), self.property],
             [_("Value"), self.value],
             [_("Action"), self.action],
+            [_("Disabled"), self.disabled],
+            [_("Remove policy"), self.remove_policy],
         ]

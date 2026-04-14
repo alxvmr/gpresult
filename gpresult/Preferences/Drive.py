@@ -20,6 +20,8 @@ class Drive:
         self.persistent = kwargs.get("persistent", None)
         self.useLetter = kwargs.get("useLetter", None)
         self.policy_name = kwargs.get("policy_name", None)
+        self.disabled = kwargs.get("disabled", None)
+        self.remove_policy = kwargs.get("remove_policy", None)
 
         Drive.set_drive(self)
 
@@ -42,4 +44,6 @@ class Drive:
             [_("Label"), self.label],
             [_("Persistent"), self.persistent],
             [_("Use letter"), str(self.useLetter)],
+            [_("Disabled"), self.disabled],
+            [_("Remove policy"), self.remove_policy],
         ]

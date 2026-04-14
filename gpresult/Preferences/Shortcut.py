@@ -22,6 +22,8 @@ class Shortcut:
         self.type = kwargs.get("type", None)
         self.desktop_file_template = kwargs.get("desktop_file_template", None)
         self.policy_name = kwargs.get("policy_name", None)
+        self.disabled = kwargs.get("disabled", None)
+        self.remove_policy = kwargs.get("remove_policy", None)
 
         Shortcut.set_shortcut(self)
 
@@ -47,4 +49,6 @@ class Shortcut:
             [_("Perfom action in user context"), self.is_in_user_context],
             [_("Link type"), self.type],
             [_("Desktop file template"), self.desktop_file_template],
+            [_("Disabled"), self.disabled],
+            [_("Remove policy"), self.remove_policy],
         ]
