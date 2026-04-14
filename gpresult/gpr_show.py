@@ -67,6 +67,10 @@ def get_lists_formatted_output(data, offset, is_rec=False):
                 if not is_last_obj and is_rec:
                     row[i] += "\n"
 
+            elif row[i] is True:
+                row[i] = _("Yes")
+            elif row[i] is False:
+                row[i] = _("No")
             elif str(row[i]) == "None":
                 row[i] = "-"
 
