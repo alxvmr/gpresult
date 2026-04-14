@@ -135,7 +135,7 @@ def rsop_gen(type):
             }
 
 
-def policies_gen(gpos, type, is_cmd, previous):
+def policies_gen(gpos, type, is_cmd, previous, with_lifecycle=False):
     header = _("Applied Group Policy Objects")
     body = []
 
@@ -198,7 +198,7 @@ def policies_gen(gpos, type, is_cmd, previous):
 
     elif type == "verbose":
         for gpo in gpos:
-            info = gpo.get_info_list(with_previous=previous)
+            info = gpo.get_info_list(with_previous=previous, with_lifecycle=with_lifecycle)
             body.append({
                 "body": info,
                 "type": 'format'})
@@ -219,12 +219,12 @@ def policies_gen(gpos, type, is_cmd, previous):
         }
 
 
-def settings_gen(gpos, obj_type, output_type='common', is_cmd=False, previous=True):
+def settings_gen(gpos, obj_type, output_type='common', is_cmd=False, previous=True, with_lifecycle=False):
     global filtering_gpo
     filtering_gpo = gpos
 
     if output_type == 'raw' or output_type == 'list' or output_type == 'list_raw' or (is_cmd and output_type=='common'):
-        return policies_gen(gpos, output_type, is_cmd, previous)
+        return policies_gen(gpos, output_type, is_cmd, previous, with_lifecycle)
     
     if obj_type:
         filtering_gpo = []
@@ -232,7 +232,7 @@ def settings_gen(gpos, obj_type, output_type='common', is_cmd=False, previous=Tr
             if obj_type == gpo.obj:
                 filtering_gpo.append(gpo)
     
-    policies = policies_gen(filtering_gpo, output_type, is_cmd, previous)
+    policies = policies_gen(filtering_gpo, output_type, is_cmd, previous, with_lifecycle)
 
     if obj_type == "user":
         header = _("USER SETTINGS")
@@ -245,12 +245,12 @@ def settings_gen(gpos, obj_type, output_type='common', is_cmd=False, previous=Tr
             }
 
 
-def gen(gpos, obj_type, output_type, is_cmd, previous):
+def gen(gpos, obj_type, output_type, is_cmd, previous, with_lifecycle=False):
     data = []
 
     if output_type == "raw" or output_type == 'list' or output_type == 'list_raw' or (is_cmd and output_type=='common'):
         data.extend([
-            settings_gen(gpos, obj_type, output_type, is_cmd, previous)
+            settings_gen(gpos, obj_type, output_type, is_cmd, previous, with_lifecycle)
         ])
 
     elif output_type == "verbose" or output_type == "common":
@@ -261,7 +261,7 @@ def gen(gpos, obj_type, output_type, is_cmd, previous):
             ])
 
         if obj_type:
-            set_gen = settings_gen(gpos, obj_type, output_type, is_cmd, previous)
+            set_gen = settings_gen(gpos, obj_type, output_type, is_cmd, previous, with_lifecycle)
 
             if is_cmd:
                 if len(set_gen["body"]) == 1 and not len(set_gen["body"][0]["body"]):
@@ -271,7 +271,7 @@ def gen(gpos, obj_type, output_type, is_cmd, previous):
 
         else:
             for t in ['user', 'machine']:
-                set_gen = settings_gen(gpos, t, output_type, is_cmd, previous)
+                set_gen = settings_gen(gpos, t, output_type, is_cmd, previous, with_lifecycle)
 
                 if is_cmd:
                     if len(set_gen["body"]) == 1 and not len(set_gen["body"][0]["body"]):
@@ -313,11 +313,11 @@ def show_helper(data, offset):
             print(get_list_output(elem["body"], offset))
 
 
-def show(gpos, obj_type, output_type="common", is_cmd=False, previous=True, width=None):
+def show(gpos, obj_type, output_type="common", is_cmd=False, previous=True, width=None, with_lifecycle=False):
     global COLUMN_WIDTH
     COLUMN_WIDTH = width
 
-    data = gen(gpos, obj_type, output_type, is_cmd, previous)
+    data = gen(gpos, obj_type, output_type, is_cmd, previous, with_lifecycle)
     offset = 0
 
     show_helper(data, offset)

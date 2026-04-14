@@ -28,9 +28,9 @@ class GPO:
                     self.version == other.version)
         return NotImplemented
 
-    def get_info_list(self, with_previous=True):
+    def get_info_list(self, with_previous=True, with_lifecycle=False):
         kvs = self.get_keys_values_lists(with_previous)
-        prefs = self.get_preferences_lists()
+        prefs = self.get_preferences_lists(with_lifecycle)
 
         if not kvs:
             kvs = None
@@ -58,11 +58,16 @@ class GPO:
         return kvs_list
 
 
-    def get_preferences_lists(self):
+    def get_preferences_lists(self, with_lifecycle=False):
         prefs_list = []
 
         for pref in self.preferences:
-            prefs_list.append(pref.get_info_list())
+            info = pref.get_info_list()
+            if with_lifecycle and info is not None:
+                lifecycle = pref.get_lifecycle_info_list()
+                if lifecycle and len(info) > 0:
+                    info[0].extend(lifecycle)
+            prefs_list.append(info)
 
         return prefs_list
 

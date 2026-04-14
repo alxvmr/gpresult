@@ -45,7 +45,12 @@ class Preference:
 
     def get_info_list(self):
         if self.preference_obj:
-            pref_info = [self.preference_obj.get_info_list(), {'is_prefs': True}]
-            return pref_info
+            pref_info = self.preference_obj.get_info_list()
+            return [pref_info, {'is_prefs': True}]
 
+        return None
+
+    def get_lifecycle_info_list(self):
+        if self.preference_obj and hasattr(self.preference_obj, 'get_lifecycle_info_list'):
+            return self.preference_obj.get_lifecycle_info_list()
         return None

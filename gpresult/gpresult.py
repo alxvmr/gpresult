@@ -140,7 +140,7 @@ def main():
     else:
         gpos = gpr_get_policies.get_policies(obj)
 
-    gpr_show.show(gpos, obj, output_format, is_cmd, previous=args.previous, width=validate_width(args.width))
+    gpr_show.show(gpos, obj, output_format, is_cmd, previous=args.previous, width=validate_width(args.width), with_lifecycle=output_format in ('verbose', 'raw'))
 
 
 if __name__ == "__main__":
