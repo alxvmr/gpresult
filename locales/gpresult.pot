@@ -395,6 +395,7 @@ msgstr ""
 msgid "Network share"
 msgstr ""
 
+#: gpresult/Preferences/EnvVar.py:31
 #: gpresult/Preferences/Networkshare.py:42
 msgid "Name"
 msgstr ""
@@ -449,4 +450,82 @@ msgstr ""
 
 #: gpresult/Preferences/Shortcut.py:58
 msgid "Desktop file template"
+msgstr ""
+
+#: gpresult/Preferences/Shortcut.py:61
+#: gpresult/Preferences/Folder.py:39
+#: gpresult/Preferences/File.py:47
+#: gpresult/Preferences/Drive.py:49
+#: gpresult/Preferences/EnvVar.py:34
+#: gpresult/Preferences/Inifile.py:39
+#: gpresult/Preferences/Networkshare.py:40
+msgid "Disabled"
+msgstr ""
+
+#: gpresult/Preferences/Shortcut.py:62
+#: gpresult/Preferences/Folder.py:40
+#: gpresult/Preferences/File.py:48
+#: gpresult/Preferences/Drive.py:50
+#: gpresult/Preferences/EnvVar.py:35
+#: gpresult/Preferences/Inifile.py:40
+#: gpresult/Preferences/Networkshare.py:41
+msgid "Remove policy"
+msgstr ""
+
+#: gpresult/Preferences/Shortcut.py:66
+#: gpresult/Preferences/Folder.py:44
+#: gpresult/Preferences/File.py:52
+#: gpresult/Preferences/Drive.py:54
+#: gpresult/Preferences/EnvVar.py:39
+#: gpresult/Preferences/Inifile.py:44
+#: gpresult/Preferences/Networkshare.py:45
+msgid "UID"
+msgstr ""
+
+#: gpresult/Preferences/Shortcut.py:67
+#: gpresult/Preferences/Folder.py:45
+#: gpresult/Preferences/File.py:53
+#: gpresult/Preferences/Drive.py:55
+#: gpresult/Preferences/EnvVar.py:40
+#: gpresult/Preferences/Inifile.py:45
+#: gpresult/Preferences/Networkshare.py:46
+msgid "Bypass errors"
+msgstr ""
+
+#: gpresult/Preferences/Shortcut.py:68
+#: gpresult/Preferences/Folder.py:46
+#: gpresult/Preferences/File.py:54
+#: gpresult/Preferences/Drive.py:56
+#: gpresult/Preferences/EnvVar.py:41
+#: gpresult/Preferences/Inifile.py:46
+#: gpresult/Preferences/Networkshare.py:47
+msgid "Apply once"
+msgstr ""
+
+#: gpresult/Preferences/Shortcut.py:70
+#: gpresult/Preferences/Folder.py:48
+#: gpresult/Preferences/File.py:56
+#: gpresult/Preferences/Drive.py:58
+#: gpresult/Preferences/EnvVar.py:43
+#: gpresult/Preferences/Inifile.py:48
+#: gpresult/Preferences/Networkshare.py:49
+msgid "Filters"
+msgstr ""
+
+#: gpresult/Preferences/Shortcut.py:42
+#: gpresult/Preferences/Folder.py:42
+#: gpresult/Preferences/File.py:50
+#: gpresult/Preferences/Drive.py:52
+#: gpresult/Preferences/EnvVar.py:37
+#: gpresult/Preferences/Inifile.py:42
+#: gpresult/Preferences/Networkshare.py:43
+msgid "Filter type"
+msgstr ""
+
+#: gpresult/gpr_show.py:71
+msgid "Yes"
+msgstr ""
+
+#: gpresult/gpr_show.py:73
+msgid "No"
 msgstr ""
