@@ -1,8 +1,9 @@
 from .BasePreference import BasePreference
 
 import gettext
+
 gettext.bindtextdomain("gpresult", None)
-gettext.textdomain ("gpresult")
+gettext.textdomain("gpresult")
 _ = gettext.gettext
 
 
@@ -23,11 +24,9 @@ class NetworkShare(BasePreference):
 
         NetworkShare.set_nshare(self)
 
-
     @classmethod
     def set_nshare(cls, nshare):
         cls.nshares.setdefault(nshare.policy_name, []).append(nshare)
-
 
     def get_info_list(self):
 

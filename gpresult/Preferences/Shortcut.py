@@ -1,8 +1,9 @@
 from .BasePreference import BasePreference
 
 import gettext
+
 gettext.bindtextdomain("gpresult", None)
-gettext.textdomain ("gpresult")
+gettext.textdomain("gpresult")
 _ = gettext.gettext
 
 
@@ -28,11 +29,9 @@ class Shortcut(BasePreference):
 
         Shortcut.set_shortcut(self)
 
-
     @classmethod
     def set_shortcut(cls, shortcut):
         cls.shortcuts.setdefault(shortcut.policy_name, []).append(shortcut)
-
 
     def get_info_list(self):
 
@@ -53,4 +52,3 @@ class Shortcut(BasePreference):
             [_("Disabled"), self.disabled],
             [_("Remove policy"), self.remove_policy],
         ]
-

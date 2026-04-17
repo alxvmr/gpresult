@@ -1,8 +1,9 @@
 from .BasePreference import BasePreference
 
 import gettext
+
 gettext.bindtextdomain("gpresult", None)
-gettext.textdomain ("gpresult")
+gettext.textdomain("gpresult")
 _ = gettext.gettext
 
 
@@ -17,7 +18,6 @@ class EnvVar(BasePreference):
         self.value = kwargs.get("value", None)
         self.action = kwargs.get("action", None)
         EnvVar.set_envvar(self)
-
 
     @classmethod
     def set_envvar(cls, envvar):

@@ -12,8 +12,9 @@ from .KeyValue import KeyValue
 from .Preferences.Preference import Preference
 
 import gettext
+
 gettext.bindtextdomain("gpresult", None)
-gettext.textdomain ("gpresult")
+gettext.textdomain("gpresult")
 _ = gettext.gettext
 
 policy_fields = [
@@ -48,7 +49,7 @@ def init_gpos(path, obj):
 
     bytes = GLib.Bytes.new(bytes)
 
-    if (is_not_empty):
+    if is_not_empty:
         table = Gvdb.Table.new_from_bytes(bytes, True)
 
         key_list = Gvdb.Table.get_names(table)
@@ -58,17 +59,17 @@ def init_gpos(path, obj):
 
             if v != None:
                 # Computing policy data
-                if (k.find('GpoPriority') != -1 and
-                    k.find('Previous') == -1):
-
+                if k.find("GpoPriority") != -1 and k.find("Previous") == -1:
                     key_split = k.split("/")
                     field = key_split[-1]
 
                     if field in policy_fields:
                         keys_gpo = {}
-                        keys_gpo[field] = (v.get_string() 
-                                           if v.get_type().equal(GLib.VariantType.new("s"))
-                                           else None)
+                        keys_gpo[field] = (
+                            v.get_string()
+                            if v.get_type().equal(GLib.VariantType.new("s"))
+                            else None
+                        )
 
                         prefix = "/".join(key_split[:-1])
 
@@ -77,7 +78,7 @@ def init_gpos(path, obj):
                                 continue
                             cur_key = prefix + "/" + f
                             cur_value = Gvdb.Table.get_value(table, cur_key)
-                            
+
                             if cur_value.get_type().equal(GLib.VariantType.new("s")):
                                 keys_gpo[f] = cur_value.get_string()
                             elif cur_value.get_type().equal(GLib.VariantType.new("i")):
@@ -102,7 +103,7 @@ def init_keys_values(path, obj):
 
     bytes = GLib.Bytes.new(bytes)
 
-    if (is_not_empty):
+    if is_not_empty:
         table = Gvdb.Table.new_from_bytes(bytes, True)
 
         key_list = Gvdb.Table.get_names(table)
@@ -110,8 +111,11 @@ def init_keys_values(path, obj):
         for k in key_list:
             v = Gvdb.Table.get_value(table, k)
 
-            if (v != None and k[:9].lower() == "/software" 
-                and k.find('GpoPriority') == -1):
+            if (
+                v != None
+                and k[:9].lower() == "/software"
+                and k.find("GpoPriority") == -1
+            ):
                 # Computing key and value data
 
                 if v.get_type().equal(GLib.VariantType.new("s")):
@@ -136,7 +140,7 @@ def init_keys_values_meta(path, obj):
 
     bytes = GLib.Bytes.new(bytes)
 
-    if (is_not_empty):
+    if is_not_empty:
         table = Gvdb.Table.new_from_bytes(bytes, True)
 
         key_list = Gvdb.Table.get_names(table)
@@ -149,7 +153,7 @@ def init_keys_values_meta(path, obj):
 
                 if v.get_type().equal(GLib.VariantType.new("s")):
                     raw_string = v.get_string()
-                    escaped_string = raw_string.replace('\\', '\\\\')
+                    escaped_string = raw_string.replace("\\", "\\\\")
 
                     KeyValue.set_meta_to_key_value(
                         k[7:], obj, **ast.literal_eval(escaped_string)
@@ -171,7 +175,7 @@ def init_preferences(path, obj):
 
     bytes = GLib.Bytes.new(bytes)
 
-    if (is_not_empty):
+    if is_not_empty:
         table = Gvdb.Table.new_from_bytes(bytes, True)
 
         key_list = Gvdb.Table.get_names(table)
@@ -180,9 +184,12 @@ def init_preferences(path, obj):
             v = Gvdb.Table.get_value(table, k)
             preference_type = k.split("/")[-1]
 
-            if (v != None and preference_type in preference_fields
-                and k.find('Preferences') != -1
-                and k.find('Previous') == -1):
+            if (
+                v != None
+                and preference_type in preference_fields
+                and k.find("Preferences") != -1
+                and k.find("Previous") == -1
+            ):
                 # Computing preference data
 
                 if v.get_type().equal(GLib.VariantType.new("s")):

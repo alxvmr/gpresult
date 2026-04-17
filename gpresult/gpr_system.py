@@ -4,8 +4,9 @@ import os
 import pwd
 
 import gettext
+
 gettext.bindtextdomain("gpresult", None)
-gettext.textdomain ("gpresult")
+gettext.textdomain("gpresult")
 _ = gettext.gettext
 
 PATH_DB = "/etc/dconf/db/policy"
@@ -20,8 +21,10 @@ def get_timestamp():
 def os_conf():
     os_id, os_version, os_name = distro.linux_distribution()
 
-    return [[_("Operating system:"), os_id],
-            [_("OS Version:"), f"{os_version} ({os_name})"]]
+    return [
+        [_("Operating system:"), os_id],
+        [_("OS Version:"), f"{os_version} ({os_name})"],
+    ]
 
 
 def get_user_home_dir():

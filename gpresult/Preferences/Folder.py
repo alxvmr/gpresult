@@ -1,8 +1,9 @@
 from .BasePreference import BasePreference
 
 import gettext
+
 gettext.bindtextdomain("gpresult", None)
-gettext.textdomain ("gpresult")
+gettext.textdomain("gpresult")
 _ = gettext.gettext
 
 
@@ -21,7 +22,6 @@ class Folder(BasePreference):
         self.hidden_folder = kwargs.get("hidden_folder", None)
 
         Folder.set_folder(self)
-
 
     @classmethod
     def set_folder(cls, folder):

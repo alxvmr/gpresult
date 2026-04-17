@@ -1,8 +1,9 @@
 from .BasePreference import BasePreference
 
 import gettext
+
 gettext.bindtextdomain("gpresult", None)
-gettext.textdomain ("gpresult")
+gettext.textdomain("gpresult")
 _ = gettext.gettext
 
 
@@ -26,11 +27,9 @@ class Drive(BasePreference):
 
         Drive.set_drive(self)
 
-
     @classmethod
     def set_drive(cls, drive):
         cls.drives.setdefault(drive.policy_name, []).append(drive)
-
 
     def get_info_list(self):
 

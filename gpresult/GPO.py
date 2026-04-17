@@ -1,20 +1,21 @@
 import gettext
+
 gettext.bindtextdomain("gpresult", None)
-gettext.textdomain ("gpresult")
+gettext.textdomain("gpresult")
 _ = gettext.gettext
 
 
 class GPO:
-    gpos = [] # List of all GPOs retrieved from /etc/dconf/db/policy<guid>
+    gpos = []  # List of all GPOs retrieved from /etc/dconf/db/policy<guid>
 
     def __init__(self, obj, **kwargs):
         self.path = kwargs.get("correct_path", None)  # Sysvol path
         self.name = kwargs.get("display_name", None)  # Displayed GPO name
-        self.guid = kwargs.get("name", None)          # GUID
-        self.version = kwargs.get("version", None)    # Version
-        self.obj = obj                                # Whether the GPO refers to a machine or user object
-        self.keys_values = []                         # List of keys and values related to GPOs
-        self.preferences = []                         # Preferences list
+        self.guid = kwargs.get("name", None)  # GUID
+        self.version = kwargs.get("version", None)  # Version
+        self.obj = obj  # Whether the GPO refers to a machine or user object
+        self.keys_values = []  # List of keys and values related to GPOs
+        self.preferences = []  # Preferences list
 
         GPO.set_gpo(self)
 
@@ -22,10 +23,12 @@ class GPO:
     # to remove repetition
     def __eq__(self, other):
         if isinstance(other, GPO):
-            return (self.path == other.path and
-                    self.name == other.name and
-                    self.guid == other.guid and
-                    self.version == other.version)
+            return (
+                self.path == other.path
+                and self.name == other.name
+                and self.guid == other.guid
+                and self.version == other.version
+            )
         return NotImplemented
 
     def get_info_list(self, with_previous=True, with_lifecycle=False):
@@ -45,9 +48,7 @@ class GPO:
             ["GUID", self.guid],
             [_("Keys"), kvs],
             [_("Preferences"), prefs],
-
         ]
-
 
     def get_keys_values_lists(self, with_previous=True):
         kvs_list = []
@@ -56,7 +57,6 @@ class GPO:
             kvs_list.append(kv.get_info_list(with_previous))
 
         return kvs_list
-
 
     def get_preferences_lists(self, with_lifecycle=False):
         prefs_list = []
@@ -71,10 +71,8 @@ class GPO:
 
         return prefs_list
 
-
     def get_sorted_keys_values(self):
         return sorted(self.keys_values, key=lambda x: x.key)
-
 
     @classmethod
     def get_all_sorted_keys_values(cls):
@@ -83,7 +81,6 @@ class GPO:
             kv_list.extend(gpo.keys_values)
 
         return sorted(kv_list, key=lambda x: x.key)
-
 
     @classmethod
     def get_gpos_by_guid(cls, guid, obj=None):
@@ -96,7 +93,6 @@ class GPO:
 
         return gpos_res
 
-
     @classmethod
     def get_gpos_by_name(cls, name, obj=None):
         gpos_res = []
@@ -108,7 +104,6 @@ class GPO:
 
         return gpos_res
 
-
     @classmethod
     def set_keys_values(cls, kv):
         kv_policy_name = kv.policy_name
@@ -119,7 +114,6 @@ class GPO:
                 return
 
         return False
-
 
     @classmethod
     def set_gpo(cls, gpo):
@@ -135,14 +129,12 @@ class GPO:
 
         cls.gpos.append(gpo)
 
-
     @classmethod
     def get_all_gpos(cls, obj=None):
         if not obj:
             return cls.gpos
         else:
             return [gpo for gpo in cls.gpos if gpo.obj == obj]
-
 
     @classmethod
     def set_preferences(cls, gpo_name, prefs):

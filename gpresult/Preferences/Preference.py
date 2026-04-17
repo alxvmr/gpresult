@@ -32,25 +32,24 @@ class Preference:
 
         Preference.set_preference(self)
 
-
     @classmethod
     def set_preference(cls, pref):
         cls.preferences.setdefault(pref.policy_name, []).append(pref)
-
 
     @classmethod
     def clear_preferences(cls):
         cls.preferences.clear()
 
-
     def get_info_list(self):
         if self.preference_obj:
             pref_info = self.preference_obj.get_info_list()
-            return [pref_info, {'is_prefs': True}]
+            return [pref_info, {"is_prefs": True}]
 
         return None
 
     def get_lifecycle_info_list(self):
-        if self.preference_obj and hasattr(self.preference_obj, 'get_lifecycle_info_list'):
+        if self.preference_obj and hasattr(
+            self.preference_obj, "get_lifecycle_info_list"
+        ):
             return self.preference_obj.get_lifecycle_info_list()
         return None

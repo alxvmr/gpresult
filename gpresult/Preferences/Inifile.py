@@ -1,8 +1,9 @@
 from .BasePreference import BasePreference
 
 import gettext
+
 gettext.bindtextdomain("gpresult", None)
-gettext.textdomain ("gpresult")
+gettext.textdomain("gpresult")
 _ = gettext.gettext
 
 
@@ -21,11 +22,9 @@ class Inifile(BasePreference):
 
         Inifile.set_inifile(self)
 
-
     @classmethod
     def set_inifile(cls, ini):
         cls.inifiles.setdefault(ini.policy_name, []).append(ini)
-
 
     def get_info_list(self):
 

@@ -4,6 +4,7 @@ from typing import Any
 import os
 from hatchling.builders.hooks.plugin.interface import BuildHookInterface
 
+
 class GettextCompileHook(BuildHookInterface):
     def initialize(self, version: str, build_data: dict[str, Any]) -> None:
         if self.target_name != "wheel":
@@ -19,10 +20,10 @@ class GettextCompileHook(BuildHookInterface):
         langs = []
         linguas = locale_dir / "LINGUAS"
         try:
-            with open(linguas, encoding='utf-8') as f:
+            with open(linguas, encoding="utf-8") as f:
                 for line in f:
                     line = line.strip()
-                    if line and not line.startswith('#'):
+                    if line and not line.startswith("#"):
                         langs.extend(line.split())
         except OSError:
             self.app.display_info(f"Could not find file LINGUAS in {locale_dir}")
@@ -42,7 +43,7 @@ class GettextCompileHook(BuildHookInterface):
                     ["msgfmt", "-o", str(mo_file), str(po_file)],
                     check=True,
                     capture_output=True,
-                    text=True
+                    text=True,
                 )
             except subprocess.CalledProcessError as e:
                 self.app.display_error(f"Failed to compile {po_file}: {e.stderr}")
@@ -50,4 +51,6 @@ class GettextCompileHook(BuildHookInterface):
             except FileNotFoundError:
                 self.app.abort("msgfmt not found. Please install gettext-tools.\n")
 
-            build_config["targets"]["wheel"]["shared-data"][mo_file] = f"share/locale/{lang}/LC_MESSAGES/{project_name}.mo"
+            build_config["targets"]["wheel"]["shared-data"][mo_file] = (
+                f"share/locale/{lang}/LC_MESSAGES/{project_name}.mo"
+            )

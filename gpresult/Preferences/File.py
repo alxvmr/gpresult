@@ -1,8 +1,9 @@
 from .BasePreference import BasePreference
 
 import gettext
+
 gettext.bindtextdomain("gpresult", None)
-gettext.textdomain ("gpresult")
+gettext.textdomain("gpresult")
 _ = gettext.gettext
 
 
@@ -25,15 +26,13 @@ class File(BasePreference):
 
         File.set_file(self)
 
-
     @classmethod
     def set_file(cls, file):
         cls.files.setdefault(file.policy_name, []).append(file)
 
-
     def get_info_list(self):
 
-        return[
+        return [
             [_("Type"), File.preference_type],
             [_("From path"), self.fromPath],
             [_("Source"), self.source],
