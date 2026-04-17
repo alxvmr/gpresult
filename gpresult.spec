@@ -14,7 +14,7 @@ Release: alt1
 Summary: Display applied policies
 License: GPLv3+
 Group: Other
-Url: https://gitlab.basealt.space/alt/gpresult
+Url: https://altlinux.space/alt-domain/gpresult
 BuildArch: noarch
 
 BuildRequires: rpm-build-python3
