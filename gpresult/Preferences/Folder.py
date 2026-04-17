@@ -1,6 +1,7 @@
-from .BasePreference import BasePreference
-
 import gettext
+from typing import ClassVar
+
+from .BasePreference import BasePreference
 
 gettext.bindtextdomain("gpresult", None)
 gettext.textdomain("gpresult")
@@ -9,17 +10,17 @@ _ = gettext.gettext
 
 class Folder(BasePreference):
     preference_type = _("Folder")
-    folders = {}
+    folders: ClassVar[dict] = {}
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
 
-        self.path = kwargs.get("path", None)
-        self.action = kwargs.get("action", None)
-        self.delete_folder = kwargs.get("delete_folder", None)
-        self.delete_sub_folder = kwargs.get("delete_sub_folder", None)
-        self.delete_files = kwargs.get("delete_files", None)
-        self.hidden_folder = kwargs.get("hidden_folder", None)
+        self.path = kwargs.get("path")
+        self.action = kwargs.get("action")
+        self.delete_folder = kwargs.get("delete_folder")
+        self.delete_sub_folder = kwargs.get("delete_sub_folder")
+        self.delete_files = kwargs.get("delete_files")
+        self.hidden_folder = kwargs.get("hidden_folder")
 
         Folder.set_folder(self)
 

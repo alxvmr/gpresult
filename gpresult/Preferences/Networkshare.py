@@ -1,6 +1,7 @@
-from .BasePreference import BasePreference
-
 import gettext
+from typing import ClassVar
+
+from .BasePreference import BasePreference
 
 gettext.bindtextdomain("gpresult", None)
 gettext.textdomain("gpresult")
@@ -9,18 +10,18 @@ _ = gettext.gettext
 
 class NetworkShare(BasePreference):
     preference_type = _("Network share")
-    nshares = {}
+    nshares: ClassVar[dict] = {}
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
 
-        self.name = kwargs.get("name", None)
-        self.action = kwargs.get("action", None)
-        self.path = kwargs.get("path", None)
-        self.allRegular = kwargs.get("allRegular", None)
-        self.comment = kwargs.get("comment", None)
-        self.limitUsers = kwargs.get("limitUsers", None)
-        self.abe = kwargs.get("abe", None)
+        self.name = kwargs.get("name")
+        self.action = kwargs.get("action")
+        self.path = kwargs.get("path")
+        self.allRegular = kwargs.get("allRegular")
+        self.comment = kwargs.get("comment")
+        self.limitUsers = kwargs.get("limitUsers")
+        self.abe = kwargs.get("abe")
 
         NetworkShare.set_nshare(self)
 

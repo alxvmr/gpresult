@@ -1,4 +1,5 @@
 import gettext
+from typing import ClassVar
 
 gettext.bindtextdomain("gpresult", None)
 gettext.textdomain("gpresult")
@@ -6,13 +7,15 @@ _ = gettext.gettext
 
 
 class GPO:
-    gpos = []  # List of all GPOs retrieved from /etc/dconf/db/policy<guid>
+    gpos: ClassVar[
+        list
+    ] = []  # List of all GPOs retrieved from /etc/dconf/db/policy<guid>
 
     def __init__(self, obj, **kwargs):
-        self.path = kwargs.get("correct_path", None)  # Sysvol path
-        self.name = kwargs.get("display_name", None)  # Displayed GPO name
-        self.guid = kwargs.get("name", None)  # GUID
-        self.version = kwargs.get("version", None)  # Version
+        self.path = kwargs.get("correct_path")  # Sysvol path
+        self.name = kwargs.get("display_name")  # Displayed GPO name
+        self.guid = kwargs.get("name")  # GUID
+        self.version = kwargs.get("version")  # Version
         self.obj = obj  # Whether the GPO refers to a machine or user object
         self.keys_values = []  # List of keys and values related to GPOs
         self.preferences = []  # Preferences list
@@ -87,9 +90,8 @@ class GPO:
         gpos_res = []
 
         for gpo in cls.gpos:
-            if gpo.guid == guid:
-                if (obj and gpo.obj == obj) or not obj:
-                    gpos_res.append(gpo)
+            if gpo.guid == guid and ((obj and gpo.obj == obj) or not obj):
+                gpos_res.append(gpo)
 
         return gpos_res
 
@@ -98,9 +100,8 @@ class GPO:
         gpos_res = []
 
         for gpo in cls.gpos:
-            if gpo.name == name:
-                if (obj and gpo.obj == obj) or not obj:
-                    gpos_res.append(gpo)
+            if gpo.name == name and ((obj and gpo.obj == obj) or not obj):
+                gpos_res.append(gpo)
 
         return gpos_res
 
@@ -111,7 +112,7 @@ class GPO:
         for gpo in cls.gpos:
             if gpo.name == kv_policy_name and gpo.obj == kv.obj:
                 gpo.keys_values.append(kv)
-                return
+                return None
 
         return False
 
@@ -133,8 +134,7 @@ class GPO:
     def get_all_gpos(cls, obj=None):
         if not obj:
             return cls.gpos
-        else:
-            return [gpo for gpo in cls.gpos if gpo.obj == obj]
+        return [gpo for gpo in cls.gpos if gpo.obj == obj]
 
     @classmethod
     def set_preferences(cls, gpo_name, prefs):

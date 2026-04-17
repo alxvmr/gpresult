@@ -1,7 +1,7 @@
 import subprocess
 from pathlib import Path
 from typing import Any
-import os
+
 from hatchling.builders.hooks.plugin.interface import BuildHookInterface
 
 
@@ -20,7 +20,7 @@ class GettextCompileHook(BuildHookInterface):
         langs = []
         linguas = locale_dir / "LINGUAS"
         try:
-            with open(linguas, encoding="utf-8") as f:
+            with Path(linguas).open(encoding="utf-8") as f:
                 for line in f:
                     line = line.strip()
                     if line and not line.startswith("#"):
@@ -33,10 +33,11 @@ class GettextCompileHook(BuildHookInterface):
             po_file = locale_dir / f"{lang}.po"
             mo_file = locale_dir / lang / "LC_MESSAGES" / f"{project_name}.mo"
 
-            if os.path.exists(mo_file):
-                os.remove(mo_file)
+            mo_file_path = Path(mo_file)
+            if mo_file_path.exists():
+                mo_file_path.unlink()
 
-            os.makedirs(os.path.dirname(mo_file), exist_ok=True)
+            mo_file_path.parent.mkdir(parents=True, exist_ok=True)
 
             try:
                 subprocess.run(

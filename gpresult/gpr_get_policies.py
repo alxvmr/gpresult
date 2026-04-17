@@ -1,6 +1,7 @@
-from .GPO import GPO
-from . import gpr_system, gpr_init
 import os
+
+from . import gpr_init, gpr_system
+from .GPO import GPO
 
 
 def get_policies(obj=None, cmd=None, cmd_arg=None):

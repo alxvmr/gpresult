@@ -1,9 +1,9 @@
-import distro
 import datetime
-import os
-import pwd
-
 import gettext
+import pwd
+from pathlib import Path
+
+import distro
 
 gettext.bindtextdomain("gpresult", None)
 gettext.textdomain("gpresult")
@@ -28,7 +28,7 @@ def os_conf():
 
 
 def get_user_home_dir():
-    home_dir = os.path.expanduser("~")
+    home_dir = str(Path.home())
 
     return [_("Local Profile:"), home_dir]
 
@@ -36,12 +36,10 @@ def get_user_home_dir():
 def get_uid_from_name(name):
     try:
         pw = pwd.getpwnam(name)
-    except KeyError as e:
+    except KeyError:
         exit()
 
-    uid = pw.pw_uid
-
-    return uid
+    return pw.pw_uid
 
 
 def get_path_to_policy(uid=None):

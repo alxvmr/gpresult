@@ -1,19 +1,21 @@
+from typing import ClassVar
+
+from .Drive import Drive
+from .EnvVar import EnvVar
+from .File import File
 from .Folder import Folder
 from .Inifile import Inifile
-from .Shortcut import Shortcut
-from .EnvVar import EnvVar
-from .Drive import Drive
-from .File import File
 from .Networkshare import NetworkShare
+from .Shortcut import Shortcut
 
 
 class Preference:
-    preferences = {}
+    preferences: ClassVar[dict] = {}
 
     def __init__(self, obj, pref_type, **kwargs):
         self.obj = obj
         self.type = pref_type
-        self.policy_name = kwargs.get("policy_name", None)
+        self.policy_name = kwargs.get("policy_name")
 
         if pref_type == "Folders":
             self.preference_obj = Folder(**kwargs)

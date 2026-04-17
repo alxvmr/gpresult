@@ -1,6 +1,7 @@
-from .BasePreference import BasePreference
-
 import gettext
+from typing import ClassVar
+
+from .BasePreference import BasePreference
 
 gettext.bindtextdomain("gpresult", None)
 gettext.textdomain("gpresult")
@@ -9,23 +10,23 @@ _ = gettext.gettext
 
 class Shortcut(BasePreference):
     preference_type = _("Shortcut")
-    shortcuts = {}
+    shortcuts: ClassVar[dict] = {}
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
 
-        self.dest = kwargs.get("dest", None)
-        self.path = kwargs.get("path", None)
-        self.expanded_path = kwargs.get("expanded_path", None)
-        self.arguments = kwargs.get("arguments", None)
-        self.name = kwargs.get("name", None)
-        self.action = kwargs.get("action", None)
-        self.changed = kwargs.get("changed", None)
-        self.icon = kwargs.get("icon", None)
-        self.comment = kwargs.get("comment", None)
-        self.is_in_user_context = kwargs.get("is_in_user_context", None)
-        self.type = kwargs.get("type", None)
-        self.desktop_file_template = kwargs.get("desktop_file_template", None)
+        self.dest = kwargs.get("dest")
+        self.path = kwargs.get("path")
+        self.expanded_path = kwargs.get("expanded_path")
+        self.arguments = kwargs.get("arguments")
+        self.name = kwargs.get("name")
+        self.action = kwargs.get("action")
+        self.changed = kwargs.get("changed")
+        self.icon = kwargs.get("icon")
+        self.comment = kwargs.get("comment")
+        self.is_in_user_context = kwargs.get("is_in_user_context")
+        self.type = kwargs.get("type")
+        self.desktop_file_template = kwargs.get("desktop_file_template")
 
         Shortcut.set_shortcut(self)
 

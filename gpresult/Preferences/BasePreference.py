@@ -7,15 +7,15 @@ _ = gettext.gettext
 
 class BasePreference:
     def __init__(self, **kwargs):
-        self.policy_name = kwargs.get("policy_name", None)
-        self.disabled = kwargs.get("disabled", None)
-        self.remove_policy = kwargs.get("remove_policy", None)
+        self.policy_name = kwargs.get("policy_name")
+        self.disabled = kwargs.get("disabled")
+        self.remove_policy = kwargs.get("remove_policy")
 
-        self.uid = kwargs.get("uid", None)
-        self.bypass_errors = kwargs.get("bypass_errors", None)
-        self.apply_once = kwargs.get("apply_once", None)
-        self.changed = kwargs.get("changed", None)
-        self.filters = kwargs.get("filters", None)
+        self.uid = kwargs.get("uid")
+        self.bypass_errors = kwargs.get("bypass_errors")
+        self.apply_once = kwargs.get("apply_once")
+        self.changed = kwargs.get("changed")
+        self.filters = kwargs.get("filters")
 
     def _format_filters(self):
         if not self.filters:

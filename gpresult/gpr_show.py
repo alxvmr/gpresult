@@ -1,9 +1,10 @@
-from . import gpr_system
 import ast
-from prettytable import PrettyTable
+import gettext
 from textwrap import fill
 
-import gettext
+from prettytable import PrettyTable
+
+from . import gpr_system
 
 gettext.bindtextdomain("gpresult", None)
 gettext.textdomain("gpresult")
@@ -33,7 +34,7 @@ def get_lists_formatted_output(data, offset, is_rec=False):
         is_last_obj = j == len(data) - 1
 
         for i in range(len(row)):
-            if type(row[i]) == dict:
+            if isinstance(row[i], dict):
                 if row[i].get("is_list", None):
                     # list to join str output (for KeyValue)
 
@@ -65,7 +66,7 @@ def get_lists_formatted_output(data, offset, is_rec=False):
                 del row[i]
                 break
 
-            elif type(row[i]) == list:
+            if isinstance(row[i], list):
                 row[i] = get_lists_formatted_output(row[i], 0, True)
                 if not is_last_obj and is_rec:
                     row[i] += "\n"
@@ -77,7 +78,7 @@ def get_lists_formatted_output(data, offset, is_rec=False):
             elif str(row[i]) == "None":
                 row[i] = "-"
 
-            elif type(row[i]) == str and COLUMN_WIDTH:
+            elif isinstance(row[i], str) and COLUMN_WIDTH:
                 row[i] = fill(str(row[i]), COLUMN_WIDTH)
 
         mytable.add_row(row)
@@ -85,9 +86,7 @@ def get_lists_formatted_output(data, offset, is_rec=False):
     for field in mytable.field_names:
         mytable.align[field] = "l"
 
-    output = add_offset(mytable.get_string(), offset)
-
-    return output
+    return add_offset(mytable.get_string(), offset)
 
 
 def get_raw_output(data):
@@ -105,9 +104,9 @@ def get_raw_output(data):
     return s[:-1]
 
 
-def get_list_output(l, offset):
+def get_list_output(items, offset):
     s = ""
-    for e in l:
+    for e in items:
         s += " " * offset + e + "\n"
 
     return s[:-1]
@@ -182,7 +181,7 @@ def policies_gen(gpos, type, is_cmd, previous, with_lifecycle=False):
             "type": render_type,
         }
 
-    elif type == "list" or type == "list_raw":
+    if type == "list" or type == "list_raw":
         render_type = "format" if type == "list" else "raw"
         policy_guid = []
 
@@ -202,7 +201,7 @@ def policies_gen(gpos, type, is_cmd, previous, with_lifecycle=False):
             "type": render_type,
         }
 
-    elif type == "verbose":
+    if type == "verbose":
         for gpo in gpos:
             info = gpo.get_info_list(
                 with_previous=previous, with_lifecycle=with_lifecycle
@@ -292,9 +291,12 @@ def gen(gpos, obj_type, output_type, is_cmd, previous, with_lifecycle=False):
                 gpos, obj_type, output_type, is_cmd, previous, with_lifecycle
             )
 
-            if is_cmd:
-                if len(set_gen["body"]) == 1 and not len(set_gen["body"][0]["body"]):
-                    return data
+            if (
+                is_cmd
+                and len(set_gen["body"]) == 1
+                and not len(set_gen["body"][0]["body"])
+            ):
+                return data
 
             data.append(set_gen)
 
@@ -304,11 +306,12 @@ def gen(gpos, obj_type, output_type, is_cmd, previous, with_lifecycle=False):
                     gpos, t, output_type, is_cmd, previous, with_lifecycle
                 )
 
-                if is_cmd:
-                    if len(set_gen["body"]) == 1 and not len(
-                        set_gen["body"][0]["body"]
-                    ):
-                        continue
+                if (
+                    is_cmd
+                    and len(set_gen["body"]) == 1
+                    and not len(set_gen["body"][0]["body"])
+                ):
+                    continue
 
                 data.append(set_gen)
 

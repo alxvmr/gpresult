@@ -1,6 +1,7 @@
-from .BasePreference import BasePreference
-
 import gettext
+from typing import ClassVar
+
+from .BasePreference import BasePreference
 
 gettext.bindtextdomain("gpresult", None)
 gettext.textdomain("gpresult")
@@ -9,20 +10,20 @@ _ = gettext.gettext
 
 class File(BasePreference):
     preference_type = _("File")
-    files = {}
+    files: ClassVar[dict] = {}
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
 
-        self.fromPath = kwargs.get("fromPath", None)
-        self.source = kwargs.get("source", None)
-        self.action = kwargs.get("action", None)
-        self.targetPath = kwargs.get("targetPath", None)
-        self.readOnly = kwargs.get("readOnly", None)
-        self.archive = kwargs.get("archive", None)
-        self.hidden = kwargs.get("hidden", None)
-        self.suppress = kwargs.get("suppress", None)
-        self.executable = kwargs.get("executable", None)
+        self.fromPath = kwargs.get("fromPath")
+        self.source = kwargs.get("source")
+        self.action = kwargs.get("action")
+        self.targetPath = kwargs.get("targetPath")
+        self.readOnly = kwargs.get("readOnly")
+        self.archive = kwargs.get("archive")
+        self.hidden = kwargs.get("hidden")
+        self.suppress = kwargs.get("suppress")
+        self.executable = kwargs.get("executable")
 
         File.set_file(self)
 

@@ -1,6 +1,7 @@
-from .BasePreference import BasePreference
-
 import gettext
+from typing import ClassVar
+
+from .BasePreference import BasePreference
 
 gettext.bindtextdomain("gpresult", None)
 gettext.textdomain("gpresult")
@@ -9,21 +10,21 @@ _ = gettext.gettext
 
 class Drive(BasePreference):
     preference_type = _("Drive map")
-    drives = {}
+    drives: ClassVar[dict] = {}
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
 
-        self.login = kwargs.get("login", None)
-        self.password = kwargs.get("password", None)
-        self.dir = kwargs.get("dir", None)
-        self.path = kwargs.get("path", None)
-        self.action = kwargs.get("action", None)
-        self.thisDrive = kwargs.get("thisDrive", None)
-        self.allDrives = kwargs.get("allDrives", None)
-        self.label = kwargs.get("label", None)
-        self.persistent = kwargs.get("persistent", None)
-        self.useLetter = kwargs.get("useLetter", None)
+        self.login = kwargs.get("login")
+        self.password = kwargs.get("password")
+        self.dir = kwargs.get("dir")
+        self.path = kwargs.get("path")
+        self.action = kwargs.get("action")
+        self.thisDrive = kwargs.get("thisDrive")
+        self.allDrives = kwargs.get("allDrives")
+        self.label = kwargs.get("label")
+        self.persistent = kwargs.get("persistent")
+        self.useLetter = kwargs.get("useLetter")
 
         Drive.set_drive(self)
 

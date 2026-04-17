@@ -1,17 +1,16 @@
+import ast
+import gettext
+
 import gi
 
-gi.require_version("Gvdb", "1.0")
-gi.require_version("GLib", "2.0")
-
-from gi.repository import Gvdb
-from gi.repository import GLib
-
-import ast
 from .GPO import GPO
 from .KeyValue import KeyValue
 from .Preferences.Preference import Preference
 
-import gettext
+gi.require_version("Gvdb", "1.0")
+gi.require_version("GLib", "2.0")
+
+from gi.repository import GLib, Gvdb  # noqa: E402
 
 gettext.bindtextdomain("gpresult", None)
 gettext.textdomain("gpresult")
@@ -57,36 +56,39 @@ def init_gpos(path, obj):
         for k in key_list:
             v = Gvdb.Table.get_value(table, k)
 
-            if v != None:
+            if (
+                v is not None
+                and k.find("GpoPriority") != -1
+                and k.find("Previous") == -1
+            ):
                 # Computing policy data
-                if k.find("GpoPriority") != -1 and k.find("Previous") == -1:
-                    key_split = k.split("/")
-                    field = key_split[-1]
+                key_split = k.split("/")
+                field = key_split[-1]
 
-                    if field in policy_fields:
-                        keys_gpo = {}
-                        keys_gpo[field] = (
-                            v.get_string()
-                            if v.get_type().equal(GLib.VariantType.new("s"))
-                            else None
-                        )
+                if field in policy_fields:
+                    keys_gpo = {}
+                    keys_gpo[field] = (
+                        v.get_string()
+                        if v.get_type().equal(GLib.VariantType.new("s"))
+                        else None
+                    )
 
-                        prefix = "/".join(key_split[:-1])
+                    prefix = "/".join(key_split[:-1])
 
-                        for f in policy_fields:
-                            if f == field:
-                                continue
-                            cur_key = prefix + "/" + f
-                            cur_value = Gvdb.Table.get_value(table, cur_key)
+                    for f in policy_fields:
+                        if f == field:
+                            continue
+                        cur_key = prefix + "/" + f
+                        cur_value = Gvdb.Table.get_value(table, cur_key)
 
-                            if cur_value.get_type().equal(GLib.VariantType.new("s")):
-                                keys_gpo[f] = cur_value.get_string()
-                            elif cur_value.get_type().equal(GLib.VariantType.new("i")):
-                                keys_gpo[f] = cur_value.get_int32()
+                        if cur_value.get_type().equal(GLib.VariantType.new("s")):
+                            keys_gpo[f] = cur_value.get_string()
+                        elif cur_value.get_type().equal(GLib.VariantType.new("i")):
+                            keys_gpo[f] = cur_value.get_int32()
 
-                        # TODO: Add deletion of viewed records
+                    # TODO: Add deletion of viewed records
 
-                        GPO(obj, **keys_gpo)
+                    GPO(obj, **keys_gpo)
 
 
 def init_keys_values(path, obj):
@@ -112,7 +114,7 @@ def init_keys_values(path, obj):
             v = Gvdb.Table.get_value(table, k)
 
             if (
-                v != None
+                v is not None
                 and k[:9].lower() == "/software"
                 and k.find("GpoPriority") == -1
             ):
@@ -148,17 +150,19 @@ def init_keys_values_meta(path, obj):
         for k in key_list:
             v = Gvdb.Table.get_value(table, k)
 
-            if v != None and k[:7] == "/Source":
+            if (
+                v is not None
+                and k[:7] == "/Source"
+                and v.get_type().equal(GLib.VariantType.new("s"))
+            ):
                 # Computing key and value data
+                raw_string = v.get_string()
+                escaped_string = raw_string.replace("\\", "\\\\")
 
-                if v.get_type().equal(GLib.VariantType.new("s")):
-                    raw_string = v.get_string()
-                    escaped_string = raw_string.replace("\\", "\\\\")
-
-                    KeyValue.set_meta_to_key_value(
-                        k[7:], obj, **ast.literal_eval(escaped_string)
-                    )
-                    # TODO: Add deletion of viewed records
+                KeyValue.set_meta_to_key_value(
+                    k[7:], obj, **ast.literal_eval(escaped_string)
+                )
+                # TODO: Add deletion of viewed records
 
 
 def init_preferences(path, obj):
@@ -185,18 +189,17 @@ def init_preferences(path, obj):
             preference_type = k.split("/")[-1]
 
             if (
-                v != None
+                v is not None
                 and preference_type in preference_fields
                 and k.find("Preferences") != -1
                 and k.find("Previous") == -1
+                and v.get_type().equal(GLib.VariantType.new("s"))
             ):
                 # Computing preference data
+                preference_list = ast.literal_eval(v.get_string())
 
-                if v.get_type().equal(GLib.VariantType.new("s")):
-                    preference_list = ast.literal_eval(v.get_string())
-
-                    for pref in preference_list:
-                        Preference(obj, preference_type, **pref)
+                for pref in preference_list:
+                    Preference(obj, preference_type, **pref)
 
 
 def init_data(path, obj):

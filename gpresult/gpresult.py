@@ -1,19 +1,18 @@
 import argparse
-from . import gpr_get_policies, gpr_show
-
 import gettext
+
+from . import gpr_get_policies, gpr_show
 
 gettext.bindtextdomain("gpresult", None)
 gettext.textdomain("gpresult")
 _ = gettext.gettext
 
-import argparse
 
 class CustomAction(argparse._StoreTrueAction):
     def __call__(self, parser, namespace, values=True, option_string=None):
         self.values = values
 
-        if not "ordered_args" in namespace:
+        if "ordered_args" not in namespace:
             setattr(namespace, "ordered_args", [])
 
         previous = namespace.ordered_args
