@@ -434,11 +434,8 @@ def preferences_section(gpos):
     if not groups_html:
         return None
 
-    win_settings = section(
-        1, _("Windows Settings"), "".join(groups_html), expanded=True
-    )
     return section(
-        1, _("Preferences"), win_settings, expanded=True, h_variant=True
+        1, _("Preferences"), "".join(groups_html), expanded=True, h_variant=True
     )
 
 

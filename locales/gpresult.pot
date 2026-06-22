@@ -607,10 +607,6 @@ msgid "Winning GPO"
 msgstr ""
 
 #: gpresult/gpr_html.py
-msgid "Windows Settings"
-msgstr ""
-
-#: gpresult/gpr_html.py
 msgid "Files"
 msgstr ""
 

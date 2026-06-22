@@ -681,10 +681,6 @@ msgid "Winning GPO"
 msgstr "Преобладающий объект групповой политики"
 
 #: gpresult/gpr_html.py
-msgid "Windows Settings"
-msgstr "Параметры Windows"
-
-#: gpresult/gpr_html.py
 msgid "Files"
 msgstr "Файлы"
 
