@@ -603,3 +603,169 @@ msgstr "Да"
 #: gpresult/gpr_show.py:73
 msgid "No"
 msgstr "Нет"
+
+#: gpresult/gpr_html.py
+msgid "show"
+msgstr "показать"
+
+#: gpresult/gpr_html.py
+msgid "hide"
+msgstr "скрыть"
+
+#: gpresult/gpr_html.py
+msgid "show all"
+msgstr "показать все"
+
+#: gpresult/gpr_html.py
+msgid "hide all"
+msgstr "скрыть все"
+
+#: gpresult/gpr_html.py
+msgid "Group Policy Results"
+msgstr "Результаты групповой политики"
+
+#: gpresult/gpr_html.py
+msgid "{user} on {computer}"
+msgstr "{user} на {computer}"
+
+#: gpresult/gpr_html.py
+msgid "Data collected on:"
+msgstr "Данные собраны:"
+
+#: gpresult/gpr_html.py
+msgid "Computer Details"
+msgstr "Сведения о компьютере"
+
+#: gpresult/gpr_html.py
+msgid "User Details"
+msgstr "Сведения о пользователе"
+
+#: gpresult/gpr_html.py
+msgid "General"
+msgstr "Общие"
+
+#: gpresult/gpr_html.py
+msgid "Computer name"
+msgstr "Имя компьютера"
+
+#: gpresult/gpr_html.py
+msgid "User name"
+msgstr "Имя пользователя"
+
+#: gpresult/gpr_html.py
+msgid "Domain"
+msgstr "Домен"
+
+#: gpresult/gpr_html.py
+msgid "Settings"
+msgstr "Параметры"
+
+#: gpresult/gpr_html.py
+msgid "Policies"
+msgstr "Политики"
+
+#: gpresult/gpr_html.py
+msgid "Administrative Templates"
+msgstr "Административные шаблоны"
+
+#: gpresult/gpr_html.py
+msgid "Setting"
+msgstr "Параметр"
+
+#: gpresult/gpr_html.py
+msgid "State"
+msgstr "Состояние"
+
+#: gpresult/gpr_html.py
+msgid "Winning GPO"
+msgstr "Преобладающий объект групповой политики"
+
+#: gpresult/gpr_html.py
+msgid "Windows Settings"
+msgstr "Параметры Windows"
+
+#: gpresult/gpr_html.py
+msgid "Files"
+msgstr "Файлы"
+
+#: gpresult/gpr_html.py
+msgid "Folders"
+msgstr "Папки"
+
+#: gpresult/gpr_html.py
+msgid "Ini Files"
+msgstr "INI-файлы"
+
+#: gpresult/gpr_html.py
+msgid "Drive Maps"
+msgstr "Сопоставления дисков"
+
+#: gpresult/gpr_html.py
+msgid "Environment"
+msgstr "Среда"
+
+#: gpresult/gpr_html.py
+msgid "Network Shares"
+msgstr "Сетевые ресурсы общего доступа"
+
+#: gpresult/gpr_html.py
+msgid "Shortcuts"
+msgstr "Ярлыки"
+
+#: gpresult/gpr_html.py
+msgid "Target Path"
+msgstr "Целевой путь"
+
+#: gpresult/gpr_html.py
+msgid "Ini File"
+msgstr "INI-файл"
+
+#: gpresult/gpr_html.py
+msgid "File Path"
+msgstr "Путь к файлу"
+
+#: gpresult/gpr_html.py
+msgid "Section Name"
+msgstr "Имя раздела"
+
+#: gpresult/gpr_html.py
+msgid "Property Name"
+msgstr "Имя свойства"
+
+#: gpresult/gpr_html.py
+msgid "Drive Map"
+msgstr "Сопоставление диска"
+
+#: gpresult/gpr_html.py
+msgid "Network Share"
+msgstr "Сетевой ресурс"
+
+#: gpresult/gpr_html.py
+msgid "Group Policy Objects"
+msgstr "Объекты групповой политики"
+
+#: gpresult/gpr_html.py
+msgid "Applied GPOs"
+msgstr "Примененные объекты групповой политики"
+
+#: gpresult/gpr_html.py
+msgid "Link Location"
+msgstr "Расположение связи"
+
+#: gpresult/gpr_html.py
+msgid "Revision"
+msgstr "Редакция"
+
+#: gpresult/gpr_html.py
+msgid "HTML report saved to {}"
+msgstr "HTML-отчет сохранен в {}"
+
+#: gpresult/gpr_html.py
+msgid ""
+"The following settings have applied to this object. Within this category, "
+"settings nearest the top of the report are the prevailing settings when "
+"resolving conflicts."
+msgstr ""
+"Следующие параметры применены к этому объекту. В пределах этой категории "
+"параметры, расположенные ближе к началу отчета, имеют приоритет при "
+"разрешении конфликтов."

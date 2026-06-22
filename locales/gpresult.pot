@@ -529,3 +529,166 @@ msgstr ""
 #: gpresult/gpr_show.py:73
 msgid "No"
 msgstr ""
+
+#: gpresult/gpr_html.py
+msgid "show"
+msgstr ""
+
+#: gpresult/gpr_html.py
+msgid "hide"
+msgstr ""
+
+#: gpresult/gpr_html.py
+msgid "show all"
+msgstr ""
+
+#: gpresult/gpr_html.py
+msgid "hide all"
+msgstr ""
+
+#: gpresult/gpr_html.py
+msgid "Group Policy Results"
+msgstr ""
+
+#: gpresult/gpr_html.py
+msgid "{user} on {computer}"
+msgstr ""
+
+#: gpresult/gpr_html.py
+msgid "Data collected on:"
+msgstr ""
+
+#: gpresult/gpr_html.py
+msgid "Computer Details"
+msgstr ""
+
+#: gpresult/gpr_html.py
+msgid "User Details"
+msgstr ""
+
+#: gpresult/gpr_html.py
+msgid "General"
+msgstr ""
+
+#: gpresult/gpr_html.py
+msgid "Computer name"
+msgstr ""
+
+#: gpresult/gpr_html.py
+msgid "User name"
+msgstr ""
+
+#: gpresult/gpr_html.py
+msgid "Domain"
+msgstr ""
+
+#: gpresult/gpr_html.py
+msgid "Settings"
+msgstr ""
+
+#: gpresult/gpr_html.py
+msgid "Policies"
+msgstr ""
+
+#: gpresult/gpr_html.py
+msgid "Administrative Templates"
+msgstr ""
+
+#: gpresult/gpr_html.py
+msgid "Setting"
+msgstr ""
+
+#: gpresult/gpr_html.py
+msgid "State"
+msgstr ""
+
+#: gpresult/gpr_html.py
+msgid "Winning GPO"
+msgstr ""
+
+#: gpresult/gpr_html.py
+msgid "Windows Settings"
+msgstr ""
+
+#: gpresult/gpr_html.py
+msgid "Files"
+msgstr ""
+
+#: gpresult/gpr_html.py
+msgid "Folders"
+msgstr ""
+
+#: gpresult/gpr_html.py
+msgid "Ini Files"
+msgstr ""
+
+#: gpresult/gpr_html.py
+msgid "Drive Maps"
+msgstr ""
+
+#: gpresult/gpr_html.py
+msgid "Environment"
+msgstr ""
+
+#: gpresult/gpr_html.py
+msgid "Network Shares"
+msgstr ""
+
+#: gpresult/gpr_html.py
+msgid "Shortcuts"
+msgstr ""
+
+#: gpresult/gpr_html.py
+msgid "Target Path"
+msgstr ""
+
+#: gpresult/gpr_html.py
+msgid "Ini File"
+msgstr ""
+
+#: gpresult/gpr_html.py
+msgid "File Path"
+msgstr ""
+
+#: gpresult/gpr_html.py
+msgid "Section Name"
+msgstr ""
+
+#: gpresult/gpr_html.py
+msgid "Property Name"
+msgstr ""
+
+#: gpresult/gpr_html.py
+msgid "Drive Map"
+msgstr ""
+
+#: gpresult/gpr_html.py
+msgid "Network Share"
+msgstr ""
+
+#: gpresult/gpr_html.py
+msgid "Group Policy Objects"
+msgstr ""
+
+#: gpresult/gpr_html.py
+msgid "Applied GPOs"
+msgstr ""
+
+#: gpresult/gpr_html.py
+msgid "Link Location"
+msgstr ""
+
+#: gpresult/gpr_html.py
+msgid "Revision"
+msgstr ""
+
+#: gpresult/gpr_html.py
+msgid "HTML report saved to {}"
+msgstr ""
+
+#: gpresult/gpr_html.py
+msgid ""
+"The following settings have applied to this object. Within this category, "
+"settings nearest the top of the report are the prevailing settings when "
+"resolving conflicts."
+msgstr ""

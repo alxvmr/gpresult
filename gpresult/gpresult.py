@@ -1,7 +1,7 @@
 import argparse
 import gettext
 
-from . import gpr_get_policies, gpr_show
+from . import gpr_get_policies, gpr_show, gpr_html
 
 gettext.bindtextdomain("gpresult", None)
 gettext.textdomain("gpresult")
@@ -139,6 +139,13 @@ def parse_cli_arguments():
         help=_("Get information about applied policies for the current machine"),
     )
 
+    argparser.add_argument(
+        "-H",
+        "--html",
+        metavar="FILE",
+        help=_("Save HTML report to file"),
+    )
+
     return argparser.parse_args()
 
 
@@ -183,15 +190,18 @@ def main():
     else:
         gpos = gpr_get_policies.get_policies(obj)
 
-    gpr_show.show(
-        gpos,
-        obj,
-        output_format,
-        is_cmd,
-        previous=args.previous,
-        width=validate_width(args.width),
-        with_lifecycle=output_format in ("verbose", "raw"),
-    )
+    if args.html:
+        gpr_html.save(gpos, obj, filepath=args.html)
+    else:
+        gpr_show.show(
+            gpos,
+            obj,
+            output_format,
+            is_cmd,
+            previous=args.previous,
+            width=validate_width(args.width),
+            with_lifecycle=output_format in ("verbose", "raw"),
+        )
 
 
 if __name__ == "__main__":
