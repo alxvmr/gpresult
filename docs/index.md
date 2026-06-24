@@ -11,7 +11,7 @@ hide:
 ## Синтаксис
 
 ```
-gpresult [-h] [-r] [-c] [-v] [-l] [-p] [-w WIDTH] [-i POLICY_GUID] [-n POLICY_NAME] [-u] [-m]
+gpresult [-h] [-r] [-c] [-v] [-l] [-p] [-w WIDTH] [-i POLICY_GUID] [-n POLICY_NAME] [-u] [-m] [-H FILE]
 ```
 
 <div class="warning" style='padding:0.1em; background-color:#CFDFF5; color:#0F174A'>
@@ -31,7 +31,7 @@ gpresult [-h] [-r] [-c] [-v] [-l] [-p] [-w WIDTH] [-i POLICY_GUID] [-n POLICY_NA
 <div class="warning" style='padding:0.1em; background-color:#CFDFF5; color:#0F174A; margin-top: 10px'>
 <span>
 <p style='margin-left:1em; margin-top:1em'>
-Опция <code>-p/--previous</code> применяется только в тех случаях, где используются ключи GPO (с опциями <code>--verbose</code>, <code>--raw</code> + их вариации с другими опциями)
+Опция <code>-p/--previous</code> применяется только в тех случаях, где используются ключи GPO (с опциями <code>--verbose</code>, <code>--raw</code>, <code>--html</code> + их вариации с другими опциями)
 </p></span>
 </div>
 
@@ -50,6 +50,7 @@ gpresult [-h] [-r] [-c] [-v] [-l] [-p] [-w WIDTH] [-i POLICY_GUID] [-n POLICY_NA
 | `-n POLICY_NAME, --policy_name POLICY_NAME`                  | Получить информацию о примененных ключах и значениях политики по **имени**                                                                                                                                   |
 |`-u, --user`| Отобразить информацию для текущего **пользователя**|
 |`-m, --machine`| Отобразить информацию для текущей **машины**|
+|`-H FILE, --html FILE`|**Формат вывода**: сохранить отчёт о примененных групповых политиках в HTML-файл|
 
 ### Замечания
 - Опция `-l\--list` может использоваться вместе с опцией `-r\--row` - вывод **не** будет форматированным, имя GPO и GUID разделяются одним пробелом
@@ -84,6 +85,12 @@ gpresult [-h] [-r] [-c] [-v] [-l] [-p] [-w WIDTH] [-i POLICY_GUID] [-n POLICY_NA
    
     ```
     gpresult -c -n policy
+    ```
+
+5. Чтобы сохранить отчёт о примененных групповых политиках в HTML-файл введите:
+
+    ```
+    gpresult -H report.html
     ```
 
 ## Дополнительные ссылки

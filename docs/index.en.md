@@ -11,7 +11,7 @@ The information about the applied group policies is generated from the data obta
 ## Syntax
 
 ```
-gpresult [-h] [-r] [-c] [-v] [-l] [-p] [-w WIDTH] [-i POLICY_GUID] [-n POLICY_NAME] [-u] [-m]
+gpresult [-h] [-r] [-c] [-v] [-l] [-p] [-w WIDTH] [-i POLICY_GUID] [-n POLICY_NAME] [-u] [-m] [-H FILE]
 ```
 
 <div class="warning" style='padding:0.1em; background-color:#CFDFF5; color:#0F174A'>
@@ -31,7 +31,7 @@ Without selecting the output format option, the default output format is <code>-
 <div class="warning" style='padding:0.1em; background-color:#CFDFF5; color:#0F174A; margin-top: 10px'>
 <span>
 <p style='margin-left:1em; margin-top:1em'>
-The option <code>-p/--previous</code> applies only in cases where GPO keys are used (with options <code>--verbose</code>, <code>--raw</code> + their variations with other options)
+The option <code>-p/--previous</code> applies only in cases where GPO keys are used (with options <code>--verbose</code>, <code>--raw</code>, <code>--html</code> + their variations with other options)
 </p></span>
 </div>
 
@@ -50,6 +50,7 @@ The option <code>-p/--previous</code> applies only in cases where GPO keys are u
 | `-n POLICY_NAME, --policy_name POLICY_NAME`                  | Get information about applied keys and policy values by **name**                                                                                                                          |
 | `-u, --user`                                                   | Display information for the current **user**                                                                                                                                              |
 | `-m, --machine`                                               | Display information for the current **machine**                                                                                                                                           |
+|`-H FILE, --html FILE`|**Output format**: save the report on applied group policies to an HTML file|
 
 ### Remarks
 - The `-l\--list` option can be used in conjunction with the `-r\--row` option - the **non** output will be formatted, with the GPO name and GUID separated by a single space
@@ -84,6 +85,12 @@ The option <code>-p/--previous</code> applies only in cases where GPO keys are u
    
     ```
     gpresult -c -n policy
+    ```
+
+5. To save the report on applied group policies to an HTML file enter:
+
+    ```
+    gpresult -H report.html
     ```
 
 ## Related links
