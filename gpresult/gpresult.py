@@ -1,7 +1,7 @@
 import argparse
 import gettext
 
-from . import gpr_get_policies, gpr_show, gpr_html
+from . import gpr_get_policies, gpr_html, gpr_show
 
 gettext.bindtextdomain("gpresult", None)
 gettext.textdomain("gpresult")

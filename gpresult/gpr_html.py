@@ -77,29 +77,27 @@ def fmt(value):
 
 
 def section(level, title, inner, expanded=False, h_variant=False):
-    cls = "he{}".format(level)
+    cls = f"he{level}"
     if h_variant:
         cls += "h"
     if expanded:
         cls += "_expanded"
 
     return (
-        '<div class="{cls}"><span class="sectionTitle" tabindex="0">{title}</span>'
+        f'<div class="{cls}"><span class="sectionTitle" tabindex="0">{esc(title)}</span>'
         '<a class="expando" href="#"></a></div>\n'
-        '<div class="container">{inner}</div>\n'
-    ).format(cls=cls, title=esc(title), inner=inner)
+        f'<div class="container">{inner}</div>\n'
+    )
 
 
 def info_table(rows, css_class="info"):
-    out = ['<table class="{}">'.format(css_class)]
+    out = [f'<table class="{css_class}">']
     for label, value in rows:
         text = fmt(value)
         if text == "-":
             continue
         out.append(
-            "<tr><td><strong>{}</strong></td><td>{}</td></tr>".format(
-                esc(label), esc(text)
-            )
+            f"<tr><td><strong>{esc(label)}</strong></td><td>{esc(text)}</td></tr>"
         )
     out.append("</table>")
     return "".join(out)
@@ -111,7 +109,7 @@ def extract_domain(gpos):
         marker = "gpo_cache/"
         idx = path.find(marker)
         if idx != -1:
-            tail = path[idx + len(marker):]
+            tail = path[idx + len(marker) :]
             return tail.split("/")[0].lower()
     return None
 
@@ -122,7 +120,7 @@ def netbios_domain(gpos):
 
 
 def qualify(netbios, name):
-    return "{}\\{}".format(netbios, name) if netbios else name
+    return f"{netbios}\\{name}" if netbios else name
 
 
 def general_section(obj_type, gpos):
@@ -138,18 +136,18 @@ def general_section(obj_type, gpos):
 
     rows.append([_("Domain"), domain])
 
-    body = '<div class="he2i">{}</div>'.format(info_table(rows))
+    body = f'<div class="he2i">{info_table(rows)}</div>'
     return section(0, _("General"), body, expanded=True, h_variant=True)
 
 
 def keys_values_table(kvs, previous=False):
     css_class = "info4" if previous else "info3"
-    out = ['<table class="{}">'.format(css_class)]
+    out = [f'<table class="{css_class}">']
 
     if previous:
         out.append(
-            "<tr><th scope=\"col\">{}</th><th scope=\"col\">{}</th>"
-            "<th scope=\"col\">{}</th><th scope=\"col\">{}</th></tr>".format(
+            '<tr><th scope="col">{}</th><th scope="col">{}</th>'
+            '<th scope="col">{}</th><th scope="col">{}</th></tr>'.format(
                 esc(_("Setting")),
                 esc(_("State")),
                 esc(_("Previous Value")),
@@ -158,8 +156,8 @@ def keys_values_table(kvs, previous=False):
         )
     else:
         out.append(
-            "<tr><th scope=\"col\">{}</th><th scope=\"col\">{}</th>"
-            "<th scope=\"col\">{}</th></tr>".format(
+            '<tr><th scope="col">{}</th><th scope="col">{}</th>'
+            '<th scope="col">{}</th></tr>'.format(
                 esc(_("Setting")), esc(_("State")), esc(_("Winning GPO"))
             )
         )
@@ -189,21 +187,29 @@ def pref_titles(ptype, po):
         target = po.targetPath or po.source or po.fromPath or ""
         return (
             _("File") + " (" + _("Target Path") + ": " + str(target) + ")",
-            os.path.basename(str(target)) or str(target),
+            Path(str(target)).name or str(target),
         )
     if ptype == "Folders":
         path = po.path or ""
         return (
             _("Folder") + " (" + _("Path") + ": " + str(path) + ")",
-            os.path.basename(str(path)) or str(path),
+            Path(str(path)).name or str(path),
         )
     if ptype == "Inifiles":
         return (
             _("Ini File")
             + " ("
-            + _("File Path") + ": " + str(po.path or "") + ", "
-            + _("Section Name") + ": " + str(po.section or "") + ", "
-            + _("Property Name") + ": " + str(po.property or "")
+            + _("File Path")
+            + ": "
+            + str(po.path or "")
+            + ", "
+            + _("Section Name")
+            + ": "
+            + str(po.section or "")
+            + ", "
+            + _("Property Name")
+            + ": "
+            + str(po.property or "")
             + ")",
             str(po.property or po.path or ""),
         )
@@ -213,7 +219,10 @@ def pref_titles(ptype, po):
     if ptype == "Environmentvariables":
         return (_("Environment") + " (" + str(po.name or "") + ")", str(po.name or ""))
     if ptype == "Networkshares":
-        return (_("Network Share") + " (" + str(po.name or "") + ")", str(po.name or ""))
+        return (
+            _("Network Share") + " (" + str(po.name or "") + ")",
+            str(po.name or ""),
+        )
     if ptype == "Shortcuts":
         return (_("Shortcut") + " (" + str(po.name or "") + ")", str(po.name or ""))
 
@@ -235,7 +244,7 @@ def preference_item(pref):
     general = section(
         4,
         _("General"),
-        '<div class="he4i">{}</div>'.format(info_table(rows)),
+        f'<div class="he4i">{info_table(rows)}</div>',
         h_variant=True,
     )
 
@@ -293,11 +302,9 @@ def settings_section(obj_type, gpos, previous=False):
         admin = section(
             1,
             _("Administrative Templates"),
-            '<div class="he4i">{}</div>'.format(keys_values_table(kvs, previous)),
+            f'<div class="he4i">{keys_values_table(kvs, previous)}</div>',
         )
-        blocks.append(
-            section(1, _("Policies"), admin, expanded=True, h_variant=True)
-        )
+        blocks.append(section(1, _("Policies"), admin, expanded=True, h_variant=True))
 
     prefs = preferences_section(gpos)
     if prefs:
@@ -325,7 +332,7 @@ def gpo_objects_section(gpos):
             [_("Revision"), gpo.version],
             ["GUID", gpo.guid],
         ]
-        body = '<div class="he4i">{}</div>'.format(info_table(rows))
+        body = f'<div class="he4i">{info_table(rows)}</div>'
         items.append(section(2, title, body))
 
     if not items:
@@ -334,9 +341,7 @@ def gpo_objects_section(gpos):
     applied = section(
         1, _("Applied GPOs"), "".join(items), expanded=True, h_variant=True
     )
-    return section(
-        0, _("Group Policy Objects"), applied, expanded=True, h_variant=True
-    )
+    return section(0, _("Group Policy Objects"), applied, expanded=True, h_variant=True)
 
 
 def details_section(obj_type, gpos, previous=False):
@@ -369,9 +374,9 @@ def build_report(gpos, obj_type, previous=False):
     parts = [
         '<html dir="ltr">\n<head>\n',
         '<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />\n',
-        "<title>{}</title>\n".format(esc(name_label)),
-        '<style type="text/css">{}</style>\n'.format(CSS),
-        '<script type="text/javascript">{}{}</script>\n'.format(js_strings(), JS),
+        f"<title>{esc(name_label)}</title>\n",
+        f'<style type="text/css">{CSS}</style>\n',
+        f'<script type="text/javascript">{js_strings()}{JS}</script>\n',
         "</head>\n",
         '<body onload="window_onload();" onclick="return document_onclick(event);" '
         'onkeypress="return document_onkeypress(event);">\n',
@@ -379,7 +384,7 @@ def build_report(gpos, obj_type, previous=False):
         '<tr><td colspan="2" class="rsopheader">{}</td></tr>\n'.format(
             esc(_("Group Policy Results"))
         ),
-        '<tr><td colspan="2" class="rsopname">{}</td></tr>\n'.format(esc(name_label)),
+        f'<tr><td colspan="2" class="rsopname">{esc(name_label)}</td></tr>\n',
         '<tr><td id="dtstamp">{} {}</td>'
         '<td><div id="objshowhide" tabindex="0" '
         'onclick="objshowhide_onClick();return false;"></div></td></tr>\n'.format(
@@ -403,7 +408,7 @@ def build_report(gpos, obj_type, previous=False):
 def save(gpos, obj_type, filepath="gpresult.html", previous=False):
     report = build_report(gpos, obj_type, previous)
 
-    with open(filepath, "w", encoding="utf-8") as f:
+    with Path(filepath).open("w", encoding="utf-8") as f:
         f.write(report)
 
     print(_("HTML report saved to {}").format(filepath))
