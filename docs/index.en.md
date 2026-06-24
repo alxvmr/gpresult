@@ -93,6 +93,12 @@ The option <code>-p/--previous</code> applies only in cases where GPO keys are u
     gpresult -H report.html
     ```
 
+    To include the previous GPO key values in the HTML report, enter:
+
+    ```
+    gpresult -p -H report.html
+    ```
+
 ## Related links
 - [Group Policies on ALT Linux](https://www.altlinux.org/Групповые_политики)
 - [Group Policies/ALT System Control](https://www.altlinux.org/Групповые_политики/ALT_System_Control)

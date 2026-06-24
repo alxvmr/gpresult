@@ -92,6 +92,13 @@ gpresult [-h] [-r] [-c] [-v] [-l] [-p] [-w WIDTH] [-i POLICY_GUID] [-n POLICY_NA
     ```
     gpresult -H report.html
     ```
+    
+    Чтобы включить в **HTML-отчёт** вывод предыдущих значений ключей GPO введите:
+
+    ```
+    gpresult -p -H report.html
+    ```
+    
 
 ## Дополнительные ссылки
 - [Групповые политики в ALT Linux](https://www.altlinux.org/Групповые_политики)
