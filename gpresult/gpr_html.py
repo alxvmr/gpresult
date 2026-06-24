@@ -2,6 +2,7 @@ import gettext
 import html
 import os
 import socket
+from pathlib import Path
 
 from . import gpr_system
 
@@ -9,197 +10,15 @@ gettext.bindtextdomain("gpresult", None)
 gettext.textdomain("gpresult")
 _ = gettext.gettext
 
-CSS = """
-                body    { background-color:#FFFFFF; border:1px solid #666666; color:#000000; font-size:68%; font-family:MS Shell Dlg, sans-serif; margin:0 0 10px 0; word-break:normal; word-wrap:break-word; }
-                table   { font-size:100%; table-layout:fixed; width:100%; }
-                td,th   { overflow:visible; text-align:left; vertical-align:top; white-space:normal; }
-                .title  { background:#FFFFFF; border:none; color:#333333; display:inline-table; height:24px; margin:0px 0px 0px 0px; padding-top:0px; position:relative; table-layout:fixed; z-index:5; }
-                .he0_expanded    { background-color:#FEF7D6; border:1px solid #BBBBBB; color:#3333CC; cursor:pointer; display:block; font-family:MS Shell Dlg, sans-serif; font-size:100%; font-weight:bold; height:2.25em; margin-bottom:-1px; margin-left:0px; margin-right:0px; padding-left:8px; padding-right:5em; padding-top:4px; position:relative; }
-                .he1_expanded    { background-color:#A0BACB; border:1px solid #BBBBBB; color:#000000; cursor:pointer; display:block; font-family:MS Shell Dlg, sans-serif; font-size:100%; font-weight:bold; height:2.25em; margin-bottom:-1px; margin-left:20px; margin-right:0px; padding-left:8px; padding-right:5em; padding-top:4px; position:relative; }
-                .he0h_expanded   { background-color: #FEF0D0; border: 1px solid #BBBBBB; color: #000000; cursor: pointer; display: block; font-family: MS Shell Dlg, sans-serif; font-size: 100%; font-weight: bold; height: 2.25em; margin-bottom: -1px; margin-left: 5px; margin-right: 0px; padding-left: 8px; padding-right: 5em; padding-top: 4px; position: relative;  }
-                .he1h_expanded   { background-color: #7197B3; border: 1px solid #BBBBBB; color: #000000; cursor: pointer; display: block; font-family: MS Shell Dlg, sans-serif; font-size: 100%; font-weight: bold; height: 2.25em; margin-bottom: -1px; margin-left: 10px; margin-right: 0px; padding-left: 8px; padding-right: 5em; padding-top: 4px; position: relative; }
-                .he1    { background-color:#A0BACB; border:1px solid #BBBBBB; color:#000000; cursor:pointer; display:block; font-family:MS Shell Dlg, sans-serif; font-size:100%; font-weight:bold; height:2.25em; margin-bottom:-1px; margin-left:20px; margin-right:0px; padding-left:8px; padding-right:5em; padding-top:4px; position:relative; }
-                .he2    { background-color:#C0D2DE; border:1px solid #BBBBBB; color:#000000; cursor:pointer; display:block; font-family:MS Shell Dlg, sans-serif; font-size:100%; font-weight:bold; height:2.25em; margin-bottom:-1px; margin-left:30px; margin-right:0px; padding-left:8px; padding-right:5em; padding-top:4px; position:relative; }
-                .he3    { background-color:#D9E3EA; border:1px solid #BBBBBB; color:#000000; cursor:pointer; display:block; font-family:MS Shell Dlg, sans-serif; font-size:100%; font-weight:bold; height:2.25em; margin-bottom:-1px; margin-left:40px; margin-right:0px; padding-left:11px; padding-right:5em; padding-top:4px; position:relative; }
-                .he4    { background-color:#E8E8E8; border:1px solid #BBBBBB; color:#000000; cursor:pointer; display:block; font-family:MS Shell Dlg, sans-serif; font-size:100%; font-weight:bold; height:2.25em; margin-bottom:-1px; margin-left:50px; margin-right:0px; padding-left:11px; padding-right:5em; padding-top:4px; position:relative; }
-                .he4h   { background-color:#E8E8E8; border:1px solid #BBBBBB; color:#000000; cursor:pointer; display:block; font-family:MS Shell Dlg, sans-serif; font-size:100%; font-weight:bold; height:2.25em; margin-bottom:-1px; margin-left:55px; margin-right:0px; padding-left:11px; padding-right:5em; padding-top:4px; position:relative; }
-                .he4i   { background-color:#F9F9F9; border:1px solid #BBBBBB; color:#000000; display:block; font-family:MS Shell Dlg, sans-serif; font-size:100%; margin-bottom:-1px; margin-left:55px; margin-right:0px; padding-bottom:5px; padding-left:21px; padding-top:4px; position:relative; }
-                .he2i   { background-color:#F9F9F9; border:1px solid #BBBBBB; color:#000000; display:block; font-family:MS Shell Dlg, sans-serif; font-size:100%; margin-bottom:-1px; margin-left:35px; margin-right:0px; padding-bottom:5px; padding-left:21px; padding-top:4px; position:relative;}
-                .he5    { background-color:#E8E8E8; border:1px solid #BBBBBB; color:#000000; cursor:pointer; display:block; font-family:MS Shell Dlg, sans-serif; font-size:100%; font-weight:bold; height:2.25em; margin-bottom:-1px; margin-left:60px; margin-right:0px; padding-left:11px; padding-right:5em; padding-top:4px; position:relative; }
-                .he5h   { background-color:#E8E8E8; border:1px solid #BBBBBB; color:#000000; cursor:pointer; display:block; font-family:MS Shell Dlg, sans-serif; font-size:100%; padding-left:11px; padding-right:5em; padding-top:4px; margin-bottom:-1px; margin-left:65px; margin-right:0px; position:relative; }
-                .he5i   { background-color:#F9F9F9; border:1px solid #BBBBBB; color:#000000; display:block; font-family:MS Shell Dlg, sans-serif; font-size:100%; margin-bottom:-1px; margin-left:65px; margin-right:0px; padding-left:21px; padding-bottom:5px; padding-top: 4px; position:relative; }
-                div .expando { color:#000000; text-decoration:none; display:block; font-family:MS Shell Dlg, sans-serif; font-size:100%; font-weight:normal; position:absolute; right:10px; text-decoration:underline; z-index: 0; }
-                .he0 .expando { font-size:100%; }
-                .info, .info3, .info4, .disalign  { line-height:1.6em; padding:0px 0px 0px 0px; margin:0px 0px 0px 0px; }
-                .disalign TD                      { padding-bottom:5px; padding-right:10px; }
-                .info TD                          { padding-right:10px; width:50%; }
-                .info3 TD                         { padding-right:10px; width:33%; }
-                .info4 TD, .info4 TH              { padding-right:10px; width:25%; }
-                .info TH, .info3 TH, .info4 TH, .disalign TH { border-bottom:1px solid #CCCCCC; padding-right:10px; }
-                .subtable, .subtable3             { border:1px solid #CCCCCC; margin-left:0px; background:#FFFFFF; margin-bottom:10px; }
-                .subtable TD, .subtable3 TD       { padding-left:10px; padding-right:5px; padding-top:3px; padding-bottom:3px; line-height:1.1em; }
-                .subtable TH, .subtable3 TH       { border-bottom:1px solid #CCCCCC; font-weight:normal; padding-left:10px; line-height:1.6em;  }
-                .subtable .footnote               { border-top:1px solid #CCCCCC; }
-                .subtable3 .footnote, .subtable .footnote { border-top:1px solid #CCCCCC; }
-                .subtable_frame     { background:#D9E3EA; border:1px solid #CCCCCC; margin-bottom:10px; margin-left:15px; }
-                .subtable_frame TD  { line-height:1.1em; padding-bottom:3px; padding-left:10px; padding-right:15px; padding-top:3px; }
-                .subtable_frame TH  { border-bottom:1px solid #CCCCCC; font-weight:normal; padding-left:10px; line-height:1.6em; }
-                .subtableInnerHead { border-bottom:1px solid #CCCCCC; border-top:1px solid #CCCCCC; }
-                .explainlink            { color:#0000FF; text-decoration:none; cursor:pointer; }
-                .explainlink:hover      { color:#0000FF; text-decoration:underline; }
-                .spacer { background:transparent; border:1px solid #BBBBBB; color:#FFFFFF; display:block; font-family:MS Shell Dlg, sans-serif; font-size:100%; height:10px; margin-bottom:-1px; margin-left:43px; margin-right:0px; padding-top: 4px; position:relative; }
-                .filler { background:transparent; border:none; color:#FFFFFF; display:block; font:100% MS Shell Dlg, sans-serif; line-height:8px; margin-bottom:-1px; margin-left:53px; margin-right:0px; padding-top:4px; position:relative; }
-                .container { display:block; position:relative; }
-                .rsopheader { background-color:#A0BACB; border-bottom:1px solid black; color:#333333; font-family:MS Shell Dlg, sans-serif; font-size:130%; font-weight:bold; padding-bottom:5px; text-align:center; }
-                .rsopname { color:#333333; font-family:MS Shell Dlg, sans-serif; font-size:130%; font-weight:bold; padding-left:11px; }
-                #dtstamp{ color:#333333; font-family:MS Shell Dlg, sans-serif; font-size:100%; padding-left:11px; text-align:left; width:30%; }
-                #objshowhide { color:#000000; cursor:pointer; font-family:MS Shell Dlg, sans-serif; font-size:100%; font-weight:bold; margin-right:0px; padding-right:10px; text-align:right; text-decoration:underline; z-index:2; word-wrap:normal; }
-                @media print {
-                    #objshowhide{ display:none; }
-                    body    { color:#000000; border:1px solid #000000; }
-                    .title  { color:#000000; border:1px solid #000000; }
-                    .he0_expanded    { color:#000000; border:1px solid #000000; }
-                    .he1h_expanded   { color:#000000; border:1px solid #000000; }
-                    .he1_expanded    { color:#000000; border:1px solid #000000; }
-                    .he1    { color:#000000; border:1px solid #000000; }
-                    .he2    { color:#000000; background:#EEEEEE; border:1px solid #000000; }
-                    .he3    { color:#000000; border:1px solid #000000; }
-                    .he4    { color:#000000; border:1px solid #000000; }
-                    .he4h   { color:#000000; border:1px solid #000000; }
-                    .he4i   { color:#000000; border:1px solid #000000; }
-                    .he5    { color:#000000; border:1px solid #000000; }
-                    .he5h   { color:#000000; border:1px solid #000000; }
-                    .he5i   { color:#000000; border:1px solid #000000; }
-                    }
-"""
+_ASSET_DIR = Path(__file__).resolve().parent / "assets"
 
-JS = """
-function IsSectionHeader(obj) {
-    var c = obj.className;
-    return (c === "he0_expanded") || (c === "he0h_expanded") || (c === "he1h_expanded") ||
-           (c === "he1_expanded") || (c === "he1") || (c === "he2") || (c === "he3") ||
-           (c === "he4") || (c === "he4h") || (c === "he5") || (c === "he5h");
-}
 
-function IsSectionExpandedByDefault(objHeader) {
-    if (objHeader === null) {
-        return false;
-    }
-    return (objHeader.className.slice(objHeader.className.lastIndexOf("_")) === "_expanded");
-}
+def _read_asset(name):
+    return (_ASSET_DIR / name).read_text(encoding="utf-8")
 
-function GetContainer(objHeader) {
-    var node = objHeader.nextSibling;
-    while (node && (node.nodeType !== 1 || node.className !== "container")) {
-        node = node.nextSibling;
-    }
-    return node;
-}
 
-function GetExpando(objHeader) {
-    var links = objHeader.getElementsByTagName("a");
-    return links.length ? links[0] : null;
-}
-
-function SetSectionState(objHeader, strState) {
-    var objContainer = GetContainer(objHeader);
-    if (!objContainer) {
-        return;
-    }
-    var objExpando = GetExpando(objHeader);
-
-    if (strState === "toggle") {
-        SetSectionState(objHeader, objContainer.style.display === "none" ? "show" : "hide");
-        return;
-    }
-    if (strState === "show") {
-        objContainer.style.display = "block";
-        if (objExpando) { objExpando.innerHTML = strHide; }
-    } else if (strState === "hide") {
-        objContainer.style.display = "none";
-        if (objExpando) { objExpando.innerHTML = strShow; }
-    }
-}
-
-function ShowSection(objHeader) { SetSectionState(objHeader, "show"); }
-function HideSection(objHeader) { SetSectionState(objHeader, "hide"); }
-function ToggleSection(objHeader) { SetSectionState(objHeader, "toggle"); }
-
-function objshowhide_onClick() {
-    var objBody = document.body.getElementsByTagName("*");
-    var i;
-    if (strShowHide === 0) {
-        strShowHide = 1;
-        document.getElementById("objshowhide").innerHTML = strShowAll;
-        for (i = 0; i < objBody.length; i++) {
-            if (IsSectionHeader(objBody[i])) { HideSection(objBody[i]); }
-        }
-    } else {
-        strShowHide = 0;
-        document.getElementById("objshowhide").innerHTML = strHideAll;
-        for (i = 0; i < objBody.length; i++) {
-            if (IsSectionHeader(objBody[i])) { ShowSection(objBody[i]); }
-        }
-    }
-}
-
-function window_onload() {
-    var objBody = document.body.getElementsByTagName("*");
-    for (var i = 0; i < objBody.length; i++) {
-        if (IsSectionHeader(objBody[i])) {
-            if (IsSectionExpandedByDefault(objBody[i])) {
-                ShowSection(objBody[i]);
-            } else {
-                HideSection(objBody[i]);
-            }
-        }
-    }
-    document.getElementById("objshowhide").innerHTML = strShowAll;
-}
-
-function GetEventTarget(e) {
-    e = e || window.event;
-    return e.target || e.srcElement;
-}
-
-function GetHeaderFrom(target) {
-    while (target && (target.className === "sectionTitle" || target.className === "expando")) {
-        target = target.parentNode;
-    }
-    return target;
-}
-
-function document_onclick(e) {
-    e = e || window.event;
-    var target = GetHeaderFrom(GetEventTarget(e));
-    if (!target || !IsSectionHeader(target)) {
-        return true;
-    }
-    ToggleSection(target);
-    if (e.preventDefault) { e.preventDefault(); }
-    return false;
-}
-
-function document_onkeypress(e) {
-    e = e || window.event;
-    var chCode = ("charCode" in e) ? e.charCode : e.keyCode;
-    if (chCode === 32 || chCode === 13 || chCode === 10) {
-        var target = GetEventTarget(e);
-        if (target.className === "expando" || target.className === "sectionTitle") {
-            var header = GetHeaderFrom(target);
-            if (header && IsSectionHeader(header)) { ToggleSection(header); }
-            if (e.preventDefault) { e.preventDefault(); }
-            return false;
-        }
-        if (target.id === "objshowhide") {
-            objshowhide_onClick();
-            if (e.preventDefault) { e.preventDefault(); }
-            return false;
-        }
-    }
-    return true;
-}
-"""
+CSS = _read_asset("gpr_html.css")
+JS = _read_asset("gpr_html.js")
 
 PREF_GROUP_TITLES = {
     "Files": "Files",
