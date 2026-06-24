@@ -1,690 +1,513 @@
-# Copyright (C) 2025
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the gpresult package.
-# Maria Alexeeva <alxvmr@altlinux.org>, 2025.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: 0.0.5\n"
+"Project-Id-Version: gpresult 0.0.7\n"
 "Report-Msgid-Bugs-To: https://bugzilla.altlinux.org/\n"
-"POT-Creation-Date: 2024-09-16 16:32+0400\n"
-"PO-Revision-Date: 2025-06-06 15:35+0400\n"
-"Last-Translator: Maria Alexeeva <alxvmr@altlinux.org>\n"
-"Language-Team: \n"
+"POT-Creation-Date: 2026-06-24 18:02+0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: gpresult/Preferences/Drive.py:17
-msgid "Drive map"
-msgstr ""
-
-#: gpresult/Preferences/Drive.py:44
-msgid "Type"
-msgstr ""
-
-#: gpresult/Preferences/Drive.py:45
-msgid "Password"
-msgstr ""
-
-#: gpresult/Preferences/Drive.py:46
-msgid "Direction"
-msgstr ""
-
-#: gpresult/Preferences/Drive.py:47
-msgid "Path"
-msgstr ""
-
-#: gpresult/Preferences/Drive.py:48
-msgid "Action"
-msgstr ""
-
-#: gpresult/Preferences/Drive.py:49
-msgid "This drive"
-msgstr ""
-
-#: gpresult/Preferences/Drive.py:50
-msgid "All drives"
-msgstr ""
-
-#: gpresult/Preferences/Drive.py:51
-msgid "Label"
-msgstr ""
-
-#: gpresult/Preferences/Drive.py:52
-msgid "Persistent"
-msgstr ""
-
-#: gpresult/Preferences/Drive.py:53
-msgid "Use letter"
-msgstr ""
-
-#: gpresult/Preferences/Drive.py:17
-msgid "Environment variables"
-msgstr ""
-
-#: gpresult/Preferences/EnvVar.py:38
-msgid "Value"
-msgstr ""
-
-#: gpresult/Preferences/File.py:17
-msgid "File"
-msgstr ""
-
-#: gpresult/Preferences/File.py:44
-msgid "From path"
-msgstr ""
-
-#: gpresult/Preferences/File.py:45
-msgid "Source"
-msgstr ""
-
-#: gpresult/Preferences/File.py:47
-msgid "Target path"
-msgstr ""
-
-#: gpresult/Preferences/File.py:48
-msgid "Read only"
-msgstr ""
-
-#: gpresult/Preferences/File.py:49
-msgid "Archive"
-msgstr ""
-
-#: gpresult/Preferences/File.py:50
-msgid "Hidden"
-msgstr ""
-
-#: gpresult/Preferences/File.py:51
-msgid "Suppress"
-msgstr ""
-
-#: gpresult/Preferences/File.py:52
-msgid "Executable"
-msgstr ""
-
-#: gpresult/Preferences/Folder.py:17
-msgid "Folder"
-msgstr ""
-
-#: gpresult/Preferences/Folder.py:43
-msgid "Delete folder"
-msgstr ""
-
-#: gpresult/Preferences/Folder.py:44
-msgid "Delete subfolder"
-msgstr ""
-
-#: gpresult/Preferences/Folder.py:45
-msgid "Delete files"
-msgstr ""
-
-#: gpresult/Preferences/Folder.py:46
-msgid "Hidden folder"
-msgstr ""
-
-#: gpresult/GPO.py:44
-msgid "Version"
-msgstr ""
-
-#: gpresult/GPO.py:46
-msgid "Keys"
-msgstr ""
-
-#: gpresult/GPO.py:47
-msgid "Preferences"
-msgstr ""
-
-#: gpresult/gpr_init.py:51 gpresult/gpr_init.py:103 gpresult/gpr_init.py:137
-#: gpresult/gpr_init.py:170
-msgid "Permission denied: {}"
-msgstr ""
-
-#: gpresult/gpr_init.py:53 gpresult/gpr_init.py:105 gpresult/gpr_init.py:139
-#: gpresult/gpr_init.py:172
-msgid "No such file: {}"
-msgstr ""
-
-#: gpresult/gpr_show.py:120
-msgid "\n"
-"Created on {}"
-msgstr ""
-
-#: gpresult/gpr_show.py:128
-msgid "The resulting set of policies"
-msgstr ""
-
-#: gpresult/gpr_show.py:144
-msgid "Applied Group Policy Objects"
-msgstr ""
-
-#: gpresult/gpr_show.py:234
-msgid "USER SETTINGS"
-msgstr ""
-
-#: gpresult/gpr_show.py:236
-msgid "MACHINE SETTINGS"
-msgstr ""
-
-#: ../../../gpresult/gpr_system.py:32
-msgid "Operating system:"
-msgstr ""
-
-#: ../../../gpresult/gpr_system.py:33
-msgid "OS Version:"
-msgstr ""
-
-#: ../../../gpresult/gpr_system.py:39
-msgid "Local Profile:"
-msgstr ""
-
-#: gpresult/gpresult.py:55
-msgid "Information about applied policies"
-msgstr ""
-
-#: gpresult/gpresult.py:60
-msgid "Output format: display of policy keys, values and previous values"
-msgstr ""
-
-#: gpresult/gpresult.py:64
-msgid "Output format: common output including environment information; outputs only the names of applied policies"
-msgstr ""
-
-#: gpresult/gpresult.py:68
-msgid "Output format (DEFAULT): is similar to the common output, in addition, the applied keys, policy values  and preferences are also output"
-msgstr ""
-
-#: gpresult/gpresult.py:72
-msgid "Output format: output of GPO names and their GUIDs\n"
-"* Not applicable with <-i>/<--policy_guid> and <-n>/<--policy_name>"
-msgstr ""
-
-#: gpresult/gpresult.py:77
-msgid "Enable information about the previous GPO key value"
-msgstr ""
-
-#: gpresult/gpresult.py:80
-msgid "Set column widths for outputting internal tables (keys and values, preferences, ...)\n"
-"* If the specified value is less than or equal to 0, the width of the columns\n"
-"  will be equal to the maximum length of the row\n"
-"* By default, the column width is equal to the length of the maximum row\n"
-"* If the length of the maximum string is less than the specified value, the width will not change"
-msgstr ""
-
-#: gpresult/gpresult.py:89
-msgid "Information about policy keys and values by guid\n"
-"* Not applicable with <-l>/<--list>"
-msgstr ""
-
-#: gpresult/gpresult.py:94
-msgid "Information about policy keys and values by name\n"
-"* Not applicable with <-l>/<--list>"
-msgstr ""
-
-#: gpresult/gpresult.py:100
-msgid "Get information about applied policies for the current user"
-msgstr ""
-
-#: gpresult/gpresult.py:104
-msgid "Get information about applied policies for the current machine"
-msgstr ""
-
-#: /usr/lib64/python3.9/argparse.py:296
-msgid "usage: "
-msgstr ""
-
-#: /usr/lib64/python3.9/argparse.py:861
-msgid ".__call__() not defined"
-msgstr ""
-
-#: /usr/lib64/python3.9/argparse.py:1204
-#, python-format
-msgid "unknown parser %(parser_name)r (choices: %(choices)s)"
-msgstr ""
-
-#: /usr/lib64/python3.9/argparse.py:1264
-#, python-format
-msgid "argument \"-\" with mode %r"
-msgstr ""
-
-#: /usr/lib64/python3.9/argparse.py:1273
-#, python-format
-msgid "can't open '%(filename)s': %(error)s"
-msgstr ""
-
-#: /usr/lib64/python3.9/argparse.py:1482
-#, python-format
-msgid "cannot merge actions - two groups are named %r"
-msgstr ""
-
-#: /usr/lib64/python3.9/argparse.py:1520
-msgid "'required' is an invalid argument for positionals"
-msgstr ""
-
-#: /usr/lib64/python3.9/argparse.py:1542
-#, python-format
-msgid "invalid option string %(option)r: must start with a character %(prefix_chars)r"
-msgstr ""
-
-#: /usr/lib64/python3.9/argparse.py:1560
-#, python-format
-msgid "dest= is required for options like %r"
-msgstr ""
-
-#: /usr/lib64/python3.9/argparse.py:1577
-#, python-format
-msgid "invalid conflict_resolution value: %r"
-msgstr ""
-
-#: /usr/lib64/python3.9/argparse.py:1595
-#, python-format
-msgid "conflicting option string: %s"
-msgid_plural "conflicting option strings: %s"
-msgstr[0] ""
-msgstr[1] ""
-
-#: /usr/lib64/python3.9/argparse.py:1661
-msgid "mutually exclusive arguments must be optional"
-msgstr ""
-
-#: /usr/lib64/python3.9/argparse.py:1728
-msgid "positional arguments"
-msgstr ""
-
-#: /usr/lib64/python3.9/argparse.py:1729
-msgid "optional arguments"
-msgstr ""
-
-#: /usr/lib64/python3.9/argparse.py:1744
-msgid "show this help message and exit"
-msgstr ""
-
-#: /usr/lib64/python3.9/argparse.py:1775
-msgid "cannot have multiple subparser arguments"
-msgstr ""
-
-#: /usr/lib64/python3.9/argparse.py:1827 /usr/lib64/python3.9/argparse.py:2338
-#, python-format
-msgid "unrecognized arguments: %s"
-msgstr ""
-
-#: /usr/lib64/python3.9/argparse.py:1928
-#, python-format
-msgid "not allowed with argument %s"
-msgstr ""
-
-#: /usr/lib64/python3.9/argparse.py:1974 /usr/lib64/python3.9/argparse.py:1988
-#, python-format
-msgid "ignored explicit argument %r"
-msgstr ""
-
-#: /usr/lib64/python3.9/argparse.py:2095
-#, python-format
-msgid "the following arguments are required: %s"
-msgstr ""
-
-#: /usr/lib64/python3.9/argparse.py:2110
-#, python-format
-msgid "one of the arguments %s is required"
-msgstr ""
-
-#: /usr/lib64/python3.9/argparse.py:2153
-msgid "expected one argument"
-msgstr ""
-
-#: /usr/lib64/python3.9/argparse.py:2154
-msgid "expected at most one argument"
-msgstr ""
-
-#: /usr/lib64/python3.9/argparse.py:2155
-msgid "expected at least one argument"
-msgstr ""
-
-#: /usr/lib64/python3.9/argparse.py:2159
-#, python-format
-msgid "expected %s argument"
-msgid_plural "expected %s arguments"
-msgstr[0] ""
-msgstr[1] ""
-
-#: /usr/lib64/python3.9/argparse.py:2217
-#, python-format
-msgid "ambiguous option: %(option)s could match %(matches)s"
-msgstr ""
-
-#: /usr/lib64/python3.9/argparse.py:2281
-#, python-format
-msgid "unexpected option string: %s"
-msgstr ""
-
-#: /usr/lib64/python3.9/argparse.py:2478
-#, python-format
-msgid "%r is not callable"
-msgstr ""
-
-#: /usr/lib64/python3.9/argparse.py:2495
-#, python-format
-msgid "invalid %(type)s value: %(value)r"
-msgstr ""
-
-#: /usr/lib64/python3.9/argparse.py:2506
-#, python-format
-msgid "invalid choice: %(value)r (choose from %(choices)s)"
-msgstr ""
-
-#: /usr/lib64/python3.9/argparse.py:2582
-#, python-format
-msgid "%(prog)s: error: %(message)s\n"
-""
-msgstr ""
-
-#: gpresult/Preferences/Inifile.py:17
-msgid "Inifile"
-msgstr ""
-
-#: gpresult/Preferences/Inifile.py:41
-msgid "Section"
-msgstr ""
-
-#: gpresult/Preferences/Inifile.py:42
-msgid "Property"
-msgstr ""
-
-#: gpresult/Preferences/Networkshare.py:17
-msgid "Network share"
-msgstr ""
-
-#: gpresult/Preferences/EnvVar.py:31
-#: gpresult/Preferences/Networkshare.py:42
-msgid "Name"
-msgstr ""
-
-#: gpresult/Preferences/Networkshare.py:45
-msgid "All regular"
-msgstr ""
-
-#: gpresult/Preferences/Networkshare.py:46
-msgid "Abe"
-msgstr ""
-
-#: gpresult/Preferences/Networkshare.py:47
-msgid "Limit users"
-msgstr ""
-
-#: gpresult/Preferences/Networkshare.py:48
-msgid "Comment"
-msgstr ""
-
-#: gpresult/Preferences/Shortcut.py:17
-msgid "Shortcut"
-msgstr ""
-
-#: gpresult/Preferences/Shortcut.py:47
-msgid "Destination"
-msgstr ""
-
-#: gpresult/Preferences/Shortcut.py:49
-msgid "Expanded path"
-msgstr ""
-
-#: gpresult/Preferences/Shortcut.py:50
-msgid "Arguments"
-msgstr ""
-
-#: gpresult/Preferences/Shortcut.py:53
-msgid "Changed"
-msgstr ""
-
-#: gpresult/Preferences/Shortcut.py:54
-msgid "Icon"
-msgstr ""
-
-#: gpresult/Preferences/Shortcut.py:56
-msgid "Perfom action in user context"
-msgstr ""
-
-#: gpresult/Preferences/Shortcut.py:57
-msgid "Link type"
-msgstr ""
-
-#: gpresult/Preferences/Shortcut.py:58
-msgid "Desktop file template"
-msgstr ""
-
-#: gpresult/Preferences/Shortcut.py:61
-#: gpresult/Preferences/Folder.py:39
-#: gpresult/Preferences/File.py:47
-#: gpresult/Preferences/Drive.py:49
-#: gpresult/Preferences/EnvVar.py:34
-#: gpresult/Preferences/Inifile.py:39
-#: gpresult/Preferences/Networkshare.py:40
-msgid "Disabled"
-msgstr ""
-
-#: gpresult/Preferences/Shortcut.py:62
-#: gpresult/Preferences/Folder.py:40
-#: gpresult/Preferences/File.py:48
-#: gpresult/Preferences/Drive.py:50
-#: gpresult/Preferences/EnvVar.py:35
-#: gpresult/Preferences/Inifile.py:40
-#: gpresult/Preferences/Networkshare.py:41
-msgid "Remove policy"
-msgstr ""
-
-#: gpresult/Preferences/Shortcut.py:66
-#: gpresult/Preferences/Folder.py:44
-#: gpresult/Preferences/File.py:52
-#: gpresult/Preferences/Drive.py:54
-#: gpresult/Preferences/EnvVar.py:39
-#: gpresult/Preferences/Inifile.py:44
-#: gpresult/Preferences/Networkshare.py:45
-msgid "UID"
-msgstr ""
-
-#: gpresult/Preferences/Shortcut.py:67
-#: gpresult/Preferences/Folder.py:45
-#: gpresult/Preferences/File.py:53
-#: gpresult/Preferences/Drive.py:55
-#: gpresult/Preferences/EnvVar.py:40
-#: gpresult/Preferences/Inifile.py:45
-#: gpresult/Preferences/Networkshare.py:46
-msgid "Bypass errors"
-msgstr ""
-
-#: gpresult/Preferences/Shortcut.py:68
-#: gpresult/Preferences/Folder.py:46
-#: gpresult/Preferences/File.py:54
-#: gpresult/Preferences/Drive.py:56
-#: gpresult/Preferences/EnvVar.py:41
-#: gpresult/Preferences/Inifile.py:46
-#: gpresult/Preferences/Networkshare.py:47
-msgid "Apply once"
-msgstr ""
-
-#: gpresult/Preferences/Shortcut.py:70
-#: gpresult/Preferences/Folder.py:48
-#: gpresult/Preferences/File.py:56
-#: gpresult/Preferences/Drive.py:58
-#: gpresult/Preferences/EnvVar.py:43
-#: gpresult/Preferences/Inifile.py:48
-#: gpresult/Preferences/Networkshare.py:49
-msgid "Filters"
-msgstr ""
-
-#: gpresult/Preferences/Shortcut.py:42
-#: gpresult/Preferences/Folder.py:42
-#: gpresult/Preferences/File.py:50
-#: gpresult/Preferences/Drive.py:52
-#: gpresult/Preferences/EnvVar.py:37
-#: gpresult/Preferences/Inifile.py:42
-#: gpresult/Preferences/Networkshare.py:43
-msgid "Filter type"
-msgstr ""
-
-#: gpresult/gpr_show.py:71
-msgid "Yes"
-msgstr ""
-
-#: gpresult/gpr_show.py:73
-msgid "No"
-msgstr ""
-
-#: gpresult/gpr_html.py
+#: gpresult/gpr_html.py:62
 msgid "show"
 msgstr ""
 
-#: gpresult/gpr_html.py
+#: gpresult/gpr_html.py:63
 msgid "hide"
 msgstr ""
 
-#: gpresult/gpr_html.py
+#: gpresult/gpr_html.py:64
 msgid "show all"
 msgstr ""
 
-#: gpresult/gpr_html.py
+#: gpresult/gpr_html.py:65
 msgid "hide all"
 msgstr ""
 
-#: gpresult/gpr_html.py
-msgid "Group Policy Results"
+#: gpresult/gpr_html.py:71 gpresult/gpr_show.py:75
+msgid "Yes"
 msgstr ""
 
-#: gpresult/gpr_html.py
-msgid "{user} on {computer}"
+#: gpresult/gpr_html.py:73 gpresult/gpr_show.py:77
+msgid "No"
 msgstr ""
 
-#: gpresult/gpr_html.py
-msgid "Data collected on:"
-msgstr ""
-
-#: gpresult/gpr_html.py
-msgid "Computer Details"
-msgstr ""
-
-#: gpresult/gpr_html.py
-msgid "User Details"
-msgstr ""
-
-#: gpresult/gpr_html.py
-msgid "General"
-msgstr ""
-
-#: gpresult/gpr_html.py
+#: gpresult/gpr_html.py:135
 msgid "Computer name"
 msgstr ""
 
-#: gpresult/gpr_html.py
+#: gpresult/gpr_html.py:137
 msgid "User name"
 msgstr ""
 
-#: gpresult/gpr_html.py
+#: gpresult/gpr_html.py:139
 msgid "Domain"
 msgstr ""
 
-#: gpresult/gpr_html.py
-msgid "Settings"
+#: gpresult/gpr_html.py:142 gpresult/gpr_html.py:237
+msgid "General"
 msgstr ""
 
-#: gpresult/gpr_html.py
-msgid "Policies"
-msgstr ""
-
-#: gpresult/gpr_html.py
-msgid "Administrative Templates"
-msgstr ""
-
-#: gpresult/gpr_html.py
+#: gpresult/gpr_html.py:153 gpresult/gpr_html.py:163
 msgid "Setting"
 msgstr ""
 
-#: gpresult/gpr_html.py
+#: gpresult/gpr_html.py:154 gpresult/gpr_html.py:163
 msgid "State"
 msgstr ""
 
-#: gpresult/gpr_html.py
+#: gpresult/gpr_html.py:155
+msgid "Previous Value"
+msgstr ""
+
+#: gpresult/gpr_html.py:156 gpresult/gpr_html.py:163 gpresult/gpr_html.py:233
 msgid "Winning GPO"
 msgstr ""
 
-#: gpresult/gpr_html.py
-msgid "Files"
+#: gpresult/gpr_html.py:191 gpresult/Preferences/File.py:12
+msgid "File"
 msgstr ""
 
-#: gpresult/gpr_html.py
-msgid "Folders"
-msgstr ""
-
-#: gpresult/gpr_html.py
-msgid "Ini Files"
-msgstr ""
-
-#: gpresult/gpr_html.py
-msgid "Drive Maps"
-msgstr ""
-
-#: gpresult/gpr_html.py
-msgid "Environment"
-msgstr ""
-
-#: gpresult/gpr_html.py
-msgid "Network Shares"
-msgstr ""
-
-#: gpresult/gpr_html.py
-msgid "Shortcuts"
-msgstr ""
-
-#: gpresult/gpr_html.py
+#: gpresult/gpr_html.py:191
 msgid "Target Path"
 msgstr ""
 
-#: gpresult/gpr_html.py
+#: gpresult/gpr_html.py:197 gpresult/Preferences/Folder.py:12
+msgid "Folder"
+msgstr ""
+
+#: gpresult/gpr_html.py:197 gpresult/Preferences/Folder.py:35
+#: gpresult/Preferences/Drive.py:41 gpresult/Preferences/Networkshare.py:38
+#: gpresult/Preferences/Shortcut.py:42 gpresult/Preferences/Inifile.py:34
+#: gpresult/GPO.py:49
+msgid "Path"
+msgstr ""
+
+#: gpresult/gpr_html.py:202
 msgid "Ini File"
 msgstr ""
 
-#: gpresult/gpr_html.py
+#: gpresult/gpr_html.py:204
 msgid "File Path"
 msgstr ""
 
-#: gpresult/gpr_html.py
+#: gpresult/gpr_html.py:205
 msgid "Section Name"
 msgstr ""
 
-#: gpresult/gpr_html.py
+#: gpresult/gpr_html.py:206
 msgid "Property Name"
 msgstr ""
 
-#: gpresult/gpr_html.py
+#: gpresult/gpr_html.py:212
 msgid "Drive Map"
 msgstr ""
 
-#: gpresult/gpr_html.py
+#: gpresult/gpr_html.py:214
+msgid "Environment"
+msgstr ""
+
+#: gpresult/gpr_html.py:216
 msgid "Network Share"
 msgstr ""
 
-#: gpresult/gpr_html.py
-msgid "Group Policy Objects"
+#: gpresult/gpr_html.py:218 gpresult/Preferences/Shortcut.py:12
+msgid "Shortcut"
 msgstr ""
 
-#: gpresult/gpr_html.py
-msgid "Applied GPOs"
-msgstr ""
-
-#: gpresult/gpr_html.py
-msgid "Link Location"
-msgstr ""
-
-#: gpresult/gpr_html.py
-msgid "Revision"
-msgstr ""
-
-#: gpresult/gpr_html.py
-msgid "HTML report saved to {}"
-msgstr ""
-
-#: gpresult/gpr_html.py
+#: gpresult/gpr_html.py:246
 msgid ""
 "The following settings have applied to this object. Within this category, "
 "settings nearest the top of the report are the prevailing settings when "
 "resolving conflicts."
+msgstr ""
+
+#: gpresult/gpr_html.py:281 gpresult/GPO.py:53
+msgid "Preferences"
+msgstr ""
+
+#: gpresult/gpr_html.py:295
+msgid "Administrative Templates"
+msgstr ""
+
+#: gpresult/gpr_html.py:299
+msgid "Policies"
+msgstr ""
+
+#: gpresult/gpr_html.py:309
+msgid "Settings"
+msgstr ""
+
+#: gpresult/gpr_html.py:324
+msgid "Link Location"
+msgstr ""
+
+#: gpresult/gpr_html.py:325
+msgid "Revision"
+msgstr ""
+
+#: gpresult/gpr_html.py:335
+msgid "Applied GPOs"
+msgstr ""
+
+#: gpresult/gpr_html.py:338
+msgid "Group Policy Objects"
+msgstr ""
+
+#: gpresult/gpr_html.py:347
+msgid "Computer Details"
+msgstr ""
+
+#: gpresult/gpr_html.py:347
+msgid "User Details"
+msgstr ""
+
+#: gpresult/gpr_html.py:366
+#, python-brace-format
+msgid "{user} on {computer}"
+msgstr ""
+
+#: gpresult/gpr_html.py:380
+msgid "Group Policy Results"
+msgstr ""
+
+#: gpresult/gpr_html.py:386
+msgid "Data collected on:"
+msgstr ""
+
+#: gpresult/gpr_html.py:409
+msgid "HTML report saved to {}"
+msgstr ""
+
+#: gpresult/gpr_show.py:117
+msgid ""
+"\n"
+"Created on {}"
+msgstr ""
+
+#: gpresult/gpr_show.py:123
+msgid "The resulting set of policies"
+msgstr ""
+
+#: gpresult/gpr_show.py:138
+msgid "Applied Group Policy Objects"
+msgstr ""
+
+#: gpresult/gpr_show.py:256
+msgid "USER SETTINGS"
+msgstr ""
+
+#: gpresult/gpr_show.py:258
+msgid "MACHINE SETTINGS"
+msgstr ""
+
+#: gpresult/Preferences/BasePreference.py:28
+msgid "Filter type"
+msgstr ""
+
+#: gpresult/Preferences/BasePreference.py:36
+msgid "UID"
+msgstr ""
+
+#: gpresult/Preferences/BasePreference.py:37
+msgid "Bypass errors"
+msgstr ""
+
+#: gpresult/Preferences/BasePreference.py:38
+msgid "Apply once"
+msgstr ""
+
+#: gpresult/Preferences/BasePreference.py:42
+#: gpresult/Preferences/Shortcut.py:47
+msgid "Changed"
+msgstr ""
+
+#: gpresult/Preferences/BasePreference.py:44
+msgid "Filters"
+msgstr ""
+
+#: gpresult/Preferences/File.py:37 gpresult/Preferences/Folder.py:34
+#: gpresult/Preferences/Drive.py:38 gpresult/Preferences/EnvVar.py:30
+#: gpresult/Preferences/Networkshare.py:35 gpresult/Preferences/Shortcut.py:40
+#: gpresult/Preferences/Inifile.py:33
+msgid "Type"
+msgstr ""
+
+#: gpresult/Preferences/File.py:38
+msgid "From path"
+msgstr ""
+
+#: gpresult/Preferences/File.py:39
+msgid "Source"
+msgstr ""
+
+#: gpresult/Preferences/File.py:40 gpresult/Preferences/Folder.py:36
+#: gpresult/Preferences/Drive.py:42 gpresult/Preferences/EnvVar.py:33
+#: gpresult/Preferences/Networkshare.py:37 gpresult/Preferences/Shortcut.py:46
+#: gpresult/Preferences/Inifile.py:38
+msgid "Action"
+msgstr ""
+
+#: gpresult/Preferences/File.py:41
+msgid "Target path"
+msgstr ""
+
+#: gpresult/Preferences/File.py:42
+msgid "Read only"
+msgstr ""
+
+#: gpresult/Preferences/File.py:43
+msgid "Archive"
+msgstr ""
+
+#: gpresult/Preferences/File.py:44
+msgid "Hidden"
+msgstr ""
+
+#: gpresult/Preferences/File.py:45
+msgid "Suppress"
+msgstr ""
+
+#: gpresult/Preferences/File.py:46
+msgid "Executable"
+msgstr ""
+
+#: gpresult/Preferences/File.py:47 gpresult/Preferences/Folder.py:41
+#: gpresult/Preferences/Drive.py:48 gpresult/Preferences/EnvVar.py:34
+#: gpresult/Preferences/Networkshare.py:43 gpresult/Preferences/Shortcut.py:53
+#: gpresult/Preferences/Inifile.py:39
+msgid "Disabled"
+msgstr ""
+
+#: gpresult/Preferences/File.py:48 gpresult/Preferences/Folder.py:42
+#: gpresult/Preferences/Drive.py:49 gpresult/Preferences/EnvVar.py:35
+#: gpresult/Preferences/Networkshare.py:44 gpresult/Preferences/Shortcut.py:54
+#: gpresult/Preferences/Inifile.py:40
+msgid "Remove policy"
+msgstr ""
+
+#: gpresult/Preferences/Folder.py:37
+msgid "Delete folder"
+msgstr ""
+
+#: gpresult/Preferences/Folder.py:38
+msgid "Delete subfolder"
+msgstr ""
+
+#: gpresult/Preferences/Folder.py:39
+msgid "Delete files"
+msgstr ""
+
+#: gpresult/Preferences/Folder.py:40
+msgid "Hidden folder"
+msgstr ""
+
+#: gpresult/Preferences/Drive.py:12
+msgid "Drive map"
+msgstr ""
+
+#: gpresult/Preferences/Drive.py:39
+msgid "Password"
+msgstr ""
+
+#: gpresult/Preferences/Drive.py:40
+msgid "Direction"
+msgstr ""
+
+#: gpresult/Preferences/Drive.py:43
+msgid "This drive"
+msgstr ""
+
+#: gpresult/Preferences/Drive.py:44
+msgid "All drives"
+msgstr ""
+
+#: gpresult/Preferences/Drive.py:45
+msgid "Label"
+msgstr ""
+
+#: gpresult/Preferences/Drive.py:46
+msgid "Persistent"
+msgstr ""
+
+#: gpresult/Preferences/Drive.py:47
+msgid "Use letter"
+msgstr ""
+
+#: gpresult/Preferences/EnvVar.py:12
+msgid "Environment variables"
+msgstr ""
+
+#: gpresult/Preferences/EnvVar.py:31 gpresult/Preferences/Networkshare.py:36
+#: gpresult/Preferences/Shortcut.py:45
+msgid "Name"
+msgstr ""
+
+#: gpresult/Preferences/EnvVar.py:32 gpresult/Preferences/Inifile.py:37
+msgid "Value"
+msgstr ""
+
+#: gpresult/Preferences/Networkshare.py:12
+msgid "Network share"
+msgstr ""
+
+#: gpresult/Preferences/Networkshare.py:39
+msgid "All regular"
+msgstr ""
+
+#: gpresult/Preferences/Networkshare.py:40
+msgid "Abe"
+msgstr ""
+
+#: gpresult/Preferences/Networkshare.py:41
+msgid "Limit users"
+msgstr ""
+
+#: gpresult/Preferences/Networkshare.py:42 gpresult/Preferences/Shortcut.py:49
+msgid "Comment"
+msgstr ""
+
+#: gpresult/Preferences/Shortcut.py:41
+msgid "Destination"
+msgstr ""
+
+#: gpresult/Preferences/Shortcut.py:43
+msgid "Expanded path"
+msgstr ""
+
+#: gpresult/Preferences/Shortcut.py:44
+msgid "Arguments"
+msgstr ""
+
+#: gpresult/Preferences/Shortcut.py:48
+msgid "Icon"
+msgstr ""
+
+#: gpresult/Preferences/Shortcut.py:50
+msgid "Perfom action in user context"
+msgstr ""
+
+#: gpresult/Preferences/Shortcut.py:51
+msgid "Link type"
+msgstr ""
+
+#: gpresult/Preferences/Shortcut.py:52
+msgid "Desktop file template"
+msgstr ""
+
+#: gpresult/Preferences/Inifile.py:12
+msgid "Inifile"
+msgstr ""
+
+#: gpresult/Preferences/Inifile.py:35
+msgid "Section"
+msgstr ""
+
+#: gpresult/Preferences/Inifile.py:36
+msgid "Property"
+msgstr ""
+
+#: gpresult/gpresult.py:48
+msgid "Information about applied policies"
+msgstr ""
+
+#: gpresult/gpresult.py:56
+msgid "Output format: display of policy keys, values and previous values"
+msgstr ""
+
+#: gpresult/gpresult.py:64
+msgid ""
+"Output format: common output including environment information; outputs only "
+"the names of applied policies"
+msgstr ""
+
+#: gpresult/gpresult.py:73
+msgid ""
+"Output format (DEFAULT): is similar to the common output, in addition, the "
+"applied keys, policy values  and preferences are also output"
+msgstr ""
+
+#: gpresult/gpresult.py:82
+msgid ""
+"Output format: output of GPO names and their GUIDs\n"
+"* Not applicable with <-i>/<--policy_guid> and <-n>/<--policy_name>"
+msgstr ""
+
+#: gpresult/gpresult.py:91
+msgid "Enable information about the previous GPO key value"
+msgstr ""
+
+#: gpresult/gpresult.py:98
+msgid ""
+"Set column widths for outputting internal tables (keys and values, "
+"preferences, ...)\n"
+"* If the specified value is less than or equal to 0, the width of the "
+"columns\n"
+"  will be equal to the maximum length of the row\n"
+"* By default, the column width is equal to the length of the maximum row\n"
+"* If the length of the maximum string is less than the specified value, the "
+"width will not change"
+msgstr ""
+
+#: gpresult/gpresult.py:112
+msgid ""
+"Information about policy keys and values by guid\n"
+"* Not applicable with <-l>/<--list>"
+msgstr ""
+
+#: gpresult/gpresult.py:122
+msgid ""
+"Information about policy keys and values by name\n"
+"* Not applicable with <-l>/<--list>"
+msgstr ""
+
+#: gpresult/gpresult.py:132
+msgid "Get information about applied policies for the current user"
+msgstr ""
+
+#: gpresult/gpresult.py:139
+msgid "Get information about applied policies for the current machine"
+msgstr ""
+
+#: gpresult/gpresult.py:146
+msgid "Save HTML report to file"
+msgstr ""
+
+#: gpresult/GPO.py:50
+msgid "Version"
+msgstr ""
+
+#: gpresult/GPO.py:52
+msgid "Keys"
+msgstr ""
+
+#: gpresult/gpr_init.py:42 gpresult/gpr_init.py:99 gpresult/gpr_init.py:136
+#: gpresult/gpr_init.py:173
+msgid "Permission denied: {}"
+msgstr ""
+
+#: gpresult/gpr_init.py:44 gpresult/gpr_init.py:101 gpresult/gpr_init.py:138
+#: gpresult/gpr_init.py:175
+msgid "No such file: {}"
+msgstr ""
+
+#: gpresult/gpr_system.py:25
+msgid "Operating system:"
+msgstr ""
+
+#: gpresult/gpr_system.py:26
+msgid "OS Version:"
+msgstr ""
+
+#: gpresult/gpr_system.py:33
+msgid "Local Profile:"
 msgstr ""
