@@ -32,8 +32,6 @@ The project supports **Russian** and **English** languages. The system language 
 
 > Get away from using getpwnam
 
-> Generating HTML report
-
 > View applied policies on different nodes for different users
 
 > Which groups the user is a member of
