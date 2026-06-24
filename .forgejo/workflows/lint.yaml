@@ -7,7 +7,9 @@ on:
 
 jobs:
   check_formatting:
-    runs-on: alt-sisyphus
+    runs-on: als-tiny
+    container:
+      image: registry.altlinux.org/sisyphus/node:latest
     steps:
       - name: Check out repository code
         uses: actions/checkout@v3
