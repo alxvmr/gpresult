@@ -10,10 +10,10 @@ gettext.textdomain("gpresult")
 _ = gettext.gettext
 
 CSS = """
-                body    { background-color:#FFFFFF; border:1px solid #666666; color:#000000; font-size:68%; font-family:MS Shell Dlg, sans-serif; margin:0,0,10px,0; word-break:normal; word-wrap:break-word; }
+                body    { background-color:#FFFFFF; border:1px solid #666666; color:#000000; font-size:68%; font-family:MS Shell Dlg, sans-serif; margin:0 0 10px 0; word-break:normal; word-wrap:break-word; }
                 table   { font-size:100%; table-layout:fixed; width:100%; }
                 td,th   { overflow:visible; text-align:left; vertical-align:top; white-space:normal; }
-                .title  { background:#FFFFFF; border:none; color:#333333; display:inline-table; height:24px; margin:0px,0px,0px,0px; padding-top:0px; position:relative; table-layout:fixed; z-index:5; }
+                .title  { background:#FFFFFF; border:none; color:#333333; display:inline-table; height:24px; margin:0px 0px 0px 0px; padding-top:0px; position:relative; table-layout:fixed; z-index:5; }
                 .he0_expanded    { background-color:#FEF7D6; border:1px solid #BBBBBB; color:#3333CC; cursor:pointer; display:block; font-family:MS Shell Dlg, sans-serif; font-size:100%; font-weight:bold; height:2.25em; margin-bottom:-1px; margin-left:0px; margin-right:0px; padding-left:8px; padding-right:5em; padding-top:4px; position:relative; }
                 .he1_expanded    { background-color:#A0BACB; border:1px solid #BBBBBB; color:#000000; cursor:pointer; display:block; font-family:MS Shell Dlg, sans-serif; font-size:100%; font-weight:bold; height:2.25em; margin-bottom:-1px; margin-left:20px; margin-right:0px; padding-left:8px; padding-right:5em; padding-top:4px; position:relative; }
                 .he0h_expanded   { background-color: #FEF0D0; border: 1px solid #BBBBBB; color: #000000; cursor: pointer; display: block; font-family: MS Shell Dlg, sans-serif; font-size: 100%; font-weight: bold; height: 2.25em; margin-bottom: -1px; margin-left: 5px; margin-right: 0px; padding-left: 8px; padding-right: 5em; padding-top: 4px; position: relative;  }
@@ -30,7 +30,7 @@ CSS = """
                 .he5i   { background-color:#F9F9F9; border:1px solid #BBBBBB; color:#000000; display:block; font-family:MS Shell Dlg, sans-serif; font-size:100%; margin-bottom:-1px; margin-left:65px; margin-right:0px; padding-left:21px; padding-bottom:5px; padding-top: 4px; position:relative; }
                 div .expando { color:#000000; text-decoration:none; display:block; font-family:MS Shell Dlg, sans-serif; font-size:100%; font-weight:normal; position:absolute; right:10px; text-decoration:underline; z-index: 0; }
                 .he0 .expando { font-size:100%; }
-                .info, .info3, .info4, .disalign  { line-height:1.6em; padding:0px,0px,0px,0px; margin:0px,0px,0px,0px; }
+                .info, .info3, .info4, .disalign  { line-height:1.6em; padding:0px 0px 0px 0px; margin:0px 0px 0px 0px; }
                 .disalign TD                      { padding-bottom:5px; padding-right:10px; }
                 .info TD                          { padding-right:10px; width:50%; }
                 .info3 TD                         { padding-right:10px; width:33%; }
