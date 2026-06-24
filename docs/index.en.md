@@ -50,7 +50,7 @@ The option <code>-p/--previous</code> applies only in cases where GPO keys are u
 | `-n POLICY_NAME, --policy_name POLICY_NAME`                  | Get information about applied keys and policy values by **name**                                                                                                                          |
 | `-u, --user`                                                   | Display information for the current **user**                                                                                                                                              |
 | `-m, --machine`                                               | Display information for the current **machine**                                                                                                                                           |
-|`-H FILE, --html FILE`|**Output format**: save the report on applied group policies to an HTML file|
+|`-H FILE, --html FILE`| Save the report on applied group policies to an **HTML file**|
 
 ### Remarks
 - The `-l\--list` option can be used in conjunction with the `-r\--row` option - the **non** output will be formatted, with the GPO name and GUID separated by a single space
@@ -87,7 +87,7 @@ The option <code>-p/--previous</code> applies only in cases where GPO keys are u
     gpresult -c -n policy
     ```
 
-5. To save the report on applied group policies to an HTML file enter:
+5. To save the report on applied group policies to an **HTML file** enter:
 
     ```
     gpresult -H report.html
