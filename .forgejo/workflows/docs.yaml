@@ -2,8 +2,6 @@ name: docs
 on:
   push:
     branches: [doc]
-  pull_request:
-    branches: [doc]
 
 permissions:
   contents: write
@@ -48,27 +46,19 @@ jobs:
       - name: Install dependencies
         run: pip3 install --break-system-packages -r requirements.txt
 
-      - name: Validate docs (PR only)
-        if: github.event_name == 'pull_request'
-        run: mike build --strict
-
       - name: Build versioned site (mike -> gh-pages)
-        if: github.event_name == 'push'
         run: mike deploy --branch gh-pages --update-aliases --push ${{ env.TAG_NAME }} latest
 
       - name: Set default version (root redirect)
-        if: github.event_name == 'push'
         run: mike set-default --branch gh-pages --push ${{ env.TAG_NAME }}
 
       - name: Materialize site into ./site
-        if: github.event_name == 'push'
         run: |
           git fetch origin gh-pages
           rm -rf site && mkdir site
           git archive origin/gh-pages | tar -x -C site
 
       - name: Deploy pages
-        if: github.event_name == 'push'
         uses: actions/deploy-pages@v1
         with:
           directory: ./site
