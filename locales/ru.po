@@ -677,6 +677,10 @@ msgid "State"
 msgstr "Состояние"
 
 #: gpresult/gpr_html.py
+msgid "Previous Value"
+msgstr "Предыдущее значение"
+
+#: gpresult/gpr_html.py
 msgid "Winning GPO"
 msgstr "Преобладающий объект групповой политики"
 
