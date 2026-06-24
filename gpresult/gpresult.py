@@ -191,7 +191,7 @@ def main():
         gpos = gpr_get_policies.get_policies(obj)
 
     if args.html:
-        gpr_html.save(gpos, obj, filepath=args.html)
+        gpr_html.save(gpos, obj, filepath=args.html, previous=args.previous)
     else:
         gpr_show.show(
             gpos,
