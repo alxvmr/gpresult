@@ -1,0 +1,19 @@
+[
+  {
+    "version": "0.1.0-alt1",
+    "title": "0.1.0-alt1",
+    "aliases": [
+      "latest"
+    ]
+  },
+  {
+    "version": "0.0.7-alt1",
+    "title": "0.0.7-alt1",
+    "aliases": []
+  },
+  {
+    "version": "0.0.3-alt1",
+    "title": "0.0.3-alt1",
+    "aliases": []
+  }
+]
