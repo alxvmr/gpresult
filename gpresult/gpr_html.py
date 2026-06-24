@@ -323,20 +323,44 @@ def general_section(obj_type, gpos):
     return section(0, _("General"), body, expanded=True, h_variant=True)
 
 
-def keys_values_table(kvs):
-    out = [
-        '<table class="info3">',
-        "<tr><th scope=\"col\">{}</th><th scope=\"col\">{}</th>"
-        "<th scope=\"col\">{}</th></tr>".format(
-            esc(_("Setting")), esc(_("State")), esc(_("Winning GPO"))
-        ),
-    ]
-    for kv in sorted(kvs, key=lambda x: x.key):
+def keys_values_table(kvs, previous=False):
+    css_class = "info4" if previous else "info3"
+    out = ['<table class="{}">'.format(css_class)]
+
+    if previous:
         out.append(
-            "<tr><td>{}</td><td>{}</td><td>{}</td></tr>".format(
-                esc(kv.key), esc(fmt(kv.value)), esc(kv.policy_name or "-")
+            "<tr><th scope=\"col\">{}</th><th scope=\"col\">{}</th>"
+            "<th scope=\"col\">{}</th><th scope=\"col\">{}</th></tr>".format(
+                esc(_("Setting")),
+                esc(_("State")),
+                esc(_("Previous Value")),
+                esc(_("Winning GPO")),
             )
         )
+    else:
+        out.append(
+            "<tr><th scope=\"col\">{}</th><th scope=\"col\">{}</th>"
+            "<th scope=\"col\">{}</th></tr>".format(
+                esc(_("Setting")), esc(_("State")), esc(_("Winning GPO"))
+            )
+        )
+
+    for kv in sorted(kvs, key=lambda x: x.key):
+        if previous:
+            out.append(
+                "<tr><td>{}</td><td>{}</td><td>{}</td><td>{}</td></tr>".format(
+                    esc(kv.key),
+                    esc(fmt(kv.value)),
+                    esc(fmt(kv.mod_previous_value)),
+                    esc(kv.policy_name or "-"),
+                )
+            )
+        else:
+            out.append(
+                "<tr><td>{}</td><td>{}</td><td>{}</td></tr>".format(
+                    esc(kv.key), esc(fmt(kv.value)), esc(kv.policy_name or "-")
+                )
+            )
     out.append("</table>")
     return "".join(out)
 
@@ -439,7 +463,7 @@ def preferences_section(gpos):
     )
 
 
-def settings_section(obj_type, gpos):
+def settings_section(obj_type, gpos, previous=False):
     kvs = []
     for gpo in gpos:
         kvs.extend(gpo.keys_values)
@@ -450,7 +474,7 @@ def settings_section(obj_type, gpos):
         admin = section(
             1,
             _("Administrative Templates"),
-            '<div class="he4i">{}</div>'.format(keys_values_table(kvs)),
+            '<div class="he4i">{}</div>'.format(keys_values_table(kvs, previous)),
         )
         blocks.append(
             section(1, _("Policies"), admin, expanded=True, h_variant=True)
@@ -496,7 +520,7 @@ def gpo_objects_section(gpos):
     )
 
 
-def details_section(obj_type, gpos):
+def details_section(obj_type, gpos, previous=False):
     gpos_t = [g for g in gpos if g.obj == obj_type]
     if not gpos_t:
         return None
@@ -505,7 +529,7 @@ def details_section(obj_type, gpos):
 
     inner = [general_section(obj_type, gpos_t)]
 
-    settings = settings_section(obj_type, gpos_t)
+    settings = settings_section(obj_type, gpos_t, previous)
     if settings:
         inner.append(settings)
 
@@ -516,7 +540,7 @@ def details_section(obj_type, gpos):
     return section(0, title, "".join(inner), expanded=True)
 
 
-def build_report(gpos, obj_type):
+def build_report(gpos, obj_type, previous=False):
     netbios = netbios_domain(gpos)
     user = qualify(netbios, os.getlogin())
     host = qualify(netbios, socket.gethostname().split(".")[0])
@@ -549,7 +573,7 @@ def build_report(gpos, obj_type):
     for obj_type_iter in ("machine", "user"):
         if obj_type and obj_type != obj_type_iter:
             continue
-        block = details_section(obj_type_iter, gpos)
+        block = details_section(obj_type_iter, gpos, previous)
         if block:
             parts.append(block)
 
@@ -557,8 +581,8 @@ def build_report(gpos, obj_type):
     return "".join(parts)
 
 
-def save(gpos, obj_type, filepath="gpresult.html"):
-    report = build_report(gpos, obj_type)
+def save(gpos, obj_type, filepath="gpresult.html", previous=False):
+    report = build_report(gpos, obj_type, previous)
 
     with open(filepath, "w", encoding="utf-8") as f:
         f.write(report)
