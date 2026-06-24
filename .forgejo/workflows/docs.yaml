@@ -1,0 +1,74 @@
+name: docs
+on:
+  push:
+    branches: [doc]
+  pull_request:
+    branches: [doc]
+
+permissions:
+  contents: write
+
+jobs:
+  docs:
+    runs-on: als-tiny
+    container:
+      image: registry.altlinux.org/sisyphus/node:latest
+    steps:
+      - name: Checkout main (for tags)
+        if: github.event_name == 'push'
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+          fetch-tags: true
+
+      - name: Get latest tag
+        if: github.event_name == 'push'
+        run: echo "TAG_NAME=$(git describe --tags --abbrev=0)" >> $GITHUB_ENV
+
+      - name: Checkout doc (or PR ref)
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event_name == 'push' && 'doc' || github.ref }}
+          fetch-depth: 0
+          fetch-tags: true
+
+      - name: Configure Git for mike push
+        if: github.event_name == 'push'
+        run: |
+          git config user.name "forgejo-actions[bot]"
+          git config user.email "forgejo-actions[bot]@users.noreply.altlinux.space"
+          git remote set-url origin "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@altlinux.space/alt-domain/gpresult.git"
+
+      - name: Set up Python
+        run: |
+          apt-get update
+          apt-get install -y python3 python3-module-pip
+
+      - name: Install dependencies
+        run: pip3 install --break-system-packages -r requirements.txt
+
+      - name: Validate docs (PR only)
+        if: github.event_name == 'pull_request'
+        run: mike build --strict
+
+      - name: Build versioned site (mike -> gh-pages)
+        if: github.event_name == 'push'
+        run: mike deploy --branch gh-pages --update-aliases --push ${{ env.TAG_NAME }} latest
+
+      - name: Set default version (root redirect)
+        if: github.event_name == 'push'
+        run: mike set-default --branch gh-pages --push ${{ env.TAG_NAME }}
+
+      - name: Materialize site into ./site
+        if: github.event_name == 'push'
+        run: |
+          git fetch origin gh-pages
+          rm -rf site && mkdir site
+          git archive origin/gh-pages | tar -x -C site
+
+      - name: Deploy pages
+        if: github.event_name == 'push'
+        uses: actions/deploy-pages@v1
+        with:
+          directory: ./site

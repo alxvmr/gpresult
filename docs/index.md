@@ -89,4 +89,4 @@ gpresult [-h] [-r] [-c] [-v] [-l] [-p] [-w WIDTH] [-i POLICY_GUID] [-n POLICY_NA
 ## Дополнительные ссылки
 - [Групповые политики в ALT Linux](https://www.altlinux.org/Групповые_политики)
 - [Групповые политики/ALT System Control](https://www.altlinux.org/Групповые_политики/ALT_System_Control)
-- [Исходный код GPResult](https://github.com/alxvmr/gpresult)
+- [Исходный код GPResult](https://altlinux.space/alt-domain/gpresult)

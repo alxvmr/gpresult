@@ -89,4 +89,4 @@ The option <code>-p/--previous</code> applies only in cases where GPO keys are u
 ## Related links
 - [Group Policies on ALT Linux](https://www.altlinux.org/Групповые_политики)
 - [Group Policies/ALT System Control](https://www.altlinux.org/Групповые_политики/ALT_System_Control)
-- [GPResult source code](https://github.com/alxvmr/gpresult)
+- [GPResult source code](https://altlinux.space/alt-domain/gpresult)
