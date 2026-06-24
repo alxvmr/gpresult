@@ -78,7 +78,7 @@ The option <code>-p/--previous</code> applies only in cases where GPO keys are u
 3. To get information about applied Group Policy Keys by **GUID** enter:
    
     ```
-    gpresult -f standard -i 1BA9EB0C-7B29-49CC-813D-75D8701FC221
+    gpresult -c -i 1BA9EB0C-7B29-49CC-813D-75D8701FC221
     ```
 
 4. To get information about applied group policy keys by **name** (for example, group policy name is policy) enter:
